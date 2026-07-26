@@ -1,5 +1,5 @@
-import { invoke } from '@tauri-apps/api';
-import { Body, fetch } from '@tauri-apps/api/http';
+import { invoke } from '@tauri-apps/api/core';
+import { fetch } from '@tauri-apps/plugin-http';
 import { appConfigDir, join } from '@tauri-apps/api/path';
 
 export async function backup(token, name) {
@@ -16,9 +16,10 @@ export async function backup(token, name) {
     await fetch('https://openapi.alipan.com/adrive/v1.0/openFile/complete', {
         method: 'POST',
         headers: {
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
         },
-        body: Body.json({
+        body: JSON.stringify({
             drive_id,
             file_id,
             upload_id,
@@ -32,17 +33,18 @@ export async function list(token) {
     const res = await fetch('https://openapi.alipan.com/adrive/v1.0/openFile/list', {
         method: 'POST',
         headers: {
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
         },
-        body: Body.json({
+        body: JSON.stringify({
             drive_id,
             parent_file_id: dir_id,
             type: 'file',
             order_by: 'name',
         }),
     });
+    const result = await res.json().catch(() => null);
     if (res.ok) {
-        const result = res.data;
         if (result['items']) {
             return result['items'].map((item) => {
                 return item['name'];
@@ -51,8 +53,7 @@ export async function list(token) {
             throw new Error(`Get File List Error: ${JSON.stringify(result)}`);
         }
     } else {
-        const result = res.data;
-        if (result['message']) {
+        if (result && result['message']) {
             throw new Error(result['message']);
         } else {
             throw new Error(`Get accessToken Error: ${JSON.stringify(result)}`);
@@ -73,9 +74,10 @@ export async function remove(token, name) {
     const res = await fetch('https://openapi.alipan.com/adrive/v1.0/openFile/delete', {
         method: 'POST',
         headers: {
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
         },
-        body: Body.json({
+        body: JSON.stringify({
             drive_id,
             file_id,
         }),
@@ -83,8 +85,8 @@ export async function remove(token, name) {
     if (res.ok) {
         return;
     } else {
-        const result = res.data;
-        if (result['message']) {
+        const result = await res.json().catch(() => null);
+        if (result && result['message']) {
             throw new Error(result['message']);
         } else {
             throw new Error(`Get accessToken Error: ${JSON.stringify(result)}`);
@@ -95,21 +97,21 @@ export async function remove(token, name) {
 export async function qrcode() {
     const res = await fetch('https://openapi.alipan.com/oauth/authorize/qrcode', {
         method: 'POST',
-        body: Body.json({
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
             client_id: 'bf56dd2dc03a4d3489e3dda05dd6d466',
             scopes: ['user:base', 'file:all:read', 'file:all:write'],
         }),
     });
+    const result = await res.json().catch(() => null);
     if (res.ok) {
-        const result = res.data;
         if (result['qrCodeUrl'] && result['sid']) {
             return { url: result['qrCodeUrl'], sid: result['sid'] };
         } else {
             throw new Error(`Can not find qrCodeUrl: ${JSON.stringify(result)}`);
         }
     } else {
-        const result = res.data;
-        if (result['message']) {
+        if (result && result['message']) {
             throw new Error(result['message']);
         } else {
             throw new Error(`Get QrCode Error: ${JSON.stringify(result)}`);
@@ -120,16 +122,15 @@ export async function qrcode() {
 export async function status(sid) {
     const res = await fetch(`https://openapi.alipan.com/oauth/qrcode/${sid}/status`);
 
+    const result = await res.json().catch(() => null);
     if (res.ok) {
-        const result = res.data;
         if (result['status']) {
             return { status: result['status'], code: result['authCode'] };
         } else {
             throw new Error(`Can not find status: ${JSON.stringify(result)}`);
         }
     } else {
-        const result = res.data;
-        if (result['message']) {
+        if (result && result['message']) {
             throw new Error(result['message']);
         } else {
             throw new Error(`Get Status Error: ${JSON.stringify(result)}`);
@@ -143,16 +144,15 @@ export async function userInfo(token) {
             Authorization: `Bearer ${token}`,
         },
     });
+    const result = await res.json().catch(() => null);
     if (res.ok) {
-        const result = res.data;
         if (result.hasOwnProperty('avatar') && result.hasOwnProperty('name')) {
             return { avatar: result['avatar'], name: result['name'] };
         } else {
             throw new Error(`Can not find avatar or name: ${JSON.stringify(result)}`);
         }
     } else {
-        const result = res.data;
-        if (result['message']) {
+        if (result && result['message']) {
             throw new Error(result['message']);
         } else {
             throw new Error(`Get UserInfo Error: ${JSON.stringify(result)}`);
@@ -163,21 +163,21 @@ export async function userInfo(token) {
 export async function accessToken(code) {
     const res = await fetch('https://pot-app.com/api/ali_access_token', {
         method: 'POST',
-        body: Body.json({
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
             code,
             refresh_token: '',
         }),
     });
+    const result = await res.json().catch(() => null);
     if (res.ok) {
-        const result = res.data;
         if (result['access_token']) {
             return result['access_token'];
         } else {
             throw new Error(`Can not find access_token: ${JSON.stringify(result)}`);
         }
     } else {
-        const result = res.data;
-        if (result['message']) {
+        if (result && result['message']) {
             throw new Error(result['message']);
         } else {
             throw new Error(`Get accessToken Error: ${JSON.stringify(result)}`);
@@ -189,19 +189,19 @@ async function driveId(token) {
     const res = await fetch('https://openapi.alipan.com/adrive/v1.0/user/getDriveInfo', {
         method: 'POST',
         headers: {
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
         },
     });
+    const result = await res.json().catch(() => null);
     if (res.ok) {
-        const result = res.data;
         if (result['default_drive_id']) {
             return result['default_drive_id'];
         } else {
             throw new Error(`Can not find default_drive_id: ${JSON.stringify(result)}`);
         }
     } else {
-        const result = res.data;
-        if (result['message']) {
+        if (result && result['message']) {
             throw new Error(result['message']);
         } else {
             throw new Error(`Get accessToken Error: ${JSON.stringify(result)}`);
@@ -213,9 +213,10 @@ async function createDir(token, drive_id) {
     const res = await fetch('https://openapi.alipan.com/adrive/v1.0/openFile/create', {
         method: 'POST',
         headers: {
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
         },
-        body: Body.json({
+        body: JSON.stringify({
             drive_id,
             parent_file_id: 'root',
             name: 'pot-app',
@@ -223,16 +224,15 @@ async function createDir(token, drive_id) {
             check_name_mode: 'refuse',
         }),
     });
+    const result = await res.json().catch(() => null);
     if (res.ok) {
-        const result = res.data;
         if (result['file_id']) {
             return result['file_id'];
         } else {
             throw new Error(`Can not find file_id: ${JSON.stringify(result)}`);
         }
     } else {
-        const result = res.data;
-        if (result['message']) {
+        if (result && result['message']) {
             throw new Error(result['message']);
         } else {
             throw new Error(`Get accessToken Error: ${JSON.stringify(result)}`);
@@ -244,9 +244,10 @@ async function createFile(token, drive_id, dir_id, name) {
     const res = await fetch('https://openapi.alipan.com/adrive/v1.0/openFile/create', {
         method: 'POST',
         headers: {
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
         },
-        body: Body.json({
+        body: JSON.stringify({
             drive_id,
             parent_file_id: dir_id,
             name: name,
@@ -254,8 +255,8 @@ async function createFile(token, drive_id, dir_id, name) {
             check_name_mode: 'refuse',
         }),
     });
+    const result = await res.json().catch(() => null);
     if (res.ok) {
-        const result = res.data;
         if (result['file_id']) {
             const file_id = result['file_id'];
             const upload_id = result['upload_id'];
@@ -265,8 +266,7 @@ async function createFile(token, drive_id, dir_id, name) {
             throw new Error(`Get file_id Error: ${JSON.stringify(result)}`);
         }
     } else {
-        const result = res.data;
-        if (result['message']) {
+        if (result && result['message']) {
             throw new Error(result['message']);
         } else {
             throw new Error(`Get accessToken Error: ${JSON.stringify(result)}`);
@@ -278,23 +278,23 @@ async function getFileByPath(token, drive_id, name) {
     const res = await fetch('https://openapi.alipan.com/adrive/v1.0/openFile/get_by_path', {
         method: 'POST',
         headers: {
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
         },
-        body: Body.json({
+        body: JSON.stringify({
             drive_id,
             file_path: `/pot-app/${name}`,
         }),
     });
+    const result = await res.json().catch(() => null);
     if (res.ok) {
-        const result = res.data;
         if (result['file_id']) {
             return result['file_id'];
         } else {
             throw new Error(`Can not find file_id: ${JSON.stringify(result)}`);
         }
     } else {
-        const result = res.data;
-        if (result['message']) {
+        if (result && result['message']) {
             throw new Error(result['message']);
         } else {
             throw new Error(`Get accessToken Error: ${JSON.stringify(result)}`);
@@ -306,23 +306,23 @@ async function getDownloadUrl(token, drive_id, file_id) {
     const res = await fetch('https://openapi.alipan.com/adrive/v1.0/openFile/getDownloadUrl', {
         method: 'POST',
         headers: {
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
         },
-        body: Body.json({
+        body: JSON.stringify({
             drive_id,
             file_id,
         }),
     });
+    const result = await res.json().catch(() => null);
     if (res.ok) {
-        const result = res.data;
         if (result['url']) {
             return result['url'];
         } else {
             throw new Error(`Can not find url: ${JSON.stringify(result)}`);
         }
     } else {
-        const result = res.data;
-        if (result['message']) {
+        if (result && result['message']) {
             throw new Error(result['message']);
         } else {
             throw new Error(`Get accessToken Error: ${JSON.stringify(result)}`);

@@ -1,6 +1,6 @@
 import detect from '../../../utils/lang_detect';
 import { osType } from '../../../utils/env';
-import { invoke } from '@tauri-apps/api';
+import { invoke } from '@tauri-apps/api/core';
 import { Language } from './info';
 
 export async function recognize(_, lang) {
@@ -81,7 +81,7 @@ export async function recognize(_, lang) {
     };
     let result = '';
     switch (osType) {
-        case 'Linux':
+        case 'linux':
             result = await invoke('system_ocr', { lang: linuxLangMap[lang] });
             if (lang === Language.auto && (await detect(result)) === Language.zh_cn) {
                 result = result.replaceAll(' ', '');
@@ -91,10 +91,10 @@ export async function recognize(_, lang) {
                 }
             }
             return result.trim();
-        case 'Darwin':
+        case 'macos':
             result = await invoke('system_ocr', { lang: macOSLangMap[lang] });
             return result.trim();
-        case 'Windows_NT':
+        case 'windows':
             result = await invoke('system_ocr', { lang: windowsLangMap[lang] });
             if (lang === Language.auto && (await detect(result)) === Language.zh_cn) {
                 result = result.replaceAll(' ', '');

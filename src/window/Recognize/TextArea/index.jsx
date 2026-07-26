@@ -1,6 +1,5 @@
 import { Card, CardBody, CardFooter, Button, Skeleton, ButtonGroup, Tooltip } from '@nextui-org/react';
-import { sendNotification } from '@tauri-apps/api/notification';
-import { writeText } from '@tauri-apps/api/clipboard';
+import { writeText } from '@tauri-apps/plugin-clipboard-manager';
 import { atom, useAtom, useAtomValue } from 'jotai';
 import React, { useEffect, useState } from 'react';
 import { CgSpaceBetween } from 'react-icons/cg';
@@ -12,6 +11,7 @@ import { nanoid } from 'nanoid';
 import { getServiceName, getServiceSouceType, ServiceSourceType } from '../../../utils/service_instance';
 import { currentServiceInstanceKeyAtom, languageAtom, recognizeFlagAtom } from '../ControlArea';
 import { invoke_plugin } from '../../../utils/invoke_plugin';
+import { sendNotification } from '../../../utils/notification';
 import * as builtinServices from '../../../services/recognize';
 import { useConfig } from '../../../hooks';
 import { base64Atom } from '../ImageArea';

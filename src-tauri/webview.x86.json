@@ -1,34 +1,24 @@
 {
-    "tauri": {
-        "systemTray": {
-            "iconPath": "icons/icon.ico",
-            "iconAsTemplate": true
-        },
-        "bundle": {
-            "windows": {
-                "certificateThumbprint": null,
-                "digestAlgorithm": "sha256",
-                "timestampUrl": "",
-                "webviewInstallMode": {
-                    "type": "fixedRuntime",
-                    "path": "./Microsoft.WebView2.FixedVersionRuntime.109.0.1518.78.x86/"
-                },
-                "nsis": {
-                    "displayLanguageSelector": true,
-                    "installerIcon": "icons/icon.ico",
-                    "license": "../LICENSE",
-                    "installMode": "perMachine",
-                    "languages": [
-                        "SimpChinese",
-                        "TradChinese",
-                        "English"
-                    ]
-                }
+    "bundle": {
+        "licenseFile": "../LICENSE",
+        "windows": {
+            "certificateThumbprint": null,
+            "digestAlgorithm": "sha256",
+            "timestampUrl": "",
+            "webviewInstallMode": {
+                "type": "fixedRuntime",
+                "path": "./Microsoft.WebView2.FixedVersionRuntime.109.0.1518.78.x86/"
+            },
+            "nsis": {
+                "displayLanguageSelector": true,
+                "installerIcon": "icons/icon.ico",
+                "installMode": "perMachine",
+                "languages": ["SimpChinese", "TradChinese", "English"]
             }
-        },
+        }
+    },
+    "plugins": {
         "updater": {
-            "active": true,
-            "dialog": false,
             "endpoints": [
                 "https://dl.pot-app.com/https://github.com/pot-app/pot-desktop/releases/download/updater/update-fix-runtime.json",
                 "https://github.com/pot-app/pot-desktop/releases/download/updater/update-fix-runtime.json"

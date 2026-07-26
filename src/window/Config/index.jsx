@@ -1,6 +1,6 @@
 import { useLocation, useRoutes } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import { appWindow } from '@tauri-apps/api/window';
+import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { Card, Divider } from '@nextui-org/react';
 import { useTranslation } from 'react-i18next';
 
@@ -10,6 +10,8 @@ import { osType } from '../../utils/env';
 import { useConfig } from '../../hooks';
 import routes from './routes';
 import './style.css';
+
+const appWindow = getCurrentWebviewWindow();
 
 export default function Config() {
     const [transparent] = useConfig('transparent', true);
@@ -30,7 +32,7 @@ export default function Config() {
                 className={`${
                     transparent ? 'bg-background/90' : 'bg-content1'
                 } float-left w-[230px] h-screen rounded-none ${
-                    osType === 'Linux' && 'rounded-l-[10px] border-1'
+                    osType === 'linux' && 'rounded-l-[10px] border-1'
                 } border-r-1 border-default-100 select-none cursor-default`}
             >
                 <div className='h-[35px] p-[5px]'>
@@ -53,7 +55,7 @@ export default function Config() {
             </Card>
             <div
                 className={`bg-background ml-[230px] h-screen select-none cursor-default ${
-                    osType === 'Linux' && 'rounded-r-[10px] border-1 border-l-0 border-default-100'
+                    osType === 'linux' && 'rounded-r-[10px] border-1 border-l-0 border-default-100'
                 }`}
             >
                 <div
@@ -65,12 +67,12 @@ export default function Config() {
                         <h2 className='m-auto ml-[10px]'>{t(`config.${location.pathname.slice(1)}.title`)}</h2>
                     </div>
 
-                    <div className='flex'>{osType !== 'Darwin' && <WindowControl />}</div>
+                    <div className='flex'>{osType !== 'macos' && <WindowControl />}</div>
                 </div>
                 <Divider />
                 <div
                     className={`p-[10px] overflow-y-auto ${
-                        osType === 'Linux' ? 'h-[calc(100vh-38px)]' : 'h-[calc(100vh-36px)]'
+                        osType === 'linux' ? 'h-[calc(100vh-38px)]' : 'h-[calc(100vh-36px)]'
                     }`}
                 >
                     {page}

@@ -1,8 +1,9 @@
-import { readDir, BaseDirectory, readTextFile, exists } from '@tauri-apps/api/fs';
+import { readDir, BaseDirectory, readTextFile, exists } from '@tauri-apps/plugin-fs';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-import { appWindow, currentMonitor } from '@tauri-apps/api/window';
+import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
+import { currentMonitor } from '@tauri-apps/api/window';
 import { appConfigDir, join } from '@tauri-apps/api/path';
-import { convertFileSrc } from '@tauri-apps/api/tauri';
+import { convertFileSrc } from '@tauri-apps/api/core';
 import { Spacer, Button } from '@nextui-org/react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import React, { useState, useEffect } from 'react';
@@ -15,7 +16,9 @@ import TargetArea from './components/TargetArea';
 import { osType } from '../../utils/env';
 import { useConfig } from '../../hooks';
 import { store } from '../../utils/store';
-import { info } from 'tauri-plugin-log-api';
+import { info } from '@tauri-apps/plugin-log';
+
+const appWindow = getCurrentWebviewWindow();
 
 let blurTimeout = null;
 let resizeTimeout = null;
@@ -167,11 +170,11 @@ export default function Translate() {
         let temp = {};
         for (const serviceType of serviceTypeList) {
             temp[serviceType] = {};
-            if (await exists(`plugins/${serviceType}`, { dir: BaseDirectory.AppConfig })) {
-                const plugins = await readDir(`plugins/${serviceType}`, { dir: BaseDirectory.AppConfig });
+            if (await exists(`plugins/${serviceType}`, { baseDir: BaseDirectory.AppConfig })) {
+                const plugins = await readDir(`plugins/${serviceType}`, { baseDir: BaseDirectory.AppConfig });
                 for (const plugin of plugins) {
                     const infoStr = await readTextFile(`plugins/${serviceType}/${plugin.name}/info.json`, {
-                        dir: BaseDirectory.AppConfig,
+                        baseDir: BaseDirectory.AppConfig,
                     });
                     let pluginInfo = JSON.parse(infoStr);
                     if ('icon' in pluginInfo) {
@@ -232,14 +235,14 @@ export default function Translate() {
         pluginList && (
             <div
                 className={`bg-background h-screen w-screen ${
-                    osType === 'Linux' && 'rounded-[10px] border-1 border-default-100'
+                    osType === 'linux' && 'rounded-[10px] border-1 border-default-100'
                 }`}
             >
                 <div
                     className='fixed top-[5px] left-[5px] right-[5px] h-[30px]'
                     data-tauri-drag-region='true'
                 />
-                <div className={`h-[35px] w-full flex ${osType === 'Darwin' ? 'justify-end' : 'justify-between'}`}>
+                <div className={`h-[35px] w-full flex ${osType === 'macos' ? 'justify-end' : 'justify-between'}`}>
                     <Button
                         isIconOnly
                         size='sm'
@@ -266,7 +269,7 @@ export default function Translate() {
                         size='sm'
                         variant='flat'
                         disableAnimation
-                        className={`my-auto ${osType === 'Darwin' && 'hidden'} bg-transparent`}
+                        className={`my-auto ${osType === 'macos' && 'hidden'} bg-transparent`}
                         onPress={() => {
                             void appWindow.close();
                         }}
@@ -274,7 +277,7 @@ export default function Translate() {
                         <AiFillCloseCircle className='text-[20px] text-default-400' />
                     </Button>
                 </div>
-                <div className={`${osType === 'Linux' ? 'h-[calc(100vh-37px)]' : 'h-[calc(100vh-35px)]'} px-[8px]`}>
+                <div className={`${osType === 'linux' ? 'h-[calc(100vh-37px)]' : 'h-[calc(100vh-35px)]'} px-[8px]`}>
                     <div className='h-full overflow-y-auto'>
                         <div>
                             {serviceInstanceConfigMap !== null && (

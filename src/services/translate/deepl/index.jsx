@@ -1,4 +1,4 @@
-import { fetch, Body } from '@tauri-apps/api/http';
+import { fetch } from '@tauri-apps/plugin-http';
 
 export async function translate(text, from, to, options = {}) {
     const { config } = options;
@@ -43,44 +43,45 @@ async function translate_by_free(text, from, to) {
 
     let res = await fetch(url, {
         method: 'POST',
-        body: Body.text(body_str),
+        body: body_str,
         headers: { 'Content-Type': 'application/json' },
     });
 
+    const result = await res.json().catch(() => null);
     if (res.ok) {
-        let result = res.data;
         if (result && result.result && result.result.texts) {
             return result.result.texts[0].text.trim();
         } else {
             throw JSON.stringify(result);
         }
     } else {
-        if (res.data.error) {
-            throw `Status Code: ${res.status}\n${res.data.error.message}`;
+        if (result && result.error) {
+            throw `Status Code: ${res.status}\n${result.error.message}`;
         } else {
-            throw `Http Request Error\nHttp Status: ${res.status}\n${JSON.stringify(res.data)}`;
+            throw `Http Request Error\nHttp Status: ${res.status}\n${JSON.stringify(result)}`;
         }
     }
 }
 async function translate_by_deeplx(text, from, to, url) {
     let res = await fetch(url, {
         method: 'POST',
-        body: Body.json({
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
             source_lang: from,
             target_lang: to,
             text: text,
         }),
     });
 
+    const result = await res.json().catch(() => null);
     if (res.ok) {
-        const result = res.data;
-        if (result['data']) {
+        if (result && result['data']) {
             return result['data'];
         } else {
             throw JSON.stringify(result);
         }
     } else {
-        throw `Http Request Error\nHttp Status: ${res.status}\n${JSON.stringify(res.data)}`;
+        throw `Http Request Error\nHttp Status: ${res.status}\n${JSON.stringify(result)}`;
     }
 }
 
@@ -106,22 +107,22 @@ async function translate_by_key(text, from, to, key) {
     }
     let res = await fetch(url, {
         method: 'POST',
-        body: Body.json(body),
+        body: JSON.stringify(body),
         headers: headers,
     });
 
+    const result = await res.json().catch(() => null);
     if (res.ok) {
-        const result = res.data;
-        if ((result.translations, result.translations[0])) {
+        if (result && result.translations && result.translations[0]) {
             return result.translations[0].text.trim();
         } else {
             throw JSON.stringify(result);
         }
     } else {
-        if (res.data.error) {
-            throw `Status Code: ${res.status}\n${res.data.error.message}`;
+        if (result && result.error) {
+            throw `Status Code: ${res.status}\n${result.error.message}`;
         } else {
-            throw `Http Request Error\nHttp Status: ${res.status}\n${JSON.stringify(res.data)}`;
+            throw `Http Request Error\nHttp Status: ${res.status}\n${JSON.stringify(result)}`;
         }
     }
 }

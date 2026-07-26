@@ -1,14 +1,14 @@
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from '@nextui-org/react';
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from '@nextui-org/react';
-import { readDir, BaseDirectory, readTextFile, exists } from '@tauri-apps/api/fs';
+import { readDir, BaseDirectory, readTextFile, exists } from '@tauri-apps/plugin-fs';
 import { Textarea, Button, ButtonGroup } from '@nextui-org/react';
 import { appConfigDir, join } from '@tauri-apps/api/path';
-import { convertFileSrc } from '@tauri-apps/api/tauri';
+import { convertFileSrc } from '@tauri-apps/api/core';
 import React, { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { Pagination } from '@nextui-org/react';
 import { useTranslation } from 'react-i18next';
-import Database from 'tauri-plugin-sql-api';
+import Database from '@tauri-apps/plugin-sql';
 
 import * as builtinCollectionServices from '../../../../services/collection';
 import { invoke_plugin } from '../../../../utils/invoke_plugin';
@@ -97,11 +97,11 @@ export default function History() {
         let temp = {};
         for (const serviceType of serviceTypeList) {
             temp[serviceType] = {};
-            if (await exists(`plugins/${serviceType}`, { dir: BaseDirectory.AppConfig })) {
-                const plugins = await readDir(`plugins/${serviceType}`, { dir: BaseDirectory.AppConfig });
+            if (await exists(`plugins/${serviceType}`, { baseDir: BaseDirectory.AppConfig })) {
+                const plugins = await readDir(`plugins/${serviceType}`, { baseDir: BaseDirectory.AppConfig });
                 for (const plugin of plugins) {
                     const infoStr = await readTextFile(`plugins/${serviceType}/${plugin.name}/info.json`, {
-                        dir: BaseDirectory.AppConfig,
+                        baseDir: BaseDirectory.AppConfig,
                     });
                     let pluginInfo = JSON.parse(infoStr);
                     if ('icon' in pluginInfo) {
@@ -131,7 +131,7 @@ export default function History() {
                     aria-label='History Table'
                     classNames={{
                         base: `${
-                            osType === 'Linux' ? 'h-[calc(100vh-130px)]' : 'h-[calc(100vh-100px)]'
+                            osType === 'linux' ? 'h-[calc(100vh-130px)]' : 'h-[calc(100vh-100px)]'
                         } overflow-y-auto`,
                         td: 'px-0',
                     }}
@@ -176,7 +176,7 @@ export default function History() {
                                     <TableCell>
                                         <p
                                             className={`whitespace-nowrap ${
-                                                osType === 'Linux'
+                                                osType === 'linux'
                                                     ? 'w-[calc((100vw-287px-26px-60px-140px-30px)*0.5)]'
                                                     : 'w-[calc((100vw-287px-26px-60px-140px)*0.5)]'
                                             } text-ellipsis overflow-hidden`}
@@ -193,7 +193,7 @@ export default function History() {
                                     <TableCell>
                                         <p
                                             className={`whitespace-nowrap ${
-                                                osType === 'Linux'
+                                                osType === 'linux'
                                                     ? 'w-[calc((100vw-287px-26px-60px-140px-30px)*0.5)]'
                                                     : 'w-[calc((100vw-287px-26px-60px-140px)*0.5)]'
                                             } text-ellipsis overflow-hidden`}

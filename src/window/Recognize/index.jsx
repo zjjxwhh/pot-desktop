@@ -1,7 +1,7 @@
-import { readDir, BaseDirectory, readTextFile, exists } from '@tauri-apps/api/fs';
+import { readDir, BaseDirectory, readTextFile, exists } from '@tauri-apps/plugin-fs';
 import { appConfigDir, join } from '@tauri-apps/api/path';
-import { convertFileSrc } from '@tauri-apps/api/tauri';
-import { appWindow } from '@tauri-apps/api/window';
+import { convertFileSrc } from '@tauri-apps/api/core';
+import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import React, { useState, useEffect } from 'react';
 import { listen } from '@tauri-apps/api/event';
 import { Button } from '@nextui-org/react';
@@ -15,6 +15,8 @@ import { useConfig } from '../../hooks';
 import ControlArea from './ControlArea';
 import ImageArea from './ImageArea';
 import TextArea from './TextArea';
+
+const appWindow = getCurrentWebviewWindow();
 
 export const pluginListAtom = atom();
 
@@ -59,11 +61,11 @@ export default function Recognize() {
 
     const loadPluginList = async () => {
         let temp = {};
-        if (await exists(`plugins/recognize`, { dir: BaseDirectory.AppConfig })) {
-            const plugins = await readDir(`plugins/recognize`, { dir: BaseDirectory.AppConfig });
+        if (await exists(`plugins/recognize`, { baseDir: BaseDirectory.AppConfig })) {
+            const plugins = await readDir(`plugins/recognize`, { baseDir: BaseDirectory.AppConfig });
             for (const plugin of plugins) {
                 const infoStr = await readTextFile(`plugins/recognize/${plugin.name}/info.json`, {
-                    dir: BaseDirectory.AppConfig,
+                    baseDir: BaseDirectory.AppConfig,
                 });
                 let pluginInfo = JSON.parse(infoStr);
                 if ('icon' in pluginInfo) {
@@ -107,14 +109,14 @@ export default function Recognize() {
         serviceInstanceConfigMap !== null && (
             <div
                 className={`bg-background h-screen ${
-                    osType === 'Linux' && 'rounded-[10px] border-1 border-default-100'
+                    osType === 'linux' && 'rounded-[10px] border-1 border-default-100'
                 }`}
             >
                 <div
                     data-tauri-drag-region='true'
                     className='fixed top-[5px] left-[5px] right-[5px] h-[30px]'
                 />
-                <div className={`h-[35px] flex ${osType === 'Darwin' ? 'justify-end' : 'justify-between'}`}>
+                <div className={`h-[35px] flex ${osType === 'macos' ? 'justify-end' : 'justify-between'}`}>
                     <Button
                         isIconOnly
                         size='sm'
@@ -136,11 +138,11 @@ export default function Recognize() {
                     >
                         <BsPinFill className={`text-[20px] ${pined ? 'text-primary' : 'text-default-400'}`} />
                     </Button>
-                    {osType !== 'Darwin' && <WindowControl />}
+                    {osType !== 'macos' && <WindowControl />}
                 </div>
                 <div
                     className={`${
-                        osType === 'Linux' ? 'h-[calc(100vh-87px)]' : 'h-[calc(100vh-85px)]'
+                        osType === 'linux' ? 'h-[calc(100vh-87px)]' : 'h-[calc(100vh-85px)]'
                     } grid grid-cols-2`}
                 >
                     <ImageArea />

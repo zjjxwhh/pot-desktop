@@ -1,5 +1,5 @@
-import { fetch, Body } from '@tauri-apps/api/http';
-import { invoke } from '@tauri-apps/api';
+import { fetch } from '@tauri-apps/plugin-http';
+import { invoke } from '@tauri-apps/api/core';
 import { store } from './store';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -27,19 +27,17 @@ async function baidu_detect(text) {
         nob: 'nb_no',
         nno: 'nn_no',
         per: 'fa',
-        ukr: 'uk'
+        ukr: 'uk',
     };
     let res = await fetch('https://fanyi.baidu.com/langdetect', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: Body.form({
-            query: text,
-        }),
+        body: new URLSearchParams({ query: text }).toString(),
     });
     if (res.ok) {
-        let result = res.data;
+        let result = await res.json();
         if (result.lan && result.lan in lang_map) {
             return lang_map[result.lan];
         }
@@ -49,7 +47,6 @@ async function baidu_detect(text) {
 // 腾讯只支持这么多语言
 // https://cloud.tencent.com/document/product/551/15619
 async function tencent_detect(text) {
-
     const lang_map = {
         zh: 'zh_cn',
         en: 'en',
@@ -74,12 +71,10 @@ async function tencent_detect(text) {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: Body.form({
-            sourceText: text,
-        }),
+        body: new URLSearchParams({ sourceText: text }).toString(),
     });
     if (res.ok) {
-        let result = res.data;
+        let result = await res.json();
         if (result.translate && result.translate.source && result.translate.source in lang_map) {
             return lang_map[result.translate.source];
         }
@@ -111,30 +106,30 @@ async function google_detect(text) {
         km: 'km',
         fa: 'fa',
         no: 'nb_no',
-        uk: 'uk'
+        uk: 'uk',
     };
+    const query = new URLSearchParams({
+        client: 'gtx',
+        sl: 'auto',
+        tl: 'zh-CN',
+        hl: 'zh-CN',
+        ie: 'UTF-8',
+        oe: 'UTF-8',
+        otf: '1',
+        ssel: '0',
+        tsel: '0',
+        kc: '7',
+        q: text,
+    });
     let res = await fetch(
-        `https://translate.google.com/translate_a/single?dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t`,
+        `https://translate.google.com/translate_a/single?dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&${query.toString()}`,
         {
             method: 'GET',
             headers: { 'content-type': 'application/json' },
-            query: {
-                client: 'gtx',
-                sl: 'auto',
-                tl: 'zh-CN',
-                hl: 'zh-CN',
-                ie: 'UTF-8',
-                oe: 'UTF-8',
-                otf: '1',
-                ssel: '0',
-                tsel: '0',
-                kc: '7',
-                q: text,
-            },
         }
     );
     if (res.ok) {
-        const result = res.data;
+        const result = await res.json();
         if (result[2] && result[2] in lang_map) {
             return lang_map[result[2]];
         }
@@ -168,19 +163,19 @@ async function niutrans_detect(text) {
         nb: 'nb_no',
         nn: 'nn_no',
         fa: 'fa',
-        uk: 'uk'
+        uk: 'uk',
     };
-    let res = await fetch('https://test.niutrans.com/NiuTransServer/language', {
+    const query = new URLSearchParams({
+        src_text: text,
+        source: 'text',
+        time: new String(new Date().getTime()),
+    });
+    let res = await fetch(`https://test.niutrans.com/NiuTransServer/language?${query.toString()}`, {
         method: 'GET',
         headers: { 'content-type': 'application/json' },
-        query: {
-            src_text: text,
-            source: 'text',
-            time: new String(new Date().getTime()),
-        },
     });
     if (res.ok) {
-        const result = res.data;
+        const result = await res.json();
         if (result['language'] && result['language'] in lang_map) {
             return lang_map[result['language']];
         }
@@ -209,19 +204,19 @@ async function yandex_detect(text) {
         hi: 'hi',
         no: 'nb_no',
         fa: 'fa',
-        uk: 'uk'
+        uk: 'uk',
     };
 
-    let res = await fetch('https://translate.yandex.net/api/v1/tr.json/detect', {
+    const query = new URLSearchParams({
+        id: uuidv4().replaceAll('-', '') + '-0-0',
+        srv: 'android',
+        text: text,
+    });
+    let res = await fetch(`https://translate.yandex.net/api/v1/tr.json/detect?${query.toString()}`, {
         method: 'GET',
-        query: {
-            id: uuidv4().replaceAll('-', '') + '-0-0',
-            srv: 'android',
-            text: text,
-        },
     });
     if (res.ok) {
-        const result = res.data;
+        const result = await res.json();
         if (result['lang'] && result['lang'] in lang_map) {
             return lang_map[result['lang']];
         }
@@ -255,7 +250,7 @@ async function bing_detect(text) {
         km: 'km',
         nb: 'nb_no',
         fa: 'fa',
-        uk: 'uk'
+        uk: 'uk',
     };
     const token_url = 'https://edge.microsoft.com/translate/auth';
 
@@ -265,17 +260,19 @@ async function bing_detect(text) {
             'User-Agent':
                 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.42',
         },
-        responseType: 2,
     });
     if (token.ok) {
+        const tokenText = await token.text();
         const url = 'https://api-edge.cognitive.microsofttranslator.com/detect';
 
-        let res = await fetch(url, {
+        const query = new URLSearchParams({ 'api-version': '3.0' });
+
+        let res = await fetch(`${url}?${query.toString()}`, {
             method: 'POST',
             headers: {
                 accept: '*/*',
                 'accept-language': 'zh-TW,zh;q=0.9,ja;q=0.8,zh-CN;q=0.7,en-US;q=0.6,en;q=0.5',
-                authorization: 'Bearer ' + token.data,
+                authorization: 'Bearer ' + tokenText,
                 'cache-control': 'no-cache',
                 'content-type': 'application/json',
                 pragma: 'no-cache',
@@ -290,14 +287,11 @@ async function bing_detect(text) {
                 'User-Agent':
                     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36 Edg/113.0.1774.42',
             },
-            query: {
-                'api-version': '3.0',
-            },
-            body: { type: 'Json', payload: [{ Text: text }] },
+            body: JSON.stringify([{ Text: text }]),
         });
 
         if (res.ok) {
-            let result = res.data;
+            let result = await res.json();
             if (result[0].language && result[0].language in lang_map) {
                 return lang_map[result[0].language];
             }
