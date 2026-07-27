@@ -24,7 +24,7 @@ import { osType } from '../../../../utils/env';
 let timer = null;
 
 export default function General() {
-    const [autoStart, setAutoStart] = useState(false);
+    const [autoStart, setAutoStart] = useState(null);
     const [fontList, setFontList] = useState(null);
     const [checkUpdate, setCheckUpdate] = useConfig('check_update', true);
     const [serverPort, setServerPort] = useConfig('server_port', 60828);
@@ -84,21 +84,23 @@ export default function General() {
                 <CardBody>
                     <div className='config-item'>
                         <h3>{t('config.general.auto_start')}</h3>
-                        <Switch
-                            isSelected={autoStart}
-                            onValueChange={(v) => {
-                                setAutoStart(v);
-                                if (v) {
-                                    enable().then(() => {
-                                        info('Auto start enabled');
-                                    });
-                                } else {
-                                    disable().then(() => {
-                                        info('Auto start disabled');
-                                    });
-                                }
-                            }}
-                        />
+                        {autoStart !== null && (
+                            <Switch
+                                isSelected={autoStart}
+                                onValueChange={(v) => {
+                                    setAutoStart(v);
+                                    if (v) {
+                                        enable().then(() => {
+                                            info('Auto start enabled');
+                                        });
+                                    } else {
+                                        disable().then(() => {
+                                            info('Auto start disabled');
+                                        });
+                                    }
+                                }}
+                            />
+                        )}
                     </div>
                     <div className='config-item'>
                         <h3>{t('config.general.check_update')}</h3>
