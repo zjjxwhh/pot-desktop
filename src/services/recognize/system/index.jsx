@@ -1,4 +1,5 @@
 import detect from '../../../utils/lang_detect';
+import { removeAllSpaces } from '../../../utils/text_utils.js';
 import { osType } from '../../../utils/env';
 import { invoke } from '@tauri-apps/api/core';
 import { Language } from './info';
@@ -84,10 +85,10 @@ export async function recognize(_, lang) {
         case 'linux':
             result = await invoke('system_ocr', { lang: linuxLangMap[lang] });
             if (lang === Language.auto && (await detect(result)) === Language.zh_cn) {
-                result = result.replaceAll(' ', '');
+                result = removeAllSpaces(result);
             } else {
                 if (lang === Language.zh_cn || lang === Language.zh_tw) {
-                    result = result.replaceAll(' ', '');
+                    result = removeAllSpaces(result);
                 }
             }
             return result.trim();
@@ -97,10 +98,10 @@ export async function recognize(_, lang) {
         case 'windows':
             result = await invoke('system_ocr', { lang: windowsLangMap[lang] });
             if (lang === Language.auto && (await detect(result)) === Language.zh_cn) {
-                result = result.replaceAll(' ', '');
+                result = removeAllSpaces(result);
             } else {
                 if (lang === Language.zh_cn || lang === Language.zh_tw || lang === Language.ja) {
-                    result = result.replaceAll(' ', '');
+                    result = removeAllSpaces(result);
                 }
             }
             return result.trim();

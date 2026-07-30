@@ -12,6 +12,7 @@ import { getServiceName, getServiceSouceType, ServiceSourceType } from '../../..
 import { currentServiceInstanceKeyAtom, languageAtom, recognizeFlagAtom } from '../ControlArea';
 import { invoke_plugin } from '../../../utils/invoke_plugin';
 import { sendNotification } from '../../../utils/notification';
+import { normalizeText, removeAllSpaces} from '../../../utils/text_utils.js';
 import * as builtinServices from '../../../services/recognize';
 import { useConfig } from '../../../hooks';
 import { base64Atom } from '../ImageArea';
@@ -59,18 +60,15 @@ export default function TextArea(props) {
                         }).then(
                             (v) => {
                                 if (recognizeId !== id) return;
-                                v = v.trim();
-                                if (deleteNewline) {
-                                    v = v.replace(/\-\s+/g, '').replace(/\s+/g, ' ');
-                                }
-                                setText(v);
+                                const newText = normalizeText(v, deleteNewline);
+                                setText(newText);
                                 setLoading(false);
                                 if (autoCopy) {
-                                    writeText(v).then(() => {
+                                    writeText(newText).then(() => {
                                         if (hideWindow) {
                                             sendNotification({
                                                 title: t('common.write_clipboard'),
-                                                body: v,
+                                                body: newText,
                                             });
                                         }
                                     });
@@ -100,18 +98,15 @@ export default function TextArea(props) {
                         .then(
                             (v) => {
                                 if (recognizeId !== id) return;
-                                v = v.trim();
-                                if (deleteNewline) {
-                                    v = v.replace(/\-\s+/g, '').replace(/\s+/g, ' ');
-                                }
-                                setText(v);
+                                const newText = normalizeText(v, deleteNewline);
+                                setText(newText);
                                 setLoading(false);
                                 if (autoCopy) {
-                                    writeText(v).then(() => {
+                                    writeText(newText).then(() => {
                                         if (hideWindow) {
                                             sendNotification({
                                                 title: t('common.write_clipboard'),
-                                                body: v,
+                                                body: newText,
                                             });
                                         }
                                     });
@@ -192,7 +187,7 @@ export default function TextArea(props) {
                             variant='tertiary'
                             size='sm'
                             onPress={() => {
-                                setText(text.replace(/\-\s+/g, '').replace(/\s+/g, ' '));
+                                setText(normalizeText(text, true));
                             }}
                         >
                             <MdSmartButton className='text-[16px]' />
@@ -204,7 +199,7 @@ export default function TextArea(props) {
                             variant='tertiary'
                             size='sm'
                             onPress={() => {
-                                setText(text.replaceAll(' ', ''));
+                                setText(removeAllSpaces(text));
                             }}
                         >
                             <CgSpaceBetween className='text-[16px]' />

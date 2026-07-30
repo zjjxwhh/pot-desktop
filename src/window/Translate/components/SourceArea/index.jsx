@@ -16,6 +16,7 @@ import { atom, useAtom } from 'jotai';
 import { getServiceName, getServiceSouceType, ServiceSourceType } from '../../../../utils/service_instance';
 import { useConfig, useSyncAtom, useVoice, useToastStyle } from '../../../../hooks';
 import { invoke_plugin } from '../../../../utils/invoke_plugin';
+import { normalizeText, appendText } from '../../../../utils/text_utils.js';
 import * as recognizeServices from '../../../../services/recognize';
 import * as builtinTtsServices from '../../../../services/tts';
 import detect from '../../../../utils/lang_detect';
@@ -30,15 +31,6 @@ export const detectLanguageAtom = atom('');
 
 let unlisten = null;
 let timer = null;
-
-const normalizeText = (text, deleteNewline) => {
-    if (deleteNewline) {
-        return text.replace(/\-\s+/g, '').replace(/\s+/g, ' ').trim();
-    }
-    return text.trim();
-};
-
-const appendText = (old, newText) => (old === '' ? newText : old + ' ' + newText);
 
 export default function SourceArea(props) {
     const { pluginList, serviceInstanceConfigMap } = props;
@@ -95,7 +87,7 @@ export default function SourceArea(props) {
                         (v) => {
                             const newText = normalizeText(v, deleteNewline);
                             if (incrementalTranslate) {
-                                setSourceText((old) => appendText(old, newText));
+                                setSourceText((oldText) => appendText(oldText, newText));
                             } else {
                                 setSourceText(newText);
                             }
@@ -125,7 +117,7 @@ export default function SourceArea(props) {
                             (v) => {
                                 const newText = normalizeText(v, deleteNewline);
                                 if (incrementalTranslate) {
-                                    setSourceText((old) => appendText(old, newText));
+                                    setSourceText((oldText) => appendText(oldText, newText));
                                 } else {
                                     setSourceText(newText);
                                 }
