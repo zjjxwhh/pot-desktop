@@ -187,13 +187,22 @@ export default function Backup() {
                                         setBackupType(key);
                                     }}
                                 >
-                                    <Dropdown.Item id='webdav' textValue={t('config.backup.webdav')}>
+                                    <Dropdown.Item
+                                        id='webdav'
+                                        textValue={t('config.backup.webdav')}
+                                    >
                                         <Label>{t('config.backup.webdav')}</Label>
                                     </Dropdown.Item>
-                                    <Dropdown.Item id='aliyun' textValue={t('config.backup.aliyun')}>
+                                    <Dropdown.Item
+                                        id='aliyun'
+                                        textValue={t('config.backup.aliyun')}
+                                    >
                                         <Label>{t('config.backup.aliyun')}</Label>
                                     </Dropdown.Item>
-                                    <Dropdown.Item id='local' textValue={t('config.backup.local')}>
+                                    <Dropdown.Item
+                                        id='local'
+                                        textValue={t('config.backup.local')}
+                                    >
                                         <Label>{t('config.backup.local')}</Label>
                                     </Dropdown.Item>
                                 </Dropdown.Menu>
@@ -265,11 +274,7 @@ export default function Backup() {
                     {aliyunUserInfo !== null && (
                         <>
                             <h3 className='my-auto'>{t('config.backup.username')}</h3>
-
-                            <Tooltip
-                                content={t('config.backup.logout')}
-                                placement='bottom-end'
-                            >
+                            <Tooltip>
                                 <Button
                                     variant='tertiary'
                                     onPress={() => {
@@ -285,6 +290,9 @@ export default function Backup() {
                                     />
                                     <h3 className='my-auto'>{aliyunUserInfo.name}</h3>
                                 </Button>
+                                <Tooltip.Content placement='bottom'>
+                                    <p>{t('config.backup.logout')}</p>
+                                </Tooltip.Content>
                             </Tooltip>
                         </>
                     )}

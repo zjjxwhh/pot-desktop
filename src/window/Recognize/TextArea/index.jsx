@@ -127,12 +127,10 @@ export default function TextArea(props) {
     }, [base64, currentServiceInstanceKey, language, recognizeFlag, autoCopy, deleteNewline, hideWindow]);
 
     return (
-        <Card
-            className='bg-surface h-full ml-[6px] mr-[12px] rounded-[10px]'
-        >
+        <Card className='bg-surface h-full ml-[6px] mr-[12px]'>
             <Card.Content className='bg-surface p-0 h-full'>
                 {loading ? (
-                    <div className='space-y-3 m-[12px]'>
+                    <div className='space-y-3 m-[6px]'>
                         <Skeleton className='w-3/5 rounded-lg'>
                             <div className='h-3 w-3/5 rounded-lg bg-surface-secondary'></div>
                         </Skeleton>
@@ -148,7 +146,7 @@ export default function TextArea(props) {
                         {text && (
                             <textarea
                                 value={text}
-                                className='bg-surface h-full m-[12px] mb-0 resize-none focus:outline-none'
+                                className='bg-surface h-full ml-[6px] mr-[6px] mb-0 resize-none focus:outline-none'
                                 onChange={(e) => {
                                     setText(e.target.value);
                                 }}
@@ -158,7 +156,7 @@ export default function TextArea(props) {
                             <textarea
                                 value={error}
                                 readOnly
-                                className='bg-surface h-full m-[12px] mb-0 resize-none focus:outline-none text-red-500'
+                                className='bg-surface h-full ml-[6px] mr-[6px] mb-0 resize-none focus:outline-none text-red-500'
                                 onChange={(e) => {
                                     setText(e.target.value);
                                 }}
@@ -169,7 +167,7 @@ export default function TextArea(props) {
             </Card.Content>
             <Card.Footer className='bg-surface flex justify-start px-[12px]'>
                 <ButtonGroup>
-                    <Tooltip content={t('recognize.copy_text')}>
+                    <Tooltip>
                         <Button
                             isIconOnly
                             size='sm'
@@ -180,8 +178,11 @@ export default function TextArea(props) {
                         >
                             <MdContentCopy className='text-[16px]' />
                         </Button>
+                        <Tooltip.Content>
+                            <p>{t('recognize.copy_text')}</p>
+                        </Tooltip.Content>
                     </Tooltip>
-                    <Tooltip content={t('recognize.delete_newline')}>
+                    <Tooltip>
                         <Button
                             isIconOnly
                             variant='tertiary'
@@ -192,8 +193,11 @@ export default function TextArea(props) {
                         >
                             <MdSmartButton className='text-[16px]' />
                         </Button>
+                        <Tooltip.Content>
+                            <p>{t('recognize.delete_newline')}</p>
+                        </Tooltip.Content>
                     </Tooltip>
-                    <Tooltip content={t('recognize.delete_space')}>
+                    <Tooltip>
                         <Button
                             isIconOnly
                             variant='tertiary'
@@ -204,6 +208,9 @@ export default function TextArea(props) {
                         >
                             <CgSpaceBetween className='text-[16px]' />
                         </Button>
+                        <Tooltip.Content>
+                            <p>{t('recognize.delete_space')}</p>
+                        </Tooltip.Content>
                     </Tooltip>
                 </ButtonGroup>
             </Card.Footer>

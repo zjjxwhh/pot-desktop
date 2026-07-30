@@ -149,7 +149,6 @@ export default function ControlArea(props) {
                 {t('recognize.recognize')}
             </Button>
             <Button
-                variant='tertiary'
                 size='sm'
                 className='my-auto'
                 onPress={async () => {

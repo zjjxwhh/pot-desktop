@@ -108,7 +108,7 @@ export default function Recognize() {
         pluginList &&
         serviceInstanceConfigMap !== null && (
             <div
-                className={`bg-background h-screen ${
+                className={`bg-background h-screen min-h-[100px] ${
                     osType === 'linux' && 'rounded-[10px] border-1 border-border'
                 }`}
             >
@@ -120,8 +120,8 @@ export default function Recognize() {
                     <Button
                         isIconOnly
                         size='sm'
-                        variant='tertiary'
-                        className='my-auto mx-[5px] bg-transparent'
+                        variant='ghost'
+                        className='my-auto mx-[5px]'
                         onPress={() => {
                             if (pined) {
                                 if (closeOnBlur) {

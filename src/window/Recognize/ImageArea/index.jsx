@@ -46,9 +46,7 @@ export default function ImageArea() {
     }, [hideWindow]);
 
     return (
-        <Card
-            className='bg-surface h-full ml-[12px] mr-[6px] rounded-[10px]'
-        >
+        <Card className='bg-surface h-full ml-[12px] mr-[6px]'>
             <Card.Content className='bg-surface h-full p-0'>
                 {base64 !== '' && (
                     <img
@@ -60,7 +58,7 @@ export default function ImageArea() {
                 )}
             </Card.Content>
             <Card.Footer className='bg-surface flex justify-start px-[12px]'>
-                <Tooltip content={t('recognize.copy_img')}>
+                <Tooltip>
                     <Button
                         isIconOnly
                         size='sm'
@@ -74,6 +72,9 @@ export default function ImageArea() {
                     >
                         <MdContentCopy className='text-[16px]' />
                     </Button>
+                    <Tooltip.Content>
+                        <p>{t('recognize.copy_img')}</p>
+                    </Tooltip.Content>
                 </Tooltip>
             </Card.Footer>
         </Card>

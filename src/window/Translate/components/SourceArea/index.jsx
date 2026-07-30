@@ -347,9 +347,7 @@ export default function SourceArea(props) {
 
     return (
         <div className={hideSource && windowType !== '[INPUT_TRANSLATE]' && 'hidden'}>
-            <Card
-                className='bg-surface rounded-[10px] mt-[1px] pb-0'
-            >
+            <Card className='bg-surface rounded-[10px] mt-[1px] pb-0'>
                 <Toaster />
                 <Card.Content className='bg-surface p-[12px] pb-0 max-h-[40vh] overflow-y-auto'>
                     <textarea
@@ -368,7 +366,7 @@ export default function SourceArea(props) {
                 <Card.Footer className='bg-surface rounded-none rounded-b-[10px] flex justify-between px-[12px] p-[5px]'>
                     <div className='flex justify-start'>
                         <ButtonGroup className='mr-[5px]'>
-                            <Tooltip content={t('translate.speak')}>
+                            <Tooltip>
                                 <Button
                                     isIconOnly
                                     variant='tertiary'
@@ -381,8 +379,11 @@ export default function SourceArea(props) {
                                 >
                                     <HiOutlineVolumeUp className='text-[16px]' />
                                 </Button>
+                                <Tooltip.Content>
+                                    <p>{t('translate.speak')}</p>
+                                </Tooltip.Content>
                             </Tooltip>
-                            <Tooltip content={t('translate.copy')}>
+                            <Tooltip>
                                 <Button
                                     isIconOnly
                                     variant='tertiary'
@@ -393,8 +394,11 @@ export default function SourceArea(props) {
                                 >
                                     <MdContentCopy className='text-[16px]' />
                                 </Button>
+                                <Tooltip.Content>
+                                    <p>{t('translate.copy')}</p>
+                                </Tooltip.Content>
                             </Tooltip>
-                            <Tooltip content={t('translate.delete_newline')}>
+                            <Tooltip>
                                 <Button
                                     isIconOnly
                                     variant='tertiary'
@@ -409,8 +413,11 @@ export default function SourceArea(props) {
                                 >
                                     <MdSmartButton className='text-[16px]' />
                                 </Button>
+                                <Tooltip.Content>
+                                    <p>{t('translate.delete_newline')}</p>
+                                </Tooltip.Content>
                             </Tooltip>
-                            <Tooltip content={t('common.clear')}>
+                            <Tooltip>
                                 <Button
                                     variant='tertiary'
                                     size='sm'
@@ -422,6 +429,9 @@ export default function SourceArea(props) {
                                 >
                                     <LuDelete className='text-[16px]' />
                                 </Button>
+                                <Tooltip.Content>
+                                    <p>{t('common.clear')}</p>
+                                </Tooltip.Content>
                             </Tooltip>
                         </ButtonGroup>
                         {detectLanguage !== '' && (
@@ -434,7 +444,7 @@ export default function SourceArea(props) {
                             </Chip>
                         )}
                     </div>
-                    <Tooltip content={t('translate.translate')}>
+                    <Tooltip>
                         <Button
                             size='sm'
                             variant='tertiary'
@@ -448,6 +458,9 @@ export default function SourceArea(props) {
                         >
                             <HiTranslate className='text-[16px]' />
                         </Button>
+                        <Tooltip.Content>
+                            <p>{t('translate.translate')}</p>
+                        </Tooltip.Content>
                     </Tooltip>
                 </Card.Footer>
             </Card>

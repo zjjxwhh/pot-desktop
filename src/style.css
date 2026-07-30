@@ -19,3 +19,8 @@ html {
 *::-webkit-scrollbar-thumb:hover {
     background: #c0c1c550;
 }
+
+:root {
+    --tooltip-delay: 250ms;
+    --tooltip-close-delay: 250ms;
+}

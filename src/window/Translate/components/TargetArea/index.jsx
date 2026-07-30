@@ -366,9 +366,7 @@ export default function TargetArea(props) {
     });
 
     return (
-        <Card
-            className='rounded-[10px]'
-        >
+        <Card className='rounded-[10px]'>
             <Toaster />
             <Card.Header
                 className={`flex justify-between py-1 px-0 bg-surface-secondary h-[30px] ${hide ? 'rounded-[10px]' : 'rounded-t-[10px]'}`}
@@ -384,18 +382,13 @@ export default function TargetArea(props) {
                             {whetherPluginService(currentTranslateServiceInstanceKey) ? (
                                 <img
                                     src={
-                                        pluginList['translate'][
-                                            getServiceName(currentTranslateServiceInstanceKey)
-                                        ].icon
+                                        pluginList['translate'][getServiceName(currentTranslateServiceInstanceKey)].icon
                                     }
                                     className='h-[20px] my-auto'
                                 />
                             ) : (
                                 <img
-                                    src={
-                                        builtinServices[getServiceName(currentTranslateServiceInstanceKey)].info
-                                            .icon
-                                    }
+                                    src={builtinServices[getServiceName(currentTranslateServiceInstanceKey)].info.icon}
                                     className='h-[20px] my-auto'
                                 />
                             )}
@@ -424,9 +417,18 @@ export default function TargetArea(props) {
                                         <Dropdown.Item
                                             id={instanceKey}
                                             key={instanceKey}
-                                            textValue={whetherPluginService(instanceKey)
-                                                ? getInstanceName(instanceKey, () => pluginList['translate'][getServiceName(instanceKey)].display)
-                                                : getInstanceName(instanceKey, () => t(`services.translate.${getServiceName(instanceKey)}.title`))}
+                                            textValue={
+                                                whetherPluginService(instanceKey)
+                                                    ? getInstanceName(
+                                                          instanceKey,
+                                                          () =>
+                                                              pluginList['translate'][getServiceName(instanceKey)]
+                                                                  .display
+                                                      )
+                                                    : getInstanceName(instanceKey, () =>
+                                                          t(`services.translate.${getServiceName(instanceKey)}.title`)
+                                                      )
+                                            }
                                         >
                                             {whetherPluginService(instanceKey) ? (
                                                 <img
@@ -502,16 +504,12 @@ export default function TargetArea(props) {
                                         return (
                                             <div key={nanoid()}>
                                                 {pronunciation['region'] && (
-                                                    <span
-                                                        className={`text-[${appFontSize}px] mr-[12px] text-muted`}
-                                                    >
+                                                    <span className={`text-[${appFontSize}px] mr-[12px] text-muted`}>
                                                         {pronunciation['region']}
                                                     </span>
                                                 )}
                                                 {pronunciation['symbol'] && (
-                                                    <span
-                                                        className={`text-[${appFontSize}px] mr-[12px] text-muted`}
-                                                    >
+                                                    <span className={`text-[${appFontSize}px] mr-[12px] text-muted`}>
                                                         {pronunciation['symbol']}
                                                     </span>
                                                 )}
@@ -625,7 +623,7 @@ export default function TargetArea(props) {
                     >
                         <ButtonGroup>
                             {/* speak button */}
-                            <Tooltip content={t('translate.speak')}>
+                            <Tooltip>
                                 <Button
                                     isIconOnly
                                     variant='tertiary'
@@ -639,9 +637,12 @@ export default function TargetArea(props) {
                                 >
                                     <HiOutlineVolumeUp className='text-[16px]' />
                                 </Button>
+                                <Tooltip.Content>
+                                    <p>{t('translate.speak')}</p>
+                                </Tooltip.Content>
                             </Tooltip>
                             {/* copy button */}
-                            <Tooltip content={t('translate.copy')}>
+                            <Tooltip>
                                 <Button
                                     isIconOnly
                                     variant='tertiary'
@@ -653,9 +654,12 @@ export default function TargetArea(props) {
                                 >
                                     <MdContentCopy className='text-[16px]' />
                                 </Button>
+                                <Tooltip.Content>
+                                    <p>{t('translate.copy')}</p>
+                                </Tooltip.Content>
                             </Tooltip>
                             {/* translate back button */}
-                            <Tooltip content={t('translate.translate_back')}>
+                            <Tooltip>
                                 <Button
                                     isIconOnly
                                     variant='tertiary'
@@ -775,9 +779,12 @@ export default function TargetArea(props) {
                                 >
                                     <TbTransformFilled className='text-[16px]' />
                                 </Button>
+                                <Tooltip.Content>
+                                    <p>{t('translate.translate_back')}</p>
+                                </Tooltip.Content>
                             </Tooltip>
                             {/* error retry button */}
-                            <Tooltip content={t('translate.retry')}>
+                            <Tooltip>
                                 <Button
                                     isIconOnly
                                     variant='tertiary'
@@ -791,6 +798,9 @@ export default function TargetArea(props) {
                                 >
                                     <GiCycle className='text-[16px]' />
                                 </Button>
+                                <Tooltip.Content>
+                                    <p>{t('translate.retry')}</p>
+                                </Tooltip.Content>
                             </Tooltip>
                             {/* available collection service instance */}
                             {collectionServiceList &&
