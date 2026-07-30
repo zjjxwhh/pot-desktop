@@ -179,7 +179,7 @@ export default function Backup() {
                     <h3 className='my-auto'>{t('config.backup.type')}</h3>
                     {backupType !== null && (
                         <Dropdown>
-                            <Button variant='secondary'>{t(`config.backup.${backupType}`)}</Button>
+                            <Button variant='tertiary'>{t(`config.backup.${backupType}`)}</Button>
                             <Dropdown.Popover>
                                 <Dropdown.Menu
                                     aria-label='backup type'
@@ -298,7 +298,7 @@ export default function Backup() {
                         {t('config.backup.backup')}
                     </Button>
                     <Button
-                        variant='secondary'
+                        variant='tertiary'
                         onPress={onBackupListOpen}
                     >
                         {t('config.backup.restore')}

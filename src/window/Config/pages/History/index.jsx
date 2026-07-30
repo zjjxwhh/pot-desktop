@@ -123,19 +123,19 @@ export default function History() {
                 <Table
                     className={`${
                         osType === 'linux' ? 'h-[calc(100vh-130px)]' : 'h-[calc(100vh-100px)]'
-                    } overflow-y-auto`}
+                    } overflow-y-auto pt-1`}
                 >
                     <Table.ScrollContainer>
                         <Table.Content
                             aria-label='History Table'
                             selectionMode='single'
                             selectionBehavior='toggle'
-                            onAction={(id) => {
+                            onRowAction={(id) => {
                                 getSelectedData(id);
                                 state.open();
                             }}
                         >
-                            <Table.Header className='sr-only'>
+                            <Table.Header className='hidden'>
                                 <Table.Column id='service' isRowHeader>service</Table.Column>
                                 <Table.Column id='text'>text</Table.Column>
                                 <Table.Column id='source'>source</Table.Column>
@@ -153,7 +153,7 @@ export default function History() {
                                         [ServiceSourceType.PLUGIN]: pluginList[ServiceType.TRANSLATE],
                                     }) && (
                                         <Table.Row id={item.id}>
-                                            <Table.Cell className='px-0'>
+                                            <Table.Cell className='px-0 pl-3'>
                                                 {getServiceSouceType(item.service) === ServiceSourceType.PLUGIN ? (
                                                     <img
                                                         src={pluginList['translate'][getServiceName(item.service)].icon}
@@ -266,20 +266,22 @@ export default function History() {
                                                                 pluginList['translate'][getServiceName(selectedItem.service)]
                                                                     .icon
                                                             }
-                                                            className='h-[24px] w-[24px] my-auto'
+                                                            className='h-[24px] w-[24px] m-auto'
                                                             draggable={false}
                                                         />
                                                     ) : (
                                                         <img
                                                             src={`${builtinServices[getServiceName(selectedItem.service)].info.icon}`}
-                                                            className='h-[24px] w-[24px] m-auto mr-[8px]'
+                                                            className='h-[24px] w-[24px] m-auto ml-[8px]'
                                                             draggable={false}
                                                         />
                                                     )}
                                                 </div>
+                                                <div className='w-2'/>
                                             </Modal.Header>
                                             <Modal.Body>
                                                 <TextField
+                                                    className='mb-[8px]'
                                                     value={selectedItem.text}
                                                     onChange={(value) => {
                                                         setSelectItem({ ...selectedItem, text: value });

@@ -35,7 +35,7 @@ export default function Translate() {
                         <h3 className='my-auto mx-0'>{t('config.translate.source_language')}</h3>
                         {sourceLanguage !== null && (
                             <Dropdown>
-                                <Button variant='secondary'>{t(`languages.${sourceLanguage}`)}</Button>
+                                <Button variant='tertiary'>{t(`languages.${sourceLanguage}`)}</Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
                                         aria-label='source language'
@@ -63,7 +63,7 @@ export default function Translate() {
                         <h3 className='my-auto mx-0'>{t('config.translate.target_language')}</h3>
                         {targetLanguage !== null && (
                             <Dropdown>
-                                <Button variant='secondary'>{t(`languages.${targetLanguage}`)}</Button>
+                                <Button variant='tertiary'>{t(`languages.${targetLanguage}`)}</Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
                                         aria-label='target language'
@@ -88,7 +88,7 @@ export default function Translate() {
                         <h3 className='my-auto mx-0'>{t('config.translate.second_language')}</h3>
                         {secondLanguage !== null && (
                             <Dropdown>
-                                <Button variant='secondary'>{t(`languages.${secondLanguage}`)}</Button>
+                                <Button variant='tertiary'>{t(`languages.${secondLanguage}`)}</Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
                                         aria-label='second language'
@@ -113,7 +113,7 @@ export default function Translate() {
                         <h3 className='my-auto mx-0'>{t('config.translate.detect_engine')}</h3>
                         {detectEngine !== null && (
                             <Dropdown>
-                                <Button variant='secondary'>{t(`config.translate.${detectEngine}`)}</Button>
+                                <Button variant='tertiary'>{t(`config.translate.${detectEngine}`)}</Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
                                         aria-label='detect engine'
@@ -156,7 +156,7 @@ export default function Translate() {
                         <h3 className='my-auto mx-0'>{t('config.translate.auto_copy')}</h3>
                         {autoCopy !== null && (
                             <Dropdown>
-                                <Button variant='secondary'>{t(`config.translate.${autoCopy}`)}</Button>
+                                <Button variant='tertiary'>{t(`config.translate.${autoCopy}`)}</Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
                                         aria-label='auto copy'
@@ -319,7 +319,7 @@ export default function Translate() {
                         <h3 className='my-auto mx-0'>{t('config.translate.window_position')}</h3>
                         {windowPosition !== null && (
                             <Dropdown>
-                                <Button variant='secondary'>{t(`config.translate.${windowPosition}`)}</Button>
+                                <Button variant='tertiary'>{t(`config.translate.${windowPosition}`)}</Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
                                         aria-label='window position'

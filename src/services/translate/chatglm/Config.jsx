@@ -92,7 +92,7 @@ export function Config(props) {
                     <Dropdown>
                         <Button
                             size='sm'
-                            variant='secondary'
+                            variant='tertiary'
                         >
                             {serviceConfig.model}
                         </Button>
@@ -145,8 +145,8 @@ export function Config(props) {
                         serviceConfig.promptList.map((prompt, index) => {
                             return (
                                 <div className='config-item'>
-                                    <h3 className='my-auto'>{prompt.role}</h3>
                                     <TextField
+                                        fullWidth
                                         value={prompt.content}
                                         onChange={(value) => {
                                             setServiceConfig({
@@ -164,6 +164,7 @@ export function Config(props) {
                                             });
                                         }}
                                     >
+                                        <Label className='my-auto'>{prompt.role}</Label>
                                         <TextArea
                                             variant='secondary'
                                             placeholder={`Input Some ${prompt.role} Prompt`}
@@ -171,7 +172,7 @@ export function Config(props) {
                                     </TextField>
                                     <Button
                                         isIconOnly
-                                        className='my-auto mx-1'
+                                        className='my-auto mx-1 shrink-0'
                                         variant='danger-soft'
                                         onPress={() => {
                                             setServiceConfig({

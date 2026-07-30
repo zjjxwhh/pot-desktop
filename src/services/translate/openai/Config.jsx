@@ -120,7 +120,7 @@ export function Config(props) {
                     <Dropdown>
                         <Button
                             size='sm'
-                            variant='secondary'
+                            variant='tertiary'
                         >
                             {t(`services.translate.openai.${openaiConfig.service}`)}
                         </Button>
@@ -152,7 +152,9 @@ export function Config(props) {
                     </Dropdown>
                 </div>
                 <div className='config-item'>
+                    <h3 className='my-auto'>{t('services.translate.openai.stream')}</h3>
                     <Switch
+                        size='lg'
                         isSelected={openaiConfig['stream']}
                         onChange={(value) => {
                             setOpenaiConfig({
@@ -160,13 +162,12 @@ export function Config(props) {
                                 stream: value,
                             });
                         }}
-                        className='flex flex-row-reverse justify-between w-full max-w-full'
+                        className='my-auto'
                     >
                         <Switch.Content>
                             <Switch.Control>
                                 <Switch.Thumb />
                             </Switch.Control>
-                            {t('services.translate.openai.stream')}
                         </Switch.Content>
                     </Switch>
                 </div>
@@ -201,28 +202,6 @@ export function Config(props) {
                         />
                     </TextField>
                 </div>
-                <Card className='border-none bg-success/20 dark:bg-success/10 backdrop-blur-md shadow-sm'>
-                    <Card.Content>
-                        <div>
-                            推荐
-                            <Link
-                                isExternal
-                                href='https://aihubmix.com/register?aff=trJY'
-                                className='text-accent'
-                            >
-                                AiHubMix
-                            </Link>
-                            的OpenAI API 密钥，速度飞快，经济实惠，1美元的OpenAI API 额度只需人民币6.3元
-                            <Link
-                                isExternal
-                                href='https://pot-app.com/ads/aihubmix.html'
-                                className='text-accent'
-                            >
-                                配置文档
-                            </Link>
-                        </div>
-                    </Card.Content>
-                </Card>
                 <div className={`config-item ${openaiConfig.service === 'azure' && 'hidden'}`}>
                     <h3 className='my-auto'>{t('services.translate.openai.model')}</h3>
                     <TextField
@@ -245,8 +224,8 @@ export function Config(props) {
                         openaiConfig.promptList.map((prompt, index) => {
                             return (
                                 <div className='config-item'>
-                                    <h3 className='my-auto'>{prompt.role}</h3>
                                     <TextField
+                                        fullWidth
                                         value={prompt.content}
                                         onChange={(value) => {
                                             setOpenaiConfig({
@@ -271,6 +250,7 @@ export function Config(props) {
                                             });
                                         }}
                                     >
+                                        <Label>{prompt.role}</Label>
                                         <TextArea
                                             variant='secondary'
                                             placeholder={`Input Some ${prompt.role} Prompt`}
@@ -278,7 +258,7 @@ export function Config(props) {
                                     </TextField>
                                     <Button
                                         isIconOnly
-                                        className='my-auto mx-1'
+                                        className='my-auto mx-1 shrink-0'
                                         variant='danger-soft'
                                         onPress={() => {
                                             setOpenaiConfig({
@@ -320,6 +300,7 @@ export function Config(props) {
                 <h3 className='my-auto'>Request Arguments</h3>
                 <div className='config-item'>
                     <TextField
+                        fullWidth
                         value={openaiConfig['requestArguments']}
                         onChange={(value) => {
                             setOpenaiConfig({

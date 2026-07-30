@@ -91,7 +91,7 @@ export function Config(props) {
                     <Dropdown>
                         <Button
                             size='sm'
-                            variant='secondary'
+                            variant='tertiary'
                         >
                             {t(`services.translate.baidu_field.${config.field}`)}
                         </Button>

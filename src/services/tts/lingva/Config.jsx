@@ -67,7 +67,6 @@ export function Config(props) {
                     >
                         <Input
                             variant='secondary'
-                            className='max-w-[50%]'
                         />
                     </TextField>
                 </div>

@@ -122,7 +122,7 @@ export function Config(props) {
                                 {t('services.translate.ollama.install_ollama')}
                                 <br />
                                 <Link
-                                    isExternal
+                                    target='_blank'
                                     href='https://ollama.com/download'
                                     className='text-accent'
                                 >
@@ -144,7 +144,9 @@ export function Config(props) {
                     </Button>
                 </div>
                 <div className='config-item'>
+                    <h3 className='my-auto'>{t('services.translate.ollama.stream')}</h3>
                     <Switch
+                        size='lg'
                         isSelected={serviceConfig['stream']}
                         onChange={(value) => {
                             setServiceConfig({
@@ -152,13 +154,12 @@ export function Config(props) {
                                 stream: value,
                             });
                         }}
-                        className='flex flex-row-reverse justify-between w-full max-w-full'
+                        className='my-auto'
                     >
                         <Switch.Content>
                             <Switch.Control>
                                 <Switch.Thumb />
                             </Switch.Control>
-                            {t('services.translate.ollama.stream')}
                         </Switch.Content>
                     </Switch>
                 </div>
@@ -229,7 +230,7 @@ export function Config(props) {
                         )}
                         <div className='flex justify-center'>
                             <Link
-                                isExternal
+                                target='_blank'
                                 href='https://ollama.com/library'
                                 className='text-accent'
                             >
@@ -246,8 +247,8 @@ export function Config(props) {
                         serviceConfig.promptList.map((prompt, index) => {
                             return (
                                 <div className='config-item'>
-                                    <h3 className='my-auto'>{prompt.role}</h3>
                                     <TextField
+                                        fullWidth
                                         value={prompt.content}
                                         onChange={(value) => {
                                             setServiceConfig({
@@ -272,6 +273,7 @@ export function Config(props) {
                                             });
                                         }}
                                     >
+                                        <Label>{prompt.role}</Label>
                                         <TextArea
                                             variant='secondary'
                                             placeholder={`Input Some ${prompt.role} Prompt`}
@@ -279,7 +281,7 @@ export function Config(props) {
                                     </TextField>
                                     <Button
                                         isIconOnly
-                                        className='my-auto mx-1'
+                                        className='my-auto mx-1 shrink-0'
                                         variant='danger-soft'
                                         onPress={() => {
                                             setServiceConfig({

@@ -170,7 +170,7 @@ export default function General() {
                         <h3 className='my-auto'>{t('config.general.app_language')}</h3>
                         {appLanguage !== null && (
                             <Dropdown>
-                                <Button variant='secondary'>
+                                <Button variant='tertiary'>
                                     <span className={`fi fi-${LanguageFlag[appLanguage]}`} />
                                     {languageName[appLanguage]}
                                 </Button>
@@ -326,7 +326,7 @@ export default function General() {
                         <h3 className='my-auto'>{t('config.general.app_theme')}</h3>
                         {appTheme !== null && (
                             <Dropdown>
-                                <Button variant='secondary'>{t(`config.general.theme.${appTheme}`)}</Button>
+                                <Button variant='tertiary'>{t(`config.general.theme.${appTheme}`)}</Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
                                         aria-label='app theme'
@@ -380,7 +380,7 @@ export default function General() {
                         {appFont !== null && fontList !== null && (
                             <Dropdown>
                                 <Button
-                                    variant='secondary'
+                                    variant='tertiary'
                                     style={{
                                         fontFamily: appFont === 'default' ? 'sans-serif' : appFont,
                                     }}
@@ -427,7 +427,7 @@ export default function General() {
                         {appFallbackFont !== null && fontList !== null && (
                             <Dropdown>
                                 <Button
-                                    variant='secondary'
+                                    variant='tertiary'
                                     style={{
                                         fontFamily: appFallbackFont === 'default' ? 'sans-serif' : appFallbackFont,
                                     }}
@@ -473,7 +473,7 @@ export default function General() {
                         <h3 className='my-auto mx-0'>{t('config.general.font_size.title')}</h3>
                         {appFontSize !== null && (
                             <Dropdown>
-                                <Button variant='secondary'>{t(`config.general.font_size.${appFontSize}`)}</Button>
+                                <Button variant='tertiary'>{t(`config.general.font_size.${appFontSize}`)}</Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
                                         aria-label='window position'
@@ -534,7 +534,7 @@ export default function General() {
                         <h3 className='my-auto'>{t('config.general.tray_click_event')}</h3>
                         {trayClickEvent !== null && (
                             <Dropdown>
-                                <Button variant='secondary'>{t(`config.general.event.${trayClickEvent}`)}</Button>
+                                <Button variant='tertiary'>{t(`config.general.event.${trayClickEvent}`)}</Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
                                         aria-label='tray click event'
@@ -650,6 +650,7 @@ export default function General() {
                         )}
                     </div>
                     <div className='config-item'>
+                        <h3 className='my-auto'>{t('config.general.proxy.host')}</h3>
                         {proxyHost !== null && (
                             <TextField
                                 value={proxyHost}
@@ -657,17 +658,26 @@ export default function General() {
                                     setProxyHost(v);
                                 }}
                                 isRequired
-                                className='mr-2'
+                                aria-label={t('config.general.proxy.host')}
+                                className='w-[40%]'
                             >
-                                <Label>{t('config.general.proxy.host')}</Label>
-                                <InputGroup variant='secondary'>
+                                <InputGroup
+                                    variant='secondary'
+                                    fullWidth
+                                >
                                     <InputGroup.Prefix>
                                         <span>http://</span>
                                     </InputGroup.Prefix>
-                                    <InputGroup.Input type='url' />
+                                    <InputGroup.Input
+                                        className='min-w-0'
+                                        type='url'
+                                    />
                                 </InputGroup>
                             </TextField>
                         )}
+                    </div>
+                    <div className='config-item'>
+                        <h3 className='my-auto'>{t('config.general.proxy.port')}</h3>
                         {proxyPort !== null && (
                             <TextField
                                 value={proxyPort}
@@ -681,17 +691,19 @@ export default function General() {
                                     }
                                 }}
                                 isRequired
-                                className='ml-2'
+                                aria-label={t('config.general.proxy.port')}
+                                className='w-[40%]'
                             >
-                                <Label>{t('config.general.proxy.port')}</Label>
                                 <Input
                                     type='number'
                                     variant='secondary'
+                                    fullWidth
                                 />
                             </TextField>
                         )}
                     </div>
                     <div className='config-item'>
+                        <h3 className='my-auto'>{t('config.general.proxy.username')}</h3>
                         {proxyUsername !== null && (
                             <TextField
                                 value={proxyUsername}
@@ -699,15 +711,19 @@ export default function General() {
                                     setProxyUsername(v);
                                 }}
                                 isDisabled
-                                className='mr-2'
+                                aria-label={t('config.general.proxy.username')}
+                                className='w-[40%]'
                             >
-                                <Label>{t('config.general.proxy.username')}</Label>
                                 <Input
                                     type='text'
                                     variant='secondary'
+                                    fullWidth
                                 />
                             </TextField>
                         )}
+                    </div>
+                    <div className='config-item'>
+                        <h3 className='my-auto'>{t('config.general.proxy.password')}</h3>
                         {proxyPassword !== null && (
                             <TextField
                                 value={proxyPassword}
@@ -715,26 +731,32 @@ export default function General() {
                                     setProxyPassword(v);
                                 }}
                                 isDisabled
-                                className='ml-2'
+                                aria-label={t('config.general.proxy.password')}
+                                className='w-[40%]'
                             >
-                                <Label>{t('config.general.proxy.password')}</Label>
                                 <Input
                                     type='password'
                                     variant='secondary'
+                                    fullWidth
                                 />
                             </TextField>
                         )}
                     </div>
                     <div className='config-item'>
+                        <h3 className='my-auto'>{t('config.general.proxy.no_proxy')}</h3>
                         {noProxy !== null && (
                             <TextField
                                 value={noProxy}
                                 onChange={(v) => {
                                     setNoProxy(v);
                                 }}
+                                aria-label={t('config.general.proxy.no_proxy')}
+                                className='w-[40%]'
                             >
-                                <Label>{t('config.general.proxy.no_proxy')}</Label>
-                                <Input variant='secondary' />
+                                <Input
+                                    variant='secondary'
+                                    fullWidth
+                                />
                             </TextField>
                         )}
                     </div>

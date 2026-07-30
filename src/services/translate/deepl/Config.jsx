@@ -49,6 +49,7 @@ export function Config(props) {
             >
                 <Toaster />
                 <div className='config-item'>
+                    <h3 className='my-auto'>{t('services.instance_name')}</h3>
                     <TextField
                         value={deeplConfig[INSTANCE_NAME_CONFIG_KEY]}
                         onChange={(value) => {
@@ -58,7 +59,6 @@ export function Config(props) {
                             });
                         }}
                     >
-                        <Label>{t('services.instance_name')}</Label>
                         <Input variant='secondary' />
                     </TextField>
                 </div>
@@ -82,7 +82,7 @@ export function Config(props) {
                     <Dropdown>
                         <Button
                             size='sm'
-                            variant='secondary'
+                            variant='tertiary'
                         >
                             {t(`services.translate.deepl.${deeplConfig.type}`)}
                         </Button>
@@ -120,6 +120,7 @@ export function Config(props) {
                     </Dropdown>
                 </div>
                 <div className={`config-item ${deeplConfig.type !== 'api' && 'hidden'}`}>
+                    <h3 className='my-auto'>{t('services.translate.deepl.auth_key')}</h3>
                     <TextField
                         value={deeplConfig['authKey']}
                         onChange={(value) => {
@@ -129,7 +130,6 @@ export function Config(props) {
                             });
                         }}
                     >
-                        <Label>{t('services.translate.deepl.auth_key')}</Label>
                         <Input
                             type='password'
                             variant='secondary'
@@ -137,6 +137,7 @@ export function Config(props) {
                     </TextField>
                 </div>
                 <div className={`config-item ${deeplConfig.type !== 'deeplx' && 'hidden'}`}>
+                    <h3 className='my-auto'>{t('services.translate.deepl.custom_url')}</h3>
                     <TextField
                         value={deeplConfig.customUrl}
                         onChange={(value) => {
@@ -146,7 +147,6 @@ export function Config(props) {
                             });
                         }}
                     >
-                        <Label>{t('services.translate.deepl.custom_url')}</Label>
                         <Input variant='secondary' />
                     </TextField>
                 </div>

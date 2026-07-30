@@ -68,7 +68,7 @@ export default function ControlArea(props) {
                 <Dropdown>
                     <Button
                         className='my-auto'
-                        variant='secondary'
+                        variant='tertiary'
                         size='sm'
                     >
                         <img
@@ -109,7 +109,7 @@ export default function ControlArea(props) {
                 <Dropdown>
                     <Button
                         className='my-auto'
-                        variant='secondary'
+                        variant='tertiary'
                         size='sm'
                     >
                         {t(`languages.${language}`)}
@@ -138,7 +138,7 @@ export default function ControlArea(props) {
                 </Dropdown>
             )}
             <Button
-                variant='secondary'
+                variant='tertiary'
                 size='sm'
                 className='my-auto'
                 onPress={() => {

@@ -8,7 +8,7 @@ export function Config(props) {
 
     return (
         <>
-            <div>{t('services.no_need')}</div>
+            <div className='mb-2'>{t('services.no_need')}</div>
             <div>
                 <Button
                     fullWidth

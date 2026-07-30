@@ -1,9 +1,7 @@
-.config-item {
-    margin: 10px 0;
-    display: flex;
-    justify-content: space-between;
-}
-
-.config-item.hidden {
-    display: none;
+@layer base {
+    .config-item {
+        margin: 10px 0;
+        display: flex;
+        justify-content: space-between;
+    }
 }

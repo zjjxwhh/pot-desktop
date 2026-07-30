@@ -119,10 +119,14 @@ export default function Hotkey() {
                     {selectionTranslate !== null && (
                         <TextField
                             value={selectionTranslate}
-                            className='max-w-[50%]'
+                            className='w-[40%] '
                         >
-                            <InputGroup variant='secondary'>
+                            <InputGroup
+                                variant='secondary'
+                                fullWidth
+                            >
                                 <InputGroup.Input
+                                    className='min-w-0'
                                     type='hotkey'
                                     placeholder={t('config.hotkey.set_hotkey')}
                                     onKeyDown={(e) => {
@@ -136,8 +140,7 @@ export default function Hotkey() {
                                 <InputGroup.Suffix className='pr-0'>
                                     <Button
                                         size='sm'
-                                        variant='tertiary'
-                                        className={`${selectionTranslate === '' && 'hidden'}`}
+                                        className={`${selectionTranslate === '' && 'hidden'} bg-muted`}
                                         onPress={() => {
                                             registerHandler('hotkey_selection_translate', selectionTranslate);
                                         }}
@@ -154,10 +157,14 @@ export default function Hotkey() {
                     {inputTranslate !== null && (
                         <TextField
                             value={inputTranslate}
-                            className='max-w-[50%]'
+                            className='w-[40%] '
                         >
-                            <InputGroup variant='secondary'>
+                            <InputGroup
+                                variant='secondary'
+                                fullWidth
+                            >
                                 <InputGroup.Input
+                                    className='min-w-0'
                                     type='hotkey'
                                     placeholder={t('config.hotkey.set_hotkey')}
                                     onKeyDown={(e) => {
@@ -171,8 +178,7 @@ export default function Hotkey() {
                                 <InputGroup.Suffix className='pr-0'>
                                     <Button
                                         size='sm'
-                                        variant='tertiary'
-                                        className={`${inputTranslate === '' && 'hidden'}`}
+                                        className={`${inputTranslate === '' && 'hidden'} bg-muted`}
                                         onPress={() => {
                                             registerHandler('hotkey_input_translate', inputTranslate);
                                         }}
@@ -189,10 +195,14 @@ export default function Hotkey() {
                     {ocrRecognize !== null && (
                         <TextField
                             value={ocrRecognize}
-                            className='max-w-[50%]'
+                            className='w-[40%] '
                         >
-                            <InputGroup variant='secondary'>
+                            <InputGroup
+                                variant='secondary'
+                                fullWidth
+                            >
                                 <InputGroup.Input
+                                    className='min-w-0'
                                     type='hotkey'
                                     placeholder={t('config.hotkey.set_hotkey')}
                                     onKeyDown={(e) => {
@@ -206,8 +216,7 @@ export default function Hotkey() {
                                 <InputGroup.Suffix className='pr-0'>
                                     <Button
                                         size='sm'
-                                        variant='tertiary'
-                                        className={`${ocrRecognize === '' && 'hidden'}`}
+                                        className={`${ocrRecognize === '' && 'hidden'} bg-muted`}
                                         onPress={() => {
                                             registerHandler('hotkey_ocr_recognize', ocrRecognize);
                                         }}
@@ -224,10 +233,14 @@ export default function Hotkey() {
                     {ocrTranslate !== null && (
                         <TextField
                             value={ocrTranslate}
-                            className='max-w-[50%]'
+                            className='w-[40%]'
                         >
-                            <InputGroup variant='secondary'>
+                            <InputGroup
+                                variant='secondary'
+                                fullWidth
+                            >
                                 <InputGroup.Input
+                                    className='min-w-0'
                                     type='hotkey'
                                     placeholder={t('config.hotkey.set_hotkey')}
                                     onKeyDown={(e) => {
@@ -241,8 +254,7 @@ export default function Hotkey() {
                                 <InputGroup.Suffix className='pr-0'>
                                     <Button
                                         size='sm'
-                                        variant='tertiary'
-                                        className={`${ocrTranslate === '' && 'hidden'}`}
+                                        className={`${ocrTranslate === '' && 'hidden'} bg-muted`}
                                         onPress={() => {
                                             registerHandler('hotkey_ocr_translate', ocrTranslate);
                                         }}

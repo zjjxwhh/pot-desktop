@@ -117,7 +117,10 @@ export function Config(props) {
                     </Button>
                 </div>
                 <div className='config-item'>
+                    <h3 className='my-auto'>{t('services.translate.geminipro.stream')}</h3>
                     <Switch
+                        className='my-auto'
+                        size='lg'
                         isSelected={serviceConfig['stream']}
                         onChange={(value) => {
                             setServiceConfig({
@@ -125,13 +128,11 @@ export function Config(props) {
                                 stream: value,
                             });
                         }}
-                        className='flex flex-row-reverse justify-between w-full max-w-full'
                     >
                         <Switch.Content>
                             <Switch.Control>
                                 <Switch.Thumb />
                             </Switch.Control>
-                            {t('services.translate.geminipro.stream')}
                         </Switch.Content>
                     </Switch>
                 </div>
@@ -174,8 +175,8 @@ export function Config(props) {
                         serviceConfig.promptList.map((prompt, index) => {
                             return (
                                 <div className='config-item'>
-                                    <h3 className='my-auto'>{prompt.role}</h3>
                                     <TextField
+                                        fullWidth
                                         value={prompt.parts[0].text}
                                         onChange={(value) => {
                                             setServiceConfig({
@@ -197,6 +198,7 @@ export function Config(props) {
                                             });
                                         }}
                                     >
+                                        <Label className='my-auto'>{prompt.role}</Label>
                                         <TextArea
                                             variant='secondary'
                                             placeholder={`Input Some ${prompt.role} Prompt`}
@@ -204,7 +206,7 @@ export function Config(props) {
                                     </TextField>
                                     <Button
                                         isIconOnly
-                                        className='my-auto mx-1'
+                                        className='my-auto mx-1 shrink-0'
                                         variant='danger-soft'
                                         onPress={() => {
                                             setServiceConfig({

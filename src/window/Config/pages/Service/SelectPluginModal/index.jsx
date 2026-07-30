@@ -38,6 +38,7 @@ export default function SelectPluginModal(props) {
                                         <Button
                                             fullWidth
                                             variant='tertiary'
+                                            className='mb-[2px]'
                                             onPress={() => {
                                                 openInBrowser('http://pot-app.com/plugin.html');
                                             }}
@@ -54,7 +55,7 @@ export default function SelectPluginModal(props) {
                                             >
                                                 <Button
                                                     fullWidth
-                                                    className='mr-[8px]'
+                                                    className='mr-[8px] mb-[2px]'
                                                     onPress={() => {
                                                         setCurrentConfigKey(createServiceInstanceKey(x));
                                                         onConfigOpen();
@@ -96,7 +97,6 @@ export default function SelectPluginModal(props) {
                                         <Button
                                             fullWidth
                                             isPending={installing}
-                                            variant='secondary'
                                             onPress={async () => {
                                                 setInstalling(true);
                                                 const selected = await open({
