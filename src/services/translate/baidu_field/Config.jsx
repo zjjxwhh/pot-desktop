@@ -1,11 +1,7 @@
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
-import { DropdownTrigger } from '@nextui-org/react';
-import { Input, Button } from '@nextui-org/react';
-import { DropdownMenu } from '@nextui-org/react';
-import { DropdownItem } from '@nextui-org/react';
+import { TextField, Label, Input, Button, Dropdown } from '@heroui/react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
-import { Dropdown } from '@nextui-org/react';
 import { open } from '@tauri-apps/plugin-shell';
 import React, { useState } from 'react';
 
@@ -66,27 +62,23 @@ export function Config(props) {
             >
                 <Toaster />
                 <div className='config-item'>
-                    <Input
-                        label={t('services.instance_name')}
-                        labelPlacement='outside-left'
+                    <h3 className='my-auto'>{t('services.instance_name')}</h3>
+                    <TextField
                         value={config[INSTANCE_NAME_CONFIG_KEY]}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setConfig({
                                 ...config,
                                 [INSTANCE_NAME_CONFIG_KEY]: value,
                             });
                         }}
-                    />
+                    >
+                        <Input variant='secondary' />
+                    </TextField>
                 </div>
                 <div className={'config-item'}>
                     <h3 className='my-auto'>{t('services.help')}</h3>
                     <Button
+                        size='sm'
                         onPress={() => {
                             open('https://pot-app.com/docs/api/translate/baidu.html');
                         }}
@@ -97,72 +89,67 @@ export function Config(props) {
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('services.translate.deepl.type')}</h3>
                     <Dropdown>
-                        <DropdownTrigger>
-                            <Button variant='bordered'>{t(`services.translate.baidu_field.${config.field}`)}</Button>
-                        </DropdownTrigger>
-                        <DropdownMenu
-                            autoFocus='first'
-                            aria-label='app language'
-                            className='max-h-[50vh] overflow-y-auto'
-                            onAction={(key) => {
-                                setConfig({
-                                    ...config,
-                                    field: key,
-                                });
-                            }}
+                        <Button
+                            size='sm'
+                            variant='secondary'
                         >
-                            {fieldList.map((item) => {
-                                return (
-                                    <DropdownItem key={item}>
-                                        {t(`services.translate.baidu_field.${item}`)}
-                                    </DropdownItem>
-                                );
-                            })}
-                        </DropdownMenu>
+                            {t(`services.translate.baidu_field.${config.field}`)}
+                        </Button>
+                        <Dropdown.Popover>
+                            <Dropdown.Menu
+                                autoFocus='first'
+                                aria-label='app language'
+                                className='max-h-[50vh] overflow-y-auto'
+                                onAction={(key) => {
+                                    setConfig({
+                                        ...config,
+                                        field: key,
+                                    });
+                                }}
+                            >
+                                {fieldList.map((item) => {
+                                    return (
+                                        <Dropdown.Item id={item} textValue={t(`services.translate.baidu_field.${item}`)}>
+                                            <Label>{t(`services.translate.baidu_field.${item}`)}</Label>
+                                        </Dropdown.Item>
+                                    );
+                                })}
+                            </Dropdown.Menu>
+                        </Dropdown.Popover>
                     </Dropdown>
                 </div>
                 <div className={'config-item'}>
-                    <Input
-                        label={t('services.translate.baidu.appid')}
-                        labelPlacement='outside-left'
+                    <h3 className='my-auto'>{t('services.translate.baidu.appid')}</h3>
+                    <TextField
                         value={config['appid']}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setConfig({
                                 ...config,
                                 appid: value,
                             });
                         }}
-                    />
+                    >
+                        <Input variant='secondary' />
+                    </TextField>
                 </div>
                 <div className={'config-item'}>
-                    <Input
-                        label={t('services.translate.baidu.secret')}
-                        labelPlacement='outside-left'
+                    <h3 className='my-auto'>{t('services.translate.baidu.secret')}</h3>
+                    <TextField
                         value={config['secret']}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setConfig({
                                 ...config,
                                 secret: value,
                             });
                         }}
-                    />
+                    >
+                        <Input variant='secondary' />
+                    </TextField>
                 </div>
                 <Button
                     type='submit'
-                    isLoading={isLoading}
-                    color='primary'
+                    isPending={isLoading}
+                    variant='primary'
                     fullWidth
                 >
                     {t('common.save')}

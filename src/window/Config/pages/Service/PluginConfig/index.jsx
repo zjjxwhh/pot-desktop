@@ -1,9 +1,5 @@
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../../../utils/service_instance';
-import { Button, Input } from '@nextui-org/react';
-import { DropdownTrigger } from '@nextui-org/react';
-import { DropdownMenu } from '@nextui-org/react';
-import { DropdownItem } from '@nextui-org/react';
-import { Dropdown } from '@nextui-org/react';
+import { Button, Input, TextField, Label, Dropdown } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-shell';
 import React from 'react';
@@ -29,23 +25,18 @@ export function PluginConfig(props) {
             </div>
             {pluginConfig && (
                 <div className='config-item'>
-                    <Input
-                        label={t('services.instance_name')}
-                        labelPlacement='outside-left'
+                    <TextField
                         value={pluginConfig[INSTANCE_NAME_CONFIG_KEY] ?? pluginList[name].display}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setPluginConfig({
                                 ...pluginConfig,
                                 [INSTANCE_NAME_CONFIG_KEY]: value,
                             });
                         }}
-                    />
+                    >
+                        <Label>{t('services.instance_name')}</Label>
+                        <Input variant='secondary' />
+                    </TextField>
                 </div>
             )}
 
@@ -62,48 +53,53 @@ export function PluginConfig(props) {
                             >
                                 <h3 className='my-auto select-none cursor-default'>{x.display}</h3>
                                 {x.type === 'input' && (
-                                    <Input
-                                        value={`${pluginConfig.hasOwnProperty(x.key) ? pluginConfig[x.key] : ''}`}
-                                        variant='bordered'
+                                    <TextField
                                         className='max-w-[50%]'
-                                        onValueChange={(value) => {
+                                        value={`${pluginConfig.hasOwnProperty(x.key) ? pluginConfig[x.key] : ''}`}
+                                        onChange={(value) => {
                                             setPluginConfig({
                                                 ...pluginConfig,
                                                 [x.key]: value,
                                             });
                                         }}
-                                    />
+                                    >
+                                        <Input variant='secondary' />
+                                    </TextField>
                                 )}
                                 {x.type === 'select' && (
                                     <Dropdown>
-                                        <DropdownTrigger>
-                                            <Button
-                                                variant='bordered'
-                                                className='max-w-[50%]'
-                                            >
-                                                {
-                                                    x.options[
-                                                        pluginConfig.hasOwnProperty(x.key)
-                                                            ? pluginConfig[x.key]
-                                                            : Object.keys(x.options)[0]
-                                                    ]
-                                                }
-                                            </Button>
-                                        </DropdownTrigger>
-                                        <DropdownMenu
-                                            aria-label={x.key}
-                                            className='max-h-[40vh] overflow-y-auto'
-                                            onAction={(key) => {
-                                                setPluginConfig({
-                                                    ...pluginConfig,
-                                                    [x.key]: key,
-                                                });
-                                            }}
+                                        <Button
+                                            variant='secondary'
+                                            className='max-w-[50%]'
                                         >
-                                            {Object.keys(x.options).map((y) => {
-                                                return <DropdownItem key={y}>{x.options[y]}</DropdownItem>;
-                                            })}
-                                        </DropdownMenu>
+                                            {
+                                                x.options[
+                                                    pluginConfig.hasOwnProperty(x.key)
+                                                        ? pluginConfig[x.key]
+                                                        : Object.keys(x.options)[0]
+                                                ]
+                                            }
+                                        </Button>
+                                        <Dropdown.Popover>
+                                            <Dropdown.Menu
+                                                aria-label={x.key}
+                                                className='max-h-[40vh] overflow-y-auto'
+                                                onAction={(key) => {
+                                                    setPluginConfig({
+                                                        ...pluginConfig,
+                                                        [x.key]: key,
+                                                    });
+                                                }}
+                                            >
+                                                {Object.keys(x.options).map((y) => {
+                                                    return (
+                                                        <Dropdown.Item key={y} id={y} textValue={x.options[y]}>
+                                                            <Label>{x.options[y]}</Label>
+                                                        </Dropdown.Item>
+                                                    );
+                                                })}
+                                            </Dropdown.Menu>
+                                        </Dropdown.Popover>
                                     </Dropdown>
                                 )}
                             </div>
@@ -113,17 +109,18 @@ export function PluginConfig(props) {
                                 className={`config-item`}
                             >
                                 <h3 className='my-auto select-none cursor-default'>{x.display}</h3>
-                                <Input
-                                    value={`${pluginConfig.hasOwnProperty(x.key) ? pluginConfig[x.key] : ''}`}
-                                    variant='bordered'
+                                <TextField
                                     className='max-w-[50%]'
-                                    onValueChange={(value) => {
+                                    value={`${pluginConfig.hasOwnProperty(x.key) ? pluginConfig[x.key] : ''}`}
+                                    onChange={(value) => {
                                         setPluginConfig({
                                             ...pluginConfig,
                                             [x.key]: value,
                                         });
                                     }}
-                                />
+                                >
+                                    <Input variant='secondary' />
+                                </TextField>
                             </div>
                         ))
                     );
@@ -133,7 +130,7 @@ export function PluginConfig(props) {
             <div>
                 <Button
                     fullWidth
-                    color='primary'
+                    variant='primary'
                     onPress={() => {
                         setPluginConfig(pluginConfig, true);
                         updateServiceList(instanceKey);

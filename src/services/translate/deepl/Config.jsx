@@ -1,11 +1,7 @@
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
-import { DropdownTrigger } from '@nextui-org/react';
-import { Input, Button } from '@nextui-org/react';
-import { DropdownMenu } from '@nextui-org/react';
-import { DropdownItem } from '@nextui-org/react';
+import { TextField, Label, Input, Button, Dropdown } from '@heroui/react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
-import { Dropdown } from '@nextui-org/react';
 import { open } from '@tauri-apps/plugin-shell';
 import React, { useState } from 'react';
 
@@ -53,27 +49,23 @@ export function Config(props) {
             >
                 <Toaster />
                 <div className='config-item'>
-                    <Input
-                        label={t('services.instance_name')}
-                        labelPlacement='outside-left'
+                    <TextField
                         value={deeplConfig[INSTANCE_NAME_CONFIG_KEY]}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setDeeplConfig({
                                 ...deeplConfig,
                                 [INSTANCE_NAME_CONFIG_KEY]: value,
                             });
                         }}
-                    />
+                    >
+                        <Label>{t('services.instance_name')}</Label>
+                        <Input variant='secondary' />
+                    </TextField>
                 </div>
                 <div className={`config-item ${deeplConfig.type === 'free' && 'hidden'}`}>
                     <h3 className='my-auto'>{t('services.help')}</h3>
                     <Button
+                        size='sm'
                         onPress={() => {
                             const url =
                                 deeplConfig.type === 'api'
@@ -88,68 +80,80 @@ export function Config(props) {
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('services.translate.deepl.type')}</h3>
                     <Dropdown>
-                        <DropdownTrigger>
-                            <Button variant='bordered'>{t(`services.translate.deepl.${deeplConfig.type}`)}</Button>
-                        </DropdownTrigger>
-                        <DropdownMenu
-                            autoFocus='first'
-                            aria-label='app language'
-                            onAction={(key) => {
-                                setDeeplConfig({
-                                    ...deeplConfig,
-                                    type: key,
-                                });
-                            }}
+                        <Button
+                            size='sm'
+                            variant='secondary'
                         >
-                            <DropdownItem key='free'>{t(`services.translate.deepl.free`)}</DropdownItem>
-                            <DropdownItem key='api'>{t(`services.translate.deepl.api`)}</DropdownItem>
-                            <DropdownItem key='deeplx'>{t(`services.translate.deepl.deeplx`)}</DropdownItem>
-                        </DropdownMenu>
+                            {t(`services.translate.deepl.${deeplConfig.type}`)}
+                        </Button>
+                        <Dropdown.Popover>
+                            <Dropdown.Menu
+                                autoFocus='first'
+                                aria-label='app language'
+                                onAction={(key) => {
+                                    setDeeplConfig({
+                                        ...deeplConfig,
+                                        type: key,
+                                    });
+                                }}
+                            >
+                                <Dropdown.Item
+                                    id='free'
+                                    textValue={t(`services.translate.deepl.free`)}
+                                >
+                                    <Label>{t(`services.translate.deepl.free`)}</Label>
+                                </Dropdown.Item>
+                                <Dropdown.Item
+                                    id='api'
+                                    textValue={t(`services.translate.deepl.api`)}
+                                >
+                                    <Label>{t(`services.translate.deepl.api`)}</Label>
+                                </Dropdown.Item>
+                                <Dropdown.Item
+                                    id='deeplx'
+                                    textValue={t(`services.translate.deepl.deeplx`)}
+                                >
+                                    <Label>{t(`services.translate.deepl.deeplx`)}</Label>
+                                </Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown.Popover>
                     </Dropdown>
                 </div>
                 <div className={`config-item ${deeplConfig.type !== 'api' && 'hidden'}`}>
-                    <Input
-                        label={t('services.translate.deepl.auth_key')}
-                        labelPlacement='outside-left'
-                        type='password'
+                    <TextField
                         value={deeplConfig['authKey']}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setDeeplConfig({
                                 ...deeplConfig,
                                 authKey: value,
                             });
                         }}
-                    />
+                    >
+                        <Label>{t('services.translate.deepl.auth_key')}</Label>
+                        <Input
+                            type='password'
+                            variant='secondary'
+                        />
+                    </TextField>
                 </div>
                 <div className={`config-item ${deeplConfig.type !== 'deeplx' && 'hidden'}`}>
-                    <Input
-                        label={t('services.translate.deepl.custom_url')}
-                        labelPlacement='outside-left'
+                    <TextField
                         value={deeplConfig.customUrl}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setDeeplConfig({
                                 ...deeplConfig,
                                 customUrl: value,
                             });
                         }}
-                    />
+                    >
+                        <Label>{t('services.translate.deepl.custom_url')}</Label>
+                        <Input variant='secondary' />
+                    </TextField>
                 </div>
                 <Button
                     type='submit'
-                    isLoading={isLoading}
-                    color='primary'
+                    isPending={isLoading}
+                    variant='primary'
                     fullWidth
                 >
                     {t('common.save')}

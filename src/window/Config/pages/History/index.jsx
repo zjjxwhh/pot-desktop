@@ -1,12 +1,9 @@
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure } from '@nextui-org/react';
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from '@nextui-org/react';
+import { Modal, useOverlayState, Table, TextArea, TextField, Button, ButtonGroup, Pagination } from '@heroui/react';
 import { readDir, BaseDirectory, readTextFile, exists } from '@tauri-apps/plugin-fs';
-import { Textarea, Button, ButtonGroup } from '@nextui-org/react';
 import { appConfigDir, join } from '@tauri-apps/api/path';
 import { convertFileSrc } from '@tauri-apps/api/core';
 import React, { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import { Pagination } from '@nextui-org/react';
 import { useTranslation } from 'react-i18next';
 import Database from '@tauri-apps/plugin-sql';
 
@@ -27,7 +24,7 @@ import {
 
 export default function History() {
     const [collectionServiceList] = useConfig('collection_service_list', []);
-    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const state = useOverlayState();
     const [pluginList, setPluginList] = useState(null);
     const [selectedItem, setSelectItem] = useState(null);
     const [page, setPage] = useState(1);
@@ -124,101 +121,124 @@ export default function History() {
             <>
                 <Toaster />
                 <Table
-                    fullWidth
-                    hideHeader
-                    selectionMode='single'
-                    selectionBehavior='toggle'
-                    aria-label='History Table'
-                    classNames={{
-                        base: `${
-                            osType === 'linux' ? 'h-[calc(100vh-130px)]' : 'h-[calc(100vh-100px)]'
-                        } overflow-y-auto`,
-                        td: 'px-0',
-                    }}
-                    onRowAction={(id) => {
-                        getSelectedData(id);
-                        onOpen();
-                    }}
+                    className={`${
+                        osType === 'linux' ? 'h-[calc(100vh-130px)]' : 'h-[calc(100vh-100px)]'
+                    } overflow-y-auto`}
                 >
-                    <TableHeader>
-                        <TableColumn key='service' />
-                        <TableColumn key='text' />
-                        <TableColumn key='source' />
-                        <TableColumn key='target' />
-                        <TableColumn key='result' />
-                        <TableColumn key='timestamp' />
-                    </TableHeader>
-                    <TableBody
-                        emptyContent={'No History to display.'}
-                        items={items}
-                    >
-                        {(item) =>
-                            whetherAvailableService(item.service, {
-                                [ServiceSourceType.BUILDIN]: builtinServices,
-                                [ServiceSourceType.PLUGIN]: pluginList[ServiceType.TRANSLATE],
-                            }) && (
-                                <TableRow key={item.id}>
-                                    <TableCell>
-                                        {getServiceSouceType(item.service) === ServiceSourceType.PLUGIN ? (
-                                            <img
-                                                src={pluginList['translate'][getServiceName(item.service)].icon}
-                                                className='h-[18px] w-[18px] my-auto mr-[8px]'
-                                                draggable={false}
-                                            />
-                                        ) : (
-                                            <img
-                                                src={`${builtinServices[getServiceName(item.service)].info.icon}`}
-                                                className='h-[18px] w-[18px] my-auto mr-[8px]'
-                                                draggable={false}
-                                            />
-                                        )}
-                                    </TableCell>
-                                    <TableCell>
-                                        <p
-                                            className={`whitespace-nowrap ${
-                                                osType === 'linux'
-                                                    ? 'w-[calc((100vw-287px-26px-60px-140px-30px)*0.5)]'
-                                                    : 'w-[calc((100vw-287px-26px-60px-140px)*0.5)]'
-                                            } text-ellipsis overflow-hidden`}
-                                        >
-                                            {item.text}
-                                        </p>
-                                    </TableCell>
-                                    <TableCell>
-                                        <span className={`w-[30px] fi fi-${LanguageFlag[item.source]}`} />
-                                    </TableCell>
-                                    <TableCell>
-                                        <span className={`w-[30px] fi fi-${LanguageFlag[item.target]}`} />
-                                    </TableCell>
-                                    <TableCell>
-                                        <p
-                                            className={`whitespace-nowrap ${
-                                                osType === 'linux'
-                                                    ? 'w-[calc((100vw-287px-26px-60px-140px-30px)*0.5)]'
-                                                    : 'w-[calc((100vw-287px-26px-60px-140px)*0.5)]'
-                                            } text-ellipsis overflow-hidden`}
-                                        >
-                                            {item.result}
-                                        </p>
-                                    </TableCell>
-                                    <TableCell>
-                                        <p className='text-center whitespace-nowrap w-[140px]'>
-                                            {formatDate(new Date(item.timestamp))}
-                                        </p>
-                                    </TableCell>
-                                </TableRow>
-                            )
-                        }
-                    </TableBody>
+                    <Table.ScrollContainer>
+                        <Table.Content
+                            aria-label='History Table'
+                            selectionMode='single'
+                            selectionBehavior='toggle'
+                            onAction={(id) => {
+                                getSelectedData(id);
+                                state.open();
+                            }}
+                        >
+                            <Table.Header className='sr-only'>
+                                <Table.Column id='service' isRowHeader>service</Table.Column>
+                                <Table.Column id='text'>text</Table.Column>
+                                <Table.Column id='source'>source</Table.Column>
+                                <Table.Column id='target'>target</Table.Column>
+                                <Table.Column id='result'>result</Table.Column>
+                                <Table.Column id='timestamp'>timestamp</Table.Column>
+                            </Table.Header>
+                            <Table.Body
+                                items={items}
+                                renderEmptyState={() => 'No History to display.'}
+                            >
+                                {(item) =>
+                                    whetherAvailableService(item.service, {
+                                        [ServiceSourceType.BUILDIN]: builtinServices,
+                                        [ServiceSourceType.PLUGIN]: pluginList[ServiceType.TRANSLATE],
+                                    }) && (
+                                        <Table.Row id={item.id}>
+                                            <Table.Cell className='px-0'>
+                                                {getServiceSouceType(item.service) === ServiceSourceType.PLUGIN ? (
+                                                    <img
+                                                        src={pluginList['translate'][getServiceName(item.service)].icon}
+                                                        className='h-[18px] w-[18px] my-auto mr-[8px]'
+                                                        draggable={false}
+                                                    />
+                                                ) : (
+                                                    <img
+                                                        src={`${builtinServices[getServiceName(item.service)].info.icon}`}
+                                                        className='h-[18px] w-[18px] my-auto mr-[8px]'
+                                                        draggable={false}
+                                                    />
+                                                )}
+                                            </Table.Cell>
+                                            <Table.Cell className='px-0'>
+                                                <p
+                                                    className={`whitespace-nowrap ${
+                                                        osType === 'linux'
+                                                            ? 'w-[calc((100vw-287px-26px-60px-140px-30px)*0.5)]'
+                                                            : 'w-[calc((100vw-287px-26px-60px-140px)*0.5)]'
+                                                    } text-ellipsis overflow-hidden`}
+                                                >
+                                                    {item.text}
+                                                </p>
+                                            </Table.Cell>
+                                            <Table.Cell className='px-0'>
+                                                <span className={`w-[30px] fi fi-${LanguageFlag[item.source]}`} />
+                                            </Table.Cell>
+                                            <Table.Cell className='px-0'>
+                                                <span className={`w-[30px] fi fi-${LanguageFlag[item.target]}`} />
+                                            </Table.Cell>
+                                            <Table.Cell className='px-0'>
+                                                <p
+                                                    className={`whitespace-nowrap ${
+                                                        osType === 'linux'
+                                                            ? 'w-[calc((100vw-287px-26px-60px-140px-30px)*0.5)]'
+                                                            : 'w-[calc((100vw-287px-26px-60px-140px)*0.5)]'
+                                                    } text-ellipsis overflow-hidden`}
+                                                >
+                                                    {item.result}
+                                                </p>
+                                            </Table.Cell>
+                                            <Table.Cell className='px-0'>
+                                                <p className='text-center whitespace-nowrap w-[140px]'>
+                                                    {formatDate(new Date(item.timestamp))}
+                                                </p>
+                                            </Table.Cell>
+                                        </Table.Row>
+                                    )
+                                }
+                            </Table.Body>
+                        </Table.Content>
+                    </Table.ScrollContainer>
                 </Table>
                 <div className='mt-[8px] flex justify-around'>
-                    <Pagination
-                        showControls
-                        isCompact
-                        total={Math.ceil(total / 20)}
-                        page={page}
-                        onChange={setPage}
-                    />
+                    <Pagination className='my-auto'>
+                        <Pagination.Content>
+                            <Pagination.Item>
+                                <Pagination.Previous
+                                    isDisabled={page === 1}
+                                    onPress={() => setPage(page - 1)}
+                                >
+                                    <Pagination.PreviousIcon />
+                                </Pagination.Previous>
+                            </Pagination.Item>
+                            {Array.from({ length: Math.ceil(total / 20) }, (_, i) => i + 1).map((p) => (
+                                <Pagination.Item key={p}>
+                                    <Pagination.Link
+                                        isActive={p === page}
+                                        onPress={() => setPage(p)}
+                                    >
+                                        {p}
+                                    </Pagination.Link>
+                                </Pagination.Item>
+                            ))}
+                            <Pagination.Item>
+                                <Pagination.Next
+                                    isDisabled={page === Math.ceil(total / 20)}
+                                    onPress={() => setPage(page + 1)}
+                                >
+                                    <Pagination.NextIcon />
+                                </Pagination.Next>
+                            </Pagination.Item>
+                        </Pagination.Content>
+                    </Pagination>
                     <Button
                         size='sm'
                         className='my-auto'
@@ -229,150 +249,157 @@ export default function History() {
                 </div>
 
                 <Modal
-                    isOpen={isOpen}
-                    onOpenChange={onOpenChange}
+                    state={state}
                     scrollBehavior='inside'
                 >
-                    <ModalContent className='max-h-[80vh]'>
-                        {(onClose) =>
-                            selectedItem && (
-                                <>
-                                    <ModalHeader>
-                                        <div className='flex justify-start'>
-                                            {getServiceSouceType(selectedItem.service) === ServiceSourceType.PLUGIN ? (
-                                                <img
-                                                    src={
-                                                        pluginList['translate'][getServiceName(selectedItem.service)]
-                                                            .icon
-                                                    }
-                                                    className='h-[24px] w-[24px] my-auto'
-                                                    draggable={false}
-                                                />
-                                            ) : (
-                                                <img
-                                                    src={`${builtinServices[getServiceName(selectedItem.service)].info.icon}`}
-                                                    className='h-[24px] w-[24px] m-auto mr-[8px]'
-                                                    draggable={false}
-                                                />
-                                            )}
-                                        </div>
-                                    </ModalHeader>
-                                    <ModalBody>
-                                        <Textarea
-                                            value={selectedItem.text}
-                                            onChange={(e) => {
-                                                setSelectItem({ ...selectedItem, text: e.target.value });
-                                            }}
-                                        />
-                                        <Textarea
-                                            value={selectedItem.result}
-                                            onChange={(e) => {
-                                                setSelectItem({ ...selectedItem, result: e.target.value });
-                                            }}
-                                        />
-                                    </ModalBody>
-                                    <ModalFooter className='flex justify-between'>
-                                        <Button
-                                            color='primary'
-                                            onPress={async () => {
-                                                await updateData();
-                                                onClose();
-                                            }}
-                                        >
-                                            {t('common.save')}
-                                        </Button>
-                                        <ButtonGroup>
-                                            {collectionServiceList &&
-                                                collectionServiceList.map((instanceKey) => {
-                                                    return (
-                                                        <Button
-                                                            key={instanceKey}
-                                                            isIconOnly
-                                                            variant='light'
-                                                            onPress={async () => {
-                                                                if (
-                                                                    getServiceSouceType(instanceKey) ===
-                                                                    ServiceSourceType.PLUGIN
-                                                                ) {
-                                                                    const pluginConfig =
-                                                                        (await store.get(instanceKey)) ?? {};
-                                                                    let [func, utils] = await invoke_plugin(
-                                                                        'collection',
-                                                                        getServiceName(instanceKey)
-                                                                    );
-                                                                    func(selectedItem.text, selectedItem.result, {
-                                                                        config: pluginConfig,
-                                                                        utils,
-                                                                    }).then(
-                                                                        (_) => {
-                                                                            toast.success(
-                                                                                t('translate.add_collection_success'),
-                                                                                {
-                                                                                    style: toastStyle,
+                    <Modal.Backdrop>
+                        <Modal.Container>
+                            <Modal.Dialog className='max-h-[80vh]'>
+                                {({ close }) =>
+                                    selectedItem && (
+                                        <>
+                                            <Modal.Header>
+                                                <div className='flex justify-start'>
+                                                    {getServiceSouceType(selectedItem.service) === ServiceSourceType.PLUGIN ? (
+                                                        <img
+                                                            src={
+                                                                pluginList['translate'][getServiceName(selectedItem.service)]
+                                                                    .icon
+                                                            }
+                                                            className='h-[24px] w-[24px] my-auto'
+                                                            draggable={false}
+                                                        />
+                                                    ) : (
+                                                        <img
+                                                            src={`${builtinServices[getServiceName(selectedItem.service)].info.icon}`}
+                                                            className='h-[24px] w-[24px] m-auto mr-[8px]'
+                                                            draggable={false}
+                                                        />
+                                                    )}
+                                                </div>
+                                            </Modal.Header>
+                                            <Modal.Body>
+                                                <TextField
+                                                    value={selectedItem.text}
+                                                    onChange={(value) => {
+                                                        setSelectItem({ ...selectedItem, text: value });
+                                                    }}
+                                                >
+                                                    <TextArea variant='secondary' />
+                                                </TextField>
+                                                <TextField
+                                                    value={selectedItem.result}
+                                                    onChange={(value) => {
+                                                        setSelectItem({ ...selectedItem, result: value });
+                                                    }}
+                                                >
+                                                    <TextArea variant='secondary' />
+                                                </TextField>
+                                            </Modal.Body>
+                                            <Modal.Footer className='flex justify-between'>
+                                                <Button
+                                                    variant='primary'
+                                                    onPress={async () => {
+                                                        await updateData();
+                                                        close();
+                                                    }}
+                                                >
+                                                    {t('common.save')}
+                                                </Button>
+                                                <ButtonGroup>
+                                                    {collectionServiceList &&
+                                                        collectionServiceList.map((instanceKey) => {
+                                                            return (
+                                                                <Button
+                                                                    key={instanceKey}
+                                                                    isIconOnly
+                                                                    variant='tertiary'
+                                                                    onPress={async () => {
+                                                                        if (
+                                                                            getServiceSouceType(instanceKey) ===
+                                                                            ServiceSourceType.PLUGIN
+                                                                        ) {
+                                                                            const pluginConfig =
+                                                                                (await store.get(instanceKey)) ?? {};
+                                                                            let [func, utils] = await invoke_plugin(
+                                                                                'collection',
+                                                                                getServiceName(instanceKey)
+                                                                            );
+                                                                            func(selectedItem.text, selectedItem.result, {
+                                                                                config: pluginConfig,
+                                                                                utils,
+                                                                            }).then(
+                                                                                (_) => {
+                                                                                    toast.success(
+                                                                                        t('translate.add_collection_success'),
+                                                                                        {
+                                                                                            style: toastStyle,
+                                                                                        }
+                                                                                    );
+                                                                                },
+                                                                                (e) => {
+                                                                                    toast.error(e.toString(), {
+                                                                                        style: toastStyle,
+                                                                                    });
                                                                                 }
                                                                             );
-                                                                        },
-                                                                        (e) => {
-                                                                            toast.error(e.toString(), {
-                                                                                style: toastStyle,
-                                                                            });
-                                                                        }
-                                                                    );
-                                                                } else {
-                                                                    const instanceConfig =
-                                                                        (await store.get(instanceKey)) ?? {};
-                                                                    builtinCollectionServices[
-                                                                        getServiceName(instanceKey)
-                                                                    ]
-                                                                        .collection(
-                                                                            selectedItem.text,
-                                                                            selectedItem.result,
-                                                                            {
-                                                                                config: instanceConfig,
-                                                                            }
-                                                                        )
-                                                                        .then(
-                                                                            (_) => {
-                                                                                toast.success(
-                                                                                    t(
-                                                                                        'translate.add_collection_success'
-                                                                                    ),
+                                                                        } else {
+                                                                            const instanceConfig =
+                                                                                (await store.get(instanceKey)) ?? {};
+                                                                            builtinCollectionServices[
+                                                                                getServiceName(instanceKey)
+                                                                            ]
+                                                                                .collection(
+                                                                                    selectedItem.text,
+                                                                                    selectedItem.result,
                                                                                     {
-                                                                                        style: toastStyle,
+                                                                                        config: instanceConfig,
+                                                                                    }
+                                                                                )
+                                                                                .then(
+                                                                                    (_) => {
+                                                                                        toast.success(
+                                                                                            t(
+                                                                                                'translate.add_collection_success'
+                                                                                            ),
+                                                                                            {
+                                                                                                style: toastStyle,
+                                                                                            }
+                                                                                        );
+                                                                                    },
+                                                                                    (e) => {
+                                                                                        toast.error(e.toString(), {
+                                                                                            style: toastStyle,
+                                                                                        });
                                                                                     }
                                                                                 );
-                                                                            },
-                                                                            (e) => {
-                                                                                toast.error(e.toString(), {
-                                                                                    style: toastStyle,
-                                                                                });
-                                                                            }
-                                                                        );
-                                                                }
-                                                            }}
-                                                        >
-                                                            <img
-                                                                src={
-                                                                    getServiceSouceType(instanceKey) ===
-                                                                    ServiceSourceType.PLUGIN
-                                                                        ? pluginList['collection'][
-                                                                              getServiceName(instanceKey)
-                                                                          ].icon
-                                                                        : builtinCollectionServices[
-                                                                              getServiceName(instanceKey)
-                                                                          ].info.icon
-                                                                }
-                                                                className='h-[24px] w-[24px]'
-                                                            />
-                                                        </Button>
-                                                    );
-                                                })}
-                                        </ButtonGroup>
-                                    </ModalFooter>
-                                </>
-                            )
-                        }
-                    </ModalContent>
+                                                                        }
+                                                                    }}
+                                                                >
+                                                                    <img
+                                                                        src={
+                                                                            getServiceSouceType(instanceKey) ===
+                                                                            ServiceSourceType.PLUGIN
+                                                                                ? pluginList['collection'][
+                                                                                      getServiceName(instanceKey)
+                                                                                  ].icon
+                                                                                : builtinCollectionServices[
+                                                                                      getServiceName(instanceKey)
+                                                                                  ].info.icon
+                                                                        }
+                                                                        className='h-[24px] w-[24px]'
+                                                                    />
+                                                                </Button>
+                                                            );
+                                                        })}
+                                                </ButtonGroup>
+                                            </Modal.Footer>
+                                        </>
+                                    )
+                                }
+                            </Modal.Dialog>
+                        </Modal.Container>
+                    </Modal.Backdrop>
                 </Modal>
             </>
         )

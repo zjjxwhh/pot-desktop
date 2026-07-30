@@ -1,4 +1,4 @@
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Spacer } from '@nextui-org/react';
+import { Modal, useOverlayState, Button } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import React from 'react';
 
@@ -13,6 +13,7 @@ import { PluginConfig } from '../../PluginConfig';
 
 export default function ConfigModal(props) {
     const { serviceInstanceKey, pluginList, isOpen, onOpenChange, updateServiceInstanceList } = props;
+    const state = useOverlayState({ isOpen, onOpenChange });
 
     const serviceSourceType = getServiceSouceType(serviceInstanceKey);
     const pluginServiceFlag = whetherPluginService(serviceInstanceKey);
@@ -24,60 +25,61 @@ export default function ConfigModal(props) {
         <></>
     ) : (
         <Modal
-            isOpen={isOpen}
-            onOpenChange={onOpenChange}
+            state={state}
             scrollBehavior='inside'
         >
-            <ModalContent className='max-h-[75vh]'>
-                {(onClose) => (
-                    <>
-                        <ModalHeader>
-                            {serviceSourceType === ServiceSourceType.BUILDIN && (
-                                <>
-                                    <img
-                                        src={builtinServices[serviceName].info.icon}
-                                        className='h-[24px] w-[24px] my-auto'
-                                        draggable={false}
+            <Modal.Backdrop>
+                <Modal.Container>
+                    <Modal.Dialog className='max-h-[75vh]'>
+                        {({ close }) => (
+                            <>
+                                <Modal.Header>
+                                    {serviceSourceType === ServiceSourceType.BUILDIN && (
+                                        <>
+                                            <img
+                                                src={builtinServices[serviceName].info.icon}
+                                                className='h-[24px] w-[24px] my-auto'
+                                                draggable={false}
+                                            />
+                                            <div className='w-2' />
+                                            <Modal.Heading>{t(`services.collection.${serviceName}.title`)}</Modal.Heading>
+                                        </>
+                                    )}
+                                    {pluginServiceFlag && (
+                                        <>
+                                            <img
+                                                src={pluginList[serviceName].icon}
+                                                className='h-[24px] w-[24px] my-auto'
+                                                draggable={false}
+                                            />
+                                            <div className='w-2' />
+                                            <Modal.Heading>{`${pluginList[serviceName].display} [${t('common.plugin')}]`}</Modal.Heading>
+                                        </>
+                                    )}
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <ConfigComponent
+                                        name={serviceName}
+                                        instanceKey={serviceInstanceKey}
+                                        pluginType='collection'
+                                        pluginList={pluginList}
+                                        updateServiceList={updateServiceInstanceList}
+                                        onClose={close}
                                     />
-                                    <Spacer x={2} />
-                                    {t(`services.collection.${serviceName}.title`)}
-                                </>
-                            )}
-                            {pluginServiceFlag && (
-                                <>
-                                    <img
-                                        src={pluginList[serviceName].icon}
-                                        className='h-[24px] w-[24px] my-auto'
-                                        draggable={false}
-                                    />
-
-                                    <Spacer x={2} />
-                                    {`${pluginList[serviceName].display} [${t('common.plugin')}]`}
-                                </>
-                            )}
-                        </ModalHeader>
-                        <ModalBody>
-                            <ConfigComponent
-                                name={serviceName}
-                                instanceKey={serviceInstanceKey}
-                                pluginType='collection'
-                                pluginList={pluginList}
-                                updateServiceList={updateServiceInstanceList}
-                                onClose={onClose}
-                            />
-                        </ModalBody>
-                        <ModalFooter>
-                            <Button
-                                color='danger'
-                                variant='light'
-                                onPress={onClose}
-                            >
-                                {t('common.cancel')}
-                            </Button>
-                        </ModalFooter>
-                    </>
-                )}
-            </ModalContent>
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    <Button
+                                        variant='danger-soft'
+                                        onPress={close}
+                                    >
+                                        {t('common.cancel')}
+                                    </Button>
+                                </Modal.Footer>
+                            </>
+                        )}
+                    </Modal.Dialog>
+                </Modal.Container>
+            </Modal.Backdrop>
         </Modal>
     );
 }

@@ -1,5 +1,5 @@
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
-import { Input, Button, Switch } from '@nextui-org/react';
+import { TextField, Label, Input, Button, Switch } from '@heroui/react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-shell';
@@ -48,27 +48,23 @@ export function Config(props) {
             >
                 <Toaster />
                 <div className='config-item'>
-                    <Input
-                        label={t('services.instance_name')}
-                        labelPlacement='outside-left'
+                    <h3 className='my-auto'>{t('services.instance_name')}</h3>
+                    <TextField
                         value={config[INSTANCE_NAME_CONFIG_KEY]}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setConfig({
                                 ...config,
                                 [INSTANCE_NAME_CONFIG_KEY]: value,
                             });
                         }}
-                    />
+                    >
+                        <Input variant='secondary' />
+                    </TextField>
                 </div>
                 <div className={'config-item'}>
                     <h3 className='my-auto'>{t('services.help')}</h3>
                     <Button
+                        size='sm'
                         onPress={() => {
                             open('https://pot-app.com/docs/api/translate/niutrans.html');
                         }}
@@ -79,39 +75,37 @@ export function Config(props) {
                 <div className={'config-item'}>
                     <Switch
                         isSelected={config['https'] ?? true}
-                        onValueChange={(v) => {
+                        onChange={(v) => {
                             setConfig({ ...config, https: v });
                         }}
-                        classNames={{
-                            base: 'flex flex-row-reverse justify-between w-full max-w-full',
-                        }}
+                        className='flex flex-row-reverse justify-between w-full max-w-full'
                     >
-                        {t('services.translate.niutrans.https')}
+                        <Switch.Content>
+                            <Switch.Control>
+                                <Switch.Thumb />
+                            </Switch.Control>
+                            {t('services.translate.niutrans.https')}
+                        </Switch.Content>
                     </Switch>
                 </div>
                 <div className={'config-item'}>
-                    <Input
-                        label={t('services.translate.niutrans.apikey')}
-                        labelPlacement='outside-left'
+                    <h3 className='my-auto'>{t('services.translate.niutrans.apikey')}</h3>
+                    <TextField
                         value={config['apikey']}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setConfig({
                                 ...config,
                                 apikey: value,
                             });
                         }}
-                    />
+                    >
+                        <Input variant='secondary' />
+                    </TextField>
                 </div>
                 <Button
                     type='submit'
-                    isLoading={isLoading}
-                    color='primary'
+                    isPending={isLoading}
+                    variant='primary'
                     fullWidth
                 >
                     {t('common.save')}

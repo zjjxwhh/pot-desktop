@@ -1,4 +1,4 @@
-import { Card, Button, CardFooter, Dropdown, DropdownMenu, DropdownTrigger, DropdownItem } from '@nextui-org/react';
+import { Card, Button, Dropdown, Label } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import { BiTransferAlt } from 'react-icons/bi';
 import React, { useEffect } from 'react';
@@ -40,39 +40,44 @@ export default function LanguageArea() {
 
     return (
         <Card
-            shadow='none'
-            className='bg-content2 h-[35px] rounded-[10px]'
+            className='bg-surface-secondary h-[35px] rounded-[10px]'
         >
-            <CardFooter className='bg-content2 flex justify-between p-0 rounded-[10px]'>
+            <Card.Footer className='bg-surface-secondary flex justify-between p-0 rounded-[10px]'>
                 <div className='flex'>
                     <Dropdown>
-                        <DropdownTrigger>
-                            <Button
-                                radius='sm'
-                                variant='light'
-                            >
-                                {t(`languages.${sourceLanguage}`)}
-                            </Button>
-                        </DropdownTrigger>
-                        <DropdownMenu
-                            aria-label='Source Language'
-                            className='max-h-[50vh] overflow-y-auto'
-                            onAction={(key) => {
-                                setSourceLanguage(key);
-                            }}
+                        <Button
+                            variant='tertiary'
+                            className='rounded-sm'
                         >
-                            <DropdownItem key='auto'>{t('languages.auto')}</DropdownItem>
-                            {languageList.map((x) => {
-                                return <DropdownItem key={x}>{t(`languages.${x}`)}</DropdownItem>;
-                            })}
-                        </DropdownMenu>
+                            {t(`languages.${sourceLanguage}`)}
+                        </Button>
+                        <Dropdown.Popover>
+                            <Dropdown.Menu
+                                aria-label='Source Language'
+                                className='max-h-[50vh] overflow-y-auto'
+                                onAction={(key) => {
+                                    setSourceLanguage(key);
+                                }}
+                            >
+                                <Dropdown.Item id='auto' textValue={t('languages.auto')}>
+                                    <Label>{t('languages.auto')}</Label>
+                                </Dropdown.Item>
+                                {languageList.map((x) => {
+                                    return (
+                                        <Dropdown.Item id={x} textValue={t(`languages.${x}`)} key={x}>
+                                            <Label>{t(`languages.${x}`)}</Label>
+                                        </Dropdown.Item>
+                                    );
+                                })}
+                            </Dropdown.Menu>
+                        </Dropdown.Popover>
                     </Dropdown>
                 </div>
                 <div className='flex'>
                     <Button
                         isIconOnly
                         size='sm'
-                        variant='light'
+                        variant='tertiary'
                         className='text-[20px]'
                         onPress={async () => {
                             if (sourceLanguage !== 'auto') {
@@ -101,28 +106,32 @@ export default function LanguageArea() {
                 </div>
                 <div className='flex'>
                     <Dropdown>
-                        <DropdownTrigger>
-                            <Button
-                                radius='sm'
-                                variant='light'
-                            >
-                                {t(`languages.${targetLanguage}`)}
-                            </Button>
-                        </DropdownTrigger>
-                        <DropdownMenu
-                            aria-label='Target Language'
-                            className='max-h-[50vh] overflow-y-auto'
-                            onAction={(key) => {
-                                setTargetLanguage(key);
-                            }}
+                        <Button
+                            variant='tertiary'
+                            className='rounded-sm'
                         >
-                            {languageList.map((x) => {
-                                return <DropdownItem key={x}>{t(`languages.${x}`)}</DropdownItem>;
-                            })}
-                        </DropdownMenu>
+                            {t(`languages.${targetLanguage}`)}
+                        </Button>
+                        <Dropdown.Popover>
+                            <Dropdown.Menu
+                                aria-label='Target Language'
+                                className='max-h-[50vh] overflow-y-auto'
+                                onAction={(key) => {
+                                    setTargetLanguage(key);
+                                }}
+                            >
+                                {languageList.map((x) => {
+                                    return (
+                                        <Dropdown.Item id={x} textValue={t(`languages.${x}`)} key={x}>
+                                            <Label>{t(`languages.${x}`)}</Label>
+                                        </Dropdown.Item>
+                                    );
+                                })}
+                            </Dropdown.Menu>
+                        </Dropdown.Popover>
                     </Dropdown>
                 </div>
-            </CardFooter>
+            </Card.Footer>
         </Card>
     );
 }

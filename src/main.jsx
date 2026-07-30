@@ -1,5 +1,4 @@
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
-import { NextUIProvider } from '@nextui-org/react';
 import { error as logError } from '@tauri-apps/plugin-log';
 import ReactDOM from 'react-dom/client';
 import React from 'react';
@@ -25,11 +24,9 @@ function renderApp() {
     const rootElement = document.getElementById('root');
     const root = ReactDOM.createRoot(rootElement);
     root.render(
-        <NextUIProvider>
-            <NextThemesProvider attribute='class'>
-                <App />
-            </NextThemesProvider>
-        </NextUIProvider>
+        <NextThemesProvider attribute='class'>
+            <App />
+        </NextThemesProvider>
     );
 }
 

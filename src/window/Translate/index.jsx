@@ -1,10 +1,10 @@
 import { readDir, BaseDirectory, readTextFile, exists } from '@tauri-apps/plugin-fs';
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { currentMonitor } from '@tauri-apps/api/window';
 import { appConfigDir, join } from '@tauri-apps/api/path';
 import { convertFileSrc } from '@tauri-apps/api/core';
-import { Spacer, Button } from '@nextui-org/react';
+import { Button } from '@heroui/react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import React, { useState, useEffect } from 'react';
 import { listen } from '@tauri-apps/api/event';
@@ -235,7 +235,7 @@ export default function Translate() {
         pluginList && (
             <div
                 className={`bg-background h-screen w-screen ${
-                    osType === 'linux' && 'rounded-[10px] border-1 border-default-100'
+                    osType === 'linux' && 'rounded-[10px] border-1 border-border'
                 }`}
             >
                 <div
@@ -246,8 +246,7 @@ export default function Translate() {
                     <Button
                         isIconOnly
                         size='sm'
-                        variant='flat'
-                        disableAnimation
+                        variant='tertiary'
                         className='my-auto bg-transparent'
                         onPress={() => {
                             if (pined) {
@@ -262,19 +261,18 @@ export default function Translate() {
                             setPined(!pined);
                         }}
                     >
-                        <BsPinFill className={`text-[20px] ${pined ? 'text-primary' : 'text-default-400'}`} />
+                        <BsPinFill className={`text-[20px] ${pined ? 'text-accent' : 'text-muted'}`} />
                     </Button>
                     <Button
                         isIconOnly
                         size='sm'
-                        variant='flat'
-                        disableAnimation
+                        variant='tertiary'
                         className={`my-auto ${osType === 'macos' && 'hidden'} bg-transparent`}
                         onPress={() => {
                             void appWindow.close();
                         }}
                     >
-                        <AiFillCloseCircle className='text-[20px] text-default-400' />
+                        <AiFillCloseCircle className='text-[20px] text-muted' />
                     </Button>
                 </div>
                 <div className={`${osType === 'linux' ? 'h-[calc(100vh-37px)]' : 'h-[calc(100vh-35px)]'} px-[8px]`}>
@@ -289,7 +287,7 @@ export default function Translate() {
                         </div>
                         <div className={`${hideLanguage && 'hidden'}`}>
                             <LanguageArea />
-                            <Spacer y={2} />
+                            <div className='h-2' />
                         </div>
                         <DragDropContext onDragEnd={onDragEnd}>
                             <Droppable
@@ -328,7 +326,7 @@ export default function Translate() {
                                                                     pluginList={pluginList}
                                                                     serviceInstanceConfigMap={serviceInstanceConfigMap}
                                                                 />
-                                                                <Spacer y={2} />
+                                                                <div className='h-2' />
                                                             </div>
                                                         )}
                                                     </Draggable>

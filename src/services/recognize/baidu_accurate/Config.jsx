@@ -1,5 +1,5 @@
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
-import { Button, Input } from '@nextui-org/react';
+import { Button, Input, Label, TextField } from '@heroui/react';
 import { open } from '@tauri-apps/plugin-shell';
 import React, { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
@@ -51,27 +51,23 @@ export function Config(props) {
             >
                 <Toaster />
                 <div className='config-item'>
-                    <Input
-                        label={t('services.instance_name')}
-                        labelPlacement='outside-left'
+                    <h3 className='my-auto'>{t('services.instance_name')}</h3>
+                    <TextField
                         value={config[INSTANCE_NAME_CONFIG_KEY]}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setConfig({
                                 ...config,
                                 [INSTANCE_NAME_CONFIG_KEY]: value,
                             });
                         }}
-                    />
+                    >
+                        <Input variant='secondary' />
+                    </TextField>
                 </div>
                 <div className={'config-item'}>
                     <h3 className='my-auto'>{t('services.help')}</h3>
                     <Button
+                        size='sm'
                         onPress={() => {
                             open('https://pot-app.com/docs/api/recognize/baidu.html');
                         }}
@@ -80,47 +76,37 @@ export function Config(props) {
                     </Button>
                 </div>
                 <div className={'config-item'}>
-                    <Input
-                        label={t('services.recognize.baidu_accurate_ocr.client_id')}
-                        labelPlacement='outside-left'
+                    <h3 className='my-auto'>{t('services.recognize.baidu_accurate_ocr.client_id')}</h3>
+                    <TextField
                         value={config['client_id']}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setConfig({
                                 ...config,
                                 client_id: value,
                             });
                         }}
-                    />
+                    >
+                        <Input variant='secondary' />
+                    </TextField>
                 </div>
                 <div className={'config-item'}>
-                    <Input
-                        label={t('services.recognize.baidu_accurate_ocr.client_secret')}
-                        labelPlacement='outside-left'
+                    <h3 className='my-auto'>{t('services.recognize.baidu_accurate_ocr.client_secret')}</h3>
+                    <TextField
                         value={config['client_secret']}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setConfig({
                                 ...config,
                                 client_secret: value,
                             });
                         }}
-                    />
+                    >
+                        <Input variant='secondary' />
+                    </TextField>
                 </div>
                 <Button
                     type='submit'
-                    isLoading={isLoading}
-                    color='primary'
+                    isPending={isLoading}
+                    variant='primary'
                     fullWidth
                 >
                     {t('common.save')}

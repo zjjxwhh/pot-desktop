@@ -1,12 +1,5 @@
-import { DropdownTrigger } from '@nextui-org/react';
-import { DropdownMenu } from '@nextui-org/react';
-import { DropdownItem } from '@nextui-org/react';
 import { useTranslation } from 'react-i18next';
-import { CardBody } from '@nextui-org/react';
-import { Dropdown } from '@nextui-org/react';
-import { Switch } from '@nextui-org/react';
-import { Button } from '@nextui-org/react';
-import { Card } from '@nextui-org/react';
+import { Dropdown, Switch, Button, Card, Label } from '@heroui/react';
 import React from 'react';
 
 import { languageList } from '../../../../utils/language';
@@ -21,26 +14,32 @@ export default function Recognize() {
     const { t } = useTranslation();
     return (
         <Card className='mb-[10px]'>
-            <CardBody>
+            <Card.Content>
                 <div className='config-item'>
                     <h3 className='my-auto mx-0'>{t('config.recognize.language')}</h3>
                     {recognizeLanguage !== null && (
                         <Dropdown>
-                            <DropdownTrigger>
-                                <Button variant='bordered'>{t(`languages.${recognizeLanguage}`)}</Button>
-                            </DropdownTrigger>
-                            <DropdownMenu
-                                aria-label='recognize language'
-                                className='max-h-[50vh] overflow-y-auto'
-                                onAction={(key) => {
-                                    setRecognizeLanguage(key);
-                                }}
-                            >
-                                <DropdownItem key='auto'>{t('languages.auto')}</DropdownItem>
-                                {languageList.map((item) => {
-                                    return <DropdownItem key={item}>{t(`languages.${item}`)}</DropdownItem>;
-                                })}
-                            </DropdownMenu>
+                            <Button variant='secondary'>{t(`languages.${recognizeLanguage}`)}</Button>
+                            <Dropdown.Popover>
+                                <Dropdown.Menu
+                                    aria-label='recognize language'
+                                    className='max-h-[50vh] overflow-y-auto'
+                                    onAction={(key) => {
+                                        setRecognizeLanguage(key);
+                                    }}
+                                >
+                                    <Dropdown.Item id='auto' textValue={t('languages.auto')}>
+                                        <Label>{t('languages.auto')}</Label>
+                                    </Dropdown.Item>
+                                    {languageList.map((item) => {
+                                        return (
+                                            <Dropdown.Item id={item} key={item} textValue={t(`languages.${item}`)}>
+                                                <Label>{t(`languages.${item}`)}</Label>
+                                            </Dropdown.Item>
+                                        );
+                                    })}
+                                </Dropdown.Menu>
+                            </Dropdown.Popover>
                         </Dropdown>
                     )}
                 </div>
@@ -49,10 +48,16 @@ export default function Recognize() {
                     {deleteNewline !== null && (
                         <Switch
                             isSelected={deleteNewline}
-                            onValueChange={(v) => {
+                            onChange={(v) => {
                                 setDeleteNewline(v);
                             }}
-                        />
+                        >
+                            <Switch.Content>
+                                <Switch.Control>
+                                    <Switch.Thumb />
+                                </Switch.Control>
+                            </Switch.Content>
+                        </Switch>
                     )}
                 </div>
                 <div className='config-item'>
@@ -60,10 +65,16 @@ export default function Recognize() {
                     {autoCopy !== null && (
                         <Switch
                             isSelected={autoCopy}
-                            onValueChange={(v) => {
+                            onChange={(v) => {
                                 setAutoCopy(v);
                             }}
-                        />
+                        >
+                            <Switch.Content>
+                                <Switch.Control>
+                                    <Switch.Thumb />
+                                </Switch.Control>
+                            </Switch.Content>
+                        </Switch>
                     )}
                 </div>
                 <div className='config-item'>
@@ -71,10 +82,16 @@ export default function Recognize() {
                     {closeOnBlur !== null && (
                         <Switch
                             isSelected={closeOnBlur}
-                            onValueChange={(v) => {
+                            onChange={(v) => {
                                 setCloseOnBlur(v);
                             }}
-                        />
+                        >
+                            <Switch.Content>
+                                <Switch.Control>
+                                    <Switch.Thumb />
+                                </Switch.Control>
+                            </Switch.Content>
+                        </Switch>
                     )}
                 </div>
                 <div className='config-item'>
@@ -82,13 +99,19 @@ export default function Recognize() {
                     {hideWindow !== null && (
                         <Switch
                             isSelected={hideWindow}
-                            onValueChange={(v) => {
+                            onChange={(v) => {
                                 setHideWindow(v);
                             }}
-                        />
+                        >
+                            <Switch.Content>
+                                <Switch.Control>
+                                    <Switch.Thumb />
+                                </Switch.Control>
+                            </Switch.Content>
+                        </Switch>
                     )}
                 </div>
-            </CardBody>
+            </Card.Content>
         </Card>
     );
 }

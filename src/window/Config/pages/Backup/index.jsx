@@ -1,17 +1,18 @@
 import { readTextFile, BaseDirectory } from '@tauri-apps/plugin-fs';
-import { DropdownTrigger } from '@nextui-org/react';
-import { useDisclosure } from '@nextui-org/react';
 import toast, { Toaster } from 'react-hot-toast';
-import { DropdownMenu } from '@nextui-org/react';
-import { DropdownItem } from '@nextui-org/react';
 import { useTranslation } from 'react-i18next';
-import { CardBody } from '@nextui-org/react';
-import { Dropdown } from '@nextui-org/react';
 import { warn } from '@tauri-apps/plugin-log';
-import { Button } from '@nextui-org/react';
-import { Input } from '@nextui-org/react';
-import { Card } from '@nextui-org/react';
-import { Avatar, Tooltip } from '@nextui-org/react';
+import {
+    Dropdown,
+    Button,
+    TextField,
+    Label,
+    Input,
+    Card,
+    Avatar,
+    Tooltip,
+    useOverlayState,
+} from '@heroui/react';
 import React, { useEffect, useState } from 'react';
 
 import { useConfig, useToastStyle } from '../../../../hooks';
@@ -33,16 +34,8 @@ export default function Backup() {
     const [aliyunUserInfo, setAliyunUserInfo] = useState(null);
     const [aliyunAccessToken, setAliyunAccessToken] = useConfig('aliyun_access_token', '');
     // const [aliyunRefreshToken, setAliyunRefreshToken] = useConfig('aliyun_refresh_token', '');
-    const {
-        isOpen: isWebDavListOpen,
-        onOpen: onWebDavListOpen,
-        onOpenChange: onWebDavListOpenChange,
-    } = useDisclosure();
-    const {
-        isOpen: isAliyunListOpen,
-        onOpen: onAliyunListOpen,
-        onOpenChange: onAliyunListOpenChange,
-    } = useDisclosure();
+    const webdavState = useOverlayState();
+    const aliyunState = useOverlayState();
     const [uploading, setUploading] = useState(false);
     const toastStyle = useToastStyle();
     const { t } = useTranslation();
@@ -89,7 +82,7 @@ export default function Backup() {
     const onBackupListOpen = () => {
         switch (backupType) {
             case 'webdav':
-                onWebDavListOpen();
+                webdavState.open();
                 break;
             case 'local':
                 local.get().then(
@@ -105,7 +98,7 @@ export default function Backup() {
                 if (aliyunAccessToken === '') {
                     toast.error(t('config.backup.aliyun_login_first'), { style: toastStyle });
                 } else {
-                    onAliyunListOpen();
+                    aliyunState.open();
                 }
 
                 break;
@@ -181,24 +174,30 @@ export default function Backup() {
     return (
         <Card className='mb-[10px]'>
             <Toaster />
-            <CardBody>
+            <Card.Content>
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('config.backup.type')}</h3>
                     {backupType !== null && (
                         <Dropdown>
-                            <DropdownTrigger>
-                                <Button variant='bordered'>{t(`config.backup.${backupType}`)}</Button>
-                            </DropdownTrigger>
-                            <DropdownMenu
-                                aria-label='backup type'
-                                onAction={(key) => {
-                                    setBackupType(key);
-                                }}
-                            >
-                                <DropdownItem key='webdav'>{t('config.backup.webdav')}</DropdownItem>
-                                <DropdownItem key='aliyun'>{t('config.backup.aliyun')}</DropdownItem>
-                                <DropdownItem key='local'>{t('config.backup.local')}</DropdownItem>
-                            </DropdownMenu>
+                            <Button variant='secondary'>{t(`config.backup.${backupType}`)}</Button>
+                            <Dropdown.Popover>
+                                <Dropdown.Menu
+                                    aria-label='backup type'
+                                    onAction={(key) => {
+                                        setBackupType(key);
+                                    }}
+                                >
+                                    <Dropdown.Item id='webdav' textValue={t('config.backup.webdav')}>
+                                        <Label>{t('config.backup.webdav')}</Label>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item id='aliyun' textValue={t('config.backup.aliyun')}>
+                                        <Label>{t('config.backup.aliyun')}</Label>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item id='local' textValue={t('config.backup.local')}>
+                                        <Label>{t('config.backup.local')}</Label>
+                                    </Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown.Popover>
                         </Dropdown>
                     )}
                 </div>
@@ -206,44 +205,53 @@ export default function Backup() {
                     <div className='config-item'>
                         <h3 className='my-auto'>{t('config.backup.webdav_url')}</h3>
                         {davUrl !== null && (
-                            <Input
-                                variant='bordered'
+                            <TextField
                                 value={davUrl}
-                                label={t('config.backup.webdav_url')}
-                                onValueChange={(v) => {
+                                onChange={(v) => {
                                     setDavUrl(v);
                                 }}
                                 className='max-w-[300px]'
-                            />
+                            >
+                                <Input
+                                    variant='secondary'
+                                    placeholder={t('config.backup.webdav_url')}
+                                />
+                            </TextField>
                         )}
                     </div>
                     <div className='config-item'>
                         <h3 className='my-auto'>{t('config.backup.username')}</h3>
                         {davUserName !== null && (
-                            <Input
-                                variant='bordered'
+                            <TextField
                                 value={davUserName}
-                                label={t('config.backup.username')}
-                                onValueChange={(v) => {
+                                onChange={(v) => {
                                     setDavUserName(v);
                                 }}
                                 className='max-w-[300px]'
-                            />
+                            >
+                                <Input
+                                    variant='secondary'
+                                    placeholder={t('config.backup.username')}
+                                />
+                            </TextField>
                         )}
                     </div>
                     <div className='config-item'>
                         <h3 className='my-auto'>{t('config.backup.password')}</h3>
                         {davPassword !== null && (
-                            <Input
-                                type='password'
-                                variant='bordered'
+                            <TextField
                                 value={davPassword}
-                                label={t('config.backup.password')}
-                                onValueChange={(v) => {
+                                onChange={(v) => {
                                     setDavPassword(v);
                                 }}
                                 className='max-w-[300px]'
-                            />
+                            >
+                                <Input
+                                    type='password'
+                                    variant='secondary'
+                                    placeholder={t('config.backup.password')}
+                                />
+                            </TextField>
                         )}
                     </div>
                 </div>
@@ -263,8 +271,8 @@ export default function Backup() {
                                 placement='bottom-end'
                             >
                                 <Button
-                                    variant='light'
-                                    onClick={() => {
+                                    variant='tertiary'
+                                    onPress={() => {
                                         setAliyunAccessToken('');
                                         // setAliyunRefreshToken('');
                                         setAliyunUserInfo(null);
@@ -283,32 +291,28 @@ export default function Backup() {
                 </div>
                 <div className='flex justify-around'>
                     <Button
-                        color='success'
-                        variant='flat'
-                        isLoading={uploading}
+                        variant='primary'
+                        isPending={uploading}
                         onPress={onBackup}
                     >
                         {t('config.backup.backup')}
                     </Button>
                     <Button
-                        color='secondary'
-                        variant='flat'
+                        variant='secondary'
                         onPress={onBackupListOpen}
                     >
                         {t('config.backup.restore')}
                     </Button>
                 </div>
-            </CardBody>
+            </Card.Content>
             <WebDavModal
-                isOpen={isWebDavListOpen}
-                onOpenChange={onWebDavListOpenChange}
+                state={webdavState}
                 url={davUrl}
                 username={davUserName}
                 password={davPassword}
             />
             <AliyunModal
-                isOpen={isAliyunListOpen}
-                onOpenChange={onAliyunListOpenChange}
+                state={aliyunState}
                 accessToken={aliyunAccessToken}
                 // refreshToken={aliyunRefreshToken}
             />

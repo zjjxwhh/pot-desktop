@@ -46,6 +46,10 @@ const routes = [
         path: '/',
         element: <Navigate to='/general' />,
     },
+    {
+        path: '*',
+        element: <Navigate to='/general' />,
+    },
 ];
 
 export default routes;

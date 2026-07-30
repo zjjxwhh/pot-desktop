@@ -1,4 +1,4 @@
-import { Card, CardBody, CardFooter, Button, Tooltip } from '@nextui-org/react';
+import { Card, Button, Tooltip } from '@heroui/react';
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import React, { useEffect, useRef } from 'react';
 import { listen } from '@tauri-apps/api/event';
@@ -47,11 +47,9 @@ export default function ImageArea() {
 
     return (
         <Card
-            shadow='none'
-            className='bg-content1 h-full ml-[12px] mr-[6px]'
-            radius='10'
+            className='bg-surface h-full ml-[12px] mr-[6px] rounded-[10px]'
         >
-            <CardBody className='bg-content1 h-full p-0'>
+            <Card.Content className='bg-surface h-full p-0'>
                 {base64 !== '' && (
                     <img
                         ref={imgRef}
@@ -60,13 +58,13 @@ export default function ImageArea() {
                         src={'data:image/png;base64,' + base64}
                     />
                 )}
-            </CardBody>
-            <CardFooter className='bg-content1 flex justify-start px-[12px]'>
+            </Card.Content>
+            <Card.Footer className='bg-surface flex justify-start px-[12px]'>
                 <Tooltip content={t('recognize.copy_img')}>
                     <Button
                         isIconOnly
                         size='sm'
-                        variant='light'
+                        variant='tertiary'
                         onPress={async () => {
                             await invoke('copy_img', {
                                 width: imgRef.current.naturalWidth,
@@ -77,7 +75,7 @@ export default function ImageArea() {
                         <MdContentCopy className='text-[16px]' />
                     </Button>
                 </Tooltip>
-            </CardFooter>
+            </Card.Footer>
         </Card>
     );
 }

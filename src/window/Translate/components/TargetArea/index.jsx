@@ -1,16 +1,11 @@
 import {
     Card,
-    CardBody,
-    CardHeader,
-    CardFooter,
     Button,
     ButtonGroup,
     Dropdown,
-    DropdownItem,
-    DropdownMenu,
-    DropdownTrigger,
+    Label,
     Tooltip,
-} from '@nextui-org/react';
+} from '@heroui/react';
 import { BiCollapseVertical, BiExpandVertical } from 'react-icons/bi';
 import { BaseDirectory, readTextFile } from '@tauri-apps/plugin-fs';
 import React, { useEffect, useState, useRef } from 'react';
@@ -18,16 +13,14 @@ import { writeText } from '@tauri-apps/plugin-clipboard-manager';
 import PulseLoader from 'react-spinners/PulseLoader';
 import { TbTransformFilled } from 'react-icons/tb';
 import { HiOutlineVolumeUp } from 'react-icons/hi';
-import { semanticColors } from '@nextui-org/theme';
 import toast, { Toaster } from 'react-hot-toast';
 import { MdContentCopy } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
 import Database from '@tauri-apps/plugin-sql';
 import { GiCycle } from 'react-icons/gi';
-import { useTheme } from 'next-themes';
-import { useAtomValue } from 'jotai';
 import { nanoid } from 'nanoid';
 import { useSpring, animated } from '@react-spring/web';
+import { useAtomValue } from 'jotai';
 import useMeasure from 'react-use-measure';
 
 import * as builtinCollectionServices from '../../../../services/collection';
@@ -84,7 +77,6 @@ export default function TargetArea(props) {
     const textAreaRef = useRef();
     const toastStyle = useToastStyle();
     const speak = useVoice();
-    const theme = useTheme();
 
     useEffect(() => {
         if (error) {
@@ -375,69 +367,68 @@ export default function TargetArea(props) {
 
     return (
         <Card
-            shadow='none'
             className='rounded-[10px]'
         >
             <Toaster />
-            <CardHeader
-                className={`flex justify-between py-1 px-0 bg-content2 h-[30px] ${hide ? 'rounded-[10px]' : 'rounded-t-[10px]'}`}
+            <Card.Header
+                className={`flex justify-between py-1 px-0 bg-surface-secondary h-[30px] ${hide ? 'rounded-[10px]' : 'rounded-t-[10px]'}`}
                 {...drag}
             >
                 {/* current service instance and available service instance to change */}
                 <div className='flex'>
                     <Dropdown>
-                        <DropdownTrigger>
-                            <Button
-                                size='sm'
-                                variant='solid'
-                                className='bg-transparent'
-                                startContent={
-                                    whetherPluginService(currentTranslateServiceInstanceKey) ? (
-                                        <img
-                                            src={
-                                                pluginList['translate'][
-                                                    getServiceName(currentTranslateServiceInstanceKey)
-                                                ].icon
-                                            }
-                                            className='h-[20px] my-auto'
-                                        />
-                                    ) : (
-                                        <img
-                                            src={
-                                                builtinServices[getServiceName(currentTranslateServiceInstanceKey)].info
-                                                    .icon
-                                            }
-                                            className='h-[20px] my-auto'
-                                        />
-                                    )
-                                }
-                            >
-                                {whetherPluginService(currentTranslateServiceInstanceKey) ? (
-                                    <div className='my-auto'>{`${getInstanceName(currentTranslateServiceInstanceKey, () => pluginList['translate'][getServiceName(currentTranslateServiceInstanceKey)].display)} `}</div>
-                                ) : (
-                                    <div className='my-auto'>
-                                        {getInstanceName(currentTranslateServiceInstanceKey, () =>
-                                            t(
-                                                `services.translate.${getServiceName(currentTranslateServiceInstanceKey)}.title`
-                                            )
-                                        )}
-                                    </div>
-                                )}
-                            </Button>
-                        </DropdownTrigger>
-                        <DropdownMenu
-                            aria-label='app language'
-                            className='max-h-[40vh] overflow-y-auto'
-                            onAction={(key) => {
-                                setCurrentTranslateServiceInstanceKey(key);
-                            }}
+                        <Button
+                            size='sm'
+                            className='bg-transparent'
                         >
-                            {translateServiceInstanceList.map((instanceKey) => {
-                                return (
-                                    <DropdownItem
-                                        key={instanceKey}
-                                        startContent={
-                                            whetherPluginService(instanceKey) ? (
+                            {whetherPluginService(currentTranslateServiceInstanceKey) ? (
+                                <img
+                                    src={
+                                        pluginList['translate'][
+                                            getServiceName(currentTranslateServiceInstanceKey)
+                                        ].icon
+                                    }
+                                    className='h-[20px] my-auto'
+                                />
+                            ) : (
+                                <img
+                                    src={
+                                        builtinServices[getServiceName(currentTranslateServiceInstanceKey)].info
+                                            .icon
+                                    }
+                                    className='h-[20px] my-auto'
+                                />
+                            )}
+                            {whetherPluginService(currentTranslateServiceInstanceKey) ? (
+                                <div className='my-auto'>{`${getInstanceName(currentTranslateServiceInstanceKey, () => pluginList['translate'][getServiceName(currentTranslateServiceInstanceKey)].display)} `}</div>
+                            ) : (
+                                <div className='my-auto'>
+                                    {getInstanceName(currentTranslateServiceInstanceKey, () =>
+                                        t(
+                                            `services.translate.${getServiceName(currentTranslateServiceInstanceKey)}.title`
+                                        )
+                                    )}
+                                </div>
+                            )}
+                        </Button>
+                        <Dropdown.Popover>
+                            <Dropdown.Menu
+                                aria-label='app language'
+                                className='max-h-[40vh] overflow-y-auto'
+                                onAction={(key) => {
+                                    setCurrentTranslateServiceInstanceKey(key);
+                                }}
+                            >
+                                {translateServiceInstanceList.map((instanceKey) => {
+                                    return (
+                                        <Dropdown.Item
+                                            id={instanceKey}
+                                            key={instanceKey}
+                                            textValue={whetherPluginService(instanceKey)
+                                                ? getInstanceName(instanceKey, () => pluginList['translate'][getServiceName(instanceKey)].display)
+                                                : getInstanceName(instanceKey, () => t(`services.translate.${getServiceName(instanceKey)}.title`))}
+                                        >
+                                            {whetherPluginService(instanceKey) ? (
                                                 <img
                                                     src={pluginList['translate'][getServiceName(instanceKey)].icon}
                                                     className='h-[20px] my-auto'
@@ -447,26 +438,27 @@ export default function TargetArea(props) {
                                                     src={builtinServices[getServiceName(instanceKey)].info.icon}
                                                     className='h-[20px] my-auto'
                                                 />
-                                            )
-                                        }
-                                    >
-                                        {whetherPluginService(instanceKey) ? (
-                                            <div className='my-auto'>{`${getInstanceName(instanceKey, () => pluginList['translate'][getServiceName(instanceKey)].display)} `}</div>
-                                        ) : (
-                                            <div className='my-auto'>
-                                                {getInstanceName(instanceKey, () =>
-                                                    t(`services.translate.${getServiceName(instanceKey)}.title`)
+                                            )}
+                                            <Label>
+                                                {whetherPluginService(instanceKey) ? (
+                                                    <div className='my-auto'>{`${getInstanceName(instanceKey, () => pluginList['translate'][getServiceName(instanceKey)].display)} `}</div>
+                                                ) : (
+                                                    <div className='my-auto'>
+                                                        {getInstanceName(instanceKey, () =>
+                                                            t(`services.translate.${getServiceName(instanceKey)}.title`)
+                                                        )}
+                                                    </div>
                                                 )}
-                                            </div>
-                                        )}
-                                    </DropdownItem>
-                                );
-                            })}
-                        </DropdownMenu>
+                                            </Label>
+                                        </Dropdown.Item>
+                                    );
+                                })}
+                            </Dropdown.Menu>
+                        </Dropdown.Popover>
                     </Dropdown>
                     <PulseLoader
                         loading={isLoading}
-                        color={theme === 'dark' ? semanticColors.dark.default[500] : semanticColors.light.default[500]}
+                        color={'var(--muted)'}
                         size={8}
                         cssOverride={{
                             display: 'inline-block',
@@ -480,7 +472,7 @@ export default function TargetArea(props) {
                     <Button
                         size='sm'
                         isIconOnly
-                        variant='light'
+                        variant='tertiary'
                         className='h-[20px] w-[20px]'
                         onPress={() => setHide(!hide)}
                     >
@@ -491,11 +483,11 @@ export default function TargetArea(props) {
                         )}
                     </Button>
                 </div>
-            </CardHeader>
+            </Card.Header>
             <animated.div style={{ ...springs }}>
                 <div ref={boundRef}>
                     {/* result content */}
-                    <CardBody className={`p-[12px] pb-0 ${hide && 'h-0 p-0'}`}>
+                    <Card.Content className={`p-[12px] pb-0 ${hide && 'h-0 p-0'}`}>
                         {typeof result === 'string' ? (
                             <textarea
                                 ref={textAreaRef}
@@ -511,14 +503,14 @@ export default function TargetArea(props) {
                                             <div key={nanoid()}>
                                                 {pronunciation['region'] && (
                                                     <span
-                                                        className={`text-[${appFontSize}px] mr-[12px] text-default-500`}
+                                                        className={`text-[${appFontSize}px] mr-[12px] text-muted`}
                                                     >
                                                         {pronunciation['region']}
                                                     </span>
                                                 )}
                                                 {pronunciation['symbol'] && (
                                                     <span
-                                                        className={`text-[${appFontSize}px] mr-[12px] text-default-500`}
+                                                        className={`text-[${appFontSize}px] mr-[12px] text-muted`}
                                                     >
                                                         {pronunciation['symbol']}
                                                     </span>
@@ -545,7 +537,7 @@ export default function TargetArea(props) {
                                                                 {index === 0 ? (
                                                                     <>
                                                                         <span
-                                                                            className={`text-[${appFontSize - 2}px] text-default-500 mr-[12px]`}
+                                                                            className={`text-[${appFontSize - 2}px] text-muted mr-[12px]`}
                                                                         >
                                                                             {explanations['trait']}
                                                                         </span>
@@ -558,7 +550,7 @@ export default function TargetArea(props) {
                                                                     </>
                                                                 ) : (
                                                                     <span
-                                                                        className={`text-[${appFontSize - 2}px] text-default-500 select-text mr-1`}
+                                                                        className={`text-[${appFontSize - 2}px] text-muted select-text mr-1`}
                                                                         key={nanoid()}
                                                                     >
                                                                         {explain}
@@ -575,7 +567,7 @@ export default function TargetArea(props) {
                                     result['associations'].map((association) => {
                                         return (
                                             <div key={nanoid()}>
-                                                <span className={`text-[${appFontSize}px] text-default-500`}>
+                                                <span className={`text-[${appFontSize}px] text-muted`}>
                                                     {association}
                                                 </span>
                                             </div>
@@ -601,7 +593,7 @@ export default function TargetArea(props) {
                                                 <>
                                                     {sentence['target'] && (
                                                         <div
-                                                            className={`text-[${appFontSize}px] select-text text-default-500`}
+                                                            className={`text-[${appFontSize}px] select-text text-muted`}
                                                             dangerouslySetInnerHTML={{
                                                                 __html: sentence['target'],
                                                             }}
@@ -627,16 +619,16 @@ export default function TargetArea(props) {
                         ) : (
                             <></>
                         )}
-                    </CardBody>
-                    <CardFooter
-                        className={`bg-content1 rounded-none rounded-b-[10px] flex px-[12px] p-[5px] ${hide && 'hidden'}`}
+                    </Card.Content>
+                    <Card.Footer
+                        className={`bg-surface rounded-none rounded-b-[10px] flex px-[12px] p-[5px] ${hide && 'hidden'}`}
                     >
                         <ButtonGroup>
                             {/* speak button */}
                             <Tooltip content={t('translate.speak')}>
                                 <Button
                                     isIconOnly
-                                    variant='light'
+                                    variant='tertiary'
                                     size='sm'
                                     isDisabled={typeof result !== 'string' || result === ''}
                                     onPress={() => {
@@ -652,7 +644,7 @@ export default function TargetArea(props) {
                             <Tooltip content={t('translate.copy')}>
                                 <Button
                                     isIconOnly
-                                    variant='light'
+                                    variant='tertiary'
                                     size='sm'
                                     isDisabled={typeof result !== 'string' || result === ''}
                                     onPress={() => {
@@ -666,7 +658,7 @@ export default function TargetArea(props) {
                             <Tooltip content={t('translate.translate_back')}>
                                 <Button
                                     isIconOnly
-                                    variant='light'
+                                    variant='tertiary'
                                     size='sm'
                                     isDisabled={typeof result !== 'string' || result === ''}
                                     onPress={async () => {
@@ -788,7 +780,7 @@ export default function TargetArea(props) {
                             <Tooltip content={t('translate.retry')}>
                                 <Button
                                     isIconOnly
-                                    variant='light'
+                                    variant='tertiary'
                                     size='sm'
                                     className={`${error === '' && 'hidden'}`}
                                     onPress={() => {
@@ -807,7 +799,7 @@ export default function TargetArea(props) {
                                         <Button
                                             key={collectionServiceInstanceName}
                                             isIconOnly
-                                            variant='light'
+                                            variant='tertiary'
                                             size='sm'
                                             onPress={async () => {
                                                 if (
@@ -872,7 +864,7 @@ export default function TargetArea(props) {
                                     );
                                 })}
                         </ButtonGroup>
-                    </CardFooter>
+                    </Card.Footer>
                 </div>
             </animated.div>
         </Card>

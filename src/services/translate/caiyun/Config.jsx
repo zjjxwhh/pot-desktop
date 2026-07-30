@@ -1,5 +1,5 @@
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
-import { Input, Button } from '@nextui-org/react';
+import { TextField, Label, Input, Button } from '@heroui/react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-shell';
@@ -47,27 +47,23 @@ export function Config(props) {
             >
                 <Toaster />
                 <div className='config-item'>
-                    <Input
-                        label={t('services.instance_name')}
-                        labelPlacement='outside-left'
+                    <h3 className='my-auto'>{t('services.instance_name')}</h3>
+                    <TextField
                         value={config[INSTANCE_NAME_CONFIG_KEY]}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setConfig({
                                 ...config,
                                 [INSTANCE_NAME_CONFIG_KEY]: value,
                             });
                         }}
-                    />
+                    >
+                        <Input variant='secondary' />
+                    </TextField>
                 </div>
                 <div className={'config-item'}>
                     <h3 className='my-auto'>{t('services.help')}</h3>
                     <Button
+                        size='sm'
                         onPress={() => {
                             open('https://pot-app.com/docs/api/translate/caiyun.html');
                         }}
@@ -76,28 +72,23 @@ export function Config(props) {
                     </Button>
                 </div>
                 <div className={'config-item'}>
-                    <Input
-                        label={t('services.translate.caiyun.token')}
-                        labelPlacement='outside-left'
+                    <h3 className='my-auto'>{t('services.translate.caiyun.token')}</h3>
+                    <TextField
                         value={config['token']}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setConfig({
                                 ...config,
                                 token: value,
                             });
                         }}
-                    />
+                    >
+                        <Input variant='secondary' />
+                    </TextField>
                 </div>
                 <Button
                     type='submit'
-                    isLoading={isLoading}
-                    color='primary'
+                    isPending={isLoading}
+                    variant='primary'
                     fullWidth
                 >
                     {t('common.save')}

@@ -1,12 +1,8 @@
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
-import { Input, Button, Textarea } from '@nextui-org/react';
-import { DropdownTrigger } from '@nextui-org/react';
+import { TextField, Label, Input, TextArea, Button, Dropdown } from '@heroui/react';
 import { MdDeleteOutline } from 'react-icons/md';
-import { DropdownMenu } from '@nextui-org/react';
-import { DropdownItem } from '@nextui-org/react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
-import { Dropdown } from '@nextui-org/react';
 import { open } from '@tauri-apps/plugin-shell';
 import React, { useState } from 'react';
 
@@ -67,27 +63,23 @@ export function Config(props) {
             >
                 <Toaster />
                 <div className='config-item'>
-                    <Input
-                        label={t('services.instance_name')}
-                        labelPlacement='outside-left'
+                    <h3 className='my-auto'>{t('services.instance_name')}</h3>
+                    <TextField
                         value={serviceConfig[INSTANCE_NAME_CONFIG_KEY]}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setServiceConfig({
                                 ...serviceConfig,
                                 [INSTANCE_NAME_CONFIG_KEY]: value,
                             });
                         }}
-                    />
+                    >
+                        <Input variant='secondary' />
+                    </TextField>
                 </div>
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('services.help')}</h3>
                     <Button
+                        size='sm'
                         onPress={() => {
                             open('https://pot-app.com/docs/api/translate/chatglm.html');
                         }}
@@ -98,63 +90,65 @@ export function Config(props) {
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('services.translate.chatglm.model')}</h3>
                     <Dropdown>
-                        <DropdownTrigger>
-                            <Button variant='bordered'>{serviceConfig.model}</Button>
-                        </DropdownTrigger>
-                        <DropdownMenu
-                            autoFocus='first'
-                            aria-label='model'
-                            onAction={(key) => {
-                                setServiceConfig({
-                                    ...serviceConfig,
-                                    model: key,
-                                });
-                            }}
+                        <Button
+                            size='sm'
+                            variant='secondary'
                         >
-                            {availableModels.map(it => (
-                                <DropdownItem key={it}>
-                                    {it}
-                                </DropdownItem>
-                            ))}
-                        </DropdownMenu>
+                            {serviceConfig.model}
+                        </Button>
+                        <Dropdown.Popover>
+                            <Dropdown.Menu
+                                autoFocus='first'
+                                aria-label='model'
+                                onAction={(key) => {
+                                    setServiceConfig({
+                                        ...serviceConfig,
+                                        model: key,
+                                    });
+                                }}
+                            >
+                                {availableModels.map((it) => (
+                                    <Dropdown.Item
+                                        id={it}
+                                        textValue={it}
+                                    >
+                                        <Label>{it}</Label>
+                                    </Dropdown.Item>
+                                ))}
+                            </Dropdown.Menu>
+                        </Dropdown.Popover>
                     </Dropdown>
                 </div>
                 <div className='config-item'>
-                    <Input
-                        label={t('services.translate.chatglm.api_key')}
-                        labelPlacement='outside-left'
-                        type='password'
+                    <h3 className='my-auto'>{t('services.translate.chatglm.api_key')}</h3>
+                    <TextField
                         value={serviceConfig['apiKey']}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setServiceConfig({
                                 ...serviceConfig,
                                 apiKey: value,
                             });
                         }}
-                    />
+                    >
+                        <Input
+                            type='password'
+                            variant='secondary'
+                        />
+                    </TextField>
                 </div>
 
                 <h3 className='my-auto'>Prompt List</h3>
-                <p className='text-[10px] text-default-700'>{t('services.translate.chatglm.prompt_description')}</p>
+                <p className='text-[10px] text-foreground'>{t('services.translate.chatglm.prompt_description')}</p>
 
-                <div className='bg-content2 rounded-[10px] p-3'>
+                <div className='bg-surface-secondary rounded-[10px] p-3'>
                     {serviceConfig.promptList &&
                         serviceConfig.promptList.map((prompt, index) => {
                             return (
                                 <div className='config-item'>
-                                    <Textarea
-                                        label={prompt.role}
-                                        labelPlacement='outside'
-                                        variant='faded'
+                                    <h3 className='my-auto'>{prompt.role}</h3>
+                                    <TextField
                                         value={prompt.content}
-                                        placeholder={`Input Some ${prompt.role} Prompt`}
-                                        onValueChange={(value) => {
+                                        onChange={(value) => {
                                             setServiceConfig({
                                                 ...serviceConfig,
                                                 promptList: serviceConfig.promptList.map((p, i) => {
@@ -169,12 +163,16 @@ export function Config(props) {
                                                 }),
                                             });
                                         }}
-                                    />
+                                    >
+                                        <TextArea
+                                            variant='secondary'
+                                            placeholder={`Input Some ${prompt.role} Prompt`}
+                                        />
+                                    </TextField>
                                     <Button
                                         isIconOnly
-                                        color='danger'
                                         className='my-auto mx-1'
-                                        variant='flat'
+                                        variant='danger-soft'
                                         onPress={() => {
                                             setServiceConfig({
                                                 ...serviceConfig,
@@ -208,9 +206,9 @@ export function Config(props) {
                 <br />
                 <Button
                     type='submit'
-                    isLoading={isLoading}
+                    isPending={isLoading}
                     fullWidth
-                    color='primary'
+                    variant='primary'
                 >
                     {t('common.save')}
                 </Button>

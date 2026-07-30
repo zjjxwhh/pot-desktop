@@ -1,10 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "@heroui/styles";
 
-* {
-    margin: 0;
-    padding: 0;
+@layer base {
+    * {
+        margin: 0;
+        padding: 0;
+    }
 }
 
 html {

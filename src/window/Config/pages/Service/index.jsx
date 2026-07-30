@@ -1,7 +1,7 @@
 import { readDir, BaseDirectory, readTextFile, exists } from '@tauri-apps/plugin-fs';
 import { listen } from '@tauri-apps/api/event';
 import { useTranslation } from 'react-i18next';
-import { Tabs, Tab } from '@nextui-org/react';
+import { Tabs } from '@heroui/react';
 import { appConfigDir, join } from '@tauri-apps/api/path';
 import { convertFileSrc } from '@tauri-apps/api/core';
 import React, { useEffect, useState } from 'react';
@@ -62,31 +62,39 @@ export default function Service() {
     }, []);
     return (
         pluginList !== null && (
-            <Tabs className='flex justify-center max-h-[calc(100%-40px)] overflow-y-auto'>
-                <Tab
-                    key='translate'
-                    title={t(`config.service.translate`)}
-                >
+            <Tabs className='flex justify-center max-h-[calc(100%)] overflow-y-auto'>
+                <Tabs.ListContainer>
+                    <Tabs.List aria-label='Service tabs'>
+                        <Tabs.Tab id='translate'>
+                            {t(`config.service.translate`)}
+                            <Tabs.Indicator />
+                        </Tabs.Tab>
+                        <Tabs.Tab id='recognize'>
+                            {t(`config.service.recognize`)}
+                            <Tabs.Indicator />
+                        </Tabs.Tab>
+                        <Tabs.Tab id='tts'>
+                            {t(`config.service.tts`)}
+                            <Tabs.Indicator />
+                        </Tabs.Tab>
+                        <Tabs.Tab id='collection'>
+                            {t(`config.service.collection`)}
+                            <Tabs.Indicator />
+                        </Tabs.Tab>
+                    </Tabs.List>
+                </Tabs.ListContainer>
+                <Tabs.Panel id='translate'>
                     <Translate pluginList={pluginList[ServiceType.TRANSLATE]} />
-                </Tab>
-                <Tab
-                    key='recognize'
-                    title={t(`config.service.recognize`)}
-                >
+                </Tabs.Panel>
+                <Tabs.Panel id='recognize'>
                     <Recognize pluginList={pluginList[ServiceType.RECOGNIZE]} />
-                </Tab>
-                <Tab
-                    key='tts'
-                    title={t(`config.service.tts`)}
-                >
+                </Tabs.Panel>
+                <Tabs.Panel id='tts'>
                     <Tts pluginList={pluginList[ServiceType.TTS]} />
-                </Tab>
-                <Tab
-                    key='collection'
-                    title={t(`config.service.collection`)}
-                >
+                </Tabs.Panel>
+                <Tabs.Panel id='collection'>
                     <Collection pluginList={pluginList[ServiceType.COLLECTION]} />
-                </Tab>
+                </Tabs.Panel>
             </Tabs>
         )
     );

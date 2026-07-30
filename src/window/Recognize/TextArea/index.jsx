@@ -1,4 +1,4 @@
-import { Card, CardBody, CardFooter, Button, Skeleton, ButtonGroup, Tooltip } from '@nextui-org/react';
+import { Card, Button, Skeleton, ButtonGroup, Tooltip } from '@heroui/react';
 import { writeText } from '@tauri-apps/plugin-clipboard-manager';
 import { atom, useAtom, useAtomValue } from 'jotai';
 import React, { useEffect, useState } from 'react';
@@ -133,21 +133,19 @@ export default function TextArea(props) {
 
     return (
         <Card
-            shadow='none'
-            className='bg-content1 h-full ml-[6px] mr-[12px]'
-            radius='10'
+            className='bg-surface h-full ml-[6px] mr-[12px] rounded-[10px]'
         >
-            <CardBody className='bg-content1 p-0 h-full'>
+            <Card.Content className='bg-surface p-0 h-full'>
                 {loading ? (
                     <div className='space-y-3 m-[12px]'>
                         <Skeleton className='w-3/5 rounded-lg'>
-                            <div className='h-3 w-3/5 rounded-lg bg-default-200'></div>
+                            <div className='h-3 w-3/5 rounded-lg bg-surface-secondary'></div>
                         </Skeleton>
                         <Skeleton className='w-4/5 rounded-lg'>
-                            <div className='h-3 w-4/5 rounded-lg bg-default-200'></div>
+                            <div className='h-3 w-4/5 rounded-lg bg-surface-secondary'></div>
                         </Skeleton>
                         <Skeleton className='w-2/5 rounded-lg'>
-                            <div className='h-3 w-2/5 rounded-lg bg-default-300'></div>
+                            <div className='h-3 w-2/5 rounded-lg bg-surface-tertiary'></div>
                         </Skeleton>
                     </div>
                 ) : (
@@ -155,7 +153,7 @@ export default function TextArea(props) {
                         {text && (
                             <textarea
                                 value={text}
-                                className='bg-content1 h-full m-[12px] mb-0 resize-none focus:outline-none'
+                                className='bg-surface h-full m-[12px] mb-0 resize-none focus:outline-none'
                                 onChange={(e) => {
                                     setText(e.target.value);
                                 }}
@@ -165,7 +163,7 @@ export default function TextArea(props) {
                             <textarea
                                 value={error}
                                 readOnly
-                                className='bg-content1 h-full m-[12px] mb-0 resize-none focus:outline-none text-red-500'
+                                className='bg-surface h-full m-[12px] mb-0 resize-none focus:outline-none text-red-500'
                                 onChange={(e) => {
                                     setText(e.target.value);
                                 }}
@@ -173,14 +171,14 @@ export default function TextArea(props) {
                         )}
                     </>
                 )}
-            </CardBody>
-            <CardFooter className='bg-content1 flex justify-start px-[12px]'>
+            </Card.Content>
+            <Card.Footer className='bg-surface flex justify-start px-[12px]'>
                 <ButtonGroup>
                     <Tooltip content={t('recognize.copy_text')}>
                         <Button
                             isIconOnly
                             size='sm'
-                            variant='light'
+                            variant='tertiary'
                             onPress={() => {
                                 writeText(text);
                             }}
@@ -191,7 +189,7 @@ export default function TextArea(props) {
                     <Tooltip content={t('recognize.delete_newline')}>
                         <Button
                             isIconOnly
-                            variant='light'
+                            variant='tertiary'
                             size='sm'
                             onPress={() => {
                                 setText(text.replace(/\-\s+/g, '').replace(/\s+/g, ' '));
@@ -203,7 +201,7 @@ export default function TextArea(props) {
                     <Tooltip content={t('recognize.delete_space')}>
                         <Button
                             isIconOnly
-                            variant='light'
+                            variant='tertiary'
                             size='sm'
                             onPress={() => {
                                 setText(text.replaceAll(' ', ''));
@@ -213,7 +211,7 @@ export default function TextArea(props) {
                         </Button>
                     </Tooltip>
                 </ButtonGroup>
-            </CardFooter>
+            </Card.Footer>
         </Card>
     );
 }

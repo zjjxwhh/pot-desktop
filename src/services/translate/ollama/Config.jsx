@@ -1,4 +1,4 @@
-import { Input, Button, Switch, Textarea, Card, CardBody, Link, Tooltip, Progress } from '@nextui-org/react';
+import { TextField, Label, Input, TextArea, Button, Switch, Card, Link, Tooltip, ProgressBar } from '@heroui/react';
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
 import { MdDeleteOutline } from 'react-icons/md';
 import toast, { Toaster } from 'react-hot-toast';
@@ -102,48 +102,40 @@ export function Config(props) {
             >
                 <Toaster />
                 <div className='config-item'>
-                    <Input
-                        label={t('services.instance_name')}
-                        labelPlacement='outside-left'
+                    <h3 className='my-auto'>{t('services.instance_name')}</h3>
+                    <TextField
                         value={serviceConfig[INSTANCE_NAME_CONFIG_KEY]}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setServiceConfig({
                                 ...serviceConfig,
                                 [INSTANCE_NAME_CONFIG_KEY]: value,
                             });
                         }}
-                    />
+                    >
+                        <Input variant='secondary' />
+                    </TextField>
                 </div>
                 {installedModels === null && (
-                    <Card
-                        isBlurred
-                        className='border-none bg-danger/20 dark:bg-danger/10'
-                        shadow='sm'
-                    >
-                        <CardBody>
+                    <Card className='border-none bg-danger/20 dark:bg-danger/10 backdrop-blur-md shadow-sm'>
+                        <Card.Content>
                             <div>
                                 {t('services.translate.ollama.install_ollama')}
                                 <br />
                                 <Link
                                     isExternal
                                     href='https://ollama.com/download'
-                                    color='primary'
+                                    className='text-accent'
                                 >
                                     {t('services.translate.ollama.install_ollama_link')}
                                 </Link>
                             </div>
-                        </CardBody>
+                        </Card.Content>
                     </Card>
                 )}
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('services.help')}</h3>
                     <Button
+                        size='sm'
                         onPress={() => {
                             open('https://pot-app.com/docs/api/translate/ollama.html');
                         }}
@@ -154,103 +146,82 @@ export function Config(props) {
                 <div className='config-item'>
                     <Switch
                         isSelected={serviceConfig['stream']}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setServiceConfig({
                                 ...serviceConfig,
                                 stream: value,
                             });
                         }}
-                        classNames={{
-                            base: 'flex flex-row-reverse justify-between w-full max-w-full',
-                        }}
+                        className='flex flex-row-reverse justify-between w-full max-w-full'
                     >
-                        {t('services.translate.ollama.stream')}
+                        <Switch.Content>
+                            <Switch.Control>
+                                <Switch.Thumb />
+                            </Switch.Control>
+                            {t('services.translate.ollama.stream')}
+                        </Switch.Content>
                     </Switch>
                 </div>
                 <div className='config-item'>
-                    <Input
-                        label={t('services.translate.ollama.request_path')}
-                        labelPlacement='outside-left'
+                    <h3 className='my-auto'>{t('services.translate.ollama.request_path')}</h3>
+                    <TextField
                         value={serviceConfig['requestPath']}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setServiceConfig({
                                 ...serviceConfig,
                                 requestPath: value,
                             });
                         }}
-                    />
+                    >
+                        <Input variant='secondary' />
+                    </TextField>
                 </div>
                 <div className='config-item'>
-                    <Input
-                        label={t('services.translate.ollama.model')}
-                        labelPlacement='outside-left'
+                    <h3 className='my-auto'>{t('services.translate.ollama.model')}</h3>
+                    <TextField
                         value={serviceConfig['model']}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setServiceConfig({
                                 ...serviceConfig,
                                 model: value,
                             });
                         }}
-                        endContent={
-                            installedModels &&
-                            !installedModels.models
-                                .map((model) => {
-                                    return model.name;
-                                })
-                                .includes(serviceConfig['model']) ? (
-                                <Tooltip content={t('services.translate.ollama.not_installed')}>
-                                    <Button
-                                        size='sm'
-                                        variant='flat'
-                                        color='warning'
-                                        isLoading={isPulling}
-                                        onPress={pullModel}
-                                    >
-                                        {t('services.translate.ollama.install_model')}
-                                    </Button>
-                                </Tooltip>
-                            ) : (
-                                <Button
-                                    size='sm'
-                                    variant='flat'
-                                    color='success'
-                                    disabled
-                                >
-                                    {t('services.translate.ollama.ready')}
-                                </Button>
-                            )
-                        }
-                    />
-                </div>
-                <Card
-                    isBlurred
-                    className='border-none bg-success/20 dark:bg-success/10'
-                    shadow='sm'
-                >
-                    <CardBody>
-                        {isPulling && (
-                            <Progress
+                        className='flex-1'
+                    >
+                        <Input variant='secondary' />
+                    </TextField>
+                    {installedModels &&
+                    !installedModels.models
+                        .map((model) => {
+                            return model.name;
+                        })
+                        .includes(serviceConfig['model']) ? (
+                        <Tooltip content={t('services.translate.ollama.not_installed')}>
+                            <Button
                                 size='sm'
-                                radius='sm'
-                                classNames={{
-                                    base: 'max-w-md',
-                                    track: 'drop-shadow-md border border-default',
-                                    indicator: 'bg-gradient-to-r from-pink-500 to-yellow-500',
-                                    label: 'tracking-wider font-medium text-default-600',
-                                    value: 'text-foreground/60',
-                                }}
+                                variant='tertiary'
+                                isPending={isPulling}
+                                onPress={pullModel}
+                            >
+                                {t('services.translate.ollama.install_model')}
+                            </Button>
+                        </Tooltip>
+                    ) : (
+                        <Button
+                            size='sm'
+                            variant='tertiary'
+                            isDisabled
+                        >
+                            {t('services.translate.ollama.ready')}
+                        </Button>
+                    )}
+                </div>
+                <Card className='border-none bg-success/20 dark:bg-success/10 backdrop-blur-md shadow-sm'>
+                    <Card.Content>
+                        {isPulling && (
+                            <ProgressBar
+                                size='sm'
+                                className='max-w-md'
                                 label={pullingStatus}
                                 value={progress}
                                 showValueLabel={true}
@@ -260,28 +231,25 @@ export function Config(props) {
                             <Link
                                 isExternal
                                 href='https://ollama.com/library'
-                                color='primary'
+                                className='text-accent'
                             >
                                 {t('services.translate.ollama.supported_models')}
                             </Link>
                         </div>
-                    </CardBody>
+                    </Card.Content>
                 </Card>
                 <h3 className='my-auto'>Prompt List</h3>
-                <p className='text-[10px] text-default-700'>{t('services.translate.ollama.prompt_description')}</p>
+                <p className='text-[10px] text-foreground'>{t('services.translate.ollama.prompt_description')}</p>
 
-                <div className='bg-content2 rounded-[10px] p-3'>
+                <div className='bg-surface-secondary rounded-[10px] p-3'>
                     {serviceConfig.promptList &&
                         serviceConfig.promptList.map((prompt, index) => {
                             return (
                                 <div className='config-item'>
-                                    <Textarea
-                                        label={prompt.role}
-                                        labelPlacement='outside'
-                                        variant='faded'
+                                    <h3 className='my-auto'>{prompt.role}</h3>
+                                    <TextField
                                         value={prompt.content}
-                                        placeholder={`Input Some ${prompt.role} Prompt`}
-                                        onValueChange={(value) => {
+                                        onChange={(value) => {
                                             setServiceConfig({
                                                 ...serviceConfig,
                                                 promptList: serviceConfig.promptList.map((p, i) => {
@@ -303,12 +271,16 @@ export function Config(props) {
                                                 }),
                                             });
                                         }}
-                                    />
+                                    >
+                                        <TextArea
+                                            variant='secondary'
+                                            placeholder={`Input Some ${prompt.role} Prompt`}
+                                        />
+                                    </TextField>
                                     <Button
                                         isIconOnly
-                                        color='danger'
                                         className='my-auto mx-1'
-                                        variant='flat'
+                                        variant='danger-soft'
                                         onPress={() => {
                                             setServiceConfig({
                                                 ...serviceConfig,
@@ -347,9 +319,9 @@ export function Config(props) {
                 <br />
                 <Button
                     type='submit'
-                    isLoading={isLoading}
+                    isPending={isLoading}
                     fullWidth
-                    color='primary'
+                    variant='primary'
                 >
                     {t('common.save')}
                 </Button>

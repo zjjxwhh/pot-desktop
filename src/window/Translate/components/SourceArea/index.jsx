@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, CardFooter, ButtonGroup, Chip, Tooltip, Spacer } from '@nextui-org/react';
+import { Button, Card, ButtonGroup, Chip, Tooltip } from '@heroui/react';
 import { BaseDirectory, readTextFile } from '@tauri-apps/plugin-fs';
 import React, { useEffect, useRef, useState } from 'react';
 import { writeText } from '@tauri-apps/plugin-clipboard-manager';
@@ -33,10 +33,7 @@ let timer = null;
 
 const normalizeText = (text, deleteNewline) => {
     if (deleteNewline) {
-        return text
-            .replace(/\-\s+/g, '')
-            .replace(/\s+/g, ' ')
-            .trim();
+        return text.replace(/\-\s+/g, '').replace(/\s+/g, ' ').trim();
     }
     return text.trim();
 };
@@ -359,15 +356,14 @@ export default function SourceArea(props) {
     return (
         <div className={hideSource && windowType !== '[INPUT_TRANSLATE]' && 'hidden'}>
             <Card
-                shadow='none'
-                className='bg-content1 rounded-[10px] mt-[1px] pb-0'
+                className='bg-surface rounded-[10px] mt-[1px] pb-0'
             >
                 <Toaster />
-                <CardBody className='bg-content1 p-[12px] pb-0 max-h-[40vh] overflow-y-auto'>
+                <Card.Content className='bg-surface p-[12px] pb-0 max-h-[40vh] overflow-y-auto'>
                     <textarea
                         autoFocus
                         ref={textAreaRef}
-                        className={`text-[${appFontSize}px] bg-content1 h-full resize-none outline-none`}
+                        className={`text-[${appFontSize}px] bg-surface h-full resize-none outline-none`}
                         value={sourceText}
                         onKeyDown={keyDown}
                         onChange={(e) => {
@@ -375,15 +371,15 @@ export default function SourceArea(props) {
                             changeSourceText(v);
                         }}
                     />
-                </CardBody>
+                </Card.Content>
 
-                <CardFooter className='bg-content1 rounded-none rounded-b-[10px] flex justify-between px-[12px] p-[5px]'>
+                <Card.Footer className='bg-surface rounded-none rounded-b-[10px] flex justify-between px-[12px] p-[5px]'>
                     <div className='flex justify-start'>
                         <ButtonGroup className='mr-[5px]'>
                             <Tooltip content={t('translate.speak')}>
                                 <Button
                                     isIconOnly
-                                    variant='light'
+                                    variant='tertiary'
                                     size='sm'
                                     onPress={() => {
                                         handleSpeak().catch((e) => {
@@ -397,7 +393,7 @@ export default function SourceArea(props) {
                             <Tooltip content={t('translate.copy')}>
                                 <Button
                                     isIconOnly
-                                    variant='light'
+                                    variant='tertiary'
                                     size='sm'
                                     onPress={() => {
                                         writeText(sourceText);
@@ -409,7 +405,7 @@ export default function SourceArea(props) {
                             <Tooltip content={t('translate.delete_newline')}>
                                 <Button
                                     isIconOnly
-                                    variant='light'
+                                    variant='tertiary'
                                     size='sm'
                                     onPress={() => {
                                         const newText = normalizeText(sourceText, true);
@@ -424,7 +420,7 @@ export default function SourceArea(props) {
                             </Tooltip>
                             <Tooltip content={t('common.clear')}>
                                 <Button
-                                    variant='light'
+                                    variant='tertiary'
                                     size='sm'
                                     isIconOnly
                                     isDisabled={sourceText === ''}
@@ -439,8 +435,7 @@ export default function SourceArea(props) {
                         {detectLanguage !== '' && (
                             <Chip
                                 size='sm'
-                                color='secondary'
-                                variant='dot'
+                                variant='soft'
                                 className='my-auto'
                             >
                                 {t(`languages.${detectLanguage}`)}
@@ -450,21 +445,21 @@ export default function SourceArea(props) {
                     <Tooltip content={t('translate.translate')}>
                         <Button
                             size='sm'
-                            color='primary'
-                            variant='light'
+                            variant='tertiary'
                             isIconOnly
                             className='text-[14px] font-bold'
-                            startContent={<HiTranslate className='text-[16px]' />}
                             onPress={() => {
                                 detect_language(sourceText).then(() => {
                                     syncSourceText();
                                 });
                             }}
-                        />
+                        >
+                            <HiTranslate className='text-[16px]' />
+                        </Button>
                     </Tooltip>
-                </CardFooter>
+                </Card.Footer>
             </Card>
-            <Spacer y={2} />
+            <div className='h-2' />
         </div>
     );
 }

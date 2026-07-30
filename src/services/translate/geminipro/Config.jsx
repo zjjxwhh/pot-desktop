@@ -1,5 +1,5 @@
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
-import { Input, Button, Switch, Textarea } from '@nextui-org/react';
+import { TextField, Label, Input, TextArea, Button, Switch } from '@heroui/react';
 import { MdDeleteOutline } from 'react-icons/md';
 import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
@@ -92,27 +92,23 @@ export function Config(props) {
             >
                 <Toaster />
                 <div className='config-item'>
-                    <Input
-                        label={t('services.instance_name')}
-                        labelPlacement='outside-left'
+                    <h3 className='my-auto'>{t('services.instance_name')}</h3>
+                    <TextField
                         value={serviceConfig[INSTANCE_NAME_CONFIG_KEY]}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setServiceConfig({
                                 ...serviceConfig,
                                 [INSTANCE_NAME_CONFIG_KEY]: value,
                             });
                         }}
-                    />
+                    >
+                        <Input variant='secondary' />
+                    </TextField>
                 </div>
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('services.help')}</h3>
                     <Button
+                        size='sm'
                         onPress={() => {
                             open('https://pot-app.com/docs/api/translate/geminipro.html');
                         }}
@@ -123,73 +119,65 @@ export function Config(props) {
                 <div className='config-item'>
                     <Switch
                         isSelected={serviceConfig['stream']}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setServiceConfig({
                                 ...serviceConfig,
                                 stream: value,
                             });
                         }}
-                        classNames={{
-                            base: 'flex flex-row-reverse justify-between w-full max-w-full',
-                        }}
+                        className='flex flex-row-reverse justify-between w-full max-w-full'
                     >
-                        {t('services.translate.geminipro.stream')}
+                        <Switch.Content>
+                            <Switch.Control>
+                                <Switch.Thumb />
+                            </Switch.Control>
+                            {t('services.translate.geminipro.stream')}
+                        </Switch.Content>
                     </Switch>
                 </div>
                 <div className='config-item'>
-                    <Input
-                        label={t('services.translate.geminipro.request_path')}
-                        labelPlacement='outside-left'
+                    <h3 className='my-auto'>{t('services.translate.geminipro.request_path')}</h3>
+                    <TextField
                         value={serviceConfig['requestPath']}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setServiceConfig({
                                 ...serviceConfig,
                                 requestPath: value,
                             });
                         }}
-                    />
+                    >
+                        <Input variant='secondary' />
+                    </TextField>
                 </div>
                 <div className='config-item'>
-                    <Input
-                        label={t('services.translate.geminipro.api_key')}
-                        labelPlacement='outside-left'
-                        type='password'
+                    <h3 className='my-auto'>{t('services.translate.geminipro.api_key')}</h3>
+                    <TextField
                         value={serviceConfig['apiKey']}
-                        variant='bordered'
-                        classNames={{
-                            base: 'justify-between',
-                            label: 'text-[length:--nextui-font-size-medium]',
-                            mainWrapper: 'max-w-[50%]',
-                        }}
-                        onValueChange={(value) => {
+                        onChange={(value) => {
                             setServiceConfig({
                                 ...serviceConfig,
                                 apiKey: value,
                             });
                         }}
-                    />
+                    >
+                        <Input
+                            type='password'
+                            variant='secondary'
+                        />
+                    </TextField>
                 </div>
                 <h3 className='my-auto'>Prompt List</h3>
-                <p className='text-[10px] text-default-700'>{t('services.translate.geminipro.prompt_description')}</p>
+                <p className='text-[10px] text-foreground'>{t('services.translate.geminipro.prompt_description')}</p>
 
-                <div className='bg-content2 rounded-[10px] p-3'>
+                <div className='bg-surface-secondary rounded-[10px] p-3'>
                     {serviceConfig.promptList &&
                         serviceConfig.promptList.map((prompt, index) => {
                             return (
                                 <div className='config-item'>
-                                    <Textarea
-                                        label={prompt.role}
-                                        labelPlacement='outside'
-                                        variant='faded'
+                                    <h3 className='my-auto'>{prompt.role}</h3>
+                                    <TextField
                                         value={prompt.parts[0].text}
-                                        placeholder={`Input Some ${prompt.role} Prompt`}
-                                        onValueChange={(value) => {
+                                        onChange={(value) => {
                                             setServiceConfig({
                                                 ...serviceConfig,
                                                 promptList: serviceConfig.promptList.map((p, i) => {
@@ -208,12 +196,16 @@ export function Config(props) {
                                                 }),
                                             });
                                         }}
-                                    />
+                                    >
+                                        <TextArea
+                                            variant='secondary'
+                                            placeholder={`Input Some ${prompt.role} Prompt`}
+                                        />
+                                    </TextField>
                                     <Button
                                         isIconOnly
-                                        color='danger'
                                         className='my-auto mx-1'
-                                        variant='flat'
+                                        variant='danger-soft'
                                         onPress={() => {
                                             setServiceConfig({
                                                 ...serviceConfig,
@@ -251,9 +243,9 @@ export function Config(props) {
                 <br />
                 <Button
                     type='submit'
-                    isLoading={isLoading}
+                    isPending={isLoading}
                     fullWidth
-                    color='primary'
+                    variant='primary'
                 >
                     {t('common.save')}
                 </Button>

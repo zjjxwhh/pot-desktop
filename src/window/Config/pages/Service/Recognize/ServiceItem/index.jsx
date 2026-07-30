@@ -1,5 +1,5 @@
 import { RxDragHandleHorizontal } from 'react-icons/rx';
-import { Spacer, Button } from '@nextui-org/react';
+import { Button } from '@heroui/react';
 import { MdDeleteOutline } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
 import { BiSolidEdit } from 'react-icons/bi';
@@ -28,7 +28,7 @@ export default function ServiceItem(props) {
         <></>
     ) : (
         serviceInstanceConfig !== null && (
-            <div className='bg-content2 rounded-md px-[10px] py-[20px] flex justify-between'>
+            <div className='bg-surface-secondary rounded-md px-[10px] py-[15px] flex justify-between'>
                 <div className='flex'>
                     <div
                         {...drag}
@@ -37,7 +37,7 @@ export default function ServiceItem(props) {
                         <RxDragHandleHorizontal />
                     </div>
 
-                    <Spacer x={2} />
+                    <div className='w-2' />
                     {serviceSourceType === ServiceSourceType.BUILDIN && (
                         <>
                             <img
@@ -49,7 +49,7 @@ export default function ServiceItem(props) {
                                 className='h-[24px] w-[24px] my-auto'
                                 draggable={false}
                             />
-                            <Spacer x={2} />
+                            <div className='w-2' />
                             <h2 className='my-auto'>
                                 {serviceInstanceConfig[INSTANCE_NAME_CONFIG_KEY] ||
                                     t(`services.recognize.${serviceName}.title`)}
@@ -63,7 +63,7 @@ export default function ServiceItem(props) {
                                 className='h-[24px] w-[24px] my-auto'
                                 draggable={false}
                             />
-                            <Spacer x={2} />
+                            <div className='w-2' />
                             <h2 className='my-auto'>{`${serviceInstanceConfig[INSTANCE_NAME_CONFIG_KEY] || pluginList[serviceName].display} [${t('common.plugin')}]`}</h2>
                         </>
                     )}
@@ -72,7 +72,8 @@ export default function ServiceItem(props) {
                     <Button
                         isIconOnly
                         size='sm'
-                        variant='light'
+                        className='my-auto'
+                        variant='tertiary'
                         onPress={() => {
                             setCurrentConfigKey(serviceInstanceKey);
                             onConfigOpen();
@@ -80,12 +81,12 @@ export default function ServiceItem(props) {
                     >
                         <BiSolidEdit className='text-2xl' />
                     </Button>
-                    <Spacer x={2} />
+                    <div className='w-2' />
                     <Button
                         isIconOnly
                         size='sm'
-                        variant='light'
-                        color='danger'
+                        className='my-auto'
+                        variant='danger-soft'
                         onPress={() => {
                             deleteServiceInstance(serviceInstanceKey);
                         }}

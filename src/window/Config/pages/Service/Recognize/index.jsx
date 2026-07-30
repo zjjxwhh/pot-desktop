@@ -1,5 +1,5 @@
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
-import { Card, Spacer, Button, useDisclosure } from '@nextui-org/react';
+import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
+import { Card, Button, useOverlayState } from '@heroui/react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
@@ -14,13 +14,9 @@ import ConfigModal from './ConfigModal';
 
 export default function Recognize(props) {
     const { pluginList } = props;
-    const {
-        isOpen: isSelectPluginOpen,
-        onOpen: onSelectPluginOpen,
-        onOpenChange: onSelectPluginOpenChange,
-    } = useDisclosure();
-    const { isOpen: isSelectOpen, onOpen: onSelectOpen, onOpenChange: onSelectOpenChange } = useDisclosure();
-    const { isOpen: isConfigOpen, onOpen: onConfigOpen, onOpenChange: onConfigOpenChange } = useDisclosure();
+    const selectPluginState = useOverlayState();
+    const selectState = useOverlayState();
+    const configState = useOverlayState();
     const [currentConfigKey, setCurrentConfigKey] = useState('system');
     // now it's service instance list
     const [recognizeServiceInstanceList, setRecognizeServiceInstanceList] = useConfig('recognize_service_list', [
@@ -66,7 +62,7 @@ export default function Recognize(props) {
             <Toaster />
             <Card
                 className={`${
-                    osType === 'linux' ? 'h-[calc(100vh-140px)]' : 'h-[calc(100vh-120px)]'
+                    osType === 'linux' ? 'h-[calc(100vh-120px)]' : 'h-[calc(100vh-120px)]'
                 } overflow-y-auto p-5 flex justify-between`}
             >
                 <DragDropContext onDragEnd={onDragEnd}>
@@ -101,9 +97,9 @@ export default function Recognize(props) {
                                                                 pluginList={pluginList}
                                                                 deleteServiceInstance={deleteServiceInstance}
                                                                 setCurrentConfigKey={setCurrentConfigKey}
-                                                                onConfigOpen={onConfigOpen}
+                                                                onConfigOpen={configState.open}
                                                             />
-                                                            <Spacer y={2} />
+                                                            <div className='h-2' />
                                                         </div>
                                                     );
                                                 }}
@@ -114,43 +110,43 @@ export default function Recognize(props) {
                         )}
                     </Droppable>
                 </DragDropContext>
-                <Spacer y={2} />
+                <div className='h-2' />
                 <div className='flex'>
                     <Button
                         fullWidth
-                        onPress={onSelectOpen}
+                        onPress={selectState.open}
                     >
                         {t('config.service.add_builtin_service')}
                     </Button>
-                    <Spacer x={2} />
+                    <div className='w-2' />
                     <Button
                         fullWidth
-                        onPress={onSelectPluginOpen}
+                        onPress={selectPluginState.open}
                     >
                         {t('config.service.add_external_service')}
                     </Button>
                 </div>
             </Card>
             <SelectPluginModal
-                isOpen={isSelectPluginOpen}
-                onOpenChange={onSelectPluginOpenChange}
+                isOpen={selectPluginState.isOpen}
+                onOpenChange={selectPluginState.setOpen}
                 setCurrentConfigKey={setCurrentConfigKey}
-                onConfigOpen={onConfigOpen}
+                onConfigOpen={configState.open}
                 pluginType='recognize'
                 pluginList={pluginList}
                 deleteService={deleteServiceInstance}
             />
             <SelectModal
-                isOpen={isSelectOpen}
-                onOpenChange={onSelectOpenChange}
+                isOpen={selectState.isOpen}
+                onOpenChange={selectState.setOpen}
                 setCurrentConfigKey={setCurrentConfigKey}
-                onConfigOpen={onConfigOpen}
+                onConfigOpen={configState.open}
             />
             <ConfigModal
                 serviceInstanceKey={currentConfigKey}
-                isOpen={isConfigOpen}
+                isOpen={configState.isOpen}
                 pluginList={pluginList}
-                onOpenChange={onConfigOpenChange}
+                onOpenChange={configState.setOpen}
                 updateServiceInstanceList={updateServiceInstanceList}
             />
         </>

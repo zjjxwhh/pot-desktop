@@ -1,10 +1,7 @@
 import { unregister, isRegistered } from '@tauri-apps/plugin-global-shortcut';
 import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
-import { CardBody } from '@nextui-org/react';
-import { Button } from '@nextui-org/react';
-import { Input } from '@nextui-org/react';
-import { Card } from '@nextui-org/react';
+import { Card, Button, TextField, Label, InputGroup } from '@heroui/react';
 import React from 'react';
 
 import { useConfig } from '../../../../hooks/useConfig';
@@ -116,132 +113,148 @@ export default function Hotkey() {
     return (
         <Card>
             <Toaster />
-            <CardBody>
+            <Card.Content>
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('config.hotkey.selection_translate')}</h3>
                     {selectionTranslate !== null && (
-                        <Input
-                            type='hotkey'
-                            variant='bordered'
+                        <TextField
                             value={selectionTranslate}
-                            label={t('config.hotkey.set_hotkey')}
                             className='max-w-[50%]'
-                            onKeyDown={(e) => {
-                                keyDown(e, setSelectionTranslate);
-                            }}
-                            onFocus={() => {
-                                unregister(selectionTranslate);
-                                setSelectionTranslate('');
-                            }}
-                            endContent={
-                                <Button
-                                    size='sm'
-                                    variant='flat'
-                                    className={`${selectionTranslate === '' && 'hidden'}`}
-                                    onPress={() => {
-                                        registerHandler('hotkey_selection_translate', selectionTranslate);
+                        >
+                            <InputGroup variant='secondary'>
+                                <InputGroup.Input
+                                    type='hotkey'
+                                    placeholder={t('config.hotkey.set_hotkey')}
+                                    onKeyDown={(e) => {
+                                        keyDown(e, setSelectionTranslate);
                                     }}
-                                >
-                                    {t('common.ok')}
-                                </Button>
-                            }
-                        />
+                                    onFocus={() => {
+                                        unregister(selectionTranslate);
+                                        setSelectionTranslate('');
+                                    }}
+                                />
+                                <InputGroup.Suffix className='pr-0'>
+                                    <Button
+                                        size='sm'
+                                        variant='tertiary'
+                                        className={`${selectionTranslate === '' && 'hidden'}`}
+                                        onPress={() => {
+                                            registerHandler('hotkey_selection_translate', selectionTranslate);
+                                        }}
+                                    >
+                                        {t('common.ok')}
+                                    </Button>
+                                </InputGroup.Suffix>
+                            </InputGroup>
+                        </TextField>
                     )}
                 </div>
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('config.hotkey.input_translate')}</h3>
                     {inputTranslate !== null && (
-                        <Input
-                            type='hotkey'
-                            variant='bordered'
+                        <TextField
                             value={inputTranslate}
-                            label={t('config.hotkey.set_hotkey')}
                             className='max-w-[50%]'
-                            onKeyDown={(e) => {
-                                keyDown(e, setInputTranslate);
-                            }}
-                            onFocus={() => {
-                                unregister(inputTranslate);
-                                setInputTranslate('');
-                            }}
-                            endContent={
-                                <Button
-                                    size='sm'
-                                    variant='flat'
-                                    className={`${inputTranslate === '' && 'hidden'}`}
-                                    onPress={() => {
-                                        registerHandler('hotkey_input_translate', inputTranslate);
+                        >
+                            <InputGroup variant='secondary'>
+                                <InputGroup.Input
+                                    type='hotkey'
+                                    placeholder={t('config.hotkey.set_hotkey')}
+                                    onKeyDown={(e) => {
+                                        keyDown(e, setInputTranslate);
                                     }}
-                                >
-                                    {t('common.ok')}
-                                </Button>
-                            }
-                        />
+                                    onFocus={() => {
+                                        unregister(inputTranslate);
+                                        setInputTranslate('');
+                                    }}
+                                />
+                                <InputGroup.Suffix className='pr-0'>
+                                    <Button
+                                        size='sm'
+                                        variant='tertiary'
+                                        className={`${inputTranslate === '' && 'hidden'}`}
+                                        onPress={() => {
+                                            registerHandler('hotkey_input_translate', inputTranslate);
+                                        }}
+                                    >
+                                        {t('common.ok')}
+                                    </Button>
+                                </InputGroup.Suffix>
+                            </InputGroup>
+                        </TextField>
                     )}
                 </div>
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('config.hotkey.ocr_recognize')}</h3>
                     {ocrRecognize !== null && (
-                        <Input
-                            type='hotkey'
-                            variant='bordered'
+                        <TextField
                             value={ocrRecognize}
-                            label={t('config.hotkey.set_hotkey')}
                             className='max-w-[50%]'
-                            onKeyDown={(e) => {
-                                keyDown(e, setOcrRecognize);
-                            }}
-                            onFocus={() => {
-                                unregister(ocrRecognize);
-                                setOcrRecognize('');
-                            }}
-                            endContent={
-                                <Button
-                                    size='sm'
-                                    variant='flat'
-                                    className={`${ocrRecognize === '' && 'hidden'}`}
-                                    onPress={() => {
-                                        registerHandler('hotkey_ocr_recognize', ocrRecognize);
+                        >
+                            <InputGroup variant='secondary'>
+                                <InputGroup.Input
+                                    type='hotkey'
+                                    placeholder={t('config.hotkey.set_hotkey')}
+                                    onKeyDown={(e) => {
+                                        keyDown(e, setOcrRecognize);
                                     }}
-                                >
-                                    {t('common.ok')}
-                                </Button>
-                            }
-                        />
+                                    onFocus={() => {
+                                        unregister(ocrRecognize);
+                                        setOcrRecognize('');
+                                    }}
+                                />
+                                <InputGroup.Suffix className='pr-0'>
+                                    <Button
+                                        size='sm'
+                                        variant='tertiary'
+                                        className={`${ocrRecognize === '' && 'hidden'}`}
+                                        onPress={() => {
+                                            registerHandler('hotkey_ocr_recognize', ocrRecognize);
+                                        }}
+                                    >
+                                        {t('common.ok')}
+                                    </Button>
+                                </InputGroup.Suffix>
+                            </InputGroup>
+                        </TextField>
                     )}
                 </div>
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('config.hotkey.ocr_translate')}</h3>
                     {ocrTranslate !== null && (
-                        <Input
-                            type='hotkey'
-                            variant='bordered'
+                        <TextField
                             value={ocrTranslate}
-                            label={t('config.hotkey.set_hotkey')}
                             className='max-w-[50%]'
-                            onKeyDown={(e) => {
-                                keyDown(e, setOcrTranslate);
-                            }}
-                            onFocus={() => {
-                                unregister(ocrTranslate);
-                                setOcrTranslate('');
-                            }}
-                            endContent={
-                                <Button
-                                    size='sm'
-                                    variant='flat'
-                                    className={`${ocrTranslate === '' && 'hidden'}`}
-                                    onPress={() => {
-                                        registerHandler('hotkey_ocr_translate', ocrTranslate);
+                        >
+                            <InputGroup variant='secondary'>
+                                <InputGroup.Input
+                                    type='hotkey'
+                                    placeholder={t('config.hotkey.set_hotkey')}
+                                    onKeyDown={(e) => {
+                                        keyDown(e, setOcrTranslate);
                                     }}
-                                >
-                                    {t('common.ok')}
-                                </Button>
-                            }
-                        />
+                                    onFocus={() => {
+                                        unregister(ocrTranslate);
+                                        setOcrTranslate('');
+                                    }}
+                                />
+                                <InputGroup.Suffix className='pr-0'>
+                                    <Button
+                                        size='sm'
+                                        variant='tertiary'
+                                        className={`${ocrTranslate === '' && 'hidden'}`}
+                                        onPress={() => {
+                                            registerHandler('hotkey_ocr_translate', ocrTranslate);
+                                        }}
+                                    >
+                                        {t('common.ok')}
+                                    </Button>
+                                </InputGroup.Suffix>
+                            </InputGroup>
+                        </TextField>
                     )}
                 </div>
-            </CardBody>
+            </Card.Content>
         </Card>
     );
 }

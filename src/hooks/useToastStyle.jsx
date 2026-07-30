@@ -1,11 +1,8 @@
-import { semanticColors } from '@nextui-org/theme';
-import { useTheme } from 'next-themes';
-
+// HeroUI v3 主题色通过 CSS 变量提供，内联样式中直接引用即可随 `.dark` class 自动切换明暗。
 export const useToastStyle = () => {
-    const { theme } = useTheme();
     const toastStyle = {
-        background: theme == 'dark' ? semanticColors.dark.content1.DEFAULT : semanticColors.light.content1.DEFAULT,
-        color: theme == 'dark' ? semanticColors.dark.foreground.DEFAULT : semanticColors.light.foreground.DEFAULT,
+        background: 'var(--surface)',
+        color: 'var(--foreground)',
         wordBreak: 'break-all',
         select: 'text',
     };

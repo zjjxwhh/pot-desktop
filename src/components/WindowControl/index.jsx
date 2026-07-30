@@ -2,7 +2,7 @@ import { VscChromeClose, VscChromeMinimize, VscChromeMaximize, VscChromeRestore 
 import React, { useEffect, useState } from 'react';
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { listen } from '@tauri-apps/api/event';
-import { Button } from '@nextui-org/react';
+import { Button } from '@heroui/react';
 
 import { osType } from '../../utils/env';
 import './style.css';
@@ -26,7 +26,7 @@ export default function WindowControl() {
         <div>
             <Button
                 isIconOnly
-                variant='light'
+                variant='tertiary'
                 className='w-[35px] h-[35px] rounded-none'
                 onPress={() => appWindow.minimize()}
             >
@@ -34,7 +34,7 @@ export default function WindowControl() {
             </Button>
             <Button
                 isIconOnly
-                variant='light'
+                variant='tertiary'
                 className='w-[35px] h-[35px] rounded-none'
                 onPress={() => {
                     if (isMax) {
@@ -48,7 +48,7 @@ export default function WindowControl() {
             </Button>
             <Button
                 isIconOnly
-                variant='light'
+                variant='tertiary'
                 className={`w-[35px] h-[35px] rounded-none close-button ${osType === 'linux' && 'rounded-tr-[10px]'}`}
                 onPress={() => appWindow.close()}
             >

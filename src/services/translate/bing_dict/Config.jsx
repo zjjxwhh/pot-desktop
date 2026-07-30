@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Button } from '@nextui-org/react';
+import { Button } from '@heroui/react';
 import React from 'react';
 
 export function Config(props) {
@@ -12,7 +12,7 @@ export function Config(props) {
             <div>
                 <Button
                     fullWidth
-                    color='primary'
+                    variant='primary'
                     onPress={() => {
                         updateServiceList('bing_dict');
                         onClose();

@@ -1,4 +1,4 @@
-import { Divider, Button, Popover, PopoverTrigger, PopoverContent, Tooltip } from '@nextui-org/react';
+import { Separator, Button, Popover, Tooltip } from '@heroui/react';
 import { appLogDir, appConfigDir } from '@tauri-apps/api/path';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-shell';
@@ -23,10 +23,10 @@ export default function About() {
             <div className='content-center'>
                 <h1 className='font-bold text-2xl text-center'>Pot</h1>
                 <p className='text-center text-sm text-gray-500 mb-[5px]'>{appVersion}</p>
-                <Divider />
+                <Separator />
                 <div className='flex justify-between'>
                     <Button
-                        variant='light'
+                        variant='tertiary'
                         className='my-[5px]'
                         size='sm'
                         onPress={() => {
@@ -36,7 +36,7 @@ export default function About() {
                         {t('config.about.website')}
                     </Button>
                     <Button
-                        variant='light'
+                        variant='tertiary'
                         className='my-[5px]'
                         size='sm'
                         onPress={() => {
@@ -49,19 +49,19 @@ export default function About() {
                         placement='top'
                         offset={10}
                     >
-                        <PopoverTrigger>
+                        <Popover.Trigger>
                             <Button
-                                variant='light'
+                                variant='tertiary'
                                 className='my-[5px]'
                                 size='sm'
                             >
                                 {t('config.about.feedback')}
                             </Button>
-                        </PopoverTrigger>
-                        <PopoverContent>
+                        </Popover.Trigger>
+                        <Popover.Content>
                             <div className='flex justify-between'>
                                 <Button
-                                    variant='light'
+                                    variant='tertiary'
                                     className='my-[5px]'
                                     size='sm'
                                     onPress={() => {
@@ -71,7 +71,7 @@ export default function About() {
                                     {t('config.about.issue')}
                                 </Button>
                                 <Button
-                                    variant='light'
+                                    variant='tertiary'
                                     className='my-[5px]'
                                     size='sm'
                                     onPress={() => {
@@ -81,28 +81,28 @@ export default function About() {
                                     {t('config.about.email')}
                                 </Button>
                             </div>
-                        </PopoverContent>
+                        </Popover.Content>
                     </Popover>
 
                     <Popover
                         placement='top'
                         offset={10}
                     >
-                        <PopoverTrigger>
+                        <Popover.Trigger>
                             <Button
-                                variant='light'
+                                variant='tertiary'
                                 className='my-[5px]'
                                 size='sm'
                             >
                                 {t('config.about.community')}
                             </Button>
-                        </PopoverTrigger>
-                        <PopoverContent>
+                        </Popover.Trigger>
+                        <Popover.Content>
                             <div className='flex justify-between'>
                                 <Tooltip content={t('config.about.qq_channel')}>
                                     <Button
                                         isIconOnly
-                                        variant='light'
+                                        variant='tertiary'
                                         className='my-[5px]'
                                         size='lg'
                                         onPress={() => {
@@ -115,7 +115,7 @@ export default function About() {
                                 <Tooltip content={t('config.about.qq_group')}>
                                     <Button
                                         isIconOnly
-                                        variant='light'
+                                        variant='tertiary'
                                         className='my-[5px]'
                                         size='lg'
                                         onPress={() => {
@@ -128,7 +128,7 @@ export default function About() {
                                 <Tooltip content={t('config.about.telegram')}>
                                     <Button
                                         isIconOnly
-                                        variant='light'
+                                        variant='tertiary'
                                         className='my-[5px]'
                                         size='lg'
                                         onPress={() => {
@@ -141,7 +141,7 @@ export default function About() {
                                 <Tooltip content={t('config.about.discussion')}>
                                     <Button
                                         isIconOnly
-                                        variant='light'
+                                        variant='tertiary'
                                         className='my-[5px]'
                                         size='lg'
                                         onPress={() => {
@@ -152,15 +152,15 @@ export default function About() {
                                     </Button>
                                 </Tooltip>
                             </div>
-                        </PopoverContent>
+                        </Popover.Content>
                     </Popover>
                 </div>
-                <Divider />
+                <Separator />
             </div>
             <div className='content-center px-[40px]'>
                 <div className='flex justify-between'>
                     <Button
-                        variant='light'
+                        variant='tertiary'
                         className='my-[5px]'
                         size='sm'
                         onPress={() => {
@@ -170,7 +170,7 @@ export default function About() {
                         {t('config.about.check_update')}
                     </Button>
                     <Button
-                        variant='light'
+                        variant='tertiary'
                         className='my-[5px]'
                         size='sm'
                         onPress={async () => {
@@ -181,7 +181,7 @@ export default function About() {
                         {t('config.about.view_log')}
                     </Button>
                     <Button
-                        variant='light'
+                        variant='tertiary'
                         className='my-[5px]'
                         size='sm'
                         onPress={async () => {
@@ -193,7 +193,7 @@ export default function About() {
                     </Button>
                 </div>
 
-                <Divider />
+                <Separator />
             </div>
         </div>
     );

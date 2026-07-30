@@ -1,20 +1,21 @@
 import { enable, isEnabled, disable } from '@tauri-apps/plugin-autostart';
-import { DropdownTrigger } from '@nextui-org/react';
 import React, { useState, useEffect } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import { DropdownMenu } from '@nextui-org/react';
-import { DropdownItem } from '@nextui-org/react';
 import { useTranslation } from 'react-i18next';
-import { CardBody } from '@nextui-org/react';
-import { Dropdown } from '@nextui-org/react';
 import { info } from '@tauri-apps/plugin-log';
-import { Button } from '@nextui-org/react';
-import { Switch } from '@nextui-org/react';
 import 'flag-icons/css/flag-icons.min.css';
-import { Input } from '@nextui-org/react';
-import { Card } from '@nextui-org/react';
 import { invoke } from '@tauri-apps/api/core';
 import { useTheme } from 'next-themes';
+import {
+    Dropdown,
+    Button,
+    Switch,
+    Card,
+    TextField,
+    Label,
+    Input,
+    InputGroup,
+} from '@heroui/react';
 
 import { useConfig } from '../../../../hooks/useConfig';
 import { LanguageFlag } from '../../../../utils/language';
@@ -81,13 +82,13 @@ export default function General() {
         <>
             <Toaster />
             <Card className='mb-[10px]'>
-                <CardBody>
+                <Card.Content>
                     <div className='config-item'>
                         <h3>{t('config.general.auto_start')}</h3>
                         {autoStart !== null && (
                             <Switch
                                 isSelected={autoStart}
-                                onValueChange={(v) => {
+                                onChange={(v) => {
                                     setAutoStart(v);
                                     if (v) {
                                         enable().then(() => {
@@ -99,7 +100,13 @@ export default function General() {
                                         });
                                     }
                                 }}
-                            />
+                            >
+                                <Switch.Content>
+                                    <Switch.Control>
+                                        <Switch.Thumb />
+                                    </Switch.Control>
+                                </Switch.Content>
+                            </Switch>
                         )}
                     </div>
                     <div className='config-item'>
@@ -107,21 +114,24 @@ export default function General() {
                         {checkUpdate !== null && (
                             <Switch
                                 isSelected={checkUpdate}
-                                onValueChange={(v) => {
+                                onChange={(v) => {
                                     setCheckUpdate(v);
                                 }}
-                            />
+                            >
+                                <Switch.Content>
+                                    <Switch.Control>
+                                        <Switch.Thumb />
+                                    </Switch.Control>
+                                </Switch.Content>
+                            </Switch>
                         )}
                     </div>
                     <div className='config-item'>
                         <h3 className='my-auto'>{t('config.general.server_port')}</h3>
                         {serverPort !== null && (
-                            <Input
-                                type='number'
-                                variant='bordered'
+                            <TextField
                                 value={serverPort}
-                                labelPlacement='outside-left'
-                                onValueChange={(v) => {
+                                onChange={(v) => {
                                     if (parseInt(v) !== serverPort) {
                                         if (timer) {
                                             clearTimeout(timer);
@@ -144,149 +154,171 @@ export default function General() {
                                     }
                                 }}
                                 className='max-w-[100px]'
-                            />
+                            >
+                                <Input
+                                    type='number'
+                                    variant='secondary'
+                                />
+                            </TextField>
                         )}
                     </div>
-                </CardBody>
+                </Card.Content>
             </Card>
             <Card className='mb-[10px]'>
-                <CardBody>
+                <Card.Content>
                     <div className='config-item'>
                         <h3 className='my-auto'>{t('config.general.app_language')}</h3>
                         {appLanguage !== null && (
                             <Dropdown>
-                                <DropdownTrigger>
-                                    <Button
-                                        variant='bordered'
-                                        startContent={<span className={`fi fi-${LanguageFlag[appLanguage]}`} />}
+                                <Button variant='secondary'>
+                                    <span className={`fi fi-${LanguageFlag[appLanguage]}`} />
+                                    {languageName[appLanguage]}
+                                </Button>
+                                <Dropdown.Popover>
+                                    <Dropdown.Menu
+                                        aria-label='app language'
+                                        className='max-h-[40vh] overflow-y-auto'
+                                        onAction={(key) => {
+                                            setAppLanguage(key);
+                                            i18n.changeLanguage(key);
+                                            invoke('update_tray', { language: key, copyMode: '' });
+                                        }}
                                     >
-                                        {languageName[appLanguage]}
-                                    </Button>
-                                </DropdownTrigger>
-                                <DropdownMenu
-                                    aria-label='app language'
-                                    className='max-h-[40vh] overflow-y-auto'
-                                    onAction={(key) => {
-                                        setAppLanguage(key);
-                                        i18n.changeLanguage(key);
-                                        invoke('update_tray', { language: key, copyMode: '' });
-                                    }}
-                                >
-                                    <DropdownItem
-                                        key='zh_cn'
-                                        startContent={<span className={`fi fi-${LanguageFlag.zh_cn}`} />}
-                                    >
-                                        简体中文
-                                    </DropdownItem>
-                                    <DropdownItem
-                                        key='zh_tw'
-                                        startContent={<span className={`fi fi-${LanguageFlag.zh_cn}`} />}
-                                    >
-                                        繁體中文
-                                    </DropdownItem>
-                                    <DropdownItem
-                                        key='en'
-                                        startContent={<span className={`fi fi-${LanguageFlag.en}`} />}
-                                    >
-                                        English
-                                    </DropdownItem>
-                                    <DropdownItem
-                                        key='ja'
-                                        startContent={<span className={`fi fi-${LanguageFlag.ja}`} />}
-                                    >
-                                        日本語
-                                    </DropdownItem>
-                                    <DropdownItem
-                                        key='ko'
-                                        startContent={<span className={`fi fi-${LanguageFlag.ko}`} />}
-                                    >
-                                        한국어
-                                    </DropdownItem>
-                                    <DropdownItem
-                                        key='fr'
-                                        startContent={<span className={`fi fi-${LanguageFlag.fr}`} />}
-                                    >
-                                        Français
-                                    </DropdownItem>
-                                    <DropdownItem
-                                        key='de'
-                                        startContent={<span className={`fi fi-${LanguageFlag.de}`} />}
-                                    >
-                                        Deutsch
-                                    </DropdownItem>
-                                    <DropdownItem
-                                        key='es'
-                                        startContent={<span className={`fi fi-${LanguageFlag.es}`} />}
-                                    >
-                                        Español
-                                    </DropdownItem>
-                                    <DropdownItem
-                                        key='ru'
-                                        startContent={<span className={`fi fi-${LanguageFlag.ru}`} />}
-                                    >
-                                        Русский
-                                    </DropdownItem>
-                                    <DropdownItem
-                                        key='it'
-                                        startContent={<span className={`fi fi-${LanguageFlag.it}`} />}
-                                    >
-                                        Italiano
-                                    </DropdownItem>
-                                    <DropdownItem
-                                        key='tr'
-                                        startContent={<span className={`fi fi-${LanguageFlag.tr}`} />}
-                                    >
-                                        Türkçe
-                                    </DropdownItem>
-                                    <DropdownItem
-                                        key='pt_pt'
-                                        startContent={<span className={`fi fi-${LanguageFlag.pt_pt}`} />}
-                                    >
-                                        Português
-                                    </DropdownItem>
-                                    <DropdownItem
-                                        key='pt_br'
-                                        startContent={<span className={`fi fi-${LanguageFlag.pt_br}`} />}
-                                    >
-                                        Português (Brasil)
-                                    </DropdownItem>
-                                    <DropdownItem
-                                        key='nb_no'
-                                        startContent={<span className={`fi fi-${LanguageFlag.nb_no}`} />}
-                                    >
-                                        Norsk Bokmål
-                                    </DropdownItem>
-                                    <DropdownItem
-                                        key='nn_no'
-                                        startContent={<span className={`fi fi-${LanguageFlag.nn_no}`} />}
-                                    >
-                                        Norsk Nynorsk
-                                    </DropdownItem>
-                                    <DropdownItem
-                                        key='fa'
-                                        startContent={<span className={`fi fi-${LanguageFlag.fa}`} />}
-                                    >
-                                        فارسی
-                                    </DropdownItem>
-                                    <DropdownItem
-                                        key='uk'
-                                        startContent={<span className={`fi fi-${LanguageFlag.uk}`} />}
-                                    >
-                                        Українська
-                                    </DropdownItem>
-                                    <DropdownItem
-                                        key='ar'
-                                        startContent={<span className={`fi fi-${LanguageFlag.ar}`} />}
-                                    >
-                                        العربية
-                                    </DropdownItem>
-                                    <DropdownItem
-                                        key='he'
-                                        startContent={<span className={`fi fi-${LanguageFlag.he}`} />}
-                                    >
-                                        עִבְרִית
-                                    </DropdownItem>
-                                </DropdownMenu>
+                                        <Dropdown.Item
+                                            id='zh_cn'
+                                            textValue='简体中文'
+                                        >
+                                            <span className={`fi fi-${LanguageFlag.zh_cn}`} />
+                                            <Label>简体中文</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='zh_tw'
+                                            textValue='繁體中文'
+                                        >
+                                            <span className={`fi fi-${LanguageFlag.zh_cn}`} />
+                                            <Label>繁體中文</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='en'
+                                            textValue='English'
+                                        >
+                                            <span className={`fi fi-${LanguageFlag.en}`} />
+                                            <Label>English</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='ja'
+                                            textValue='日本語'
+                                        >
+                                            <span className={`fi fi-${LanguageFlag.ja}`} />
+                                            <Label>日本語</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='ko'
+                                            textValue='한국어'
+                                        >
+                                            <span className={`fi fi-${LanguageFlag.ko}`} />
+                                            <Label>한국어</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='fr'
+                                            textValue='Français'
+                                        >
+                                            <span className={`fi fi-${LanguageFlag.fr}`} />
+                                            <Label>Français</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='de'
+                                            textValue='Deutsch'
+                                        >
+                                            <span className={`fi fi-${LanguageFlag.de}`} />
+                                            <Label>Deutsch</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='es'
+                                            textValue='Español'
+                                        >
+                                            <span className={`fi fi-${LanguageFlag.es}`} />
+                                            <Label>Español</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='ru'
+                                            textValue='Русский'
+                                        >
+                                            <span className={`fi fi-${LanguageFlag.ru}`} />
+                                            <Label>Русский</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='it'
+                                            textValue='Italiano'
+                                        >
+                                            <span className={`fi fi-${LanguageFlag.it}`} />
+                                            <Label>Italiano</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='tr'
+                                            textValue='Türkçe'
+                                        >
+                                            <span className={`fi fi-${LanguageFlag.tr}`} />
+                                            <Label>Türkçe</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='pt_pt'
+                                            textValue='Português'
+                                        >
+                                            <span className={`fi fi-${LanguageFlag.pt_pt}`} />
+                                            <Label>Português</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='pt_br'
+                                            textValue='Português (Brasil)'
+                                        >
+                                            <span className={`fi fi-${LanguageFlag.pt_br}`} />
+                                            <Label>Português (Brasil)</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='nb_no'
+                                            textValue='Norsk Bokmål'
+                                        >
+                                            <span className={`fi fi-${LanguageFlag.nb_no}`} />
+                                            <Label>Norsk Bokmål</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='nn_no'
+                                            textValue='Norsk Nynorsk'
+                                        >
+                                            <span className={`fi fi-${LanguageFlag.nn_no}`} />
+                                            <Label>Norsk Nynorsk</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='fa'
+                                            textValue='فارسی'
+                                        >
+                                            <span className={`fi fi-${LanguageFlag.fa}`} />
+                                            <Label>فارسی</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='uk'
+                                            textValue='Українська'
+                                        >
+                                            <span className={`fi fi-${LanguageFlag.uk}`} />
+                                            <Label>Українська</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='ar'
+                                            textValue='العربية'
+                                        >
+                                            <span className={`fi fi-${LanguageFlag.ar}`} />
+                                            <Label>العربية</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='he'
+                                            textValue='עִבְרִית'
+                                        >
+                                            <span className={`fi fi-${LanguageFlag.he}`} />
+                                            <Label>עִבְרִית</Label>
+                                        </Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown.Popover>
                             </Dropdown>
                         )}
                     </div>
@@ -294,37 +326,52 @@ export default function General() {
                         <h3 className='my-auto'>{t('config.general.app_theme')}</h3>
                         {appTheme !== null && (
                             <Dropdown>
-                                <DropdownTrigger>
-                                    <Button variant='bordered'>{t(`config.general.theme.${appTheme}`)}</Button>
-                                </DropdownTrigger>
-                                <DropdownMenu
-                                    aria-label='app theme'
-                                    onAction={(key) => {
-                                        setAppTheme(key);
-                                        if (key !== 'system') {
-                                            setTheme(key);
-                                        } else {
-                                            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                                                setTheme('dark');
+                                <Button variant='secondary'>{t(`config.general.theme.${appTheme}`)}</Button>
+                                <Dropdown.Popover>
+                                    <Dropdown.Menu
+                                        aria-label='app theme'
+                                        onAction={(key) => {
+                                            setAppTheme(key);
+                                            if (key !== 'system') {
+                                                setTheme(key);
                                             } else {
-                                                setTheme('light');
+                                                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                                                    setTheme('dark');
+                                                } else {
+                                                    setTheme('light');
+                                                }
+                                                window
+                                                    .matchMedia('(prefers-color-scheme: dark)')
+                                                    .addEventListener('change', (e) => {
+                                                        if (e.matches) {
+                                                            setTheme('dark');
+                                                        } else {
+                                                            setTheme('light');
+                                                        }
+                                                    });
                                             }
-                                            window
-                                                .matchMedia('(prefers-color-scheme: dark)')
-                                                .addEventListener('change', (e) => {
-                                                    if (e.matches) {
-                                                        setTheme('dark');
-                                                    } else {
-                                                        setTheme('light');
-                                                    }
-                                                });
-                                        }
-                                    }}
-                                >
-                                    <DropdownItem key='system'>{t('config.general.theme.system')}</DropdownItem>
-                                    <DropdownItem key='light'>{t('config.general.theme.light')}</DropdownItem>
-                                    <DropdownItem key='dark'>{t('config.general.theme.dark')}</DropdownItem>
-                                </DropdownMenu>
+                                        }}
+                                    >
+                                        <Dropdown.Item
+                                            id='system'
+                                            textValue={t('config.general.theme.system')}
+                                        >
+                                            <Label>{t('config.general.theme.system')}</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='light'
+                                            textValue={t('config.general.theme.light')}
+                                        >
+                                            <Label>{t('config.general.theme.light')}</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='dark'
+                                            textValue={t('config.general.theme.dark')}
+                                        >
+                                            <Label>{t('config.general.theme.dark')}</Label>
+                                        </Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown.Popover>
                             </Dropdown>
                         )}
                     </div>
@@ -332,43 +379,46 @@ export default function General() {
                         <h3 className='my-auto'>{t('config.general.app_font')}</h3>
                         {appFont !== null && fontList !== null && (
                             <Dropdown>
-                                <DropdownTrigger>
-                                    <Button
-                                        variant='bordered'
-                                        style={{
-                                            fontFamily: appFont === 'default' ? 'sans-serif' : appFont,
-                                        }}
-                                    >
-                                        {appFont === 'default' ? t('config.general.default_font') : appFont}
-                                    </Button>
-                                </DropdownTrigger>
-                                <DropdownMenu
-                                    aria-label='app font'
-                                    className='max-h-[50vh] overflow-y-auto'
-                                    onAction={(key) => {
-                                        document.documentElement.style.fontFamily = `"${
-                                            key === 'default' ? 'sans-serif' : key
-                                        }","${appFallbackFont === 'default' ? 'sans-serif' : appFallbackFont}"`;
-                                        setAppFont(key);
+                                <Button
+                                    variant='secondary'
+                                    style={{
+                                        fontFamily: appFont === 'default' ? 'sans-serif' : appFont,
                                     }}
                                 >
-                                    <DropdownItem
-                                        style={{ fontFamily: 'sans-serif' }}
-                                        key='default'
+                                    {appFont === 'default' ? t('config.general.default_font') : appFont}
+                                </Button>
+                                <Dropdown.Popover>
+                                    <Dropdown.Menu
+                                        aria-label='app font'
+                                        className='max-h-[50vh] overflow-y-auto'
+                                        onAction={(key) => {
+                                            document.documentElement.style.fontFamily = `"${
+                                                key === 'default' ? 'sans-serif' : key
+                                            }","${appFallbackFont === 'default' ? 'sans-serif' : appFallbackFont}"`;
+                                            setAppFont(key);
+                                        }}
                                     >
-                                        {t('config.general.default_font')}
-                                    </DropdownItem>
-                                    {fontList.map((x) => {
-                                        return (
-                                            <DropdownItem
-                                                style={{ fontFamily: x }}
-                                                key={x}
-                                            >
-                                                {x}
-                                            </DropdownItem>
-                                        );
-                                    })}
-                                </DropdownMenu>
+                                        <Dropdown.Item
+                                            id='default'
+                                            textValue={t('config.general.default_font')}
+                                            style={{ fontFamily: 'sans-serif' }}
+                                        >
+                                            <Label>{t('config.general.default_font')}</Label>
+                                        </Dropdown.Item>
+                                        {fontList.map((x) => {
+                                            return (
+                                                <Dropdown.Item
+                                                    id={x}
+                                                    key={x}
+                                                    textValue={x}
+                                                    style={{ fontFamily: x }}
+                                                >
+                                                    <Label>{x}</Label>
+                                                </Dropdown.Item>
+                                            );
+                                        })}
+                                    </Dropdown.Menu>
+                                </Dropdown.Popover>
                             </Dropdown>
                         )}
                     </div>
@@ -376,45 +426,46 @@ export default function General() {
                         <h3 className='my-auto'>{t('config.general.app_fallback_font')}</h3>
                         {appFallbackFont !== null && fontList !== null && (
                             <Dropdown>
-                                <DropdownTrigger>
-                                    <Button
-                                        variant='bordered'
-                                        style={{
-                                            fontFamily: appFallbackFont === 'default' ? 'sans-serif' : appFallbackFont,
-                                        }}
-                                    >
-                                        {appFallbackFont === 'default'
-                                            ? t('config.general.default_font')
-                                            : appFallbackFont}
-                                    </Button>
-                                </DropdownTrigger>
-                                <DropdownMenu
-                                    aria-label='app font'
-                                    className='max-h-[50vh] overflow-y-auto'
-                                    onAction={(key) => {
-                                        document.documentElement.style.fontFamily = `"${
-                                            appFont === 'default' ? 'sans-serif' : appFont
-                                        }","${key === 'default' ? 'sans-serif' : key}"`;
-                                        setAppFallbackFont(key);
+                                <Button
+                                    variant='secondary'
+                                    style={{
+                                        fontFamily: appFallbackFont === 'default' ? 'sans-serif' : appFallbackFont,
                                     }}
                                 >
-                                    <DropdownItem
-                                        style={{ fontFamily: 'sans-serif' }}
-                                        key='default'
+                                    {appFallbackFont === 'default' ? t('config.general.default_font') : appFallbackFont}
+                                </Button>
+                                <Dropdown.Popover>
+                                    <Dropdown.Menu
+                                        aria-label='app font'
+                                        className='max-h-[50vh] overflow-y-auto'
+                                        onAction={(key) => {
+                                            document.documentElement.style.fontFamily = `"${
+                                                appFont === 'default' ? 'sans-serif' : appFont
+                                            }","${key === 'default' ? 'sans-serif' : key}"`;
+                                            setAppFallbackFont(key);
+                                        }}
                                     >
-                                        {t('config.general.default_font')}
-                                    </DropdownItem>
-                                    {fontList.map((x) => {
-                                        return (
-                                            <DropdownItem
-                                                style={{ fontFamily: x }}
-                                                key={x}
-                                            >
-                                                {x}
-                                            </DropdownItem>
-                                        );
-                                    })}
-                                </DropdownMenu>
+                                        <Dropdown.Item
+                                            id='default'
+                                            textValue={t('config.general.default_font')}
+                                            style={{ fontFamily: 'sans-serif' }}
+                                        >
+                                            <Label>{t('config.general.default_font')}</Label>
+                                        </Dropdown.Item>
+                                        {fontList.map((x) => {
+                                            return (
+                                                <Dropdown.Item
+                                                    id={x}
+                                                    key={x}
+                                                    textValue={x}
+                                                    style={{ fontFamily: x }}
+                                                >
+                                                    <Label>{x}</Label>
+                                                </Dropdown.Item>
+                                            );
+                                        })}
+                                    </Dropdown.Menu>
+                                </Dropdown.Popover>
                             </Dropdown>
                         )}
                     </div>
@@ -422,25 +473,60 @@ export default function General() {
                         <h3 className='my-auto mx-0'>{t('config.general.font_size.title')}</h3>
                         {appFontSize !== null && (
                             <Dropdown>
-                                <DropdownTrigger>
-                                    <Button variant='bordered'>{t(`config.general.font_size.${appFontSize}`)}</Button>
-                                </DropdownTrigger>
-                                <DropdownMenu
-                                    aria-label='window position'
-                                    className='max-h-[50vh] overflow-y-auto'
-                                    onAction={(key) => {
-                                        document.documentElement.style.fontSize = `${key}px`;
-                                        setAppFontSize(key);
-                                    }}
-                                >
-                                    <DropdownItem key={10}>{t(`config.general.font_size.10`)}</DropdownItem>
-                                    <DropdownItem key={12}>{t(`config.general.font_size.12`)}</DropdownItem>
-                                    <DropdownItem key={14}>{t(`config.general.font_size.14`)}</DropdownItem>
-                                    <DropdownItem key={16}>{t(`config.general.font_size.16`)}</DropdownItem>
-                                    <DropdownItem key={18}>{t(`config.general.font_size.18`)}</DropdownItem>
-                                    <DropdownItem key={20}>{t(`config.general.font_size.20`)}</DropdownItem>
-                                    <DropdownItem key={24}>{t(`config.general.font_size.24`)}</DropdownItem>
-                                </DropdownMenu>
+                                <Button variant='secondary'>{t(`config.general.font_size.${appFontSize}`)}</Button>
+                                <Dropdown.Popover>
+                                    <Dropdown.Menu
+                                        aria-label='window position'
+                                        className='max-h-[50vh] overflow-y-auto'
+                                        onAction={(key) => {
+                                            document.documentElement.style.fontSize = `${key}px`;
+                                            setAppFontSize(key);
+                                        }}
+                                    >
+                                        <Dropdown.Item
+                                            id={10}
+                                            textValue={t('config.general.font_size.10')}
+                                        >
+                                            <Label>{t(`config.general.font_size.10`)}</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id={12}
+                                            textValue={t('config.general.font_size.12')}
+                                        >
+                                            <Label>{t(`config.general.font_size.12`)}</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id={14}
+                                            textValue={t('config.general.font_size.14')}
+                                        >
+                                            <Label>{t(`config.general.font_size.14`)}</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id={16}
+                                            textValue={t('config.general.font_size.16')}
+                                        >
+                                            <Label>{t(`config.general.font_size.16`)}</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id={18}
+                                            textValue={t('config.general.font_size.18')}
+                                        >
+                                            <Label>{t(`config.general.font_size.18`)}</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id={20}
+                                            textValue={t('config.general.font_size.20')}
+                                        >
+                                            <Label>{t(`config.general.font_size.20`)}</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id={24}
+                                            textValue={t('config.general.font_size.24')}
+                                        >
+                                            <Label>{t(`config.general.font_size.24`)}</Label>
+                                        </Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown.Popover>
                             </Dropdown>
                         )}
                     </div>
@@ -448,25 +534,46 @@ export default function General() {
                         <h3 className='my-auto'>{t('config.general.tray_click_event')}</h3>
                         {trayClickEvent !== null && (
                             <Dropdown>
-                                <DropdownTrigger>
-                                    <Button variant='bordered'>{t(`config.general.event.${trayClickEvent}`)}</Button>
-                                </DropdownTrigger>
-                                <DropdownMenu
-                                    aria-label='tray click event'
-                                    onAction={(key) => {
-                                        setTrayClickEvent(key);
-                                    }}
-                                >
-                                    <DropdownItem key='config'>{t('config.general.event.config')}</DropdownItem>
-                                    <DropdownItem key='translate'>{t('config.general.event.translate')}</DropdownItem>
-                                    <DropdownItem key='ocr_recognize'>
-                                        {t('config.general.event.ocr_recognize')}
-                                    </DropdownItem>
-                                    <DropdownItem key='ocr_translate'>
-                                        {t('config.general.event.ocr_translate')}
-                                    </DropdownItem>
-                                    <DropdownItem key='disable'>{t('config.general.event.disable')}</DropdownItem>
-                                </DropdownMenu>
+                                <Button variant='secondary'>{t(`config.general.event.${trayClickEvent}`)}</Button>
+                                <Dropdown.Popover>
+                                    <Dropdown.Menu
+                                        aria-label='tray click event'
+                                        onAction={(key) => {
+                                            setTrayClickEvent(key);
+                                        }}
+                                    >
+                                        <Dropdown.Item
+                                            id='config'
+                                            textValue={t('config.general.event.config')}
+                                        >
+                                            <Label>{t('config.general.event.config')}</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='translate'
+                                            textValue={t('config.general.event.translate')}
+                                        >
+                                            <Label>{t('config.general.event.translate')}</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='ocr_recognize'
+                                            textValue={t('config.general.event.ocr_recognize')}
+                                        >
+                                            <Label>{t('config.general.event.ocr_recognize')}</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='ocr_translate'
+                                            textValue={t('config.general.event.ocr_translate')}
+                                        >
+                                            <Label>{t('config.general.event.ocr_translate')}</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='disable'
+                                            textValue={t('config.general.event.disable')}
+                                        >
+                                            <Label>{t('config.general.event.disable')}</Label>
+                                        </Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown.Popover>
                             </Dropdown>
                         )}
                     </div>
@@ -475,10 +582,16 @@ export default function General() {
                         {transparent !== null && (
                             <Switch
                                 isSelected={transparent}
-                                onValueChange={(v) => {
+                                onChange={(v) => {
                                     setTransparent(v);
                                 }}
-                            />
+                            >
+                                <Switch.Content>
+                                    <Switch.Control>
+                                        <Switch.Thumb />
+                                    </Switch.Control>
+                                </Switch.Content>
+                            </Switch>
                         )}
                     </div>
                     <div className='config-item'>
@@ -486,22 +599,28 @@ export default function General() {
                         {devMode !== null && (
                             <Switch
                                 isSelected={devMode}
-                                onValueChange={(v) => {
+                                onChange={(v) => {
                                     setDevMode(v);
                                 }}
-                            />
+                            >
+                                <Switch.Content>
+                                    <Switch.Control>
+                                        <Switch.Thumb />
+                                    </Switch.Control>
+                                </Switch.Content>
+                            </Switch>
                         )}
                     </div>
-                </CardBody>
+                </Card.Content>
             </Card>
             <Card>
-                <CardBody>
+                <Card.Content>
                     <div className='config-item'>
                         <h3>{t('config.general.proxy.title')}</h3>
                         {proxyEnable !== null && (
                             <Switch
                                 isSelected={proxyEnable}
-                                onValueChange={async (v) => {
+                                onChange={async (v) => {
                                     if (v) {
                                         if (proxyHost === '' || proxyPort === '') {
                                             setProxyEnable(false);
@@ -521,32 +640,38 @@ export default function General() {
                                         style: toastStyle,
                                     });
                                 }}
-                            />
+                            >
+                                <Switch.Content>
+                                    <Switch.Control>
+                                        <Switch.Thumb />
+                                    </Switch.Control>
+                                </Switch.Content>
+                            </Switch>
                         )}
                     </div>
                     <div className='config-item'>
                         {proxyHost !== null && (
-                            <Input
-                                type='url'
-                                variant='bordered'
-                                isRequired
-                                label={t('config.general.proxy.host')}
-                                startContent={<span>http://</span>}
+                            <TextField
                                 value={proxyHost}
-                                onValueChange={(v) => {
+                                onChange={(v) => {
                                     setProxyHost(v);
                                 }}
+                                isRequired
                                 className='mr-2'
-                            />
+                            >
+                                <Label>{t('config.general.proxy.host')}</Label>
+                                <InputGroup variant='secondary'>
+                                    <InputGroup.Prefix>
+                                        <span>http://</span>
+                                    </InputGroup.Prefix>
+                                    <InputGroup.Input type='url' />
+                                </InputGroup>
+                            </TextField>
                         )}
                         {proxyPort !== null && (
-                            <Input
-                                type='number'
-                                variant='bordered'
-                                isRequired
-                                label={t('config.general.proxy.port')}
+                            <TextField
                                 value={proxyPort}
-                                onValueChange={(v) => {
+                                onChange={(v) => {
                                     if (parseInt(v) > 65535) {
                                         setProxyPort(65535);
                                     } else if (parseInt(v) < 0) {
@@ -555,51 +680,65 @@ export default function General() {
                                         setProxyPort(parseInt(v));
                                     }
                                 }}
+                                isRequired
                                 className='ml-2'
-                            />
+                            >
+                                <Label>{t('config.general.proxy.port')}</Label>
+                                <Input
+                                    type='number'
+                                    variant='secondary'
+                                />
+                            </TextField>
                         )}
                     </div>
                     <div className='config-item'>
                         {proxyUsername !== null && (
-                            <Input
-                                type='text'
-                                variant='bordered'
-                                isDisabled
-                                label={t('config.general.proxy.username')}
+                            <TextField
                                 value={proxyUsername}
-                                onValueChange={(v) => {
+                                onChange={(v) => {
                                     setProxyUsername(v);
                                 }}
+                                isDisabled
                                 className='mr-2'
-                            />
+                            >
+                                <Label>{t('config.general.proxy.username')}</Label>
+                                <Input
+                                    type='text'
+                                    variant='secondary'
+                                />
+                            </TextField>
                         )}
                         {proxyPassword !== null && (
-                            <Input
-                                type='password'
-                                variant='bordered'
-                                isDisabled
-                                label={t('config.general.proxy.password')}
+                            <TextField
                                 value={proxyPassword}
-                                onValueChange={(v) => {
+                                onChange={(v) => {
                                     setProxyPassword(v);
                                 }}
+                                isDisabled
                                 className='ml-2'
-                            />
+                            >
+                                <Label>{t('config.general.proxy.password')}</Label>
+                                <Input
+                                    type='password'
+                                    variant='secondary'
+                                />
+                            </TextField>
                         )}
                     </div>
                     <div className='config-item'>
                         {noProxy !== null && (
-                            <Input
-                                variant='bordered'
-                                label={t('config.general.proxy.no_proxy')}
+                            <TextField
                                 value={noProxy}
-                                onValueChange={(v) => {
+                                onChange={(v) => {
                                     setNoProxy(v);
                                 }}
-                            />
+                            >
+                                <Label>{t('config.general.proxy.no_proxy')}</Label>
+                                <Input variant='secondary' />
+                            </TextField>
                         )}
                     </div>
-                </CardBody>
+                </Card.Content>
             </Card>
         </>
     );
