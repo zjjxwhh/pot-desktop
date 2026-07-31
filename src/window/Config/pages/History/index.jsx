@@ -1,4 +1,15 @@
-import { Modal, useOverlayState, Table, TextArea, TextField, Button, ButtonGroup, Pagination } from '@heroui/react';
+import {
+    Modal,
+    useOverlayState,
+    Table,
+    TextArea,
+    TextField,
+    Button,
+    ButtonGroup,
+    Pagination,
+    EmptyState,
+} from '@heroui/react';
+import { IoFileTrayOutline } from 'react-icons/io5';
 import { readDir, BaseDirectory, readTextFile, exists } from '@tauri-apps/plugin-fs';
 import { appConfigDir, join } from '@tauri-apps/api/path';
 import { convertFileSrc } from '@tauri-apps/api/core';
@@ -125,28 +136,31 @@ export default function History() {
                         osType === 'linux' ? 'h-[calc(100vh-130px)]' : 'h-[calc(100vh-100px)]'
                     } overflow-y-auto pt-1`}
                 >
-                    <Table.ScrollContainer>
-                        <Table.Content
-                            aria-label='History Table'
-                            selectionMode='single'
-                            selectionBehavior='toggle'
-                            onRowAction={(id) => {
-                                getSelectedData(id);
-                                state.open();
-                            }}
-                        >
-                            <Table.Header className='hidden'>
-                                <Table.Column id='service' isRowHeader>service</Table.Column>
-                                <Table.Column id='text'>text</Table.Column>
-                                <Table.Column id='source'>source</Table.Column>
-                                <Table.Column id='target'>target</Table.Column>
-                                <Table.Column id='result'>result</Table.Column>
-                                <Table.Column id='timestamp'>timestamp</Table.Column>
-                            </Table.Header>
-                            <Table.Body
-                                items={items}
-                                renderEmptyState={() => 'No History to display.'}
+                    <Table.ScrollContainer className='h-full'>
+                        {items.length === 0 ? (
+                            <EmptyState className='flex h-full w-full flex-col items-center justify-center gap-4 text-center'>
+                                <IoFileTrayOutline className='size-8 text-muted' />
+                                <span className='text-base text-muted'>No History to Display</span>
+                            </EmptyState>
+                        ) : (
+                            <Table.Content
+                                aria-label='History Table'
+                                selectionMode='single'
+                                selectionBehavior='toggle'
+                                onRowAction={(id) => {
+                                    getSelectedData(id);
+                                    state.open();
+                                }}
                             >
+                                <Table.Header className='hidden'>
+                                    <Table.Column id='service' isRowHeader>service</Table.Column>
+                                    <Table.Column id='text'>text</Table.Column>
+                                    <Table.Column id='source'>source</Table.Column>
+                                    <Table.Column id='target'>target</Table.Column>
+                                    <Table.Column id='result'>result</Table.Column>
+                                    <Table.Column id='timestamp'>timestamp</Table.Column>
+                                </Table.Header>
+                                <Table.Body items={items}>
                                 {(item) =>
                                     whetherAvailableService(item.service, {
                                         [ServiceSourceType.BUILDIN]: builtinServices,
@@ -206,6 +220,7 @@ export default function History() {
                                 }
                             </Table.Body>
                         </Table.Content>
+                        )}
                     </Table.ScrollContainer>
                 </Table>
                 <div className='mt-[8px] flex justify-around'>

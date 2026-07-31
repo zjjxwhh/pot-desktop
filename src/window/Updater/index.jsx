@@ -61,8 +61,8 @@ export default function Updater() {
                     <h2>{t('updater.title')}</h2>
                 </div>
             </div>
-            <Card className='mx-[80px] mt-[10px] overscroll-auto h-[calc(100vh-150px)]'>
-                <Card.Content>
+            <Card className='mx-[80px] mt-[10px] overscroll-auto h-[calc(100vh-125px)]'>
+                <Card.Content className='h-full overflow-auto'>
                     {body === '' ? (
                         <div className='space-y-3'>
                             <Skeleton className='w-3/5 rounded-lg'>
@@ -81,7 +81,11 @@ export default function Updater() {
                             components={{
                                 code: ({ node, ...props }) => {
                                     const { children } = props;
-                                    return <code className='px-1 py-0.5 rounded bg-default text-foreground text-sm'>{children}</code>;
+                                    return (
+                                        <code className='px-1 py-0.5 rounded bg-default text-foreground text-sm'>
+                                            {children}
+                                        </code>
+                                    );
                                 },
                                 h2: ({ node, ...props }) => (
                                     <b>
@@ -130,7 +134,7 @@ export default function Updater() {
                 />
             )}
 
-            <div className='grid gap-4 grid-cols-2 h-[50px] my-[10px] mx-[80px]'>
+            <div className='grid gap-4 grid-cols-2 h-[50px] my-[10px] mx-[80px] place-items-center'>
                 <Button
                     variant='tertiary'
                     isPending={downloaded !== 0}

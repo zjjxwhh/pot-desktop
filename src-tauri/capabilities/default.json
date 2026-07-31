@@ -47,7 +47,16 @@
         "notification:default",
         "updater:default",
         "shell:allow-open",
-        "opener:allow-open-path",
+        "opener:default",
+        {
+            "identifier": "opener:allow-open-path",
+            "allow": [
+                { "path": "$APPCONFIG" },
+                { "path": "$APPCONFIG/**" },
+                { "path": "$APPLOG" },
+                { "path": "$APPLOG/**" }
+            ]
+        },
         "dialog:default",
         "dialog:allow-open",
         "dialog:allow-save",

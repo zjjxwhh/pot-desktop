@@ -2,10 +2,7 @@ import { Separator, Button, Popover, Tooltip } from '@heroui/react';
 import { appLogDir, appConfigDir } from '@tauri-apps/api/path';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-shell';
-import { BsTencentQq } from 'react-icons/bs';
-import { BsTelegram } from 'react-icons/bs';
-import { BsGithub } from 'react-icons/bs';
-import { invoke } from '@tauri-apps/api/core';
+import { openPath } from '@tauri-apps/plugin-opener';
 import React from 'react';
 
 import { appVersion } from '../../../../utils/env';
@@ -45,131 +42,30 @@ export default function About() {
                     >
                         {t('config.about.github')}
                     </Button>
-                    <Popover
-                        placement='top'
-                        offset={10}
+                    <Button
+                        variant='tertiary'
+                        className='my-[5px]'
+                        size='sm'
+                        onPress={() => {
+                            open('https://github.com/pot-app/pot-desktop/issues');
+                        }}
                     >
-                        <Popover.Trigger>
-                            <Button
-                                variant='tertiary'
-                                className='my-[5px]'
-                                size='sm'
-                            >
-                                {t('config.about.feedback')}
-                            </Button>
-                        </Popover.Trigger>
-                        <Popover.Content>
-                            <div className='flex justify-between'>
-                                <Button
-                                    variant='tertiary'
-                                    className='my-[5px]'
-                                    size='sm'
-                                    onPress={() => {
-                                        open('https://github.com/pot-app/pot-desktop/issues');
-                                    }}
-                                >
-                                    {t('config.about.issue')}
-                                </Button>
-                                <Button
-                                    variant='tertiary'
-                                    className='my-[5px]'
-                                    size='sm'
-                                    onPress={() => {
-                                        open('mailto:support@pot-app.com');
-                                    }}
-                                >
-                                    {t('config.about.email')}
-                                </Button>
-                            </div>
-                        </Popover.Content>
-                    </Popover>
-
-                    <Popover
-                        placement='top'
-                        offset={10}
+                        {t('config.about.feedback')}
+                    </Button>
+                    <Button
+                        variant='tertiary'
+                        className='my-[5px]'
+                        size='sm'
+                        onPress={() => {
+                            open('https://github.com/pot-app/pot-desktop/discussions');
+                        }}
                     >
-                        <Popover.Trigger>
-                            <Button
-                                variant='tertiary'
-                                className='my-[5px]'
-                                size='sm'
-                            >
-                                {t('config.about.community')}
-                            </Button>
-                        </Popover.Trigger>
-                        <Popover.Content>
-                            <div className='flex justify-between'>
-                                <Tooltip>
-                                    <Button
-                                        isIconOnly
-                                        variant='tertiary'
-                                        className='my-[5px]'
-                                        size='lg'
-                                        onPress={() => {
-                                            open('https://pd.qq.com/s/akns94e1r');
-                                        }}
-                                    >
-                                        <BsTencentQq />
-                                    </Button>
-                                    <Tooltip.Content>
-                                        <p>{t('config.about.qq_channel')}</p>
-                                    </Tooltip.Content>
-                                </Tooltip>
-                                <Tooltip>
-                                    <Button
-                                        isIconOnly
-                                        variant='tertiary'
-                                        className='my-[5px]'
-                                        size='lg'
-                                        onPress={() => {
-                                            open('https://pot-app.com/img/qq_group.png');
-                                        }}
-                                    >
-                                        <BsTencentQq />
-                                    </Button>
-                                    <Tooltip.Content>
-                                        <p>{t('config.about.qq_group')}</p>
-                                    </Tooltip.Content>
-                                </Tooltip>
-                                <Tooltip>
-                                    <Button
-                                        isIconOnly
-                                        variant='tertiary'
-                                        className='my-[5px]'
-                                        size='lg'
-                                        onPress={() => {
-                                            open('https://t.me/pot_app');
-                                        }}
-                                    >
-                                        <BsTelegram />
-                                    </Button>
-                                    <Tooltip.Content>
-                                        <p>{t('config.about.telegram')}</p>
-                                    </Tooltip.Content>
-                                </Tooltip>
-                                <Tooltip>
-                                    <Button
-                                        isIconOnly
-                                        variant='tertiary'
-                                        className='my-[5px]'
-                                        size='lg'
-                                        onPress={() => {
-                                            open('https://github.com/pot-app/pot-desktop/discussions');
-                                        }}
-                                    >
-                                        <BsGithub />
-                                    </Button>
-                                    <Tooltip.Content>
-                                        <p>{t('config.about.discussion')}</p>
-                                    </Tooltip.Content>
-                                </Tooltip>
-                            </div>
-                        </Popover.Content>
-                    </Popover>
+                        {t('config.about.community')}
+                    </Button>
                 </div>
                 <Separator />
             </div>
-            <div className='content-center px-[40px]'>
+            <div className='content-center px-[20px]'>
                 <div className='flex justify-between'>
                     <Button
                         variant='tertiary'
@@ -187,7 +83,7 @@ export default function About() {
                         size='sm'
                         onPress={async () => {
                             const dir = await appLogDir();
-                            open(dir);
+                            openPath(dir);
                         }}
                     >
                         {t('config.about.view_log')}
@@ -198,7 +94,7 @@ export default function About() {
                         size='sm'
                         onPress={async () => {
                             const dir = await appConfigDir();
-                            open(dir);
+                            openPath(dir);
                         }}
                     >
                         {t('config.about.view_config')}
