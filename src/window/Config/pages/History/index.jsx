@@ -127,6 +127,27 @@ export default function History() {
         setPluginList({ ...temp });
     };
 
+    const getPaginationItems = () => {
+        const totalPages = Math.ceil(total / 20);
+        const maxItems = 7;
+
+        if (totalPages <= maxItems) {
+            return Array.from({ length: totalPages }, (_, i) => i + 1);
+        }
+
+        const items = [];
+
+        if (page <= 4) {
+            items.push(1, 2, 3, 4, 5, 'ellipsis', totalPages);
+        } else if (page >= totalPages - 3) {
+            items.push(1, 'ellipsis', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+        } else {
+            items.push(1, 'ellipsis', page - 1, page, page + 1, 'ellipsis', totalPages);
+        }
+
+        return items;
+    };
+
     return (
         pluginList !== null && (
             <>
@@ -234,14 +255,18 @@ export default function History() {
                                     <Pagination.PreviousIcon />
                                 </Pagination.Previous>
                             </Pagination.Item>
-                            {Array.from({ length: Math.ceil(total / 20) }, (_, i) => i + 1).map((p) => (
-                                <Pagination.Item key={p}>
-                                    <Pagination.Link
-                                        isActive={p === page}
-                                        onPress={() => setPage(p)}
-                                    >
-                                        {p}
-                                    </Pagination.Link>
+                            {getPaginationItems().map((item, index) => (
+                                <Pagination.Item key={`${item}-${index}`}>
+                                    {item === 'ellipsis' ? (
+                                        <Pagination.Ellipsis />
+                                    ) : (
+                                        <Pagination.Link
+                                            isActive={item === page}
+                                            onPress={() => setPage(item)}
+                                        >
+                                            {item}
+                                        </Pagination.Link>
+                                    )}
                                 </Pagination.Item>
                             ))}
                             <Pagination.Item>
@@ -256,6 +281,7 @@ export default function History() {
                     </Pagination>
                     <Button
                         size='sm'
+                        variant='danger'
                         className='my-auto'
                         onPress={clearData}
                     >
