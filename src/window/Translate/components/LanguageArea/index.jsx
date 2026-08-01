@@ -4,7 +4,7 @@ import { BiTransferAlt } from 'react-icons/bi';
 import React, { useEffect } from 'react';
 import { atom, useAtom, useAtomValue } from 'jotai';
 
-import { languageList } from '../../../../utils/language';
+import { languageList, LanguageFlag } from '../../../../utils/language';
 import { detectLanguageAtom } from '../SourceArea';
 import { useConfig } from '../../../../hooks';
 
@@ -39,16 +39,15 @@ export default function LanguageArea() {
     }, [sourceLanguage, targetLanguage, rememberLanguage]);
 
     return (
-        <Card
-            className='bg-surface-secondary h-[35px] rounded-[10px]'
-        >
-            <Card.Footer className='bg-surface-secondary flex justify-between p-0 rounded-[10px]'>
+        <Card className='bg-surface-secondary gap-0 overflow-hidden p-0 h-[35px]'>
+            <Card.Footer className='bg-surface-secondary flex h-full justify-between p-0 rounded-[10px]'>
                 <div className='flex'>
                     <Dropdown>
                         <Button
                             variant='tertiary'
                             className='rounded-sm'
                         >
+                            <span className={`fi fi-${LanguageFlag[sourceLanguage]}`} />
                             {t(`languages.${sourceLanguage}`)}
                         </Button>
                         <Dropdown.Popover>
@@ -60,11 +59,13 @@ export default function LanguageArea() {
                                 }}
                             >
                                 <Dropdown.Item id='auto' textValue={t('languages.auto')}>
+                                    <span className={`fi fi-${LanguageFlag.auto}`} />
                                     <Label>{t('languages.auto')}</Label>
                                 </Dropdown.Item>
                                 {languageList.map((x) => {
                                     return (
                                         <Dropdown.Item id={x} textValue={t(`languages.${x}`)} key={x}>
+                                            <span className={`fi fi-${LanguageFlag[x]}`} />
                                             <Label>{t(`languages.${x}`)}</Label>
                                         </Dropdown.Item>
                                     );
@@ -73,12 +74,12 @@ export default function LanguageArea() {
                         </Dropdown.Popover>
                     </Dropdown>
                 </div>
-                <div className='flex'>
+                <div className='flex h-full self-stretch'>
                     <Button
                         isIconOnly
-                        size='sm'
+                        size='lg'
                         variant='tertiary'
-                        className='text-[20px]'
+                        className='h-full text-[20px]'
                         onPress={async () => {
                             if (sourceLanguage !== 'auto') {
                                 const oldSourceLanguage = sourceLanguage;
@@ -110,6 +111,7 @@ export default function LanguageArea() {
                             variant='tertiary'
                             className='rounded-sm'
                         >
+                            <span className={`fi fi-${LanguageFlag[targetLanguage]}`} />
                             {t(`languages.${targetLanguage}`)}
                         </Button>
                         <Dropdown.Popover>
@@ -123,6 +125,7 @@ export default function LanguageArea() {
                                 {languageList.map((x) => {
                                     return (
                                         <Dropdown.Item id={x} textValue={t(`languages.${x}`)} key={x}>
+                                            <span className={`fi fi-${LanguageFlag[x]}`} />
                                             <Label>{t(`languages.${x}`)}</Label>
                                         </Dropdown.Item>
                                     );

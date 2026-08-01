@@ -366,10 +366,10 @@ export default function TargetArea(props) {
     });
 
     return (
-        <Card className='rounded-[10px]'>
+        <Card className='gap-0 overflow-hidden p-0'>
             <Toaster />
             <Card.Header
-                className={`flex justify-between py-1 px-0 bg-surface-secondary h-[30px] ${hide ? 'rounded-[10px]' : 'rounded-t-[10px]'}`}
+                className={`flex flex-row items-center justify-between py-1 px-0 bg-surface-secondary ${hide ? 'rounded-[10px]' : 'rounded-t-[10px]'}`}
                 {...drag}
             >
                 {/* current service instance and available service instance to change */}
@@ -377,7 +377,8 @@ export default function TargetArea(props) {
                     <Dropdown>
                         <Button
                             size='sm'
-                            className='bg-transparent'
+                            variant='ghost'
+                            className={'h-7 ml-1'}
                         >
                             {whetherPluginService(currentTranslateServiceInstanceKey) ? (
                                 <img
@@ -474,8 +475,8 @@ export default function TargetArea(props) {
                     <Button
                         size='sm'
                         isIconOnly
-                        variant='tertiary'
-                        className='h-[20px] w-[20px]'
+                        variant='ghost'
+                        className={'h-7 mr-1'}
                         onPress={() => setHide(!hide)}
                     >
                         {hide ? (
@@ -489,7 +490,7 @@ export default function TargetArea(props) {
             <animated.div style={{ ...springs }}>
                 <div ref={boundRef}>
                     {/* result content */}
-                    <Card.Content className={`p-[12px] pb-0 ${hide && 'h-0 p-0'}`}>
+                    <Card.Content className={`p-[12px] ${hide && 'h-0 p-0'}`}>
                         {typeof result === 'string' ? (
                             <textarea
                                 ref={textAreaRef}
@@ -628,6 +629,7 @@ export default function TargetArea(props) {
                                     isIconOnly
                                     variant='tertiary'
                                     size='sm'
+                                    className='h-8 w-8'
                                     isDisabled={typeof result !== 'string' || result === ''}
                                     onPress={() => {
                                         handleSpeak().catch((e) => {
@@ -647,6 +649,7 @@ export default function TargetArea(props) {
                                     isIconOnly
                                     variant='tertiary'
                                     size='sm'
+                                    className='h-8 w-8'
                                     isDisabled={typeof result !== 'string' || result === ''}
                                     onPress={() => {
                                         writeText(result);
@@ -664,6 +667,7 @@ export default function TargetArea(props) {
                                     isIconOnly
                                     variant='tertiary'
                                     size='sm'
+                                    className='h-8 w-8'
                                     isDisabled={typeof result !== 'string' || result === ''}
                                     onPress={async () => {
                                         setError('');
@@ -789,7 +793,7 @@ export default function TargetArea(props) {
                                     isIconOnly
                                     variant='tertiary'
                                     size='sm'
-                                    className={`${error === '' && 'hidden'}`}
+                                    className={`h-8 w-8 ${error === '' && 'hidden'}`}
                                     onPress={() => {
                                         setError('');
                                         setResult('');
@@ -811,6 +815,7 @@ export default function TargetArea(props) {
                                             isIconOnly
                                             variant='tertiary'
                                             size='sm'
+                                            className='h-8 w-8'
                                             onPress={async () => {
                                                 if (
                                                     getServiceSouceType(collectionServiceInstanceName) ===

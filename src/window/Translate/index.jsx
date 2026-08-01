@@ -4,8 +4,7 @@ import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { currentMonitor } from '@tauri-apps/api/window';
 import { appConfigDir, join } from '@tauri-apps/api/path';
 import { convertFileSrc } from '@tauri-apps/api/core';
-import { Button } from '@heroui/react';
-import { AiFillCloseCircle } from 'react-icons/ai';
+import { Button, CloseButton } from '@heroui/react';
 import React, { useState, useEffect } from 'react';
 import { listen } from '@tauri-apps/api/event';
 import { BsPinFill } from 'react-icons/bs';
@@ -246,8 +245,8 @@ export default function Translate() {
                     <Button
                         isIconOnly
                         size='sm'
-                        variant='tertiary'
-                        className='my-auto bg-transparent'
+                        variant='ghost'
+                        className='my-auto mx-[8px] w-6 h-6'
                         onPress={() => {
                             if (pined) {
                                 if (closeOnBlur) {
@@ -261,19 +260,15 @@ export default function Translate() {
                             setPined(!pined);
                         }}
                     >
-                        <BsPinFill className={`text-[20px] ${pined ? 'text-accent' : 'text-muted'}`} />
+                        <BsPinFill className={`${pined ? 'text-accent' : 'text-muted'}`} />
                     </Button>
-                    <Button
-                        isIconOnly
-                        size='sm'
-                        variant='tertiary'
-                        className={`my-auto ${osType === 'macos' && 'hidden'} bg-transparent`}
+                    <CloseButton
+                        className={`my-auto mx-[8px] ${osType === 'macos' && 'hidden'}`}
                         onPress={() => {
                             void appWindow.close();
                         }}
                     >
-                        <AiFillCloseCircle className='text-[20px] text-muted' />
-                    </Button>
+                    </CloseButton>
                 </div>
                 <div className={`${osType === 'linux' ? 'h-[calc(100vh-37px)]' : 'h-[calc(100vh-35px)]'} px-[8px]`}>
                     <div className='h-full overflow-y-auto'>

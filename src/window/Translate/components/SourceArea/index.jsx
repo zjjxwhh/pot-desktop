@@ -16,6 +16,7 @@ import { atom, useAtom } from 'jotai';
 import { getServiceName, getServiceSouceType, ServiceSourceType } from '../../../../utils/service_instance';
 import { useConfig, useSyncAtom, useVoice, useToastStyle } from '../../../../hooks';
 import { invoke_plugin } from '../../../../utils/invoke_plugin';
+import { LanguageFlag } from '../../../../utils/language.ts';
 import { normalizeText, appendText } from '../../../../utils/text_utils.js';
 import * as recognizeServices from '../../../../services/recognize';
 import * as builtinTtsServices from '../../../../services/tts';
@@ -347,9 +348,9 @@ export default function SourceArea(props) {
 
     return (
         <div className={hideSource && windowType !== '[INPUT_TRANSLATE]' && 'hidden'}>
-            <Card className='bg-surface rounded-[10px] mt-[1px] pb-0'>
+            <Card className='bg-surface gap-0 overflow-hidden mt-[1px] p-0'>
                 <Toaster />
-                <Card.Content className='bg-surface p-[12px] pb-0 max-h-[40vh] overflow-y-auto'>
+                <Card.Content className='bg-surface p-[12px] max-h-[40vh] overflow-y-auto'>
                     <textarea
                         autoFocus
                         ref={textAreaRef}
@@ -371,6 +372,7 @@ export default function SourceArea(props) {
                                     isIconOnly
                                     variant='tertiary'
                                     size='sm'
+                                    className='h-8 w-8'
                                     onPress={() => {
                                         handleSpeak().catch((e) => {
                                             toast.error(e.toString(), { style: toastStyle });
@@ -388,6 +390,7 @@ export default function SourceArea(props) {
                                     isIconOnly
                                     variant='tertiary'
                                     size='sm'
+                                    className='h-8 w-8'
                                     onPress={() => {
                                         writeText(sourceText);
                                     }}
@@ -403,6 +406,7 @@ export default function SourceArea(props) {
                                     isIconOnly
                                     variant='tertiary'
                                     size='sm'
+                                    className='h-8 w-8'
                                     onPress={() => {
                                         const newText = normalizeText(sourceText, true);
                                         setSourceText(newText);
@@ -422,6 +426,7 @@ export default function SourceArea(props) {
                                     variant='tertiary'
                                     size='sm'
                                     isIconOnly
+                                    className='h-8 w-8'
                                     isDisabled={sourceText === ''}
                                     onPress={() => {
                                         setSourceText('');
@@ -436,10 +441,11 @@ export default function SourceArea(props) {
                         </ButtonGroup>
                         {detectLanguage !== '' && (
                             <Chip
-                                size='sm'
-                                variant='soft'
-                                className='my-auto'
+                                size='lg'
+                                variant='primary'
+                                className='my-auto h-8 gap-2'
                             >
+                                <span className={`fi fi-${LanguageFlag[detectLanguage]}`} />
                                 {t(`languages.${detectLanguage}`)}
                             </Chip>
                         )}
@@ -447,9 +453,9 @@ export default function SourceArea(props) {
                     <Tooltip>
                         <Button
                             size='sm'
-                            variant='tertiary'
+                            variant='primary'
                             isIconOnly
-                            className='text-[14px] font-bold'
+                            className='h-8 w-8 text-[14px] font-bold'
                             onPress={() => {
                                 detect_language(sourceText).then(() => {
                                     syncSourceText();

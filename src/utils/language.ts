@@ -35,6 +35,7 @@ export const languageList = [
 
 // https://flagicons.lipis.dev/
 export enum LanguageFlag {
+    auto = 'un',
     zh_cn = 'cn',
     zh_tw = 'cn',
     mn_mo = 'cn',
