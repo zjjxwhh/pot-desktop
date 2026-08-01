@@ -7,7 +7,7 @@ import { GiCycle } from 'react-icons/gi';
 import React, { useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import * as builtinService from '../../../services/recognize';
-import { languageList } from '../../../utils/language';
+import { languageList, LanguageFlag } from '../../../utils/language';
 import { useConfig } from '../../../hooks';
 import { textAtom } from '../TextArea';
 import { pluginListAtom } from '..';
@@ -112,6 +112,7 @@ export default function ControlArea(props) {
                         variant='tertiary'
                         size='sm'
                     >
+                        <span className={`fi fi-${LanguageFlag[language]}`} />
                         {t(`languages.${language}`)}
                     </Button>
                     <Dropdown.Popover>
@@ -123,12 +124,14 @@ export default function ControlArea(props) {
                             }}
                         >
                             <Dropdown.Item key='auto' id='auto' textValue={t('languages.auto')}>
+                                <span className={`fi fi-${LanguageFlag.auto}`} />
                                 <Label>{t('languages.auto')}</Label>
                             </Dropdown.Item>
                             {languageList.map((name) => {
                                 const label = t(`languages.${name}`);
                                 return (
                                     <Dropdown.Item key={name} id={name} textValue={label}>
+                                        <span className={`fi fi-${LanguageFlag[name]}`} />
                                         <Label>{label}</Label>
                                     </Dropdown.Item>
                                 );

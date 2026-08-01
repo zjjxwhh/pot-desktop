@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Dropdown, Switch, Button, Card, Label } from '@heroui/react';
 import React from 'react';
 
-import { languageList } from '../../../../utils/language';
+import { languageList, LanguageFlag } from '../../../../utils/language';
 import { useConfig } from '../../../../hooks/useConfig';
 import { invoke } from '@tauri-apps/api/core';
 
@@ -35,7 +35,10 @@ export default function Translate() {
                         <h3 className='my-auto mx-0'>{t('config.translate.source_language')}</h3>
                         {sourceLanguage !== null && (
                             <Dropdown>
-                                <Button variant='tertiary'>{t(`languages.${sourceLanguage}`)}</Button>
+                                <Button variant='tertiary'>
+                                    <span className={`fi fi-${LanguageFlag[sourceLanguage]}`} />
+                                    {t(`languages.${sourceLanguage}`)}
+                                </Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
                                         aria-label='source language'
@@ -45,11 +48,13 @@ export default function Translate() {
                                         }}
                                     >
                                         <Dropdown.Item id='auto' textValue={t('languages.auto')}>
+                                            <span className={`fi fi-${LanguageFlag['auto']}`} />
                                             <Label>{t('languages.auto')}</Label>
                                         </Dropdown.Item>
                                         {languageList.map((item) => {
                                             return (
                                                 <Dropdown.Item id={item} key={item} textValue={t(`languages.${item}`)}>
+                                                    <span className={`fi fi-${LanguageFlag[item]}`} />
                                                     <Label>{t(`languages.${item}`)}</Label>
                                                 </Dropdown.Item>
                                             );
@@ -63,7 +68,10 @@ export default function Translate() {
                         <h3 className='my-auto mx-0'>{t('config.translate.target_language')}</h3>
                         {targetLanguage !== null && (
                             <Dropdown>
-                                <Button variant='tertiary'>{t(`languages.${targetLanguage}`)}</Button>
+                                <Button variant='tertiary'>
+                                    <span className={`fi fi-${LanguageFlag[targetLanguage]}`} />
+                                    {t(`languages.${targetLanguage}`)}
+                                </Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
                                         aria-label='target language'
@@ -75,6 +83,7 @@ export default function Translate() {
                                         {languageList.map((item) => {
                                             return (
                                                 <Dropdown.Item id={item} key={item} textValue={t(`languages.${item}`)}>
+                                                    <span className={`fi fi-${LanguageFlag[item]}`} />
                                                     <Label>{t(`languages.${item}`)}</Label>
                                                 </Dropdown.Item>
                                             );
@@ -88,7 +97,10 @@ export default function Translate() {
                         <h3 className='my-auto mx-0'>{t('config.translate.second_language')}</h3>
                         {secondLanguage !== null && (
                             <Dropdown>
-                                <Button variant='tertiary'>{t(`languages.${secondLanguage}`)}</Button>
+                                <Button variant='tertiary'>
+                                    <span className={`fi fi-${LanguageFlag[secondLanguage]}`} />
+                                    {t(`languages.${secondLanguage}`)}
+                                </Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
                                         aria-label='second language'
@@ -100,6 +112,7 @@ export default function Translate() {
                                         {languageList.map((item) => {
                                             return (
                                                 <Dropdown.Item id={item} key={item} textValue={t(`languages.${item}`)}>
+                                                    <span className={`fi fi-${LanguageFlag[item]}`} />
                                                     <Label>{t(`languages.${item}`)}</Label>
                                                 </Dropdown.Item>
                                             );

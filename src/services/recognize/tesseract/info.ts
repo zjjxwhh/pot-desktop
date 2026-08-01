@@ -1,6 +1,6 @@
 export const info = {
     name: 'tesseract',
-    icon: 'logo/tesseract.png',
+    icon: 'logo/tesseract.svg',
 };
 
 export enum Language {

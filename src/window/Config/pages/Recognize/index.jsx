@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Dropdown, Switch, Button, Card, Label } from '@heroui/react';
 import React from 'react';
 
-import { languageList } from '../../../../utils/language';
+import { languageList, LanguageFlag } from '../../../../utils/language';
 import { useConfig } from '../../../../hooks';
 
 export default function Recognize() {
@@ -19,7 +19,10 @@ export default function Recognize() {
                     <h3 className='my-auto mx-0'>{t('config.recognize.language')}</h3>
                     {recognizeLanguage !== null && (
                         <Dropdown>
-                            <Button variant='tertiary'>{t(`languages.${recognizeLanguage}`)}</Button>
+                            <Button variant='tertiary'>
+                                <span className={`fi fi-${LanguageFlag[recognizeLanguage]}`} />
+                                {t(`languages.${recognizeLanguage}`)}
+                            </Button>
                             <Dropdown.Popover>
                                 <Dropdown.Menu
                                     aria-label='recognize language'
@@ -29,11 +32,13 @@ export default function Recognize() {
                                     }}
                                 >
                                     <Dropdown.Item id='auto' textValue={t('languages.auto')}>
+                                        <span className={`fi fi-${LanguageFlag.auto}`} />
                                         <Label>{t('languages.auto')}</Label>
                                     </Dropdown.Item>
                                     {languageList.map((item) => {
                                         return (
                                             <Dropdown.Item id={item} key={item} textValue={t(`languages.${item}`)}>
+                                                <span className={`fi fi-${LanguageFlag[item]}`} />
                                                 <Label>{t(`languages.${item}`)}</Label>
                                             </Dropdown.Item>
                                         );

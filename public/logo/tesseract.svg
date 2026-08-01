@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6e40c9"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <!-- Background square with rounded corners -->
+  <rect width="64" height="64" rx="12" fill="url(#bg)"/>
+  <!-- Tesseract cube outline (outer) -->
+  <rect x="8" y="8" width="48" height="48" rx="4" fill="none" stroke="white" stroke-width="3" opacity="0.5"/>
+  <!-- Inner cube -->
+  <rect x="18" y="18" width="28" height="28" rx="2" fill="none" stroke="white" stroke-width="3"/>
+  <!-- Corner connectors -->
+  <line x1="8" y1="8" x2="18" y2="18" stroke="white" stroke-width="2" opacity="0.7"/>
+  <line x1="56" y1="8" x2="46" y2="18" stroke="white" stroke-width="2" opacity="0.7"/>
+  <line x1="8" y1="56" x2="18" y2="46" stroke="white" stroke-width="2" opacity="0.7"/>
+  <line x1="56" y1="56" x2="46" y2="46" stroke="white" stroke-width="2" opacity="0.7"/>
+</svg>

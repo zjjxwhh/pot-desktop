@@ -1,6 +1,6 @@
 export const info = {
     name: 'chatglm',
-    icon: 'logo/chatglm.png',
+    icon: 'logo/zhipu.svg',
 };
 
 export enum Language {
