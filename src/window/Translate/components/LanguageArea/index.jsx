@@ -39,13 +39,13 @@ export default function LanguageArea() {
     }, [sourceLanguage, targetLanguage, rememberLanguage]);
 
     return (
-        <Card className='bg-surface-secondary gap-0 overflow-hidden p-0 h-[35px]'>
-            <Card.Footer className='bg-surface-secondary flex h-full justify-between p-0 rounded-[10px]'>
-                <div className='flex'>
+        <Card className='bg-surface-secondary gap-0 overflow-hidden p-0'>
+            <Card.Footer className='bg-surface-secondary grid h-full grid-cols-[1fr_auto_1fr] p-0 h-9'>
+                <div className='flex h-full self-stretch'>
                     <Dropdown>
                         <Button
                             variant='tertiary'
-                            className='rounded-sm'
+                            className='h-full'
                         >
                             <span className={`fi fi-${LanguageFlag[sourceLanguage]}`} />
                             {t(`languages.${sourceLanguage}`)}
@@ -74,12 +74,11 @@ export default function LanguageArea() {
                         </Dropdown.Popover>
                     </Dropdown>
                 </div>
-                <div className='flex h-full self-stretch'>
+                <div className='flex h-full self-stretch justify-center'>
                     <Button
                         isIconOnly
-                        size='lg'
                         variant='tertiary'
-                        className='h-full text-[20px]'
+                        className='h-full'
                         onPress={async () => {
                             if (sourceLanguage !== 'auto') {
                                 const oldSourceLanguage = sourceLanguage;
@@ -105,11 +104,11 @@ export default function LanguageArea() {
                         <BiTransferAlt />
                     </Button>
                 </div>
-                <div className='flex'>
+                <div className='flex h-full self-stretch justify-end'>
                     <Dropdown>
                         <Button
                             variant='tertiary'
-                            className='rounded-sm'
+                            className='h-full'
                         >
                             <span className={`fi fi-${LanguageFlag[targetLanguage]}`} />
                             {t(`languages.${targetLanguage}`)}

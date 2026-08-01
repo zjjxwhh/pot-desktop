@@ -369,7 +369,7 @@ export default function TargetArea(props) {
         <Card className='gap-0 overflow-hidden p-0'>
             <Toaster />
             <Card.Header
-                className={`flex flex-row items-center justify-between py-1 px-0 bg-surface-secondary ${hide ? 'rounded-[10px]' : 'rounded-t-[10px]'}`}
+                className={`flex flex-row items-center justify-between py-1 px-0 bg-surface-secondary`}
                 {...drag}
             >
                 {/* current service instance and available service instance to change */}
@@ -385,12 +385,12 @@ export default function TargetArea(props) {
                                     src={
                                         pluginList['translate'][getServiceName(currentTranslateServiceInstanceKey)].icon
                                     }
-                                    className='h-[20px] my-auto'
+                                    className='h-[70%] my-auto'
                                 />
                             ) : (
                                 <img
                                     src={builtinServices[getServiceName(currentTranslateServiceInstanceKey)].info.icon}
-                                    className='h-[20px] my-auto'
+                                    className='h-[70%] my-auto'
                                 />
                             )}
                             {whetherPluginService(currentTranslateServiceInstanceKey) ? (
@@ -434,12 +434,12 @@ export default function TargetArea(props) {
                                             {whetherPluginService(instanceKey) ? (
                                                 <img
                                                     src={pluginList['translate'][getServiceName(instanceKey)].icon}
-                                                    className='h-[20px] my-auto'
+                                                    className='h-[70%] my-auto'
                                                 />
                                             ) : (
                                                 <img
                                                     src={builtinServices[getServiceName(instanceKey)].info.icon}
-                                                    className='h-[20px] my-auto'
+                                                    className='h-[70%] my-auto'
                                                 />
                                             )}
                                             <Label>
@@ -620,7 +620,7 @@ export default function TargetArea(props) {
                         )}
                     </Card.Content>
                     <Card.Footer
-                        className={`bg-surface rounded-none rounded-b-[10px] flex px-[12px] p-[5px] ${hide && 'hidden'}`}
+                        className={`bg-surface flex px-[12px] p-[5px] ${hide && 'hidden'}`}
                     >
                         <ButtonGroup>
                             {/* speak button */}
