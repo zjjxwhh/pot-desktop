@@ -788,24 +788,26 @@ export default function TargetArea(props) {
                                 </Tooltip.Content>
                             </Tooltip>
                             {/* error retry button */}
-                            <Tooltip>
-                                <Button
-                                    isIconOnly
-                                    variant='tertiary'
-                                    size='sm'
-                                    className={`h-8 w-8 ${error === '' && 'hidden'}`}
-                                    onPress={() => {
-                                        setError('');
-                                        setResult('');
-                                        translate();
-                                    }}
-                                >
-                                    <GiCycle className='text-[16px]' />
-                                </Button>
-                                <Tooltip.Content>
-                                    <p>{t('translate.retry')}</p>
-                                </Tooltip.Content>
-                            </Tooltip>
+                            {error !== '' && (
+                                <Tooltip>
+                                    <Button
+                                        isIconOnly
+                                        variant='tertiary'
+                                        size='sm'
+                                        className='h-8 w-8'
+                                        onPress={() => {
+                                            setError('');
+                                            setResult('');
+                                            translate();
+                                        }}
+                                    >
+                                        <GiCycle className='text-[16px]' />
+                                    </Button>
+                                    <Tooltip.Content>
+                                        <p>{t('translate.retry')}</p>
+                                    </Tooltip.Content>
+                                </Tooltip>
+                            )}
                             {/* available collection service instance */}
                             {collectionServiceList &&
                                 collectionServiceList.map((collectionServiceInstanceName) => {
