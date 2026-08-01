@@ -1,3 +1,4 @@
-.close-button:hover {
-    background-color: #c42b1c !important;
+.window-close-button:hover {
+    color: #ffffff;
+    background-color: #c42b1c;
 }
