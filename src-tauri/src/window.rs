@@ -159,6 +159,9 @@ fn translate_window() -> WebviewWindow {
         return window;
     }
     window.set_skip_taskbar(true).unwrap();
+    window
+        .set_min_size(Some(tauri::LogicalSize::new(300, 300)))
+        .unwrap();
     // Get Translate Window Size
     let width = match get("translate_window_width") {
         Some(v) => v.as_i64().unwrap(),
