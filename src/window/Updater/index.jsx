@@ -1,4 +1,4 @@
-import { Card, Button, ProgressBar, Skeleton } from '@heroui/react';
+import { Card, Button, ProgressBar, Skeleton, Label } from '@heroui/react';
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { check } from '@tauri-apps/plugin-updater';
 import { relaunch } from '@tauri-apps/plugin-process';
@@ -126,12 +126,16 @@ export default function Updater() {
             {downloaded !== 0 && (
                 <ProgressBar
                     aria-label='Downloading...'
-                    label={t('updater.progress')}
                     value={(downloaded / total) * 100}
                     className='w-full px-[80px]'
-                    showValueLabel
                     size='sm'
-                />
+                >
+                    <Label>{t('updater.progress')}</Label>
+                    <ProgressBar.Output />
+                    <ProgressBar.Track>
+                        <ProgressBar.Fill />
+                    </ProgressBar.Track>
+                </ProgressBar>
             )}
 
             <div className='grid gap-4 grid-cols-2 h-[50px] my-[10px] mx-[80px] place-items-center'>

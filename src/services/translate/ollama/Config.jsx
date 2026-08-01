@@ -226,10 +226,14 @@ export function Config(props) {
                             <ProgressBar
                                 size='sm'
                                 className='max-w-md'
-                                label={pullingStatus}
                                 value={progress}
-                                showValueLabel={true}
-                            />
+                            >
+                                <Label>{pullingStatus}</Label>
+                                <ProgressBar.Output />
+                                <ProgressBar.Track>
+                                    <ProgressBar.Fill />
+                                </ProgressBar.Track>
+                            </ProgressBar>
                         )}
                         <div className='flex justify-center'>
                             <Link

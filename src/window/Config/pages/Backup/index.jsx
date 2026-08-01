@@ -284,10 +284,9 @@ export default function Backup() {
                                         refreshQrCode();
                                     }}
                                 >
-                                    <Avatar
-                                        src={aliyunUserInfo.avatar}
-                                        size='sm'
-                                    />
+                                    <Avatar size='sm'>
+                                        <Avatar.Image src={aliyunUserInfo.avatar} />
+                                    </Avatar>
                                     <h3 className='my-auto'>{aliyunUserInfo.name}</h3>
                                 </Button>
                                 <Tooltip.Content placement='bottom'>

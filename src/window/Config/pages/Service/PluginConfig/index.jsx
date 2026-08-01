@@ -41,7 +41,7 @@ export function PluginConfig(props) {
             )}
 
             {pluginList[name].needs.length === 0 ? (
-                <div> className='mb-2'{t('services.no_need')}</div>
+                <div className='mb-2'>{t('services.no_need')}</div>
             ) : (
                 pluginList[name].needs.map((x) => {
                     return (

@@ -22,10 +22,9 @@ export default function ConfigModal(props) {
     ) : (
         <Modal
             state={state}
-            scrollBehavior='inside'
         >
             <Modal.Backdrop>
-                <Modal.Container>
+                <Modal.Container scroll='inside'>
                     <Modal.Dialog className='max-h-[75vh]'>
                         {({ close }) => (
                             <>

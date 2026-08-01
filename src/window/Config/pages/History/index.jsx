@@ -291,10 +291,9 @@ export default function History() {
 
                 <Modal
                     state={state}
-                    scrollBehavior='inside'
                 >
                     <Modal.Backdrop>
-                        <Modal.Container>
+                        <Modal.Container scroll='inside'>
                             <Modal.Dialog className='max-h-[80vh]'>
                                 {({ close }) =>
                                     selectedItem && (

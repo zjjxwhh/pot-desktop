@@ -62,9 +62,9 @@ export default function AliyunModal(props) {
 
     return (
         <>
-            <Modal state={state} scrollBehavior='inside'>
+            <Modal state={state}>
                 <Modal.Backdrop>
-                    <Modal.Container>
+                    <Modal.Container scroll='inside'>
                         <Modal.Dialog>
                             {({ close }) => (
                                 <>
