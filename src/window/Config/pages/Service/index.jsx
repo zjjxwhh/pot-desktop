@@ -63,7 +63,7 @@ export default function Service() {
     return (
         pluginList !== null && (
             <Tabs className='flex justify-center max-h-[calc(100%)] overflow-y-auto'>
-                <Tabs.ListContainer>
+                <Tabs.ListContainer className={'mx-15'}>
                     <Tabs.List aria-label='Service tabs'>
                         <Tabs.Tab id='translate'>
                             {t(`config.service.translate`)}
