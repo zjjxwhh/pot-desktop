@@ -1,4 +1,4 @@
-import { TextField, Label, Input, TextArea, Button, Switch, Card, Link, Tooltip, ProgressBar } from '@heroui/react';
+import { TextField, Label, Input, TextArea, Button, Switch, Card, Link, Tooltip, ProgressBar, Surface, InputGroup } from '@heroui/react';
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
 import { MdDeleteOutline } from 'react-icons/md';
 import toast, { Toaster } from 'react-hot-toast';
@@ -116,7 +116,7 @@ export function Config(props) {
                     </TextField>
                 </div>
                 {installedModels === null && (
-                    <Card className='border-none bg-danger/20 dark:bg-danger/10 backdrop-blur-md shadow-sm'>
+                    <Card className='border-none bg-danger/20 dark:bg-danger/10 backdrop-blur-md shadow-sm py-2'>
                         <Card.Content>
                             <div>
                                 {t('services.translate.ollama.install_ollama')}
@@ -187,40 +187,43 @@ export function Config(props) {
                                 model: value,
                             });
                         }}
-                        className='flex-1'
                     >
-                        <Input variant='secondary' />
+                        <InputGroup variant='secondary'>
+                            <InputGroup.Input variant='secondary' />
+                            <InputGroup.Suffix className='pr-0'>
+                                {installedModels &&
+                                !installedModels.models
+                                    .map((model) => {
+                                        return model.name;
+                                    })
+                                    .includes(serviceConfig['model']) ? (
+                                    <Tooltip>
+                                        <Button
+                                            size='sm'
+                                            className={'bg-muted'}
+                                            isPending={isPulling}
+                                            onPress={pullModel}
+                                        >
+                                            {t('services.translate.ollama.install_model')}
+                                        </Button>
+                                        <Tooltip.Content>
+                                            <p>{t('services.translate.ollama.not_installed')}</p>
+                                        </Tooltip.Content>
+                                    </Tooltip>
+                                ) : (
+                                    <Button
+                                        size='sm'
+                                        className={'bg-muted'}
+                                        isDisabled
+                                    >
+                                        {t('services.translate.ollama.ready')}
+                                    </Button>
+                                )}
+                            </InputGroup.Suffix>
+                        </InputGroup>
                     </TextField>
-                    {installedModels &&
-                    !installedModels.models
-                        .map((model) => {
-                            return model.name;
-                        })
-                        .includes(serviceConfig['model']) ? (
-                        <Tooltip>
-                            <Button
-                                size='sm'
-                                variant='tertiary'
-                                isPending={isPulling}
-                                onPress={pullModel}
-                            >
-                                {t('services.translate.ollama.install_model')}
-                            </Button>
-                            <Tooltip.Content>
-                                <p>{t('services.translate.ollama.not_installed')}</p>
-                            </Tooltip.Content>
-                        </Tooltip>
-                    ) : (
-                        <Button
-                            size='sm'
-                            variant='tertiary'
-                            isDisabled
-                        >
-                            {t('services.translate.ollama.ready')}
-                        </Button>
-                    )}
                 </div>
-                <Card className='border-none bg-success/20 dark:bg-success/10 backdrop-blur-md shadow-sm'>
+                <Card className='border-none bg-success/20 dark:bg-success/10 backdrop-blur-md shadow-sm py-2 mb-2'>
                     <Card.Content>
                         {isPulling && (
                             <ProgressBar
@@ -247,9 +250,12 @@ export function Config(props) {
                     </Card.Content>
                 </Card>
                 <h3 className='my-auto'>Prompt List</h3>
-                <p className='text-[10px] text-foreground'>{t('services.translate.ollama.prompt_description')}</p>
+                <p className='text-xs text-foreground py-2'>{t('services.translate.ollama.prompt_description')}</p>
 
-                <div className='bg-surface-secondary rounded-[10px] p-3'>
+                <Surface
+                    className='flex flex-col rounded-3xl p-3 pt-0.5'
+                    variant='secondary'
+                >
                     {serviceConfig.promptList &&
                         serviceConfig.promptList.map((prompt, index) => {
                             return (
@@ -283,12 +289,14 @@ export function Config(props) {
                                         <Label>{prompt.role}</Label>
                                         <TextArea
                                             variant='secondary'
+                                            rows={6}
+                                            className={'border-2 border-muted'}
                                             placeholder={`Input Some ${prompt.role} Prompt`}
                                         />
                                     </TextField>
                                     <Button
                                         isIconOnly
-                                        className='my-auto mx-1 shrink-0'
+                                        className='my-auto ml-2 shrink-0'
                                         variant='danger-soft'
                                         onPress={() => {
                                             setServiceConfig({
@@ -304,6 +312,7 @@ export function Config(props) {
                         })}
                     <Button
                         fullWidth
+                        className='mt-1'
                         onPress={() => {
                             setServiceConfig({
                                 ...serviceConfig,
@@ -324,7 +333,7 @@ export function Config(props) {
                     >
                         {t('services.translate.ollama.add')}
                     </Button>
-                </div>
+                </Surface>
                 <br />
                 <Button
                     type='submit'

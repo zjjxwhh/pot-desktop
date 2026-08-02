@@ -1,5 +1,5 @@
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
-import { TextField, Label, Input, TextArea, Button, Switch } from '@heroui/react';
+import { TextField, Label, Input, TextArea, Button, Switch, Surface } from '@heroui/react';
 import { MdDeleteOutline } from 'react-icons/md';
 import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
@@ -168,9 +168,12 @@ export function Config(props) {
                     </TextField>
                 </div>
                 <h3 className='my-auto'>Prompt List</h3>
-                <p className='text-[10px] text-foreground'>{t('services.translate.geminipro.prompt_description')}</p>
+                <p className='text-xs text-foreground py-2'>{t('services.translate.geminipro.prompt_description')}</p>
 
-                <div className='bg-surface-secondary rounded-[10px] p-3'>
+                <Surface
+                    className='flex flex-col rounded-3xl p-3 pt-0.5'
+                    variant='secondary'
+                >
                     {serviceConfig.promptList &&
                         serviceConfig.promptList.map((prompt, index) => {
                             return (
@@ -201,12 +204,14 @@ export function Config(props) {
                                         <Label className='my-auto'>{prompt.role}</Label>
                                         <TextArea
                                             variant='secondary'
+                                            rows={6}
+                                            className={'border-2 border-muted'}
                                             placeholder={`Input Some ${prompt.role} Prompt`}
                                         />
                                     </TextField>
                                     <Button
                                         isIconOnly
-                                        className='my-auto mx-1 shrink-0'
+                                        className='my-auto ml-2 shrink-0'
                                         variant='danger-soft'
                                         onPress={() => {
                                             setServiceConfig({
@@ -222,6 +227,7 @@ export function Config(props) {
                         })}
                     <Button
                         fullWidth
+                        className='mt-1'
                         onPress={() => {
                             setServiceConfig({
                                 ...serviceConfig,
@@ -241,7 +247,7 @@ export function Config(props) {
                     >
                         {t('services.translate.geminipro.add')}
                     </Button>
-                </div>
+                </Surface>
                 <br />
                 <Button
                     type='submit'
