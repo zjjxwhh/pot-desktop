@@ -72,7 +72,7 @@ export default function ControlArea(props) {
                         size='sm'
                     >
                         <img
-                            className='h-[16px] w-[16px] my-auto'
+                            className='size-4 shrink-0 my-auto'
                             src={getServiceIcon(currentServiceInstanceKey)}
                         />
                         {getServiceDisplayName(currentServiceInstanceKey)}
@@ -94,7 +94,7 @@ export default function ControlArea(props) {
                                         textValue={name}
                                     >
                                         <img
-                                            className='h-[16px] w-[16px] my-auto'
+                                            className='size-4 shrink-0 my-auto'
                                             src={getServiceIcon(instanceKey)}
                                         />
                                         <Label>{name}</Label>

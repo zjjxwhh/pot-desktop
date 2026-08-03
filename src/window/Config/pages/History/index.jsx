@@ -190,13 +190,13 @@ export default function History() {
                                                 {getServiceSouceType(item.service) === ServiceSourceType.PLUGIN ? (
                                                     <img
                                                         src={pluginList['translate'][getServiceName(item.service)].icon}
-                                                        className='h-[18px] w-[18px] my-auto mr-[8px]'
+                                                        className='size-4.5 shrink-0 my-auto mr-[8px]'
                                                         draggable={false}
                                                     />
                                                 ) : (
                                                     <img
                                                         src={`${builtinServices[getServiceName(item.service)].info.icon}`}
-                                                        className='h-[18px] w-[18px] my-auto mr-[8px]'
+                                                        className='size-4 shrink-0 my-auto mr-[8px]'
                                                         draggable={false}
                                                     />
                                                 )}
@@ -304,13 +304,13 @@ export default function History() {
                                                                 pluginList['translate'][getServiceName(selectedItem.service)]
                                                                     .icon
                                                             }
-                                                            className='h-[24px] w-[24px] m-auto'
+                                                            className='size-6 shrink-0 m-auto'
                                                             draggable={false}
                                                         />
                                                     ) : (
                                                         <img
                                                             src={`${builtinServices[getServiceName(selectedItem.service)].info.icon}`}
-                                                            className='h-[24px] w-[24px] m-auto ml-[8px]'
+                                                            className='size-6 shrink-0 m-auto ml-[8px]'
                                                             draggable={false}
                                                         />
                                                     )}
@@ -417,7 +417,7 @@ export default function History() {
                                                                                       getServiceName(instanceKey)
                                                                                   ].info.icon
                                                                         }
-                                                                        className='h-[24px] w-[24px]'
+                                                                        className='size-6'
                                                                     />
                                                                 </Button>
                                                             );

@@ -58,7 +58,7 @@ export default function SelectPluginModal(props) {
                                                 >
                                                     <img
                                                         src={pluginList[x].icon}
-                                                        className='h-[24px] w-[24px] my-auto'
+                                                        className='size-6 shrink-0 my-auto'
                                                     />
                                                     <div className='w-full'>{pluginList[x].display}</div>
                                                 </Button>

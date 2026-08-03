@@ -42,7 +42,7 @@ export default function SelectModal(props) {
                                                                 ? `logo/${osType}.svg`
                                                                 : builtinServices[x].info.icon
                                                         }
-                                                        className='h-[24px] w-[24px] my-auto'
+                                                        className='size-6 shrink-0 my-auto'
                                                     />
                                                     <div className='w-full'>
                                                         {t(`services.recognize.${builtinServices[x].info.name}.title`)}

@@ -156,7 +156,7 @@ export default function TextArea(props) {
                             <textarea
                                 value={error}
                                 readOnly
-                                className='bg-surface h-full ml-[6px] mr-[6px] mb-0 resize-none focus:outline-none text-red-500'
+                                className='bg-surface h-full ml-[6px] mr-[6px] mb-0 resize-none focus:outline-none text-danger'
                                 onChange={(e) => {
                                     setText(e.target.value);
                                 }}

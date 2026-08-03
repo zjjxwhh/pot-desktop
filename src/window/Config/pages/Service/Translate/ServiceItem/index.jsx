@@ -35,7 +35,7 @@ export default function ServiceItem(props) {
                         <>
                             <img
                                 src={`${builtinServices[serviceName].info.icon}`}
-                                className='h-[24px] w-[24px] my-auto'
+                                className='size-6 shrink-0 my-auto'
                                 draggable={false}
                             />
                             <div className='w-2' />
@@ -46,7 +46,7 @@ export default function ServiceItem(props) {
                         <>
                             <img
                                 src={pluginList[serviceName].icon}
-                                className='h-[24px] w-[24px] my-auto'
+                                className='size-6 shrink-0 my-auto'
                                 draggable={false}
                             />
                             <div className='w-2' />

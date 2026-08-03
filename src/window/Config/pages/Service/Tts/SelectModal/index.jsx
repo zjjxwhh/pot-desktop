@@ -37,7 +37,7 @@ export default function SelectModal(props) {
                                                 >
                                                     <img
                                                         src={builtinServices[x].info.icon}
-                                                        className='h-[24px] w-[24px] my-auto'
+                                                        className='size-6 shrink-0 my-auto'
                                                     />
                                                     <div className='w-full'>
                                                         {t(`services.tts.${builtinServices[x].info.name}.title`)}
