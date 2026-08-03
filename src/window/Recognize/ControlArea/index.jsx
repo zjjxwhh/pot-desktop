@@ -148,7 +148,7 @@ export default function ControlArea(props) {
                     setRecognizeFlag(nanoid());
                 }}
             >
-                <GiCycle className='text-[16px]' />
+                <GiCycle />
                 {t('recognize.recognize')}
             </Button>
             <Button
@@ -163,7 +163,7 @@ export default function ControlArea(props) {
                     }
                 }}
             >
-                <HiTranslate className='text-[16px]' />
+                <HiTranslate />
                 {t('recognize.translate')}
             </Button>
         </div>

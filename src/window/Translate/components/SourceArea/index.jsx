@@ -376,7 +376,7 @@ export default function SourceArea(props) {
                                         });
                                     }}
                                 >
-                                    <HiOutlineVolumeUp className='text-[16px]' />
+                                    <HiOutlineVolumeUp />
                                 </Button>
                                 <Tooltip.Content>
                                     <p>{t('translate.speak')}</p>
@@ -392,7 +392,7 @@ export default function SourceArea(props) {
                                         writeText(sourceText);
                                     }}
                                 >
-                                    <MdContentCopy className='text-[16px]' />
+                                    <MdContentCopy />
                                 </Button>
                                 <Tooltip.Content>
                                     <p>{t('translate.copy')}</p>
@@ -412,7 +412,7 @@ export default function SourceArea(props) {
                                         });
                                     }}
                                 >
-                                    <MdSmartButton className='text-[16px]' />
+                                    <MdSmartButton />
                                 </Button>
                                 <Tooltip.Content>
                                     <p>{t('translate.delete_newline')}</p>
@@ -429,7 +429,7 @@ export default function SourceArea(props) {
                                         setSourceText('');
                                     }}
                                 >
-                                    <LuDelete className='text-[16px]' />
+                                    <LuDelete />
                                 </Button>
                                 <Tooltip.Content>
                                     <p>{t('common.clear')}</p>
@@ -452,14 +452,14 @@ export default function SourceArea(props) {
                             size='sm'
                             variant='primary'
                             isIconOnly
-                            className='h-8 w-8 text-[14px] font-bold'
+                            className='h-8 w-8 font-bold'
                             onPress={() => {
                                 detect_language(sourceText).then(() => {
                                     syncSourceText();
                                 });
                             }}
                         >
-                            <HiTranslate className='text-[16px]' />
+                            <HiTranslate />
                         </Button>
                         <Tooltip.Content>
                             <p>{t('translate.translate')}</p>

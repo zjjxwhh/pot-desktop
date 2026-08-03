@@ -88,7 +88,7 @@ export default function Updater() {
                                 h2: ({ node, ...props }) => (
                                     <b>
                                         <h2
-                                            className='text-[24px]'
+                                            className='text-2xl'
                                             {...props}
                                         />
                                         <hr />
@@ -99,7 +99,7 @@ export default function Updater() {
                                     <b>
                                         <br />
                                         <h3
-                                            className='text-[18px]'
+                                            className='text-lg'
                                             {...props}
                                         />
                                         <br />

@@ -176,7 +176,7 @@ export default function TextArea(props) {
                                 writeText(text);
                             }}
                         >
-                            <MdContentCopy className='text-[16px]' />
+                            <MdContentCopy />
                         </Button>
                         <Tooltip.Content>
                             <p>{t('recognize.copy_text')}</p>
@@ -191,7 +191,7 @@ export default function TextArea(props) {
                                 setText(normalizeText(text, true));
                             }}
                         >
-                            <MdSmartButton className='text-[16px]' />
+                            <MdSmartButton />
                         </Button>
                         <Tooltip.Content>
                             <p>{t('recognize.delete_newline')}</p>
@@ -206,7 +206,7 @@ export default function TextArea(props) {
                                 setText(removeAllSpaces(text));
                             }}
                         >
-                            <CgSpaceBetween className='text-[16px]' />
+                            <CgSpaceBetween />
                         </Button>
                         <Tooltip.Content>
                             <p>{t('recognize.delete_space')}</p>

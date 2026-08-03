@@ -31,7 +31,7 @@ export default function SideBar() {
                     navigate('/general');
                 }}
             >
-                <AiFillAppstore className='text-[24px]' />
+                <AiFillAppstore />
                 <div className='w-full'>{t('config.general.label')}</div>
             </Button>
             <Button
@@ -43,7 +43,7 @@ export default function SideBar() {
                     navigate('/translate');
                 }}
             >
-                <PiTranslateFill className='text-[24px]' />
+                <PiTranslateFill />
                 <div className='w-full'>{t('config.translate.label')}</div>
             </Button>
             <Button
@@ -55,7 +55,7 @@ export default function SideBar() {
                     navigate('/recognize');
                 }}
             >
-                <PiTextboxFill className='text-[24px]' />
+                <PiTextboxFill />
                 <div className='w-full'>{t('config.recognize.label')}</div>
             </Button>
             <Button
@@ -67,7 +67,7 @@ export default function SideBar() {
                     navigate('/hotkey');
                 }}
             >
-                <MdKeyboardAlt className='text-[24px]' />
+                <MdKeyboardAlt />
                 <div className='w-full'>{t('config.hotkey.label')}</div>
             </Button>
             <Button
@@ -79,7 +79,7 @@ export default function SideBar() {
                     navigate('/service');
                 }}
             >
-                <MdExtension className='text-[24px]' />
+                <MdExtension />
                 <div className='w-full'>{t('config.service.label')}</div>
             </Button>
             <Button
@@ -91,7 +91,7 @@ export default function SideBar() {
                     navigate('/history');
                 }}
             >
-                <FaHistory className='text-[24px]' />
+                <FaHistory />
                 <div className='w-full'>{t('config.history.label')}</div>
             </Button>
             <Button
@@ -103,7 +103,7 @@ export default function SideBar() {
                     navigate('/backup');
                 }}
             >
-                <AiFillCloud className='text-[24px]' />
+                <AiFillCloud />
                 <div className='w-full'>{t('config.backup.label')}</div>
             </Button>
             <Button
@@ -115,7 +115,7 @@ export default function SideBar() {
                     navigate('/about');
                 }}
             >
-                <BsInfoSquareFill className='text-[24px]' />
+                <BsInfoSquareFill />
                 <div className='w-full'>{t('config.about.label')}</div>
             </Button>
         </div>

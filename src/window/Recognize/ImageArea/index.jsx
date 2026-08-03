@@ -70,7 +70,7 @@ export default function ImageArea() {
                             });
                         }}
                     >
-                        <MdContentCopy className='text-[16px]' />
+                        <MdContentCopy />
                     </Button>
                     <Tooltip.Content>
                         <p>{t('recognize.copy_img')}</p>

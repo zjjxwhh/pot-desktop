@@ -269,7 +269,7 @@ export function Config(props) {
                                             });
                                         }}
                                     >
-                                        <MdDeleteOutline className='text-[18px]' />
+                                        <MdDeleteOutline />
                                     </Button>
                                 </div>
                             );

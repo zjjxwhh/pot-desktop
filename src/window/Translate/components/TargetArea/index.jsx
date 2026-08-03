@@ -478,9 +478,9 @@ export default function TargetArea(props) {
                         onPress={() => setHide(!hide)}
                     >
                         {hide ? (
-                            <BiExpandVertical className='text-[16px]' />
+                            <BiExpandVertical />
                         ) : (
-                            <BiCollapseVertical className='text-[16px]' />
+                            <BiCollapseVertical />
                         )}
                     </Button>
                 </div>
@@ -635,7 +635,7 @@ export default function TargetArea(props) {
                                         });
                                     }}
                                 >
-                                    <HiOutlineVolumeUp className='text-[16px]' />
+                                    <HiOutlineVolumeUp />
                                 </Button>
                                 <Tooltip.Content>
                                     <p>{t('translate.speak')}</p>
@@ -653,7 +653,7 @@ export default function TargetArea(props) {
                                         writeText(result);
                                     }}
                                 >
-                                    <MdContentCopy className='text-[16px]' />
+                                    <MdContentCopy />
                                 </Button>
                                 <Tooltip.Content>
                                     <p>{t('translate.copy')}</p>
@@ -779,7 +779,7 @@ export default function TargetArea(props) {
                                         }
                                     }}
                                 >
-                                    <TbTransformFilled className='text-[16px]' />
+                                    <TbTransformFilled />
                                 </Button>
                                 <Tooltip.Content>
                                     <p>{t('translate.translate_back')}</p>
@@ -799,7 +799,7 @@ export default function TargetArea(props) {
                                             translate();
                                         }}
                                     >
-                                        <GiCycle className='text-[16px]' />
+                                        <GiCycle />
                                     </Button>
                                     <Tooltip.Content>
                                         <p>{t('translate.retry')}</p>
@@ -869,7 +869,7 @@ export default function TargetArea(props) {
                                                               getServiceName(collectionServiceInstanceName)
                                                           ].info.icon
                                                 }
-                                                className='h-[16px] w-[16px]'
+                                                className='h-4 w-4'
                                             />
                                         </Button>
                                     );

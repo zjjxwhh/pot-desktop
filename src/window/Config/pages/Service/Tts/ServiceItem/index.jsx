@@ -74,7 +74,7 @@ export default function ServiceItem(props) {
                             onConfigOpen();
                         }}
                     >
-                        <BiSolidEdit className='text-2xl' />
+                        <BiSolidEdit />
                     </Button>
                     <div className='w-2' />
                     <Button
@@ -86,7 +86,7 @@ export default function ServiceItem(props) {
                             deleteServiceInstance(serviceInstanceKey);
                         }}
                     >
-                        <MdDeleteOutline className='text-2xl' />
+                        <MdDeleteOutline />
                     </Button>
                 </div>
             </div>

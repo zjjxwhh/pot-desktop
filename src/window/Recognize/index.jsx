@@ -135,7 +135,7 @@ export default function Recognize() {
                             setPined(!pined);
                         }}
                     >
-                        <BsPinFill className={`text-[20px] ${pined ? 'text-accent' : 'text-muted'}`} />
+                        <BsPinFill className={`${pined ? 'text-accent' : 'text-muted'}`} />
                     </Button>
                     {osType !== 'macos' && <WindowControl />}
                 </div>

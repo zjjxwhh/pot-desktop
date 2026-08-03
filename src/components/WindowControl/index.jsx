@@ -30,7 +30,7 @@ export default function WindowControl() {
                 className='w-[35px] h-[35px] rounded-none'
                 onPress={() => appWindow.minimize()}
             >
-                <VscChromeMinimize className='text-[16px]' />
+                <VscChromeMinimize />
             </Button>
             <Button
                 isIconOnly
@@ -44,7 +44,7 @@ export default function WindowControl() {
                     }
                 }}
             >
-                {isMax ? <VscChromeRestore className='text-[16px]' /> : <VscChromeMaximize className='text-[16px]' />}
+                {isMax ? <VscChromeRestore /> : <VscChromeMaximize />}
             </Button>
             <Button
                 isIconOnly
@@ -52,7 +52,7 @@ export default function WindowControl() {
                 className={`w-[35px] h-[35px] rounded-none window-close-button ${osType === 'linux' && 'rounded-tr-[10px]'}`}
                 onPress={() => appWindow.close()}
             >
-                <VscChromeClose className='text-[16px]' />
+                <VscChromeClose />
             </Button>
         </div>
     );
