@@ -6,6 +6,7 @@ import { openPath } from '@tauri-apps/plugin-opener';
 import React from 'react';
 
 import { appVersion } from '../../../../utils/env';
+import { invoke } from '@tauri-apps/api/core';
 
 export default function About() {
     const { t } = useTranslation();
