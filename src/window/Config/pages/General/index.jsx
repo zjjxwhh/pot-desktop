@@ -1,6 +1,5 @@
 import { enable, isEnabled, disable } from '@tauri-apps/plugin-autostart';
 import React, { useState, useEffect } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { info } from '@tauri-apps/plugin-log';
 import 'flag-icons/css/flag-icons.min.css';
@@ -15,11 +14,11 @@ import {
     Label,
     Input,
     InputGroup,
+    toast,
 } from '@heroui/react';
 
 import { useConfig } from '../../../../hooks/useConfig';
 import { LanguageFlag } from '../../../../utils/language';
-import { useToastStyle } from '../../../../hooks';
 import { osType } from '../../../../utils/env';
 
 let timer = null;
@@ -45,7 +44,6 @@ export default function General() {
     const [noProxy, setNoProxy] = useConfig('no_proxy', 'localhost,127.0.0.1');
     const { t, i18n } = useTranslation();
     const { setTheme } = useTheme();
-    const toastStyle = useToastStyle();
 
     const languageName = {
         zh_cn: '简体中文',
@@ -80,7 +78,6 @@ export default function General() {
 
     return (
         <>
-            <Toaster />
             <Card className='mb-[10px]'>
                 <Card.Content>
                     <div className='config-item'>
@@ -137,10 +134,7 @@ export default function General() {
                                             clearTimeout(timer);
                                         }
                                         timer = setTimeout(() => {
-                                            toast.success(t('config.general.server_port_change'), {
-                                                duration: 3000,
-                                                style: toastStyle,
-                                            });
+                                            toast.success(t('config.general.server_port_change'));
                                         }, 1000);
                                     }
                                     if (v === '') {
@@ -624,10 +618,7 @@ export default function General() {
                                     if (v) {
                                         if (proxyHost === '' || proxyPort === '') {
                                             setProxyEnable(false);
-                                            toast.error(t('config.general.proxy_error'), {
-                                                duration: 3000,
-                                                style: toastStyle,
-                                            });
+                                            toast.danger(t('config.general.proxy_error'));
                                             return;
                                         } else {
                                             setProxyEnable(v);
@@ -635,10 +626,7 @@ export default function General() {
                                     } else {
                                         setProxyEnable(v);
                                     }
-                                    toast.success(t('config.general.proxy_change'), {
-                                        duration: 1000,
-                                        style: toastStyle,
-                                    });
+                                    toast.success(t('config.general.proxy_change'));
                                 }}
                             >
                                 <Switch.Content>

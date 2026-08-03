@@ -1,11 +1,9 @@
 import { unregister, isRegistered } from '@tauri-apps/plugin-global-shortcut';
-import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
-import { Card, Button, TextField, Label, InputGroup } from '@heroui/react';
+import { Card, Button, TextField, Label, InputGroup, toast } from '@heroui/react';
 import React from 'react';
 
 import { useConfig } from '../../../../hooks/useConfig';
-import { useToastStyle } from '../../../../hooks';
 import { osType } from '../../../../utils/env';
 import { invoke } from '@tauri-apps/api/core';
 
@@ -49,7 +47,6 @@ export default function Hotkey() {
     const [ocrTranslate, setOcrTranslate] = useConfig('hotkey_ocr_translate', '');
 
     const { t } = useTranslation();
-    const toastStyle = useToastStyle();
 
     function keyDown(e, setKey) {
         e.preventDefault();
@@ -93,17 +90,17 @@ export default function Hotkey() {
     function registerHandler(name, key) {
         isRegistered(key).then((res) => {
             if (res) {
-                toast.error(t('config.hotkey.is_register'), { style: toastStyle });
+                toast.danger(t('config.hotkey.is_register'));
             } else {
                 invoke('register_shortcut_by_frontend', {
                     name: name,
                     shortcut: key,
                 }).then(
                     () => {
-                        toast.success(t('config.hotkey.success'), { style: toastStyle });
+                        toast.success(t('config.hotkey.success'));
                     },
                     (e) => {
-                        toast.error(e, { style: toastStyle });
+                        toast.danger(e);
                     }
                 );
             }
@@ -112,7 +109,6 @@ export default function Hotkey() {
 
     return (
         <Card>
-            <Toaster />
             <Card.Content>
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('config.hotkey.selection_translate')}</h3>

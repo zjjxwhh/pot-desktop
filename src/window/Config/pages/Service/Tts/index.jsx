@@ -1,10 +1,8 @@
 import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
-import { Card, Button, useOverlayState } from '@heroui/react';
-import toast, { Toaster } from 'react-hot-toast';
+import { Card, Button, useOverlayState, toast } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
 
-import { useToastStyle } from '../../../../../hooks';
 import SelectPluginModal from '../SelectPluginModal';
 import { osType } from '../../../../../utils/env';
 import { useConfig, deleteKey } from '../../../../../hooks';
@@ -22,7 +20,6 @@ export default function Tts(props) {
     const [ttsServiceInstanceList, setTtsServiceInstanceList] = useConfig('tts_service_list', ['lingva_tts']);
 
     const { t } = useTranslation();
-    const toastStyle = useToastStyle();
 
     const reorder = (list, startIndex, endIndex) => {
         const result = Array.from(list);
@@ -38,7 +35,7 @@ export default function Tts(props) {
 
     const deleteServiceInstance = (instanceKey) => {
         if (ttsServiceInstanceList.length === 1) {
-            toast.error(t('config.service.least'), { style: toastStyle });
+            toast.danger(t('config.service.least'));
             return;
         } else {
             setTtsServiceInstanceList(ttsServiceInstanceList.filter((x) => x !== instanceKey));
@@ -56,7 +53,6 @@ export default function Tts(props) {
 
     return (
         <>
-            <Toaster />
             <Card
                 className={`${
                     osType === 'linux' ? 'h-[calc(100vh-120px)]' : 'h-[calc(100vh-120px)]'

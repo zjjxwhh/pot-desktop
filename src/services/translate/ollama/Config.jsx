@@ -1,14 +1,12 @@
-import { TextField, Label, Input, TextArea, Button, Switch, Card, Link, Tooltip, ProgressBar, Surface, InputGroup } from '@heroui/react';
+import { TextField, Label, Input, TextArea, Button, Switch, Card, Link, Tooltip, ProgressBar, Surface, InputGroup, toast } from '@heroui/react';
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
 import { MdDeleteOutline } from 'react-icons/md';
-import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-shell';
 import React, { useEffect, useState } from 'react';
 import { Ollama } from 'ollama/browser';
 
 import { useConfig } from '../../../hooks/useConfig';
-import { useToastStyle } from '../../../hooks';
 import { translate } from './index';
 import { Language } from './index';
 
@@ -38,8 +36,6 @@ export function Config(props) {
     const [progress, setProgress] = useState(0);
     const [pullingStatus, setPullingStatus] = useState('');
     const [installedModels, setInstalledModels] = useState(null);
-
-    const toastStyle = useToastStyle();
 
     async function getModles() {
         try {
@@ -95,12 +91,13 @@ export function Config(props) {
                         },
                         (e) => {
                             setIsLoading(false);
-                            toast.error(t('config.service.test_failed') + e.toString(), { style: toastStyle });
+                            toast.danger(t('config.service.test_failed'), {
+                                description: e.toString(),
+                            });
                         }
                     );
                 }}
             >
-                <Toaster />
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('services.instance_name')}</h3>
                     <TextField

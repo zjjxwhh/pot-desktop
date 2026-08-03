@@ -1,7 +1,7 @@
 import { useLocation, useRoutes } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
-import { Card, Separator } from '@heroui/react';
+import { Card, Separator, Toast } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 
 import WindowControl from '../../components/WindowControl';
@@ -27,6 +27,7 @@ export default function Config() {
 
     return (
         <>
+            <Toast.Provider placement='top' />
             <Card
                 className={`${
                     transparent ? 'bg-background/90' : 'bg-surface'

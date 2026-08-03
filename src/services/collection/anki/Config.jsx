@@ -1,12 +1,10 @@
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
-import { Button, Input, Label, TextField } from '@heroui/react';
-import toast, { Toaster } from 'react-hot-toast';
+import { Button, Input, Label, TextField, toast } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-shell';
 import React, { useState } from 'react';
 
 import { useConfig } from '../../../hooks';
-import { useToastStyle } from '../../../hooks';
 import { collection } from './index';
 
 export function Config(props) {
@@ -22,12 +20,9 @@ export function Config(props) {
         { sync: false }
     );
 
-    const toastStyle = useToastStyle();
-
     return (
         ankiConfig !== null && (
             <>
-                <Toaster />
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
@@ -41,7 +36,9 @@ export function Config(props) {
                             },
                             (e) => {
                                 setIsLoading(false);
-                                toast.error(t('config.service.test_failed') + e.toString(), { style: toastStyle });
+                                toast.danger(t('config.service.test_failed'), {
+                                    description: e.toString(),
+                                });
                             }
                         );
                     }}

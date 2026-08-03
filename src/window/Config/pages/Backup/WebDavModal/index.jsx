@@ -1,10 +1,8 @@
-import { Modal, Button, Skeleton } from '@heroui/react';
+import { Modal, Button, Skeleton, toast } from '@heroui/react';
 import React, { useEffect, useState } from 'react';
 import { MdDeleteOutline } from 'react-icons/md';
-import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 
-import { useToastStyle } from '../../../../../hooks';
 import * as webdav from '../utils/webdav';
 
 export default function WebDavModal(props) {
@@ -14,7 +12,6 @@ export default function WebDavModal(props) {
     const [downloading, setDownloading] = useState([]);
 
     const { t } = useTranslation();
-    const toastStyle = useToastStyle();
 
     useEffect(() => {
         if (state.isOpen) {
@@ -30,7 +27,7 @@ export default function WebDavModal(props) {
                     setLoading(false);
                 },
                 (e) => {
-                    toast.error(e.toString(), { style: toastStyle });
+                    toast.danger(e.toString());
                     setLoading(false);
                 }
             );
@@ -45,7 +42,7 @@ export default function WebDavModal(props) {
                         return false;
                     })
                 );
-                toast.success(t('config.backup.load_success'), { style: toastStyle });
+                toast.success(t('config.backup.load_success'));
                 onClose();
             },
             (e) => {
@@ -54,7 +51,7 @@ export default function WebDavModal(props) {
                         return false;
                     })
                 );
-                toast.error(e.toString(), { style: toastStyle });
+                toast.danger(e.toString());
                 onClose();
             }
         );
@@ -119,7 +116,7 @@ export default function WebDavModal(props) {
                                                                             );
                                                                         },
                                                                         (e) => {
-                                                                            toast.error(e.toString(), { style: toastStyle });
+                                                                            toast.danger(e.toString());
                                                                         }
                                                                     );
                                                                 }}
@@ -138,7 +135,6 @@ export default function WebDavModal(props) {
                     </Modal.Container>
                 </Modal.Backdrop>
             </Modal>
-            <Toaster />
         </>
     );
 }

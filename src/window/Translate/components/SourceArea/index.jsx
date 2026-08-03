@@ -1,10 +1,9 @@
-import { Button, Card, ButtonGroup, Chip, Tooltip } from '@heroui/react';
+import { Button, Card, ButtonGroup, Chip, Tooltip, toast } from '@heroui/react';
 import { BaseDirectory, readTextFile } from '@tauri-apps/plugin-fs';
 import React, { useEffect, useRef, useState } from 'react';
 import { writeText } from '@tauri-apps/plugin-clipboard-manager';
 import { HiOutlineVolumeUp } from 'react-icons/hi';
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
-import toast, { Toaster } from 'react-hot-toast';
 import { listen } from '@tauri-apps/api/event';
 import { MdContentCopy } from 'react-icons/md';
 import { MdSmartButton } from 'react-icons/md';
@@ -14,7 +13,7 @@ import { LuDelete } from 'react-icons/lu';
 import { invoke } from '@tauri-apps/api/core';
 import { atom, useAtom } from 'jotai';
 import { getServiceName, getServiceSouceType, ServiceSourceType } from '../../../../utils/service_instance';
-import { useConfig, useSyncAtom, useVoice, useToastStyle } from '../../../../hooks';
+import { useConfig, useSyncAtom, useVoice } from '../../../../hooks';
 import { invoke_plugin } from '../../../../utils/invoke_plugin';
 import { LanguageFlag } from '../../../../utils/language.ts';
 import { normalizeText, appendText } from '../../../../utils/text_utils.js';
@@ -48,7 +47,6 @@ export default function SourceArea(props) {
     const [hideSource] = useConfig('hide_source', false);
     const [ttsPluginInfo, setTtsPluginInfo] = useState();
     const [windowType, setWindowType] = useState('[SELECTION_TRANSLATE]');
-    const toastStyle = useToastStyle();
     const { t } = useTranslation();
     const textAreaRef = useRef();
     const speak = useVoice();
@@ -349,7 +347,6 @@ export default function SourceArea(props) {
     return (
         <div className={hideSource && windowType !== '[INPUT_TRANSLATE]' && 'hidden'}>
             <Card className='bg-surface gap-0 overflow-hidden mt-[1px] p-0'>
-                <Toaster />
                 <Card.Content className='bg-surface p-[12px] max-h-[40vh] overflow-y-auto'>
                     <textarea
                         autoFocus
@@ -375,7 +372,7 @@ export default function SourceArea(props) {
                                     className='h-8 w-8'
                                     onPress={() => {
                                         handleSpeak().catch((e) => {
-                                            toast.error(e.toString(), { style: toastStyle });
+                                            toast.danger(e.toString());
                                         });
                                     }}
                                 >

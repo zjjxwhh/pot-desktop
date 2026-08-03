@@ -5,6 +5,7 @@ import {
     Dropdown,
     Label,
     Tooltip,
+    toast,
 } from '@heroui/react';
 import { BiCollapseVertical, BiExpandVertical } from 'react-icons/bi';
 import { BaseDirectory, readTextFile } from '@tauri-apps/plugin-fs';
@@ -13,7 +14,6 @@ import { writeText } from '@tauri-apps/plugin-clipboard-manager';
 import PulseLoader from 'react-spinners/PulseLoader';
 import { TbTransformFilled } from 'react-icons/tb';
 import { HiOutlineVolumeUp } from 'react-icons/hi';
-import toast, { Toaster } from 'react-hot-toast';
 import { MdContentCopy } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
 import Database from '@tauri-apps/plugin-sql';
@@ -25,7 +25,7 @@ import useMeasure from 'react-use-measure';
 
 import * as builtinCollectionServices from '../../../../services/collection';
 import { sourceLanguageAtom, targetLanguageAtom } from '../LanguageArea';
-import { useConfig, useToastStyle, useVoice } from '../../../../hooks';
+import { useConfig, useVoice } from '../../../../hooks';
 import { sourceTextAtom, detectLanguageAtom } from '../SourceArea';
 import { invoke_plugin } from '../../../../utils/invoke_plugin';
 import { sendNotification } from '../../../../utils/notification';
@@ -75,7 +75,6 @@ export default function TargetArea(props) {
     const [ttsPluginInfo, setTtsPluginInfo] = useState();
     const { t } = useTranslation();
     const textAreaRef = useRef();
-    const toastStyle = useToastStyle();
     const speak = useVoice();
 
     useEffect(() => {
@@ -367,7 +366,6 @@ export default function TargetArea(props) {
 
     return (
         <Card className='gap-0 overflow-hidden p-0'>
-            <Toaster />
             <Card.Header
                 className={`flex flex-row items-center justify-between py-1 px-0 bg-surface-secondary`}
                 {...drag}
@@ -633,7 +631,7 @@ export default function TargetArea(props) {
                                     isDisabled={typeof result !== 'string' || result === ''}
                                     onPress={() => {
                                         handleSpeak().catch((e) => {
-                                            toast.error(e.toString(), { style: toastStyle });
+                                            toast.danger(e.toString());
                                         });
                                     }}
                                 >
@@ -834,12 +832,10 @@ export default function TargetArea(props) {
                                                         utils,
                                                     }).then(
                                                         (_) => {
-                                                            toast.success(t('translate.add_collection_success'), {
-                                                                style: toastStyle,
-                                                            });
+                                                            toast.success(t('translate.add_collection_success'));
                                                         },
                                                         (e) => {
-                                                            toast.error(e.toString(), { style: toastStyle });
+                                                            toast.danger(e.toString());
                                                         }
                                                     );
                                                 } else {
@@ -853,12 +849,10 @@ export default function TargetArea(props) {
                                                         })
                                                         .then(
                                                             (_) => {
-                                                                toast.success(t('translate.add_collection_success'), {
-                                                                    style: toastStyle,
-                                                                });
+                                                                toast.success(t('translate.add_collection_success'));
                                                             },
                                                             (e) => {
-                                                                toast.error(e.toString(), { style: toastStyle });
+                                                                toast.danger(e.toString());
                                                             }
                                                         );
                                                 }

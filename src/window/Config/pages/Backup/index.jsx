@@ -1,5 +1,4 @@
 import { readTextFile, BaseDirectory } from '@tauri-apps/plugin-fs';
-import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { warn } from '@tauri-apps/plugin-log';
 import {
@@ -12,10 +11,11 @@ import {
     Avatar,
     Tooltip,
     useOverlayState,
+    toast,
 } from '@heroui/react';
 import React, { useEffect, useState } from 'react';
 
-import { useConfig, useToastStyle } from '../../../../hooks';
+import { useConfig } from '../../../../hooks';
 import { osType } from '../../../../utils/env';
 import * as webdav from './utils/webdav';
 import WebDavModal from './WebDavModal';
@@ -37,7 +37,6 @@ export default function Backup() {
     const webdavState = useOverlayState();
     const aliyunState = useOverlayState();
     const [uploading, setUploading] = useState(false);
-    const toastStyle = useToastStyle();
     const { t } = useTranslation();
 
     const onBackup = async () => {
@@ -57,7 +56,7 @@ export default function Backup() {
                 break;
             case 'aliyun':
                 if (aliyunAccessToken === '') {
-                    toast.error(t('config.backup.aliyun_login_first'), { style: toastStyle });
+                    toast.danger(t('config.backup.aliyun_login_first'));
                     setUploading(false);
                 } else {
                     result = aliyun.backup(aliyunAccessToken, fileName + '.zip');
@@ -69,11 +68,11 @@ export default function Backup() {
         }
         result.then(
             () => {
-                toast.success(t('config.backup.backup_success'), { style: toastStyle });
+                toast.success(t('config.backup.backup_success'));
                 setUploading(false);
             },
             (e) => {
-                toast.error(e.toString(), { style: toastStyle });
+                toast.danger(e.toString());
                 setUploading(false);
             }
         );
@@ -87,16 +86,16 @@ export default function Backup() {
             case 'local':
                 local.get().then(
                     () => {
-                        toast.success(t('config.backup.load_success'), { style: toastStyle });
+                        toast.success(t('config.backup.load_success'));
                     },
                     (e) => {
-                        toast.error(e.toString(), { style: toastStyle });
+                        toast.danger(e.toString());
                     }
                 );
                 break;
             case 'aliyun':
                 if (aliyunAccessToken === '') {
-                    toast.error(t('config.backup.aliyun_login_first'), { style: toastStyle });
+                    toast.danger(t('config.backup.aliyun_login_first'));
                 } else {
                     aliyunState.open();
                 }
@@ -118,7 +117,7 @@ export default function Backup() {
                     }
                     case 'LoginSuccess': {
                         clearInterval(refreshTimer);
-                        toast.success(t('config.backup.login_success'), { style: toastStyle });
+                        toast.success(t('config.backup.login_success'));
                         const token = await aliyun.accessToken(code);
                         setAliyunAccessToken(token);
                         await refreshUserInfo(token);
@@ -126,7 +125,7 @@ export default function Backup() {
                     }
                 }
             } catch (e) {
-                toast.error(e.toString(), { style: toastStyle });
+                toast.danger(e.toString());
                 refreshQrCode();
             }
         }, 2000);
@@ -142,7 +141,7 @@ export default function Backup() {
             pollingStatus(sid);
         } catch (e) {
             setAliyunQrCodeUrl('');
-            toast.error(e.toString(), { style: toastStyle });
+            toast.danger(e.toString());
         }
     };
 
@@ -152,7 +151,7 @@ export default function Backup() {
             setAliyunQrCodeUrl('');
             setAliyunUserInfo(info);
         } catch (e) {
-            toast.error(e.toString(), { style: toastStyle });
+            toast.danger(e.toString());
             setAliyunAccessToken('');
             refreshQrCode();
         }
@@ -173,7 +172,6 @@ export default function Backup() {
 
     return (
         <Card className='mb-[10px]'>
-            <Toaster />
             <Card.Content>
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('config.backup.type')}</h3>

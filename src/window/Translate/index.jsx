@@ -4,7 +4,7 @@ import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { currentMonitor } from '@tauri-apps/api/window';
 import { appConfigDir, join } from '@tauri-apps/api/path';
 import { convertFileSrc } from '@tauri-apps/api/core';
-import { Button, CloseButton } from '@heroui/react';
+import { Button, CloseButton, Toast } from '@heroui/react';
 import React, { useState, useEffect } from 'react';
 import { listen } from '@tauri-apps/api/event';
 import { BsPinFill } from 'react-icons/bs';
@@ -237,6 +237,7 @@ export default function Translate() {
                     osType === 'linux' && 'rounded-[10px] border-1 border-border'
                 }`}
             >
+                <Toast.Provider placement='top' />
                 <div
                     className='fixed top-[5px] left-[5px] right-[5px] h-[30px]'
                     data-tauri-drag-region='true'

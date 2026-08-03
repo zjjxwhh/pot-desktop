@@ -1,12 +1,10 @@
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
-import { TextField, Label, Input, Button } from '@heroui/react';
-import toast, { Toaster } from 'react-hot-toast';
+import { TextField, Label, Input, Button, toast } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-shell';
 import React, { useState } from 'react';
 
 import { useConfig } from '../../../hooks/useConfig';
-import { useToastStyle } from '../../../hooks';
 import { translate } from './index';
 import { Language } from './index';
 
@@ -24,8 +22,6 @@ export function Config(props) {
     );
     const [isLoading, setIsLoading] = useState(false);
 
-    const toastStyle = useToastStyle();
-
     return (
         config !== null && (
             <form
@@ -41,12 +37,13 @@ export function Config(props) {
                         },
                         (e) => {
                             setIsLoading(false);
-                            toast.error(t('config.service.test_failed') + e.toString(), { style: toastStyle });
+                            toast.danger(t('config.service.test_failed'), {
+                                description: e.toString(),
+                            });
                         }
                     );
                 }}
             >
-                <Toaster />
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('services.instance_name')}</h3>
                     <TextField

@@ -1,10 +1,8 @@
 import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
-import { Card, Button, useOverlayState } from '@heroui/react';
-import toast, { Toaster } from 'react-hot-toast';
+import { Card, Button, useOverlayState, toast } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
 
-import { useToastStyle } from '../../../../../hooks';
 import SelectPluginModal from '../SelectPluginModal';
 import { osType } from '../../../../../utils/env';
 import { useConfig, deleteKey } from '../../../../../hooks';
@@ -25,7 +23,6 @@ export default function Recognize(props) {
     ]);
 
     const { t } = useTranslation();
-    const toastStyle = useToastStyle();
 
     const reorder = (list, startIndex, endIndex) => {
         const result = Array.from(list);
@@ -41,7 +38,7 @@ export default function Recognize(props) {
 
     const deleteServiceInstance = (instanceKey) => {
         if (recognizeServiceInstanceList.length === 1) {
-            toast.error(t('config.service.least'), { style: toastStyle });
+            toast.danger(t('config.service.least'));
             return;
         } else {
             setRecognizeServiceInstanceList(recognizeServiceInstanceList.filter((x) => x !== instanceKey));
@@ -59,7 +56,6 @@ export default function Recognize(props) {
 
     return (
         <>
-            <Toaster />
             <Card
                 className={`${
                     osType === 'linux' ? 'h-[calc(100vh-120px)]' : 'h-[calc(100vh-120px)]'

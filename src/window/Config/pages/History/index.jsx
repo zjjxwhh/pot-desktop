@@ -8,20 +8,20 @@ import {
     ButtonGroup,
     Pagination,
     EmptyState,
+    toast,
 } from '@heroui/react';
 import { IoFileTrayOutline } from 'react-icons/io5';
 import { readDir, BaseDirectory, readTextFile, exists } from '@tauri-apps/plugin-fs';
 import { appConfigDir, join } from '@tauri-apps/api/path';
 import { convertFileSrc } from '@tauri-apps/api/core';
 import React, { useEffect, useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import Database from '@tauri-apps/plugin-sql';
 
 import * as builtinCollectionServices from '../../../../services/collection';
 import { invoke_plugin } from '../../../../utils/invoke_plugin';
 import * as builtinServices from '../../../../services/translate';
-import { useConfig, useToastStyle } from '../../../../hooks';
+import { useConfig } from '../../../../hooks';
 import { LanguageFlag } from '../../../../utils/language';
 import { store } from '../../../../utils/store';
 import { osType } from '../../../../utils/env';
@@ -41,7 +41,6 @@ export default function History() {
     const [page, setPage] = useState(1);
     const [total, setTotal] = useState(0);
     const [items, setItems] = useState([]);
-    const toastStyle = useToastStyle();
     const { t } = useTranslation();
     useEffect(() => {
         init();
@@ -151,7 +150,6 @@ export default function History() {
     return (
         pluginList !== null && (
             <>
-                <Toaster />
                 <Table
                     className={`${
                         osType === 'linux' ? 'h-[calc(100vh-130px)]' : 'h-[calc(100vh-100px)]'
@@ -373,16 +371,11 @@ export default function History() {
                                                                             }).then(
                                                                                 (_) => {
                                                                                     toast.success(
-                                                                                        t('translate.add_collection_success'),
-                                                                                        {
-                                                                                            style: toastStyle,
-                                                                                        }
+                                                                                        t('translate.add_collection_success')
                                                                                     );
                                                                                 },
                                                                                 (e) => {
-                                                                                    toast.error(e.toString(), {
-                                                                                        style: toastStyle,
-                                                                                    });
+                                                                                    toast.danger(e.toString());
                                                                                 }
                                                                             );
                                                                         } else {
@@ -403,16 +396,11 @@ export default function History() {
                                                                                         toast.success(
                                                                                             t(
                                                                                                 'translate.add_collection_success'
-                                                                                            ),
-                                                                                            {
-                                                                                                style: toastStyle,
-                                                                                            }
+                                                                                            )
                                                                                         );
                                                                                     },
                                                                                     (e) => {
-                                                                                        toast.error(e.toString(), {
-                                                                                            style: toastStyle,
-                                                                                        });
+                                                                                        toast.danger(e.toString());
                                                                                     }
                                                                                 );
                                                                         }

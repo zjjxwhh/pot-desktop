@@ -1,13 +1,12 @@
-import { Card, Button, ProgressBar, Skeleton, Label } from '@heroui/react';
+import { Card, Button, ProgressBar, Skeleton, Label, Toast, toast } from '@heroui/react';
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { check } from '@tauri-apps/plugin-updater';
 import { relaunch } from '@tauri-apps/plugin-process';
 import React, { useEffect, useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 
-import { useConfig, useToastStyle } from '../../hooks';
+import { useConfig } from '../../hooks';
 import { osType } from '../../utils/env';
 
 const appWindow = getCurrentWebviewWindow();
@@ -19,7 +18,6 @@ export default function Updater() {
     const [body, setBody] = useState('');
     const [update, setUpdate] = useState(null);
     const { t } = useTranslation();
-    const toastStyle = useToastStyle();
 
     useEffect(() => {
         if (appWindow.label === 'updater') {
@@ -36,7 +34,7 @@ export default function Updater() {
             },
             (e) => {
                 setBody(e.toString());
-                toast.error(e.toString(), { style: toastStyle });
+                toast.danger(e.toString());
             }
         );
     }, []);
@@ -47,7 +45,7 @@ export default function Updater() {
                 osType === 'linux' && 'rounded-[10px] border-1 border-border'
             }`}
         >
-            <Toaster />
+            <Toast.Provider placement='top' />
             <div className='p-[5px] h-[35px] w-full select-none cursor-default'>
                 <div
                     data-tauri-drag-region='true'
@@ -164,11 +162,13 @@ export default function Updater() {
                             })
                             .then(
                                 () => {
-                                    toast.success(t('updater.installed'), { style: toastStyle, duration: 10000 });
+                                    toast.success(t('updater.installed'), {
+                                        timeout: 10000
+                                    });
                                     relaunch();
                                 },
                                 (e) => {
-                                    toast.error(e.toString(), { style: toastStyle });
+                                    toast.danger(e.toString());
                                 }
                             );
                     }}
