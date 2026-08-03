@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Button, Label } from '@heroui/react';
+import { Button } from '@heroui/react';
 import React from 'react';
 
 export function Config(props) {

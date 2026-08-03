@@ -20,9 +20,6 @@ import { normalizeText, appendText } from '../../../../utils/text_utils.js';
 import * as recognizeServices from '../../../../services/recognize';
 import * as builtinTtsServices from '../../../../services/tts';
 import detect from '../../../../utils/lang_detect';
-import { store } from '../../../../utils/store';
-import { info } from '@tauri-apps/plugin-log';
-import { debug } from '@tauri-apps/plugin-log';
 
 const appWindow = getCurrentWebviewWindow();
 

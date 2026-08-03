@@ -1,4 +1,4 @@
-import { Separator, Button, Popover, Tooltip } from '@heroui/react';
+import { Separator, Button } from '@heroui/react';
 import { appLogDir, appConfigDir } from '@tauri-apps/api/path';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-shell';

@@ -1,5 +1,5 @@
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
-import { Button, Input, Label, TextField, toast } from '@heroui/react';
+import { Button, Input, TextField, toast } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-shell';
 import React, { useState } from 'react';

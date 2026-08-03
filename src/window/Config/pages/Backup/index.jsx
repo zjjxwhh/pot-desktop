@@ -1,4 +1,3 @@
-import { readTextFile, BaseDirectory } from '@tauri-apps/plugin-fs';
 import { useTranslation } from 'react-i18next';
 import { warn } from '@tauri-apps/plugin-log';
 import {

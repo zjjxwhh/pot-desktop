@@ -1,5 +1,5 @@
 import { useLocation, useRoutes } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { Card, Separator, Toast } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
