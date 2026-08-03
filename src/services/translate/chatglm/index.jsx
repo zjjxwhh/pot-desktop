@@ -1,7 +1,6 @@
 import { Language } from './info';
 import * as jose from 'jose';
 import { fetch } from '@tauri-apps/plugin-http';
-import { info } from '@tauri-apps/plugin-log';
 
 export async function translate(text, from, to, options = {}) {
     const { config, setResult, detect } = options;

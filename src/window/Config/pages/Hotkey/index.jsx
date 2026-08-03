@@ -1,6 +1,6 @@
 import { unregister, isRegistered } from '@tauri-apps/plugin-global-shortcut';
 import { useTranslation } from 'react-i18next';
-import { Card, Button, TextField, Label, InputGroup, toast } from '@heroui/react';
+import { Card, Button, TextField, InputGroup, toast } from '@heroui/react';
 import React from 'react';
 
 import { useConfig } from '../../../../hooks/useConfig';

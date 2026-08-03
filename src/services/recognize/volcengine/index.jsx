@@ -17,7 +17,7 @@ async function normal_ocr(img_base64, appid, secret) {
         let result = await res.json();
         if (result['data']) {
             let data = result['data'];
-            var texts = '';
+            let texts = '';
             for (let text of data['line_texts']) {
                 texts += text + '\n';
             }
