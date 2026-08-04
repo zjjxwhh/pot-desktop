@@ -149,12 +149,8 @@ export default function History() {
 
     return (
         pluginList !== null && (
-            <>
-                <Table
-                    className={`${
-                        osType === 'linux' ? 'h-[calc(100vh-130px)]' : 'h-[calc(100vh-100px)]'
-                    } overflow-y-auto pt-1`}
-                >
+            <div className='h-full flex flex-col'>
+                <Table className='flex-1 min-h-0 overflow-y-auto pt-1'>
                     <Table.ScrollContainer className='h-full'>
                         {items.length === 0 ? (
                             <EmptyState className='flex h-full w-full flex-col items-center justify-center gap-4 text-center'>
@@ -190,13 +186,13 @@ export default function History() {
                                                 {getServiceSouceType(item.service) === ServiceSourceType.PLUGIN ? (
                                                     <img
                                                         src={pluginList['translate'][getServiceName(item.service)].icon}
-                                                        className='size-4.5 shrink-0 my-auto mr-[8px]'
+                                                        className='size-4.5 min-w-4.5 shrink-0 my-auto mr-2'
                                                         draggable={false}
                                                     />
                                                 ) : (
                                                     <img
                                                         src={`${builtinServices[getServiceName(item.service)].info.icon}`}
-                                                        className='size-4 shrink-0 my-auto mr-[8px]'
+                                                        className='size-4 min-w-4 shrink-0 my-auto mr-2'
                                                         draggable={false}
                                                     />
                                                 )}
@@ -213,12 +209,12 @@ export default function History() {
                                                 </p>
                                             </Table.Cell>
                                             <Table.Cell className='px-0'>
-                                                <span className={`w-[30px] fi fi-${LanguageFlag[item.source]}`} />
+                                                <span className={`fi fi-${LanguageFlag[item.source]}`} />
                                             </Table.Cell>
                                             <Table.Cell className='px-0'>
-                                                <span className={`w-[30px] fi fi-${LanguageFlag[item.target]}`} />
+                                                <span className={`fi fi-${LanguageFlag[item.target]}`} />
                                             </Table.Cell>
-                                            <Table.Cell className='px-0'>
+                                            <Table.Cell className='px-0 pl-1'>
                                                 <p
                                                     className={`whitespace-nowrap ${
                                                         osType === 'linux'
@@ -230,7 +226,7 @@ export default function History() {
                                                 </p>
                                             </Table.Cell>
                                             <Table.Cell className='px-0'>
-                                                <p className='text-center whitespace-nowrap w-[140px]'>
+                                                <p className='text-center whitespace-nowrap w-35'>
                                                     {formatDate(new Date(item.timestamp))}
                                                 </p>
                                             </Table.Cell>
@@ -242,7 +238,7 @@ export default function History() {
                         )}
                     </Table.ScrollContainer>
                 </Table>
-                <div className='mt-[8px] flex justify-around'>
+                <div className='mt-2 flex justify-around'>
                     <Pagination className='my-auto'>
                         <Pagination.Content>
                             <Pagination.Item>
@@ -310,7 +306,7 @@ export default function History() {
                                                     ) : (
                                                         <img
                                                             src={`${builtinServices[getServiceName(selectedItem.service)].info.icon}`}
-                                                            className='size-6 shrink-0 m-auto ml-[8px]'
+                                                            className='size-6 shrink-0 m-auto ml-2'
                                                             draggable={false}
                                                         />
                                                     )}
@@ -319,7 +315,7 @@ export default function History() {
                                             </Modal.Header>
                                             <Modal.Body>
                                                 <TextField
-                                                    className='mb-[8px]'
+                                                    className='mb-2'
                                                     value={selectedItem.text}
                                                     onChange={(value) => {
                                                         setSelectItem({ ...selectedItem, text: value });
@@ -431,7 +427,7 @@ export default function History() {
                         </Modal.Container>
                     </Modal.Backdrop>
                 </Modal>
-            </>
+            </div>
         )
     );
 }

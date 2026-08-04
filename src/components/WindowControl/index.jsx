@@ -27,7 +27,7 @@ export default function WindowControl() {
             <Button
                 isIconOnly
                 variant='ghost'
-                className='w-[35px] h-[35px] rounded-none'
+                className='w-8.75 h-8.75 rounded-none'
                 onPress={() => appWindow.minimize()}
             >
                 <VscChromeMinimize />
@@ -35,7 +35,7 @@ export default function WindowControl() {
             <Button
                 isIconOnly
                 variant='ghost'
-                className='w-[35px] h-[35px] rounded-none'
+                className='w-8.75 h-8.75 rounded-none'
                 onPress={() => {
                     if (isMax) {
                         appWindow.unmaximize();
@@ -49,7 +49,7 @@ export default function WindowControl() {
             <Button
                 isIconOnly
                 variant='ghost'
-                className={`w-[35px] h-[35px] rounded-none window-close-button ${osType === 'linux' && 'rounded-tr-[10px]'}`}
+                className={`w-8.75 h-8.75 rounded-none window-close-button ${osType === 'linux' && 'rounded-tr-[10px]'}`}
                 onPress={() => appWindow.close()}
             >
                 <VscChromeClose />

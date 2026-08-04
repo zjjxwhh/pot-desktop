@@ -63,7 +63,7 @@ export default function ControlArea(props) {
     };
 
     return (
-        <div className='flex justify-between px-[12px] h-full'>
+        <div className='flex justify-between px-3 h-full'>
             {currentServiceInstanceKey && (
                 <Dropdown>
                     <Button

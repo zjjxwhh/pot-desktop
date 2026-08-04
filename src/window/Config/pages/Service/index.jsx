@@ -62,9 +62,9 @@ export default function Service() {
     }, []);
     return (
         pluginList !== null && (
-            <Tabs className='flex justify-center max-h-[calc(100%)] overflow-y-auto'>
-                <Tabs.ListContainer className={'mx-15'}>
-                    <Tabs.List aria-label='Service tabs'>
+            <Tabs className='h-full flex flex-col min-h-0'>
+                <Tabs.ListContainer className='mx-15'>
+                    <Tabs.List aria-label='Service tabs' className='whitespace-nowrap'>
                         <Tabs.Tab id='translate'>
                             {t(`config.service.translate`)}
                             <Tabs.Indicator />
@@ -83,16 +83,16 @@ export default function Service() {
                         </Tabs.Tab>
                     </Tabs.List>
                 </Tabs.ListContainer>
-                <Tabs.Panel id='translate'>
+                <Tabs.Panel id='translate' className='flex-1 min-h-0'>
                     <Translate pluginList={pluginList[ServiceType.TRANSLATE]} />
                 </Tabs.Panel>
-                <Tabs.Panel id='recognize'>
+                <Tabs.Panel id='recognize' className='flex-1 min-h-0'>
                     <Recognize pluginList={pluginList[ServiceType.RECOGNIZE]} />
                 </Tabs.Panel>
-                <Tabs.Panel id='tts'>
+                <Tabs.Panel id='tts' className='flex-1 min-h-0'>
                     <Tts pluginList={pluginList[ServiceType.TTS]} />
                 </Tabs.Panel>
-                <Tabs.Panel id='collection'>
+                <Tabs.Panel id='collection' className='flex-1 min-h-0'>
                     <Collection pluginList={pluginList[ServiceType.COLLECTION]} />
                 </Tabs.Panel>
             </Tabs>

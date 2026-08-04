@@ -12,20 +12,23 @@ export default function About() {
     const { t } = useTranslation();
 
     return (
-        <div className='h-full w-full py-[80px] px-[100px]'>
+        <div className='h-full w-full flex flex-col'>
+            <div className='grow-3' />
             <img
                 src='icon.png'
-                className='mx-auto h-[100px] mb-[5px]'
+                className='mx-auto size-25 mb-1.5'
                 draggable={false}
             />
-            <div className='content-center'>
+            <div>
                 <h1 className='font-bold text-2xl text-center'>Pot</h1>
-                <p className='text-center text-sm text-muted mb-[5px]'>{appVersion}</p>
+                <p className='text-center text-sm text-muted mb-5'>{appVersion}</p>
+            </div>
+            <div className='w-fit mx-auto flex flex-col items-center'>
                 <Separator />
-                <div className='flex justify-between'>
+                <div className='flex gap-x-4'>
                     <Button
                         variant='tertiary'
-                        className='my-[5px]'
+                        className='my-1.5'
                         size='sm'
                         onPress={() => {
                             open('https://pot-app.com');
@@ -35,7 +38,7 @@ export default function About() {
                     </Button>
                     <Button
                         variant='tertiary'
-                        className='my-[5px]'
+                        className='my-1.5'
                         size='sm'
                         onPress={() => {
                             open('https://github.com/pot-app/pot-desktop');
@@ -45,7 +48,7 @@ export default function About() {
                     </Button>
                     <Button
                         variant='tertiary'
-                        className='my-[5px]'
+                        className='my-1.5'
                         size='sm'
                         onPress={() => {
                             open('https://github.com/pot-app/pot-desktop/issues');
@@ -55,7 +58,7 @@ export default function About() {
                     </Button>
                     <Button
                         variant='tertiary'
-                        className='my-[5px]'
+                        className='my-1.5'
                         size='sm'
                         onPress={() => {
                             open('https://github.com/pot-app/pot-desktop/discussions');
@@ -66,11 +69,11 @@ export default function About() {
                 </div>
                 <Separator />
             </div>
-            <div className='content-center px-[20px]'>
-                <div className='flex justify-between'>
+            <div className='px-5 w-fit mx-auto flex flex-col items-center'>
+                <div className='flex gap-x-4'>
                     <Button
                         variant='tertiary'
-                        className='my-[5px]'
+                        className='my-1.5'
                         size='sm'
                         onPress={() => {
                             invoke('updater_window');
@@ -80,7 +83,7 @@ export default function About() {
                     </Button>
                     <Button
                         variant='tertiary'
-                        className='my-[5px]'
+                        className='my-1.5'
                         size='sm'
                         onPress={async () => {
                             const dir = await appLogDir();
@@ -91,7 +94,7 @@ export default function About() {
                     </Button>
                     <Button
                         variant='tertiary'
-                        className='my-[5px]'
+                        className='my-1.5'
                         size='sm'
                         onPress={async () => {
                             const dir = await appConfigDir();
@@ -101,9 +104,9 @@ export default function About() {
                         {t('config.about.view_config')}
                     </Button>
                 </div>
-
                 <Separator />
             </div>
+            <div className='grow-7' />
         </div>
     );
 }

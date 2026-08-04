@@ -29,7 +29,7 @@ export default function Translate() {
 
     return (
         <>
-            <Card className='mb-[10px]'>
+            <Card className='mb-2.5'>
                 <Card.Content>
                     <div className='config-item'>
                         <h3 className='my-auto mx-0'>{t('config.translate.source_language')}</h3>
@@ -163,7 +163,7 @@ export default function Translate() {
                     </div>
                 </Card.Content>
             </Card>
-            <Card className='mb-[10px]'>
+            <Card className='mb-2.5'>
                 <Card.Content>
                     <div className='config-item'>
                         <h3 className='my-auto mx-0'>{t('config.translate.auto_copy')}</h3>

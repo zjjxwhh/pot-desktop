@@ -170,7 +170,7 @@ export default function Backup() {
     }, [backupType]);
 
     return (
-        <Card className='mb-[10px]'>
+        <Card className='mb-2.5'>
             <Card.Content>
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('config.backup.type')}</h3>
@@ -216,7 +216,7 @@ export default function Backup() {
                                 onChange={(v) => {
                                     setDavUrl(v);
                                 }}
-                                className='max-w-[300px]'
+                                className='max-w-75'
                             >
                                 <Input
                                     variant='secondary'
@@ -233,7 +233,7 @@ export default function Backup() {
                                 onChange={(v) => {
                                     setDavUserName(v);
                                 }}
-                                className='max-w-[300px]'
+                                className='max-w-75'
                             >
                                 <Input
                                     variant='secondary'
@@ -250,7 +250,7 @@ export default function Backup() {
                                 onChange={(v) => {
                                     setDavPassword(v);
                                 }}
-                                className='max-w-[300px]'
+                                className='max-w-75'
                             >
                                 <Input
                                     type='password'
@@ -264,7 +264,7 @@ export default function Backup() {
                 <div className={`flex justify-center ${backupType !== 'aliyun' ? 'hidden' : ''}`}>
                     <img
                         src={aliyunQrCodeUrl}
-                        className={`h-[200px] mb-2 ${aliyunQrCodeUrl === '' ? 'hidden' : ''}`}
+                        className={`h-50 mb-2 ${aliyunQrCodeUrl === '' ? 'hidden' : ''}`}
                     />
                 </div>
                 <div className={`config-item ${backupType !== 'aliyun' ? 'hidden' : ''}`}>

@@ -306,12 +306,15 @@ export default function TargetArea(props) {
         }
     };
 
-    // hide empty textarea
+    // 空结果隐藏；非空时最小 2 行，超出取内容高度
     useEffect(() => {
-        if (textAreaRef.current !== null) {
-            textAreaRef.current.style.height = '0px';
+        const el = textAreaRef.current;
+        if (el !== null) {
             if (result !== '') {
-                textAreaRef.current.style.height = textAreaRef.current.scrollHeight + 'px';
+                el.style.height = 'auto';
+                el.style.height = Math.max(el.scrollHeight, el.clientHeight) + 'px';
+            } else {
+                el.style.height = '0px';
             }
         }
     }, [result]);
@@ -364,7 +367,7 @@ export default function TargetArea(props) {
     });
 
     return (
-        <Card className='gap-0 overflow-hidden p-0'>
+        <Card className='gap-0 bg-surface overflow-hidden p-0'>
             <Card.Header
                 className={`flex flex-row items-center justify-between py-1 px-0 bg-surface-secondary`}
                 {...drag}
@@ -487,10 +490,11 @@ export default function TargetArea(props) {
             <animated.div style={{ ...springs }}>
                 <div ref={boundRef}>
                     {/* result content */}
-                    <Card.Content className={`p-[12px] ${hide && 'h-0 p-0'}`}>
+                    <Card.Content className={`p-2 px-4 ${hide && 'h-0 p-0'}`}>
                         {typeof result === 'string' ? (
                             <textarea
                                 ref={textAreaRef}
+                                rows={1}
                                 className={'h-0 resize-none bg-transparent select-text outline-none'}
                                 readOnly
                                 value={result}
@@ -502,12 +506,12 @@ export default function TargetArea(props) {
                                         return (
                                             <div key={nanoid()}>
                                                 {pronunciation['region'] && (
-                                                    <span className={'mr-[12px] text-muted'}>
+                                                    <span className={'mr-3 text-muted'}>
                                                         {pronunciation['region']}
                                                     </span>
                                                 )}
                                                 {pronunciation['symbol'] && (
-                                                    <span className={'mr-[12px] text-muted'}>
+                                                    <span className={'mr-3 text-muted'}>
                                                         {pronunciation['symbol']}
                                                     </span>
                                                 )}
@@ -532,7 +536,7 @@ export default function TargetArea(props) {
                                                             <span key={nanoid()}>
                                                                 {index === 0 ? (
                                                                     <>
-                                                                        <span className={'text-muted mr-[12px]'}>
+                                                                        <span className={'text-muted mr-3'}>
                                                                             {explanations['trait']}
                                                                         </span>
                                                                         <span className={'font-bold select-text'}>
@@ -569,7 +573,7 @@ export default function TargetArea(props) {
                                     result['sentence'].map((sentence, index) => {
                                         return (
                                             <div key={nanoid()}>
-                                                <span className={'mr-[12px]'}>
+                                                <span className={'mr-3'}>
                                                     {index + 1}.
                                                 </span>
                                                 <>
@@ -612,9 +616,7 @@ export default function TargetArea(props) {
                             <></>
                         )}
                     </Card.Content>
-                    <Card.Footer
-                        className={`bg-surface flex px-[12px] p-[5px] ${hide && 'hidden'}`}
-                    >
+                    <Card.Footer className={`bg-surface flex p-2 ${hide && 'hidden'}`}>
                         <ButtonGroup>
                             {/* speak button */}
                             <Tooltip>

@@ -33,7 +33,7 @@ export default function SelectPluginModal(props) {
                                         <Button
                                             fullWidth
                                             variant='tertiary'
-                                            className='mb-[2px]'
+                                            className='mb-0.5'
                                             onPress={() => {
                                                 openInBrowser('http://pot-app.com/plugin.html');
                                             }}
@@ -50,7 +50,7 @@ export default function SelectPluginModal(props) {
                                             >
                                                 <Button
                                                     fullWidth
-                                                    className='mr-[8px] mb-[2px]'
+                                                    className='mr-2 mb-0.5'
                                                     onPress={() => {
                                                         setCurrentConfigKey(createServiceInstanceKey(x));
                                                         onConfigOpen();

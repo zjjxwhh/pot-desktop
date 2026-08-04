@@ -41,25 +41,25 @@ export default function Updater() {
 
     return (
         <div
-            className={`${transparent ? 'bg-background/90' : 'bg-background'} h-screen ${
-                osType === 'linux' && 'rounded-[10px] border-1 border-border'
+            className={`${transparent ? 'bg-background/90' : 'bg-background'} h-screen flex flex-col ${
+                osType === 'linux' && 'rounded-[10px] border border-border'
             }`}
         >
             <Toast.Provider placement='top' />
-            <div className='p-[5px] h-[35px] w-full select-none cursor-default'>
+            <div className='p-1.25 h-8.75 w-full select-none cursor-default'>
                 <div
                     data-tauri-drag-region='true'
                     className={`h-full w-full flex ${osType === 'macos' ? 'justify-end' : 'justify-start'}`}
                 >
                     <img
                         src='icon.png'
-                        className='h-[25px] w-[25px] mr-[10px]'
+                        className='h-6.25 w-6.25 mr-2.5'
                         draggable={false}
                     />
                     <h2>{t('updater.title')}</h2>
                 </div>
             </div>
-            <Card className='mx-[80px] mt-[10px] overscroll-auto h-[calc(100vh-125px)]'>
+            <Card className='mx-15 mt-2.5 overscroll-auto flex-1 min-h-0'>
                 <Card.Content className='h-full overflow-auto'>
                     {body === '' ? (
                         <div className='space-y-3'>
@@ -125,7 +125,7 @@ export default function Updater() {
                 <ProgressBar
                     aria-label='Downloading...'
                     value={(downloaded / total) * 100}
-                    className='w-full px-[80px]'
+                    className='w-full px-20'
                     size='sm'
                 >
                     <Label>{t('updater.progress')}</Label>
@@ -136,7 +136,7 @@ export default function Updater() {
                 </ProgressBar>
             )}
 
-            <div className='grid gap-4 grid-cols-2 h-[50px] my-[10px] mx-[80px] place-items-center'>
+            <div className='grid gap-4 grid-cols-2 h-12.5 my-2.5 mx-20 place-items-center'>
                 <Button
                     variant='tertiary'
                     isPending={downloaded !== 0}

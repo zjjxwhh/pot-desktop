@@ -127,10 +127,10 @@ export default function TextArea(props) {
     }, [base64, currentServiceInstanceKey, language, recognizeFlag, autoCopy, deleteNewline, hideWindow]);
 
     return (
-        <Card className='bg-surface h-full ml-[6px] mr-[12px]'>
+        <Card className='bg-surface h-full ml-1.5 mr-3'>
             <Card.Content className='bg-surface p-0 h-full'>
                 {loading ? (
-                    <div className='space-y-3 m-[6px]'>
+                    <div className='space-y-3 m-1.5'>
                         <Skeleton className='w-3/5 rounded-lg'>
                             <div className='h-3 w-3/5 rounded-lg bg-surface-secondary'></div>
                         </Skeleton>
@@ -146,7 +146,7 @@ export default function TextArea(props) {
                         {text && (
                             <textarea
                                 value={text}
-                                className='bg-surface h-full ml-[6px] mr-[6px] mb-0 resize-none focus:outline-none'
+                                className='bg-surface h-full ml-1.5 mr-1.5 mb-0 resize-none focus:outline-none'
                                 onChange={(e) => {
                                     setText(e.target.value);
                                 }}
@@ -156,7 +156,7 @@ export default function TextArea(props) {
                             <textarea
                                 value={error}
                                 readOnly
-                                className='bg-surface h-full ml-[6px] mr-[6px] mb-0 resize-none focus:outline-none text-danger'
+                                className='bg-surface h-full ml-1.5 mr-1.5 mb-0 resize-none focus:outline-none text-danger'
                                 onChange={(e) => {
                                     setText(e.target.value);
                                 }}
@@ -165,7 +165,7 @@ export default function TextArea(props) {
                     </>
                 )}
             </Card.Content>
-            <Card.Footer className='bg-surface flex justify-start px-[12px]'>
+            <Card.Footer className='bg-surface flex justify-start'>
                 <ButtonGroup>
                     <Tooltip>
                         <Button

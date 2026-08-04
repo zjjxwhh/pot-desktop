@@ -78,7 +78,7 @@ export default function General() {
 
     return (
         <>
-            <Card className='mb-[10px]'>
+            <Card className='mb-2.5'>
                 <Card.Content>
                     <div className='config-item'>
                         <h3>{t('config.general.auto_start')}</h3>
@@ -147,7 +147,7 @@ export default function General() {
                                         setServerPort(parseInt(v));
                                     }
                                 }}
-                                className='max-w-[100px]'
+                                className='max-w-25'
                             >
                                 <Input
                                     type='number'
@@ -158,7 +158,7 @@ export default function General() {
                     </div>
                 </Card.Content>
             </Card>
-            <Card className='mb-[10px]'>
+            <Card className='mb-2.5'>
                 <Card.Content>
                     <div className='config-item'>
                         <h3 className='my-auto'>{t('config.general.app_language')}</h3>

@@ -233,21 +233,21 @@ export default function Translate() {
     return (
         pluginList && (
             <div
-                className={`bg-background h-screen w-screen ${
-                    osType === 'linux' && 'rounded-[10px] border-1 border-border'
+                className={`bg-background h-screen w-screen flex flex-col ${
+                    osType === 'linux' && 'rounded-[10px] border border-border'
                 }`}
             >
                 <Toast.Provider placement='top' />
                 <div
-                    className='fixed top-[5px] left-[5px] right-[5px] h-[30px]'
+                    className='fixed top-1.25 left-1.25 right-1.25 h-7.5'
                     data-tauri-drag-region='true'
                 />
-                <div className={`h-[35px] w-full flex ${osType === 'macos' ? 'justify-end' : 'justify-between'}`}>
+                <div className={`h-8.75 w-full flex ${osType === 'macos' ? 'justify-end' : 'justify-between'}`}>
                     <Button
                         isIconOnly
                         size='sm'
                         variant='ghost'
-                        className='my-auto mx-[8px] w-6 h-6'
+                        className='my-auto mx-2 w-6 h-6'
                         onPress={() => {
                             if (pined) {
                                 if (closeOnBlur) {
@@ -264,14 +264,13 @@ export default function Translate() {
                         <BsPinFill className={`${pined ? 'text-accent' : 'text-muted'}`} />
                     </Button>
                     <CloseButton
-                        className={`my-auto mx-[8px] ${osType === 'macos' && 'hidden'}`}
+                        className={`my-auto mx-2 ${osType === 'macos' && 'hidden'}`}
                         onPress={() => {
                             void appWindow.close();
                         }}
-                    >
-                    </CloseButton>
+                    ></CloseButton>
                 </div>
-                <div className={`${osType === 'linux' ? 'h-[calc(100vh-37px)]' : 'h-[calc(100vh-35px)]'} px-[8px]`}>
+                <div className='flex-1 min-h-0 px-2'>
                     <div className='h-full overflow-y-auto'>
                         <div>
                             {serviceInstanceConfigMap !== null && (

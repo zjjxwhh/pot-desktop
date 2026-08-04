@@ -226,8 +226,9 @@ export default function SourceArea(props) {
     }, [deleteNewline, incrementalTranslate, recognizeLanguage, recognizeServiceList, hideWindow]);
 
     useEffect(() => {
-        textAreaRef.current.style.height = '50px';
-        textAreaRef.current.style.height = textAreaRef.current.scrollHeight + 'px';
+        const el = textAreaRef.current;
+        el.style.height = 'auto';
+        el.style.height = Math.max(el.scrollHeight, el.clientHeight) + 'px';
     }, [sourceText]);
 
     const detect_language = async (text) => {
@@ -341,11 +342,12 @@ export default function SourceArea(props) {
 
     return (
         <div className={hideSource && windowType !== '[INPUT_TRANSLATE]' && 'hidden'}>
-            <Card className='bg-surface gap-0 overflow-hidden mt-[1px] p-0'>
-                <Card.Content className='bg-surface p-[12px] max-h-[40vh] overflow-y-auto'>
+            <Card className='gap-0 bg-surface overflow-hidden mt-px p-0'>
+                <Card.Content className='bg-surface overflow-y-auto p-2 px-4'>
                     <textarea
                         autoFocus
                         ref={textAreaRef}
+                        rows={2}
                         className={'bg-surface h-full resize-none outline-none'}
                         value={sourceText}
                         onKeyDown={keyDown}
@@ -356,9 +358,9 @@ export default function SourceArea(props) {
                     />
                 </Card.Content>
 
-                <Card.Footer className='bg-surface rounded-none rounded-b-[10px] flex justify-between px-[12px] p-[5px]'>
+                <Card.Footer className='bg-surface flex justify-between p-2'>
                     <div className='flex justify-start'>
-                        <ButtonGroup className='mr-[5px]'>
+                        <ButtonGroup className='mr-1.25'>
                             <Tooltip>
                                 <Button
                                     isIconOnly

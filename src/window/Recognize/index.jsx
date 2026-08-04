@@ -108,20 +108,20 @@ export default function Recognize() {
         pluginList &&
         serviceInstanceConfigMap !== null && (
             <div
-                className={`bg-background h-screen min-h-[100px] ${
-                    osType === 'linux' && 'rounded-[10px] border-1 border-border'
+                className={`bg-background h-screen min-h-25 flex flex-col ${
+                    osType === 'linux' && 'border border-border'
                 }`}
             >
                 <div
                     data-tauri-drag-region='true'
-                    className='fixed top-[5px] left-[5px] right-[5px] h-[30px]'
+                    className='fixed top-1.25 left-1.25 right-1.25 h-7.5'
                 />
-                <div className={`h-[35px] flex ${osType === 'macos' ? 'justify-end' : 'justify-between'}`}>
+                <div className={`h-8.75 flex ${osType === 'macos' ? 'justify-end' : 'justify-between'}`}>
                     <Button
                         isIconOnly
                         size='sm'
                         variant='ghost'
-                        className='my-auto mx-[5px]'
+                        className='my-auto mx-1.25'
                         onPress={() => {
                             if (pined) {
                                 if (closeOnBlur) {
@@ -139,15 +139,11 @@ export default function Recognize() {
                     </Button>
                     {osType !== 'macos' && <WindowControl />}
                 </div>
-                <div
-                    className={`${
-                        osType === 'linux' ? 'h-[calc(100vh-87px)]' : 'h-[calc(100vh-85px)]'
-                    } grid grid-cols-2`}
-                >
+                <div className='flex-1 min-h-0 grid grid-cols-2'>
                     <ImageArea />
                     <TextArea serviceInstanceConfigMap={serviceInstanceConfigMap} />
                 </div>
-                <div className='h-[50px]'>
+                <div className='h-12.5'>
                     <ControlArea
                         serviceInstanceList={serviceInstanceList}
                         serviceInstanceConfigMap={serviceInstanceConfigMap}

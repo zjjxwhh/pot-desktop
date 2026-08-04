@@ -29,7 +29,7 @@ export default function SelectModal(props) {
                                                 <Button
                                                     fullWidth
                                                     variant='ghost'
-                                                    className='mb-[2px]'
+                                                    className='mb-0.5'
                                                     onPress={() => {
                                                         setCurrentConfigKey(createServiceInstanceKey(x));
                                                         onConfigOpen();

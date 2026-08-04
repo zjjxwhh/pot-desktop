@@ -46,7 +46,7 @@ export default function ImageArea() {
     }, [hideWindow]);
 
     return (
-        <Card className='bg-surface h-full ml-[12px] mr-[6px]'>
+        <Card className='bg-surface h-full ml-3 mr-1.5'>
             <Card.Content className='bg-surface h-full p-0'>
                 {base64 !== '' && (
                     <img
@@ -57,7 +57,7 @@ export default function ImageArea() {
                     />
                 )}
             </Card.Content>
-            <Card.Footer className='bg-surface flex justify-start px-[12px]'>
+            <Card.Footer className='bg-surface flex justify-start'>
                 <Tooltip>
                     <Button
                         isIconOnly

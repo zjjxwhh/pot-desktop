@@ -21,12 +21,12 @@ export default function SideBar() {
     }
 
     return (
-        <div className='mx-[12px] overflow-y-auto'>
+        <div className='mx-3 overflow-y-auto'>
             <Button
                 fullWidth
                 size='lg'
                 variant={setStyle('/general')}
-                className='justify-start mb-[5px]'
+                className='justify-start mb-1.25'
                 onPress={() => {
                     navigate('/general');
                 }}
@@ -38,7 +38,7 @@ export default function SideBar() {
                 fullWidth
                 size='lg'
                 variant={setStyle('/translate')}
-                className='justify-start mb-[5px]'
+                className='justify-start mb-1.25'
                 onPress={() => {
                     navigate('/translate');
                 }}
@@ -50,7 +50,7 @@ export default function SideBar() {
                 fullWidth
                 size='lg'
                 variant={setStyle('/recognize')}
-                className='justify-start mb-[5px]'
+                className='justify-start mb-1.25'
                 onPress={() => {
                     navigate('/recognize');
                 }}
@@ -62,7 +62,7 @@ export default function SideBar() {
                 fullWidth
                 size='lg'
                 variant={setStyle('/hotkey')}
-                className='justify-start mb-[5px]'
+                className='justify-start mb-1.25'
                 onPress={() => {
                     navigate('/hotkey');
                 }}
@@ -74,7 +74,7 @@ export default function SideBar() {
                 fullWidth
                 size='lg'
                 variant={setStyle('/service')}
-                className='justify-start mb-[5px]'
+                className='justify-start mb-1.25'
                 onPress={() => {
                     navigate('/service');
                 }}
@@ -86,7 +86,7 @@ export default function SideBar() {
                 fullWidth
                 size='lg'
                 variant={setStyle('/history')}
-                className='justify-start mb-[5px]'
+                className='justify-start mb-1.25'
                 onPress={() => {
                     navigate('/history');
                 }}
@@ -98,7 +98,7 @@ export default function SideBar() {
                 fullWidth
                 size='lg'
                 variant={setStyle('/backup')}
-                className='justify-start mb-[5px]'
+                className='justify-start mb-1.25'
                 onPress={() => {
                     navigate('/backup');
                 }}
@@ -110,7 +110,7 @@ export default function SideBar() {
                 fullWidth
                 size='lg'
                 variant={setStyle('/about')}
-                className='justify-start mb-[5px]'
+                className='justify-start mb-1.25'
                 onPress={() => {
                     navigate('/about');
                 }}

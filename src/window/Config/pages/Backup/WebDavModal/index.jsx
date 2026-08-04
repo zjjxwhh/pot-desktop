@@ -90,7 +90,7 @@ export default function WebDavModal(props) {
                                                             <Button
                                                                 fullWidth
                                                                 variant='tertiary'
-                                                                className='mb-[8px] mr-[8px]'
+                                                                className='mb-2 mr-2'
                                                                 isPending={downloading[index]}
                                                                 onPress={async () => {
                                                                     setDownloading(
