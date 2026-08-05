@@ -288,12 +288,12 @@ export default function History() {
                 >
                     <Modal.Backdrop>
                         <Modal.Container scroll='inside'>
-                            <Modal.Dialog className='max-h-[80vh]'>
+                            <Modal.Dialog className='h-[75vh] max-h-125'>
                                 {({ close }) =>
                                     selectedItem && (
                                         <>
                                             <Modal.Header>
-                                                <div className='flex justify-start'>
+                                                <div className='flex justify-start mb-3'>
                                                     {getServiceSouceType(selectedItem.service) === ServiceSourceType.PLUGIN ? (
                                                         <img
                                                             src={
@@ -311,25 +311,31 @@ export default function History() {
                                                         />
                                                     )}
                                                 </div>
-                                                <div className='w-2'/>
                                             </Modal.Header>
-                                            <Modal.Body>
+                                            <Modal.Body className='flex flex-col gap-4'>
                                                 <TextField
-                                                    className='mb-2'
+                                                    className='flex-1 min-h-0 flex flex-col'
                                                     value={selectedItem.text}
                                                     onChange={(value) => {
                                                         setSelectItem({ ...selectedItem, text: value });
                                                     }}
                                                 >
-                                                    <TextArea variant='secondary' />
+                                                    <TextArea
+                                                        variant='secondary'
+                                                        className='flex-1 min-h-0 resize-none outline-none'
+                                                    />
                                                 </TextField>
                                                 <TextField
+                                                    className='flex-1 min-h-0 flex flex-col'
                                                     value={selectedItem.result}
                                                     onChange={(value) => {
                                                         setSelectItem({ ...selectedItem, result: value });
                                                     }}
                                                 >
-                                                    <TextArea variant='secondary' />
+                                                    <TextArea
+                                                        variant='secondary'
+                                                        className='flex-1 min-h-0 resize-none outline-none'
+                                                    />
                                                 </TextField>
                                             </Modal.Body>
                                             <Modal.Footer className='flex justify-between'>
