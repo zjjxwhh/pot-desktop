@@ -490,7 +490,7 @@ export default function TargetArea(props) {
             <animated.div style={{ ...springs }}>
                 <div ref={boundRef}>
                     {/* result content */}
-                    <Card.Content className={`p-2 px-4 ${hide && 'h-0 p-0'}`}>
+                    <Card.Content className={`px-4 pt-2 pb-2.5 ${hide && 'h-0 p-0'}`}>
                         {typeof result === 'string' ? (
                             <textarea
                                 ref={textAreaRef}

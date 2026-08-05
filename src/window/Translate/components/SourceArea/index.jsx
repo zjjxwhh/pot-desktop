@@ -343,7 +343,7 @@ export default function SourceArea(props) {
     return (
         <div className={hideSource && windowType !== '[INPUT_TRANSLATE]' && 'hidden'}>
             <Card className='gap-0 bg-surface overflow-hidden mt-px p-0'>
-                <Card.Content className='bg-surface overflow-y-auto p-2 px-4'>
+                <Card.Content className='bg-surface overflow-y-auto px-4 pt-2 pb-2.5'>
                     <textarea
                         autoFocus
                         ref={textAreaRef}
