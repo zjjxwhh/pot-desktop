@@ -146,12 +146,12 @@ export default function Translate() {
                 }
                 resizeTimeout = setTimeout(async () => {
                     if (appWindow.label === 'translate') {
-                        let size = await appWindow.outerSize();
+                        let size = await appWindow.innerSize();
                         const monitor = await currentMonitor();
                         const factor = monitor.scaleFactor;
                         size = size.toLogical(factor);
-                        await store.set('translate_window_height', parseInt(size.height));
-                        await store.set('translate_window_width', parseInt(size.width));
+                        await store.set('translate_window_height', Math.round(size.height));
+                        await store.set('translate_window_width', Math.round(size.width));
                         await store.save();
                     }
                 }, 100);
