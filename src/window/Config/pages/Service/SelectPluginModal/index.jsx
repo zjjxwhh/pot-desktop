@@ -1,7 +1,7 @@
 import { Modal, useOverlayState, Button, toast } from '@heroui/react';
 import { remove, BaseDirectory } from '@tauri-apps/plugin-fs';
 import { open as openInBrowser } from '@tauri-apps/plugin-shell';
-import { MdDeleteOutline } from 'react-icons/md';
+import { IconTrash } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-dialog';
 import { invoke } from '@tauri-apps/api/core';
@@ -81,7 +81,7 @@ export default function SelectPluginModal(props) {
                                                         );
                                                     }}
                                                 >
-                                                    <MdDeleteOutline className='text-xl' />
+                                                    <IconTrash />
                                                 </Button>
                                             </div>
                                         );

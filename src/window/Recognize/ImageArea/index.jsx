@@ -2,7 +2,7 @@ import { Card, Button, Tooltip } from '@heroui/react';
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import React, { useEffect, useRef } from 'react';
 import { listen } from '@tauri-apps/api/event';
-import { MdContentCopy } from 'react-icons/md';
+import { IconCopy } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 import { invoke } from '@tauri-apps/api/core';
 import { atom, useAtom } from 'jotai';
@@ -70,7 +70,7 @@ export default function ImageArea() {
                             });
                         }}
                     >
-                        <MdContentCopy />
+                        <IconCopy />
                     </Button>
                     <Tooltip.Content>
                         <p>{t('recognize.copy_img')}</p>

@@ -7,7 +7,7 @@ import { convertFileSrc } from '@tauri-apps/api/core';
 import { Button, CloseButton, Toast } from '@heroui/react';
 import React, { useState, useEffect } from 'react';
 import { listen } from '@tauri-apps/api/event';
-import { BsPinFill } from 'react-icons/bs';
+import { IconPinnedFilled } from '@tabler/icons-react';
 
 import LanguageArea from './components/LanguageArea';
 import SourceArea from './components/SourceArea';
@@ -261,7 +261,7 @@ export default function Translate() {
                             setPined(!pined);
                         }}
                     >
-                        <BsPinFill className={`${pined ? 'text-accent' : 'text-muted'}`} />
+                        <IconPinnedFilled className={`${pined ? 'text-accent' : 'text-muted'}`} />
                     </Button>
                     <CloseButton
                         className={`my-auto mx-2 ${osType === 'macos' && 'hidden'}`}

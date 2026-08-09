@@ -1,6 +1,6 @@
 import { Modal, Button, Skeleton, toast } from '@heroui/react';
 import React, { useEffect, useState } from 'react';
-import { MdDeleteOutline } from 'react-icons/md';
+import { IconTrash } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 
 import * as webdav from '../utils/webdav';
@@ -121,7 +121,7 @@ export default function WebDavModal(props) {
                                                                     );
                                                                 }}
                                                             >
-                                                                <MdDeleteOutline className='text-xl' />
+                                                                <IconTrash />
                                                             </Button>
                                                         </div>
                                                     );

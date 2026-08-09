@@ -1,4 +1,4 @@
-import { VscChromeClose, VscChromeMinimize, VscChromeMaximize, VscChromeRestore } from 'react-icons/vsc';
+import { IconX, IconMinimize, IconMaximize, IconMinus } from '@tabler/icons-react';
 import React, { useEffect, useState } from 'react';
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { listen } from '@tauri-apps/api/event';
@@ -30,7 +30,7 @@ export default function WindowControl() {
                 className='w-8.75 h-8.75 rounded-none'
                 onPress={() => appWindow.minimize()}
             >
-                <VscChromeMinimize />
+                <IconMinus />
             </Button>
             <Button
                 isIconOnly
@@ -44,7 +44,7 @@ export default function WindowControl() {
                     }
                 }}
             >
-                {isMax ? <VscChromeRestore /> : <VscChromeMaximize />}
+                {isMax ? <IconMinimize /> : <IconMaximize />}
             </Button>
             <Button
                 isIconOnly
@@ -52,7 +52,7 @@ export default function WindowControl() {
                 className={`w-8.75 h-8.75 rounded-none window-close-button ${osType === 'linux' && 'rounded-tr-[10px]'}`}
                 onPress={() => appWindow.close()}
             >
-                <VscChromeClose />
+                <IconX />
             </Button>
         </div>
     );

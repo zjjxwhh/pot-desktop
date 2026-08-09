@@ -1,6 +1,6 @@
 import { TextField, Label, Input, TextArea, Button, Switch, Card, Link, Tooltip, ProgressBar, Surface, InputGroup, toast } from '@heroui/react';
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
-import { MdDeleteOutline } from 'react-icons/md';
+import { IconTrash } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-shell';
 import React, { useEffect, useState } from 'react';
@@ -302,7 +302,7 @@ export function Config(props) {
                                             });
                                         }}
                                     >
-                                        <MdDeleteOutline />
+                                        <IconTrash />
                                     </Button>
                                 </div>
                             );

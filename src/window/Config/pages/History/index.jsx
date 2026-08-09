@@ -10,7 +10,7 @@ import {
     EmptyState,
     toast,
 } from '@heroui/react';
-import { IoFileTrayOutline } from 'react-icons/io5';
+import { IconInbox } from '@tabler/icons-react';
 import { readDir, BaseDirectory, readTextFile, exists } from '@tauri-apps/plugin-fs';
 import { appConfigDir, join } from '@tauri-apps/api/path';
 import { convertFileSrc } from '@tauri-apps/api/core';
@@ -154,7 +154,7 @@ export default function History() {
                     <Table.ScrollContainer className='h-full'>
                         {items.length === 0 ? (
                             <EmptyState className='flex h-full w-full flex-col items-center justify-center gap-4 text-center'>
-                                <IoFileTrayOutline className='size-8 text-muted' />
+                                <IconInbox className='size-8 text-muted' />
                                 <span className='text-base text-muted'>No History to Display</span>
                             </EmptyState>
                         ) : (

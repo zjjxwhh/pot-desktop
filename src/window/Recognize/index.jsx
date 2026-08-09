@@ -5,7 +5,7 @@ import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import React, { useState, useEffect } from 'react';
 import { listen } from '@tauri-apps/api/event';
 import { Button } from '@heroui/react';
-import { BsPinFill } from 'react-icons/bs';
+import { IconPinnedFilled } from '@tabler/icons-react';
 import { atom, useAtom } from 'jotai';
 
 import WindowControl from '../../components/WindowControl';
@@ -135,7 +135,7 @@ export default function Recognize() {
                             setPined(!pined);
                         }}
                     >
-                        <BsPinFill className={`${pined ? 'text-accent' : 'text-muted'}`} />
+                        <IconPinnedFilled className={`${pined ? 'text-accent' : 'text-muted'}`} />
                     </Button>
                     {osType !== 'macos' && <WindowControl />}
                 </div>

@@ -1,6 +1,6 @@
 import { Card, Button, Dropdown, Label } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
-import { BiTransferAlt } from 'react-icons/bi';
+import { IconTransfer } from '@tabler/icons-react';
 import React, { useEffect } from 'react';
 import { atom, useAtom, useAtomValue } from 'jotai';
 
@@ -101,7 +101,7 @@ export default function LanguageArea() {
                             }
                         }}
                     >
-                        <BiTransferAlt />
+                        <IconTransfer />
                     </Button>
                 </div>
                 <div className='flex h-full self-stretch justify-end'>

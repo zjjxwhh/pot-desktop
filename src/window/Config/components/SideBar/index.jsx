@@ -1,13 +1,15 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import { BsInfoSquareFill } from 'react-icons/bs';
-import { PiTranslateFill } from 'react-icons/pi';
-import { AiFillAppstore } from 'react-icons/ai';
+import {
+    IconCloudUpload,
+    IconHistory,
+    IconInfoSquareRounded,
+    IconKeyboard,
+    IconLanguage,
+    IconScanTraces,
+    IconSettings,
+    IconPuzzle,
+} from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
-import { PiTextboxFill } from 'react-icons/pi';
-import { MdKeyboardAlt } from 'react-icons/md';
-import { MdExtension } from 'react-icons/md';
-import { AiFillCloud } from 'react-icons/ai';
-import { FaHistory } from 'react-icons/fa';
 import { Button } from '@heroui/react';
 import React from 'react';
 
@@ -26,96 +28,96 @@ export default function SideBar() {
                 fullWidth
                 size='lg'
                 variant={setStyle('/general')}
-                className='justify-start mb-1.25'
+                className='mb-1.25'
                 onPress={() => {
                     navigate('/general');
                 }}
             >
-                <AiFillAppstore />
+                <IconSettings className={'size-5'} />
                 <div className='w-full'>{t('config.general.label')}</div>
             </Button>
             <Button
                 fullWidth
                 size='lg'
                 variant={setStyle('/translate')}
-                className='justify-start mb-1.25'
+                className='mb-1.25'
                 onPress={() => {
                     navigate('/translate');
                 }}
             >
-                <PiTranslateFill />
+                <IconLanguage className={'size-5'} />
                 <div className='w-full'>{t('config.translate.label')}</div>
             </Button>
             <Button
                 fullWidth
                 size='lg'
                 variant={setStyle('/recognize')}
-                className='justify-start mb-1.25'
+                className='mb-1.25'
                 onPress={() => {
                     navigate('/recognize');
                 }}
             >
-                <PiTextboxFill />
+                <IconScanTraces className={'size-5'} />
                 <div className='w-full'>{t('config.recognize.label')}</div>
             </Button>
             <Button
                 fullWidth
                 size='lg'
                 variant={setStyle('/hotkey')}
-                className='justify-start mb-1.25'
+                className='mb-1.25'
                 onPress={() => {
                     navigate('/hotkey');
                 }}
             >
-                <MdKeyboardAlt />
+                <IconKeyboard className={'size-5'} />
                 <div className='w-full'>{t('config.hotkey.label')}</div>
             </Button>
             <Button
                 fullWidth
                 size='lg'
                 variant={setStyle('/service')}
-                className='justify-start mb-1.25'
+                className='mb-1.25'
                 onPress={() => {
                     navigate('/service');
                 }}
             >
-                <MdExtension />
+                <IconPuzzle className={'size-5'} />
                 <div className='w-full'>{t('config.service.label')}</div>
             </Button>
             <Button
                 fullWidth
                 size='lg'
                 variant={setStyle('/history')}
-                className='justify-start mb-1.25'
+                className='mb-1.25'
                 onPress={() => {
                     navigate('/history');
                 }}
             >
-                <FaHistory />
+                <IconHistory className={'size-5'} />
                 <div className='w-full'>{t('config.history.label')}</div>
             </Button>
             <Button
                 fullWidth
                 size='lg'
                 variant={setStyle('/backup')}
-                className='justify-start mb-1.25'
+                className='mb-1.25'
                 onPress={() => {
                     navigate('/backup');
                 }}
             >
-                <AiFillCloud />
+                <IconCloudUpload className={'size-5'} />
                 <div className='w-full'>{t('config.backup.label')}</div>
             </Button>
             <Button
                 fullWidth
                 size='lg'
                 variant={setStyle('/about')}
-                className='justify-start mb-1.25'
+                className='mb-1.25'
                 onPress={() => {
                     navigate('/about');
                 }}
             >
-                <BsInfoSquareFill />
+                <IconInfoSquareRounded className={'size-5'} />
                 <div className='w-full'>{t('config.about.label')}</div>
             </Button>
         </div>

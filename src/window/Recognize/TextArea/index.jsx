@@ -2,9 +2,7 @@ import { Card, Button, Skeleton, ButtonGroup, Tooltip } from '@heroui/react';
 import { writeText } from '@tauri-apps/plugin-clipboard-manager';
 import { atom, useAtom, useAtomValue } from 'jotai';
 import React, { useEffect, useState } from 'react';
-import { CgSpaceBetween } from 'react-icons/cg';
-import { MdContentCopy } from 'react-icons/md';
-import { MdSmartButton } from 'react-icons/md';
+import { IconCopy, IconSpacingHorizontal, IconInputX } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 import { nanoid } from 'nanoid';
 
@@ -176,7 +174,7 @@ export default function TextArea(props) {
                                 writeText(text);
                             }}
                         >
-                            <MdContentCopy />
+                            <IconCopy />
                         </Button>
                         <Tooltip.Content>
                             <p>{t('recognize.copy_text')}</p>
@@ -191,7 +189,7 @@ export default function TextArea(props) {
                                 setText(normalizeText(text, true));
                             }}
                         >
-                            <MdSmartButton />
+                            <IconInputX />
                         </Button>
                         <Tooltip.Content>
                             <p>{t('recognize.delete_newline')}</p>
@@ -206,7 +204,7 @@ export default function TextArea(props) {
                                 setText(removeAllSpaces(text));
                             }}
                         >
-                            <CgSpaceBetween />
+                            <IconSpacingHorizontal />
                         </Button>
                         <Tooltip.Content>
                             <p>{t('recognize.delete_space')}</p>

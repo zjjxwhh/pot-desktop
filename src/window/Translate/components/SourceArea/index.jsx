@@ -2,14 +2,10 @@ import { Button, Card, ButtonGroup, Chip, Tooltip, toast } from '@heroui/react';
 import { BaseDirectory, readTextFile } from '@tauri-apps/plugin-fs';
 import React, { useEffect, useRef, useState } from 'react';
 import { writeText } from '@tauri-apps/plugin-clipboard-manager';
-import { HiOutlineVolumeUp } from 'react-icons/hi';
+import { IconBackspace, IconCopy, IconLanguage, IconVolume, IconInputX } from '@tabler/icons-react';
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { listen } from '@tauri-apps/api/event';
-import { MdContentCopy } from 'react-icons/md';
-import { MdSmartButton } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
-import { HiTranslate } from 'react-icons/hi';
-import { LuDelete } from 'react-icons/lu';
 import { invoke } from '@tauri-apps/api/core';
 import { atom, useAtom } from 'jotai';
 import { getServiceName, getServiceSouceType, ServiceSourceType } from '../../../../utils/service_instance';
@@ -373,7 +369,7 @@ export default function SourceArea(props) {
                                         });
                                     }}
                                 >
-                                    <HiOutlineVolumeUp />
+                                    <IconVolume />
                                 </Button>
                                 <Tooltip.Content>
                                     <p>{t('translate.speak')}</p>
@@ -389,7 +385,7 @@ export default function SourceArea(props) {
                                         writeText(sourceText);
                                     }}
                                 >
-                                    <MdContentCopy />
+                                    <IconCopy />
                                 </Button>
                                 <Tooltip.Content>
                                     <p>{t('translate.copy')}</p>
@@ -409,7 +405,7 @@ export default function SourceArea(props) {
                                         });
                                     }}
                                 >
-                                    <MdSmartButton />
+                                    <IconInputX />
                                 </Button>
                                 <Tooltip.Content>
                                     <p>{t('translate.delete_newline')}</p>
@@ -426,7 +422,7 @@ export default function SourceArea(props) {
                                         setSourceText('');
                                     }}
                                 >
-                                    <LuDelete />
+                                    <IconBackspace />
                                 </Button>
                                 <Tooltip.Content>
                                     <p>{t('common.clear')}</p>
@@ -456,7 +452,7 @@ export default function SourceArea(props) {
                                 });
                             }}
                         >
-                            <HiTranslate />
+                            <IconLanguage />
                         </Button>
                         <Tooltip.Content>
                             <p>{t('translate.translate')}</p>

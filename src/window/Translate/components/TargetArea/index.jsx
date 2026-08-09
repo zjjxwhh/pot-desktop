@@ -7,17 +7,13 @@ import {
     Tooltip,
     toast,
 } from '@heroui/react';
-import { BiCollapseVertical, BiExpandVertical } from 'react-icons/bi';
+import { IconChevronDown, IconChevronUp, IconCopy, IconRefresh, IconTransform, IconVolume } from '@tabler/icons-react';
 import { BaseDirectory, readTextFile } from '@tauri-apps/plugin-fs';
 import React, { useEffect, useState, useRef } from 'react';
 import { writeText } from '@tauri-apps/plugin-clipboard-manager';
 import PulseLoader from 'react-spinners/PulseLoader';
-import { TbTransformFilled } from 'react-icons/tb';
-import { HiOutlineVolumeUp } from 'react-icons/hi';
-import { MdContentCopy } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
 import Database from '@tauri-apps/plugin-sql';
-import { GiCycle } from 'react-icons/gi';
 import { nanoid } from 'nanoid';
 import { useSpring, animated } from '@react-spring/web';
 import { useAtomValue } from 'jotai';
@@ -479,11 +475,7 @@ export default function TargetArea(props) {
                         className={'h-7 mr-1'}
                         onPress={() => setHide(!hide)}
                     >
-                        {hide ? (
-                            <BiExpandVertical />
-                        ) : (
-                            <BiCollapseVertical />
-                        )}
+                        {hide ? <IconChevronUp /> : <IconChevronDown />}
                     </Button>
                 </div>
             </Card.Header>
@@ -516,7 +508,7 @@ export default function TargetArea(props) {
                                                     </span>
                                                 )}
                                                 {pronunciation['voice'] && pronunciation['voice'] !== '' && (
-                                                    <HiOutlineVolumeUp
+                                                    <IconVolume
                                                         className={'inline-block my-auto cursor-pointer'}
                                                         onClick={() => {
                                                             speak(pronunciation['voice']);
@@ -632,7 +624,7 @@ export default function TargetArea(props) {
                                         });
                                     }}
                                 >
-                                    <HiOutlineVolumeUp />
+                                    <IconVolume />
                                 </Button>
                                 <Tooltip.Content>
                                     <p>{t('translate.speak')}</p>
@@ -650,7 +642,7 @@ export default function TargetArea(props) {
                                         writeText(result);
                                     }}
                                 >
-                                    <MdContentCopy />
+                                    <IconCopy />
                                 </Button>
                                 <Tooltip.Content>
                                     <p>{t('translate.copy')}</p>
@@ -776,7 +768,7 @@ export default function TargetArea(props) {
                                         }
                                     }}
                                 >
-                                    <TbTransformFilled />
+                                    <IconTransform />
                                 </Button>
                                 <Tooltip.Content>
                                     <p>{t('translate.translate_back')}</p>
@@ -796,7 +788,7 @@ export default function TargetArea(props) {
                                             translate();
                                         }}
                                     >
-                                        <GiCycle />
+                                        <IconRefresh />
                                     </Button>
                                     <Tooltip.Content>
                                         <p>{t('translate.retry')}</p>

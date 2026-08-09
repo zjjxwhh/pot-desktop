@@ -1,8 +1,6 @@
-import { RxDragHandleHorizontal } from 'react-icons/rx';
+import { IconEdit, IconGripVertical, IconTrash } from '@tabler/icons-react';
 import { Button } from '@heroui/react';
-import { MdDeleteOutline } from 'react-icons/md';
 import { useTranslation } from 'react-i18next';
-import { BiSolidEdit } from 'react-icons/bi';
 import React from 'react';
 
 import {
@@ -33,7 +31,7 @@ export default function ServiceItem(props) {
                         {...drag}
                         className='text-2xl my-auto'
                     >
-                        <RxDragHandleHorizontal />
+                        <IconGripVertical />
                     </div>
 
                     <div className='w-2' />
@@ -74,7 +72,7 @@ export default function ServiceItem(props) {
                             onConfigOpen();
                         }}
                     >
-                        <BiSolidEdit />
+                        <IconEdit />
                     </Button>
                     <div className='w-2' />
                     <Button
@@ -86,7 +84,7 @@ export default function ServiceItem(props) {
                             deleteServiceInstance(serviceInstanceKey);
                         }}
                     >
-                        <MdDeleteOutline />
+                        <IconTrash />
                     </Button>
                 </div>
             </div>

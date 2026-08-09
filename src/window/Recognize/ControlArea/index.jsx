@@ -2,8 +2,7 @@ import { Dropdown, Button, Label } from '@heroui/react';
 import { atom, useAtom, useSetAtom, useAtomValue } from 'jotai';
 import { fetch } from '@tauri-apps/plugin-http';
 import { useTranslation } from 'react-i18next';
-import { HiTranslate } from 'react-icons/hi';
-import { GiCycle } from 'react-icons/gi';
+import { IconLanguage, IconRefresh } from '@tabler/icons-react';
 import React, { useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import * as builtinService from '../../../services/recognize';
@@ -148,7 +147,7 @@ export default function ControlArea(props) {
                     setRecognizeFlag(nanoid());
                 }}
             >
-                <GiCycle />
+                <IconRefresh />
                 {t('recognize.recognize')}
             </Button>
             <Button
@@ -163,7 +162,7 @@ export default function ControlArea(props) {
                     }
                 }}
             >
-                <HiTranslate />
+                <IconLanguage />
                 {t('recognize.translate')}
             </Button>
         </div>
