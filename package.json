@@ -8,6 +8,7 @@
         "build": "vite build",
         "preview": "vite preview",
         "tauri": "tauri",
+        "sync:tesseract": "node scripts/sync-tesseract-assets.mjs",
         "updater": "node updater/updater.mjs",
         "updater:fixRuntime": "node updater/updater-for-fix-runtime.mjs"
     },
