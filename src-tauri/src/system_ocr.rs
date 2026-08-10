@@ -17,18 +17,18 @@ pub fn system_ocr(app_handle: tauri::AppHandle, lang: &str) -> Result<String, St
 
     let file = StorageFile::GetFileFromPathAsync(&HSTRING::from(path))
         .unwrap()
-        .get()
+        .join()
         .unwrap();
 
     let bitmap = BitmapDecoder::CreateWithIdAsync(
         BitmapDecoder::PngDecoderId().unwrap(),
-        &file.OpenAsync(FileAccessMode::Read).unwrap().get().unwrap(),
+        &file.OpenAsync(FileAccessMode::Read).unwrap().join().unwrap(),
     )
     .unwrap()
-    .get()
+    .join()
     .unwrap();
 
-    let bitmap = bitmap.GetSoftwareBitmapAsync().unwrap().get().unwrap();
+    let bitmap = bitmap.GetSoftwareBitmapAsync().unwrap().join().unwrap();
 
     let engine = match lang {
         "auto" => OcrEngine::TryCreateFromUserProfileLanguages(),
@@ -45,7 +45,7 @@ pub fn system_ocr(app_handle: tauri::AppHandle, lang: &str) -> Result<String, St
         Ok(v) => Ok(v
             .RecognizeAsync(&bitmap)
             .unwrap()
-            .get()
+            .join()
             .unwrap()
             .Text()
             .unwrap()
