@@ -23,8 +23,8 @@ export default defineConfig(async () => ({
     build: {
         rollupOptions: {
             input: {
-                index: resolve(__dirname, 'index.html'),
-                daemon: resolve(__dirname, 'daemon.html'),
+                index: resolve(import.meta.dirname, 'index.html'),
+                daemon: resolve(import.meta.dirname, 'daemon.html'),
             },
         },
         // Tauri supports es2021

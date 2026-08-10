@@ -11,7 +11,7 @@ import { IconChevronDown, IconChevronUp, IconCopy, IconRefresh, IconTransform, I
 import { BaseDirectory, readTextFile } from '@tauri-apps/plugin-fs';
 import React, { useEffect, useState, useRef } from 'react';
 import { writeText } from '@tauri-apps/plugin-clipboard-manager';
-import PulseLoader from 'react-spinners/PulseLoader';
+import { PulseLoader } from 'react-spinners';
 import { useTranslation } from 'react-i18next';
 import Database from '@tauri-apps/plugin-sql';
 import { nanoid } from 'nanoid';
