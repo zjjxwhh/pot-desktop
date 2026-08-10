@@ -8,8 +8,6 @@ pub enum Error {
     #[error(transparent)]
     Dav(#[from] reqwest_dav::Error),
     #[error(transparent)]
-    DavRe(#[from] reqwest_dav::re_exports::reqwest::Error),
-    #[error(transparent)]
     Serde(#[from] serde_json::Error),
     #[error(transparent)]
     Zip(#[from] zip::result::ZipError),
