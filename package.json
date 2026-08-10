@@ -50,7 +50,7 @@
         "react-router-dom": "^7.18.2",
         "react-spinners": "^0.17.0",
         "react-use-measure": "^2.1.7",
-        "tesseract.js": "^5.1.1",
+        "tesseract.js": "^7.0.0",
         "uuid": "^14.0.1"
     },
     "devDependencies": {
