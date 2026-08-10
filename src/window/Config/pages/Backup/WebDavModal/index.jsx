@@ -84,13 +84,12 @@ export default function WebDavModal(props) {
                                                 {webdavList.map((file, index) => {
                                                     return (
                                                         <div
-                                                            className='flex justify-between'
+                                                            className='flex justify-between gap-2 mb-2'
                                                             key={file}
                                                         >
                                                             <Button
                                                                 fullWidth
                                                                 variant='tertiary'
-                                                                className='mb-2 mr-2'
                                                                 isPending={downloading[index]}
                                                                 onPress={async () => {
                                                                     setDownloading(
@@ -106,6 +105,7 @@ export default function WebDavModal(props) {
                                                             <Button
                                                                 isIconOnly
                                                                 variant='danger-soft'
+                                                                className='shrink-0'
                                                                 onPress={() => {
                                                                     webdav.remove(url, username, password, file).then(
                                                                         () => {
