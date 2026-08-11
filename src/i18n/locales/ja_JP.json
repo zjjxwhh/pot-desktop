@@ -1,161 +1,472 @@
 {
     "translation": {
+        "common": {
+            "cancel": "キャンセル",
+            "clear": "",
+            "coming": "",
+            "ok": "Ok",
+            "plugin": "プラグイン",
+            "save": "保存",
+            "write_clipboard": ""
+        },
         "config": {
-            "translate": {
-                "title": "翻訳設定",
-                "label": "翻訳",
-                "delete_newline": "改行を削除",
-                "source_language": "ソース言語"
+            "about": {
+                "check_update": "",
+                "community": "",
+                "discussion": "",
+                "email": "",
+                "feedback": "",
+                "github": "",
+                "issue": "",
+                "label": "に関する",
+                "qq_channel": "",
+                "qq_group": "",
+                "telegram": "",
+                "title": "アプリケーションに関する",
+                "view_config": "",
+                "view_log": "",
+                "website": ""
             },
             "backup": {
-                "title": "バックアップ設定",
+                "aliyun": "",
+                "aliyun_login_first": "",
+                "backup": "",
+                "backup_success": "",
+                "empty": "",
                 "label": "バックアップ",
-                "type": "サービスの種類"
-            },
-            "about": {
-                "title": "アプリケーションに関する",
-                "label": "に関する"
+                "list": "",
+                "load_success": "",
+                "local": "",
+                "login_success": "",
+                "logout": "",
+                "password": "",
+                "restore": "",
+                "title": "バックアップ設定",
+                "type": "サービスの種類",
+                "username": "",
+                "webdav": "",
+                "webdav_url": ""
             },
             "general": {
-                "label": "一般設定",
-                "event": {
-                    "translate": "翻訳",
-                    "config": "コンフィグ",
-                    "ocr_recognize": "テキスト認識",
-                    "ocr_translate": "スクリーンショット翻訳"
-                },
-                "title": "一般設定",
                 "app_fallback_font": "フォールバックフォント",
-                "transparent": "透明効果",
-                "proxy": {
-                    "title": "プロキシ",
-                    "password": "パスワード",
-                    "username": "ユーザー名"
+                "app_font": "フォント",
+                "app_language": "表示言語",
+                "app_theme": "テーマ",
+                "auto_start": "自動起動",
+                "check_update": "",
+                "default_font": "デフォルト",
+                "dev_mode": "開発者モード",
+                "event": {
+                    "config": "コンフィグ",
+                    "disable": "",
+                    "ocr_recognize": "テキスト認識",
+                    "ocr_translate": "スクリーンショット翻訳",
+                    "translate": "翻訳"
                 },
                 "font_size": {
                     "10": "極小 (10px)",
-                    "title": "文字サイズ",
+                    "12": "非常に小さい (12px)",
+                    "14": "小 (14px)",
+                    "16": "標準 (16px)",
+                    "18": "大 (18px)",
                     "20": "非常に大きい (20px)",
                     "24": "特大 (24px)",
-                    "18": "大 (18px)",
-                    "16": "標準 (16px)",
-                    "12": "非常に小さい (12px)",
-                    "14": "小 (14px)"
+                    "title": "文字サイズ"
                 },
-                "default_font": "デフォルト",
-                "dev_mode": "開発者モード",
-                "app_theme": "テーマ",
-                "auto_start": "自動起動",
+                "label": "一般設定",
+                "proxy": {
+                    "host": "",
+                    "no_proxy": "",
+                    "password": "パスワード",
+                    "port": "",
+                    "title": "プロキシ",
+                    "username": "ユーザー名"
+                },
                 "proxy_change": "プロキシが変更されました。変更を有効にするためにアプリケーションを再起動してください",
+                "proxy_error": "",
+                "server_port": "リスニング・ポート",
                 "server_port_change": "リスニング・ポートが変更されました。変更を有効にするにはアプリケーションを再起動してください",
-                "app_language": "表示言語",
-                "app_font": "フォント",
-                "server_port": "リスニング・ポート"
-            },
-            "hotkey": {
-                "label": "ホットキー",
-                "title": "ホットキー設定"
-            },
-            "recognize": {
-                "title": "認識設定",
-                "label": "テキスト認識",
-                "delete_newline": "改行の自動削除"
-            },
-            "service": {
-                "title": "サービス設定",
-                "label": "サービス"
+                "theme": {
+                    "dark": "",
+                    "light": "",
+                    "system": ""
+                },
+                "title": "一般設定",
+                "transparent": "透明効果",
+                "tray_click_event": ""
             },
             "history": {
                 "label": "履歴",
                 "title": "履歴"
+            },
+            "hotkey": {
+                "input_translate": "",
+                "is_register": "",
+                "label": "ホットキー",
+                "ocr_recognize": "",
+                "ocr_translate": "",
+                "selection_translate": "",
+                "set_hotkey": "",
+                "success": "",
+                "title": "ホットキー設定"
+            },
+            "recognize": {
+                "auto_copy": "",
+                "close_on_blur": "",
+                "delete_newline": "改行の自動削除",
+                "hide_window": "",
+                "label": "テキスト認識",
+                "language": "",
+                "title": "認識設定"
+            },
+            "service": {
+                "add_builtin_service": "",
+                "add_external_service": "",
+                "add_service": "",
+                "collection": "",
+                "homepage": "",
+                "install_plugin": "",
+                "label": "サービス",
+                "least": "",
+                "recognize": "",
+                "test_failed": "",
+                "title": "サービス設定",
+                "translate": "",
+                "tts": "",
+                "uninstall_success": "",
+                "view_plugin_list": ""
+            },
+            "translate": {
+                "always_on_top": "",
+                "auto_copy": "",
+                "baidu": "",
+                "bing": "",
+                "close_on_blur": "",
+                "delete_newline": "改行を削除",
+                "detect_engine": "",
+                "disable": "",
+                "dynamic_translate": "",
+                "font_size": {
+                    "10": "",
+                    "12": "",
+                    "14": "",
+                    "16": "",
+                    "18": "",
+                    "20": "",
+                    "24": "",
+                    "title": ""
+                },
+                "google": "",
+                "hide_language": "",
+                "hide_source": "",
+                "hide_window": "",
+                "history_disable": "",
+                "incremental_translate": "",
+                "label": "翻訳",
+                "local": "",
+                "mouse": "",
+                "niutrans": "",
+                "pre_state": "",
+                "remember_language": "",
+                "remember_window_size": "",
+                "second_language": "",
+                "source": "",
+                "source_language": "ソース言語",
+                "source_target": "",
+                "target": "",
+                "target_language": "",
+                "tencent": "",
+                "title": "翻訳設定",
+                "window_position": "",
+                "yandex": ""
             }
         },
         "languages": {
-            "mn_cy": "モンゴル語（キリル文字）",
             "ar": "アラビア語",
-            "it": "イタリア語",
-            "vi": "ベトナム語",
-            "id": "インドネシア語",
-            "km": "クメール語",
-            "ru": "ロシア語",
-            "mn_mo": "モンゴル語",
-            "en": "英語",
-            "th": "タイ語",
-            "ja": "日本語",
-            "ms": "マレー語",
-            "fr": "フランス語",
-            "de": "ドイツ語",
-            "es": "スペイン語",
-            "pt_pt": "ポルトガル語",
-            "ko": "朝鮮語",
-            "tr": "トルコ語",
             "auto": "自動検出",
-            "pt_br": "ポルトガル語（ブラジル）",
+            "de": "ドイツ語",
+            "en": "英語",
+            "es": "スペイン語",
+            "fa": "",
+            "fr": "フランス語",
+            "he": "",
             "hi": "ヒンディー語",
-            "zh_tw": "繁体字中国語",
-            "zh_cn": "簡体字中国語"
-        },
-        "common": {
-            "plugin": "プラグイン",
-            "cancel": "キャンセル",
-            "ok": "Ok",
-            "save": "保存"
-        },
-        "translate": {
-            "translate": "翻訳",
-            "delete_newline": "改行を削除",
-            "copy": "コピー"
+            "id": "インドネシア語",
+            "it": "イタリア語",
+            "ja": "日本語",
+            "km": "クメール語",
+            "ko": "朝鮮語",
+            "mn_cy": "モンゴル語（キリル文字）",
+            "mn_mo": "モンゴル語",
+            "ms": "マレー語",
+            "nb_no": "",
+            "nl": "",
+            "nn_no": "",
+            "pl": "",
+            "pt_br": "ポルトガル語（ブラジル）",
+            "pt_pt": "ポルトガル語",
+            "ru": "ロシア語",
+            "sv": "",
+            "th": "タイ語",
+            "tr": "トルコ語",
+            "uk": "",
+            "vi": "ベトナム語",
+            "zh_cn": "簡体字中国語",
+            "zh_tw": "繁体字中国語"
         },
         "recognize": {
-            "translate": "翻訳",
-            "delete_newline": "改行を削除",
+            "copy_img": "画像をコピー",
             "copy_text": "コピー",
+            "delete_newline": "改行を削除",
             "delete_space": "空白を削除",
-            "copy_img": "画像をコピー"
+            "recognize": "",
+            "translate": "翻訳"
         },
         "services": {
-            "translate": {
-                "caiyun": {
-                    "token": "トークン"
+            "collection": {
+                "anki": {
+                    "port": "",
+                    "title": "Anki"
                 },
-                "transmart": {
+                "eudic": {
+                    "name": "コレクション名",
+                    "title": "",
                     "token": "トークン"
-                },
-                "deepl": {
-                    "type": "サービスの種類"
                 }
             },
+            "help": "",
+            "instance_name": "",
+            "no_need": "",
             "recognize": {
-                "volcengine_ocr": {
-                    "appid": "アプリID"
+                "baidu_accurate_ocr": {
+                    "client_id": "",
+                    "client_secret": "",
+                    "title": ""
                 },
-                "volcengine_multi_lang_ocr": {
-                    "appid": "アプリID"
+                "baidu_img_ocr": {
+                    "appid": "",
+                    "secret": "",
+                    "title": ""
+                },
+                "baidu_ocr": {
+                    "client_id": "",
+                    "client_secret": "",
+                    "title": ""
+                },
+                "iflytek_intsig_ocr": {
+                    "apikey": "",
+                    "apisecret": "",
+                    "appid": "",
+                    "title": ""
+                },
+                "iflytek_latex_ocr": {
+                    "apikey": "",
+                    "apisecret": "",
+                    "appid": "",
+                    "title": ""
+                },
+                "iflytek_ocr": {
+                    "apikey": "",
+                    "apisecret": "",
+                    "appid": "",
+                    "title": ""
                 },
                 "qrcode": {
                     "title": "QRコード"
                 },
                 "simple_latex_ocr": {
+                    "title": "",
                     "token": "トークン"
                 },
+                "system": {
+                    "title": ""
+                },
+                "tencent_accurate_ocr": {
+                    "secret_id": "",
+                    "secret_key": "",
+                    "title": ""
+                },
                 "tencent_img_ocr": {
+                    "secret_id": "",
+                    "secret_key": "",
                     "title": "テンセント画像翻訳"
+                },
+                "tencent_ocr": {
+                    "secret_id": "",
+                    "secret_key": "",
+                    "title": ""
+                },
+                "tesseract": {
+                    "title": ""
+                },
+                "volcengine_multi_lang_ocr": {
+                    "appid": "アプリID",
+                    "secret": "",
+                    "title": ""
+                },
+                "volcengine_ocr": {
+                    "appid": "アプリID",
+                    "secret": "",
+                    "title": ""
+                }
+            },
+            "translate": {
+                "alibaba": {
+                    "accesskey_id": "",
+                    "accesskey_secret": "",
+                    "title": ""
+                },
+                "baidu": {
+                    "appid": "",
+                    "secret": "",
+                    "title": ""
+                },
+                "baidu_field": {
+                    "academic": "",
+                    "aerospace": "",
+                    "contract": "",
+                    "finance": "",
+                    "it": "",
+                    "law": "",
+                    "machinery": "",
+                    "news": "",
+                    "novel": "",
+                    "senimed": "",
+                    "title": "",
+                    "wiki": ""
+                },
+                "bing": {
+                    "title": ""
+                },
+                "bing_dict": {
+                    "title": ""
+                },
+                "caiyun": {
+                    "title": "",
+                    "token": "トークン"
+                },
+                "cambridge_dict": {
+                    "title": ""
+                },
+                "chatglm": {
+                    "add": "",
+                    "api_key": "",
+                    "chatglm_lite": "",
+                    "chatglm_pro": "",
+                    "chatglm_std": "",
+                    "chatglm_turbo": "",
+                    "model": "",
+                    "prompt_description": "",
+                    "title": ""
+                },
+                "deepl": {
+                    "api": "",
+                    "auth_key": "",
+                    "custom_url": "",
+                    "deeplx": "",
+                    "free": "",
+                    "title": "",
+                    "type": "サービスの種類"
+                },
+                "ecdict": {
+                    "title": ""
+                },
+                "geminipro": {
+                    "add": "",
+                    "api_key": "",
+                    "prompt_description": "",
+                    "request_path": "",
+                    "stream": "",
+                    "title": ""
+                },
+                "google": {
+                    "custom_url": "",
+                    "title": ""
+                },
+                "lingva": {
+                    "title": ""
+                },
+                "niutrans": {
+                    "apikey": "",
+                    "https": "",
+                    "title": ""
+                },
+                "ollama": {
+                    "add": "",
+                    "install_model": "",
+                    "install_ollama": "",
+                    "install_ollama_link": "",
+                    "model": "",
+                    "not_installed": "",
+                    "prompt_description": "",
+                    "ready": "",
+                    "request_path": "",
+                    "stream": "",
+                    "supported_models": "",
+                    "title": ""
+                },
+                "openai": {
+                    "add": "",
+                    "api_key": "",
+                    "azure": "",
+                    "model": "",
+                    "openai": "",
+                    "prompt_description": "",
+                    "request_path": "",
+                    "service": "",
+                    "stream": "",
+                    "title": ""
+                },
+                "tencent": {
+                    "secret_id": "",
+                    "secret_key": "",
+                    "title": ""
+                },
+                "transmart": {
+                    "title": "",
+                    "token": "トークン",
+                    "username": ""
+                },
+                "volcengine": {
+                    "appid": "",
+                    "secret": "",
+                    "title": ""
+                },
+                "yandex": {
+                    "title": ""
+                },
+                "youdao": {
+                    "appkey": "",
+                    "key": "",
+                    "title": ""
                 }
             },
             "tts": {
                 "lingva_tts": {
-                    "request_path": "リクエストパス"
-                }
-            },
-            "collection": {
-                "anki": {
-                    "title": "Anki"
-                },
-                "eudic": {
-                    "token": "トークン",
-                    "name": "コレクション名"
+                    "request_path": "リクエストパス",
+                    "title": ""
                 }
             }
+        },
+        "translate": {
+            "add_collection_success": "",
+            "copy": "コピー",
+            "delete_newline": "改行を削除",
+            "recognizing": "",
+            "retry": "",
+            "speak": "",
+            "translate": "翻訳",
+            "translate_back": ""
+        },
+        "updater": {
+            "cancel": "",
+            "downloading": "",
+            "installed": "",
+            "installing": "",
+            "latest": "",
+            "progress": "",
+            "title": "",
+            "update": ""
         }
     }
 }

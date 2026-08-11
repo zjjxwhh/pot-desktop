@@ -1,417 +1,472 @@
 {
     "translation": {
         "common": {
-            "write_clipboard": "כתוב ללוח",
+            "cancel": "ביטול",
+            "clear": "נקה",
             "coming": "בקרוב…",
             "ok": "אישור",
-            "cancel": "ביטול",
             "plugin": "תוסף",
             "save": "שמור",
-            "clear": "נקה"
-        },
-        "languages": {
-            "auto": "זיהוי אוטומטי",
-            "th": "תאילנדית",
-            "zh_tw": "סינית מסורתית",
-            "zh_cn": "סינית פשוטה",
-            "ms": "מלאית",
-            "ar": "ערבית",
-            "uk": "אוקראינית",
-            "ja": "יפנית",
-            "en": "אנגלית",
-            "ko": "קוראנית",
-            "fr": "צרפתית",
-            "es": "ספרדית",
-            "ru": "רוסית",
-            "de": "גרמנית",
-            "it": "איטלקית",
-            "pt_pt": "פורטוגזית",
-            "pt_br": "פורטוגזית (ברזיל)",
-            "vi": "וייטנאמית",
-            "id": "אינדונזית",
-            "hi": "הודית",
-            "mn_mo": "מונגולית",
-            "mn_cy": "מונגולית (קירילית)",
-            "nb_no": "בוקמול נורבגית",
-            "fa": "פרסית",
-            "sv": "שוודית",
-            "pl": "פולנית",
-            "nl": "הולנדית",
-            "tr": "טורקית",
-            "he": "עברית",
-            "km": "קאמרית"
+            "write_clipboard": "כתוב ללוח"
         },
         "config": {
+            "about": {
+                "check_update": "חפש עדכונים",
+                "community": "קהילה",
+                "discussion": "דיון Github",
+                "email": "דוא\"ל",
+                "feedback": "משוב",
+                "github": "GitHub",
+                "issue": "גיליון",
+                "label": "אודות",
+                "qq_channel": "ערוץ QQ",
+                "qq_group": "קבוצת QQ",
+                "telegram": "Telegram",
+                "title": "אודות התוכנה",
+                "view_config": "הצג תצורה",
+                "view_log": "הצג יומן רישום",
+                "website": "אתר האינטרנט"
+            },
+            "backup": {
+                "aliyun": "",
+                "aliyun_login_first": "אנא סרוק את הקוד כדי להיכנס.",
+                "backup": "גיבוי",
+                "backup_success": "הגיבוי הצליח",
+                "empty": "עדיין לא גיבית כלום",
+                "label": "גיבוי",
+                "list": "רשימת גיבויים",
+                "load_success": "טעינת הגיבוי הצליחה",
+                "local": "מקומי",
+                "login_success": "כניסה הושלמה",
+                "logout": "צא",
+                "password": "סיסמא",
+                "restore": "שחזר",
+                "title": "הגדרות גיבוי",
+                "type": "סוג שירות",
+                "username": "שם-משתמש",
+                "webdav": "",
+                "webdav_url": ""
+            },
             "general": {
+                "app_fallback_font": "גופן חילופי",
+                "app_font": "גופן",
+                "app_language": "שפת תצוגה",
+                "app_theme": "ערכת נושא",
                 "auto_start": "הפעלה אוטומטית",
                 "check_update": "עדכון אוטומטי",
-                "theme": {
-                    "dark": "כהה",
-                    "system": "מערכת",
-                    "light": "מואר"
+                "default_font": "ברירת מחדל",
+                "dev_mode": "מצב מפתח",
+                "event": {
+                    "config": "העדפה",
+                    "disable": "מבוטל",
+                    "ocr_recognize": "זיהוי טקסט",
+                    "ocr_translate": "תרגם צילום מסך",
+                    "translate": "תרגם"
                 },
-                "proxy_change": "ה-proxy שונה, הפעל מחדש את האפליקציה כדי שהשינויים ייכנסו לתוקף",
-                "label": "כללי",
-                "title": "הגדרות כלליות",
                 "font_size": {
                     "10": "קטן במיוחד (10px)",
                     "12": "קטן מאוד (12px)",
+                    "14": "קטן (14px)",
                     "16": "רגיל (16px)",
+                    "18": "גדול (18px)",
                     "20": "גדול מאוד (20px)",
                     "24": "גדול במיוחד (24px)",
-                    "title": "גודל גופן",
-                    "18": "גדול (18px)",
-                    "14": "קטן (14px)"
+                    "title": "גודל גופן"
                 },
-                "default_font": "ברירת מחדל",
-                "transparent": "אפקט שקוף",
+                "label": "כללי",
                 "proxy": {
-                    "title": "פרוקסי",
-                    "username": "שם-משתמש",
-                    "password": "סיסמא",
+                    "host": "מארח",
                     "no_proxy": "ללא פרוקסי",
+                    "password": "סיסמא",
                     "port": "יציאה",
-                    "host": "מארח"
+                    "title": "פרוקסי",
+                    "username": "שם-משתמש"
                 },
+                "proxy_change": "ה-proxy שונה, הפעל מחדש את האפליקציה כדי שהשינויים ייכנסו לתוקף",
                 "proxy_error": "אנא מלא את כתובת המארח והיציאה",
-                "event": {
-                    "config": "העדפה",
-                    "translate": "תרגם",
-                    "disable": "מבוטל",
-                    "ocr_translate": "תרגם צילום מסך",
-                    "ocr_recognize": "זיהוי טקסט"
-                },
-                "app_language": "שפת תצוגה",
-                "app_theme": "ערכת נושא",
-                "app_font": "גופן",
-                "dev_mode": "מצב מפתח",
                 "server_port": "יציאת האזנה",
                 "server_port_change": "יציאת ההאזנה שונתה, אנא הפעל מחדש את האפליקציה כדי שהשינויים ייכנסו לתוקף",
-                "tray_click_event": "בלחיצה על סמל המגש",
-                "app_fallback_font": "גופן חילופי"
+                "theme": {
+                    "dark": "כהה",
+                    "light": "מואר",
+                    "system": "מערכת"
+                },
+                "title": "הגדרות כלליות",
+                "transparent": "אפקט שקוף",
+                "tray_click_event": "בלחיצה על סמל המגש"
+            },
+            "history": {
+                "label": "היסטוריה",
+                "title": "היסטוריה"
             },
             "hotkey": {
-                "ocr_translate": "תרגם צילום מסך",
-                "label": "קיצור מקשים",
-                "title": "הגדרות קיצור מקשים",
-                "selection_translate": "תרגם את הבחירה",
                 "input_translate": "תרגם טקסט",
-                "ocr_recognize": "זהה טקסט",
                 "is_register": "מקש הקיצור כבר מוגדר",
+                "label": "קיצור מקשים",
+                "ocr_recognize": "זהה טקסט",
+                "ocr_translate": "תרגם צילום מסך",
+                "selection_translate": "תרגם את הבחירה",
+                "set_hotkey": "לחץ כדי להגדיר מקיש קיצור",
                 "success": "הגדרת מקשי קיצור הצליח",
-                "set_hotkey": "לחץ כדי להגדיר מקיש קיצור"
+                "title": "הגדרות קיצור מקשים"
+            },
+            "recognize": {
+                "auto_copy": "העתקה אוטומטית",
+                "close_on_blur": "סגור את החלון כאשר המיקוד אינו פעיל",
+                "delete_newline": "",
+                "hide_window": "הסתר חלון זיהוי",
+                "label": "זהה",
+                "language": "שפת זיהוי",
+                "title": "הגדרות זיהוי"
             },
             "service": {
-                "view_plugin_list": "הצג רשימת תוספים",
-                "label": "שירות",
-                "title": "הגדרות שירות",
-                "translate": "תרגם",
-                "recognize": "זהה",
-                "collection": "אוסף",
-                "least": "שמור משהו אחד לפחות",
                 "add_builtin_service": "הוסף שירות מובנה",
                 "add_external_service": "הוסף הרחבה",
                 "add_service": "הוסף שירות",
-                "test_failed": "הבדיקה נכשלה",
-                "install_plugin": "התקן תוסף",
-                "uninstall_success": "התוסף הוסר בהצלחה",
+                "collection": "אוסף",
                 "homepage": "דף הבית",
-                "tts": "TTS"
+                "install_plugin": "התקן תוסף",
+                "label": "שירות",
+                "least": "שמור משהו אחד לפחות",
+                "recognize": "זהה",
+                "test_failed": "הבדיקה נכשלה",
+                "title": "הגדרות שירות",
+                "translate": "תרגם",
+                "tts": "TTS",
+                "uninstall_success": "התוסף הוסר בהצלחה",
+                "view_plugin_list": "הצג רשימת תוספים"
             },
             "translate": {
-                "target": "יעד",
-                "window_position": "‪מיקום החלון",
-                "local": "מקומי",
-                "label": "תרגם",
-                "title": "הגדרות תרגום",
-                "source_language": "שפת המקור",
-                "target_language": "שפת היעד",
-                "second_language": "שפת יעד משנית",
+                "always_on_top": "תמיד עליון",
                 "auto_copy": "העתקה אוטומטית",
-                "source": "מקור",
-                "source_target": "מקור+יעד",
+                "baidu": "Baidu",
+                "bing": "Bing",
+                "close_on_blur": "סגור את החלון כאשר המיקוד אינו פעיל",
+                "delete_newline": "",
+                "detect_engine": "מנוע זיהוי שפה",
                 "disable": "מבוטל",
-                "history_disable": "השבת היסטוריה",
-                "remember_language": "זכור את שפת היעד",
+                "dynamic_translate": "תרגום דינמי",
                 "font_size": {
-                    "title": "גודל גופן",
                     "10": "קטן מאוד מאוד (10px)",
                     "12": "קטן מאוד (12px)",
                     "14": "קטן (14px)",
                     "16": "רגיל (16px)",
                     "18": "גדול (18px)",
                     "20": "גדול מאוד (20px)",
-                    "24": "גדול מאוד מאוד (24px)"
+                    "24": "גדול מאוד מאוד (24px)",
+                    "title": "גודל גופן"
                 },
-                "dynamic_translate": "תרגום דינמי",
-                "mouse": "עקוב אחר העכבר",
-                "always_on_top": "תמיד עליון",
-                "hide_source": "הסתר אזור מקור",
-                "close_on_blur": "סגור את החלון כאשר המיקוד אינו פעיל",
-                "hide_language": "הסתר אזור שפה",
-                "hide_window": "הסתר חלון תרגום",
-                "detect_engine": "מנוע זיהוי שפה",
-                "tencent": "Tencent",
-                "baidu": "Baidu",
                 "google": "Google",
-                "yandex": "Yandex",
-                "remember_window_size": "זכור את גודל החלון",
-                "niutrans": "NiuTrans",
-                "bing": "Bing",
-                "incremental_translate": "תרגום מצטבר"
-            },
-            "backup": {
-                "password": "סיסמא",
-                "label": "גיבוי",
-                "title": "הגדרות גיבוי",
-                "type": "סוג שירות",
+                "hide_language": "הסתר אזור שפה",
+                "hide_source": "הסתר אזור מקור",
+                "hide_window": "הסתר חלון תרגום",
+                "history_disable": "השבת היסטוריה",
+                "incremental_translate": "תרגום מצטבר",
+                "label": "תרגם",
                 "local": "מקומי",
-                "username": "שם-משתמש",
-                "logout": "צא",
-                "aliyun_login_first": "אנא סרוק את הקוד כדי להיכנס.",
-                "restore": "שחזר",
-                "list": "רשימת גיבויים",
-                "backup_success": "הגיבוי הצליח",
-                "empty": "עדיין לא גיבית כלום",
-                "backup": "גיבוי",
-                "load_success": "טעינת הגיבוי הצליחה",
-                "login_success": "כניסה הושלמה"
-            },
-            "about": {
-                "email": "דוא\"ל",
-                "title": "אודות התוכנה",
-                "community": "קהילה",
-                "check_update": "חפש עדכונים",
-                "view_log": "הצג יומן רישום",
-                "view_config": "הצג תצורה",
-                "telegram": "Telegram",
-                "discussion": "דיון Github",
-                "github": "GitHub",
-                "label": "אודות",
-                "website": "אתר האינטרנט",
-                "feedback": "משוב",
-                "qq_channel": "ערוץ QQ",
-                "qq_group": "קבוצת QQ",
-                "issue": "גיליון"
-            },
-            "recognize": {
-                "label": "זהה",
-                "title": "הגדרות זיהוי",
-                "language": "שפת זיהוי",
-                "auto_copy": "העתקה אוטומטית",
-                "hide_window": "הסתר חלון זיהוי",
-                "close_on_blur": "סגור את החלון כאשר המיקוד אינו פעיל"
-            },
-            "history": {
-                "label": "היסטוריה",
-                "title": "היסטוריה"
+                "mouse": "עקוב אחר העכבר",
+                "niutrans": "NiuTrans",
+                "pre_state": "",
+                "remember_language": "זכור את שפת היעד",
+                "remember_window_size": "זכור את גודל החלון",
+                "second_language": "שפת יעד משנית",
+                "source": "מקור",
+                "source_language": "שפת המקור",
+                "source_target": "מקור+יעד",
+                "target": "יעד",
+                "target_language": "שפת היעד",
+                "tencent": "Tencent",
+                "title": "הגדרות תרגום",
+                "window_position": "‪מיקום החלון",
+                "yandex": "Yandex"
             }
         },
-        "updater": {
-            "installed": "ההתקנה הושלמה, הפעל מחדש את האפליקציה כדי שהשינויים ייכנסו לתוקף",
-            "title": "חפש עדכונים",
-            "latest": "## הגרסה האחרונה מותקנת",
-            "progress": "התקדמות הורדה",
-            "downloading": "מוריד…",
-            "update": "עדכן",
-            "installing": "מתקין…",
-            "cancel": "ביטול"
+        "languages": {
+            "ar": "ערבית",
+            "auto": "זיהוי אוטומטי",
+            "de": "גרמנית",
+            "en": "אנגלית",
+            "es": "ספרדית",
+            "fa": "פרסית",
+            "fr": "צרפתית",
+            "he": "עברית",
+            "hi": "הודית",
+            "id": "אינדונזית",
+            "it": "איטלקית",
+            "ja": "יפנית",
+            "km": "קאמרית",
+            "ko": "קוראנית",
+            "mn_cy": "מונגולית (קירילית)",
+            "mn_mo": "מונגולית",
+            "ms": "מלאית",
+            "nb_no": "בוקמול נורבגית",
+            "nl": "הולנדית",
+            "nn_no": "",
+            "pl": "פולנית",
+            "pt_br": "פורטוגזית (ברזיל)",
+            "pt_pt": "פורטוגזית",
+            "ru": "רוסית",
+            "sv": "שוודית",
+            "th": "תאילנדית",
+            "tr": "טורקית",
+            "uk": "אוקראינית",
+            "vi": "וייטנאמית",
+            "zh_cn": "סינית פשוטה",
+            "zh_tw": "סינית מסורתית"
+        },
+        "recognize": {
+            "copy_img": "העתק תמונה",
+            "copy_text": "העתק",
+            "delete_newline": "",
+            "delete_space": "",
+            "recognize": "זהה",
+            "translate": "תרגם"
         },
         "services": {
-            "help": "מדריך תצורה",
-            "instance_name": "שם תצורה",
-            "translate": {
-                "deepl": {
-                    "title": "DeepL",
-                    "type": "סוג שירות",
-                    "free": "חינם",
-                    "auth_key": "מפתח אוטומטי",
-                    "api": "מפתח אוטומטי",
-                    "custom_url": "קישור DeepLX",
-                    "deeplx": "DeepLX"
+            "collection": {
+                "anki": {
+                    "port": "יציאה",
+                    "title": ""
                 },
-                "google": {
-                    "title": "Google",
-                    "custom_url": "קישור מותאם אישית"
-                },
-                "ollama": {
-                    "install_ollama_link": "הורד את Ollama",
-                    "title": "Ollama",
-                    "request_path": "בקש נתיב",
-                    "model": "מודל",
-                    "install_model": "התקן",
-                    "ready": "מוכן",
-                    "not_installed": "מודל זה לא הותקן עדיין, לחץ כדי להוריד ולהתקין עכשיו",
-                    "supported_models": "לחץ כדי לראות רשימה של דגמים זמינים ב- Ollama",
-                    "prompt_description": "על ידי התאמה אישית של ההנחיה, אתה יכול להתאים אישית את ההתנהגות של הבינה המלאכותית. $text $from $to $detect יוחלף בטקסט לתרגום, שפת המקור, שפת היעד ושפת הזיהוי.",
-                    "add": "הוסף הנחיה",
-                    "install_ollama": "אין אפשרות להתחבר לתוכנת ollama המקומית, אנא הורד, התקן והתחל תחילה את ollama. אם אתה משתמש ב-ollama במכונה אחרת, אנא שנה את כתובת הבקשה.",
-                    "stream": "מצב הזרמה"
-                },
-                "lingva": {
-                    "title": "Lingva"
-                },
-                "bing": {
-                    "title": "Bing"
-                },
-                "openai": {
-                    "title": "OpenAI",
-                    "service": "ספק שירות",
-                    "openai": "OpenAI",
-                    "azure": "Azure",
-                    "api_key": "מפתח Api",
-                    "request_path": "בקש נתיב",
-                    "stream": "מצב הזרמה",
-                    "add": "הוסף הנחיה",
-                    "model": "מודל",
-                    "prompt_description": "על ידי התאמה אישית של ההנחיה, אתה יכול להתאים אישית את ההתנהגות של OpenAI כרצונך. $text $from $to $detect יוחלף בטקסט לתרגום, שפת המקור, שפת היעד ושפת הזיהוי."
-                },
-                "geminipro": {
-                    "title": "Gemini Pro",
-                    "request_path": "בקש נתיב",
-                    "api_key": "מפתח Api",
-                    "stream": "מצב הזרמה",
-                    "prompt_description": "על ידי התאמה אישית של ההנחיה, תוכל להתאים אישית את ההתנהגות של Gemini Pro כרצונך. $text $from $to $detect יוחלף בטקסט לתרגום, שפת המקור, שפת היעד ושפת הזיהוי.",
-                    "add": "הוסף הנחיה"
-                },
-                "chatglm": {
-                    "title": "ChatGLM",
-                    "model": "מודל",
-                    "chatglm_turbo": "ChatGLM Turbo",
-                    "chatglm_pro": "ChatGLM Pro",
-                    "chatglm_std": "ChatGLM Std",
-                    "chatglm_lite": "ChatGLM Lite",
-                    "api_key": "מפתח Api",
-                    "add": "הוסף הנחיה",
-                    "prompt_description": "על ידי התאמה אישית של ההנחיה, אתה יכול להתאים אישית את ההתנהגות של הבינה המלאכותית. $text $from $to $detect יוחלף בטקסט לתרגום, שפת המקור, שפת היעד ושפת הזיהוי."
-                },
-                "transmart": {
-                    "username": "שם-משתמש",
-                    "token": "טוקן",
-                    "title": "TranSmart"
-                },
-                "baidu": {
-                    "secret": "סודי",
-                    "title": "Baidu",
-                    "appid": "מזהה אפליקציה"
-                },
-                "baidu_field": {
-                    "finance": "פיננסים וכלכלה",
-                    "senimed": "ביו-רפואה",
-                    "academic": "עבודה אקדמית",
-                    "aerospace": "תעופה וחלל",
-                    "wiki": "מדעי הרוח והחברה",
-                    "news": "חדשות ומידע",
-                    "law": "חוקים ותקנות"
-                },
-                "tencent": {
-                    "secret_key": "מפתח סודי"
-                },
-                "volcengine": {
-                    "secret": "סודי",
-                    "appid": "מזהה אפליקציה"
-                },
-                "youdao": {
-                    "key": "מפתח",
-                    "appkey": "מזהה אפליקציה"
-                },
-                "yandex": {
-                    "title": "Yandex"
-                },
-                "alibaba": {
-                    "title": "עליבאבא"
-                },
-                "niutrans": {
-                    "https": "השתמש בHttps",
-                    "apikey": "מפתח API"
-                },
-                "bing_dict": {
-                    "title": "מילון Bing"
-                },
-                "cambridge_dict": {
-                    "title": "מילון קיימברידג'"
-                },
-                "caiyun": {
+                "eudic": {
+                    "name": "שם האוסף",
+                    "title": "",
                     "token": "טוקן"
                 }
             },
+            "help": "מדריך תצורה",
+            "instance_name": "שם תצורה",
             "no_need": "אין צורך בתצורה",
             "recognize": {
-                "qrcode": {
-                    "title": "קוד QR"
+                "baidu_accurate_ocr": {
+                    "client_id": "מפתח API",
+                    "client_secret": "מפתח סודי",
+                    "title": ""
+                },
+                "baidu_img_ocr": {
+                    "appid": "מזהה אפליקציה",
+                    "secret": "סודי",
+                    "title": "תרגום תמונה של Baidu"
                 },
                 "baidu_ocr": {
                     "client_id": "מפתח API",
-                    "client_secret": "מפתח סודי"
-                },
-                "iflytek_ocr": {
-                    "apikey": "מפתח API",
-                    "apisecret": "API סודי",
-                    "appid": "מזהה אפליקציה"
+                    "client_secret": "מפתח סודי",
+                    "title": ""
                 },
                 "iflytek_intsig_ocr": {
                     "apikey": "מפתח API",
                     "apisecret": "API סודי",
-                    "appid": "מזהה אפליקציה"
+                    "appid": "מזהה אפליקציה",
+                    "title": ""
                 },
                 "iflytek_latex_ocr": {
                     "apikey": "מפתח API",
+                    "apisecret": "API סודי",
                     "appid": "מזהה אפליקציה",
-                    "apisecret": "API סודי"
+                    "title": ""
+                },
+                "iflytek_ocr": {
+                    "apikey": "מפתח API",
+                    "apisecret": "API סודי",
+                    "appid": "מזהה אפליקציה",
+                    "title": ""
+                },
+                "qrcode": {
+                    "title": "קוד QR"
                 },
                 "simple_latex_ocr": {
+                    "title": "",
                     "token": "טוקן"
                 },
-                "baidu_accurate_ocr": {
-                    "client_id": "מפתח API",
-                    "client_secret": "מפתח סודי"
-                },
-                "baidu_img_ocr": {
-                    "secret": "סודי",
-                    "appid": "מזהה אפליקציה",
-                    "title": "תרגום תמונה של Baidu"
-                },
-                "tencent_ocr": {
-                    "secret_key": "מפתח סודי"
+                "system": {
+                    "title": ""
                 },
                 "tencent_accurate_ocr": {
-                    "secret_key": "מפתח סודי"
+                    "secret_id": "",
+                    "secret_key": "מפתח סודי",
+                    "title": ""
                 },
                 "tencent_img_ocr": {
-                    "secret_key": "מפתח סודי"
+                    "secret_id": "",
+                    "secret_key": "מפתח סודי",
+                    "title": ""
                 },
-                "volcengine_ocr": {
-                    "appid": "מזהה אפליקציה",
-                    "secret": "סודי"
+                "tencent_ocr": {
+                    "secret_id": "",
+                    "secret_key": "מפתח סודי",
+                    "title": ""
+                },
+                "tesseract": {
+                    "title": ""
                 },
                 "volcengine_multi_lang_ocr": {
                     "appid": "מזהה אפליקציה",
-                    "secret": "סודי"
+                    "secret": "סודי",
+                    "title": ""
+                },
+                "volcengine_ocr": {
+                    "appid": "מזהה אפליקציה",
+                    "secret": "סודי",
+                    "title": ""
                 }
             },
-            "collection": {
-                "anki": {
-                    "port": "יציאה"
+            "translate": {
+                "alibaba": {
+                    "accesskey_id": "",
+                    "accesskey_secret": "",
+                    "title": "עליבאבא"
                 },
-                "eudic": {
+                "baidu": {
+                    "appid": "מזהה אפליקציה",
+                    "secret": "סודי",
+                    "title": "Baidu"
+                },
+                "baidu_field": {
+                    "academic": "עבודה אקדמית",
+                    "aerospace": "תעופה וחלל",
+                    "contract": "",
+                    "finance": "פיננסים וכלכלה",
+                    "it": "",
+                    "law": "חוקים ותקנות",
+                    "machinery": "",
+                    "news": "חדשות ומידע",
+                    "novel": "",
+                    "senimed": "ביו-רפואה",
+                    "title": "",
+                    "wiki": "מדעי הרוח והחברה"
+                },
+                "bing": {
+                    "title": "Bing"
+                },
+                "bing_dict": {
+                    "title": "מילון Bing"
+                },
+                "caiyun": {
+                    "title": "",
+                    "token": "טוקן"
+                },
+                "cambridge_dict": {
+                    "title": "מילון קיימברידג'"
+                },
+                "chatglm": {
+                    "add": "הוסף הנחיה",
+                    "api_key": "מפתח Api",
+                    "chatglm_lite": "ChatGLM Lite",
+                    "chatglm_pro": "ChatGLM Pro",
+                    "chatglm_std": "ChatGLM Std",
+                    "chatglm_turbo": "ChatGLM Turbo",
+                    "model": "מודל",
+                    "prompt_description": "על ידי התאמה אישית של ההנחיה, אתה יכול להתאים אישית את ההתנהגות של הבינה המלאכותית. $text $from $to $detect יוחלף בטקסט לתרגום, שפת המקור, שפת היעד ושפת הזיהוי.",
+                    "title": "ChatGLM"
+                },
+                "deepl": {
+                    "api": "מפתח אוטומטי",
+                    "auth_key": "מפתח אוטומטי",
+                    "custom_url": "קישור DeepLX",
+                    "deeplx": "DeepLX",
+                    "free": "חינם",
+                    "title": "DeepL",
+                    "type": "סוג שירות"
+                },
+                "ecdict": {
+                    "title": ""
+                },
+                "geminipro": {
+                    "add": "הוסף הנחיה",
+                    "api_key": "מפתח Api",
+                    "prompt_description": "על ידי התאמה אישית של ההנחיה, תוכל להתאים אישית את ההתנהגות של Gemini Pro כרצונך. $text $from $to $detect יוחלף בטקסט לתרגום, שפת המקור, שפת היעד ושפת הזיהוי.",
+                    "request_path": "בקש נתיב",
+                    "stream": "מצב הזרמה",
+                    "title": "Gemini Pro"
+                },
+                "google": {
+                    "custom_url": "קישור מותאם אישית",
+                    "title": "Google"
+                },
+                "lingva": {
+                    "title": "Lingva"
+                },
+                "niutrans": {
+                    "apikey": "מפתח API",
+                    "https": "השתמש בHttps",
+                    "title": ""
+                },
+                "ollama": {
+                    "add": "הוסף הנחיה",
+                    "install_model": "התקן",
+                    "install_ollama": "אין אפשרות להתחבר לתוכנת ollama המקומית, אנא הורד, התקן והתחל תחילה את ollama. אם אתה משתמש ב-ollama במכונה אחרת, אנא שנה את כתובת הבקשה.",
+                    "install_ollama_link": "הורד את Ollama",
+                    "model": "מודל",
+                    "not_installed": "מודל זה לא הותקן עדיין, לחץ כדי להוריד ולהתקין עכשיו",
+                    "prompt_description": "על ידי התאמה אישית של ההנחיה, אתה יכול להתאים אישית את ההתנהגות של הבינה המלאכותית. $text $from $to $detect יוחלף בטקסט לתרגום, שפת המקור, שפת היעד ושפת הזיהוי.",
+                    "ready": "מוכן",
+                    "request_path": "בקש נתיב",
+                    "stream": "מצב הזרמה",
+                    "supported_models": "לחץ כדי לראות רשימה של דגמים זמינים ב- Ollama",
+                    "title": "Ollama"
+                },
+                "openai": {
+                    "add": "הוסף הנחיה",
+                    "api_key": "מפתח Api",
+                    "azure": "Azure",
+                    "model": "מודל",
+                    "openai": "OpenAI",
+                    "prompt_description": "על ידי התאמה אישית של ההנחיה, אתה יכול להתאים אישית את ההתנהגות של OpenAI כרצונך. $text $from $to $detect יוחלף בטקסט לתרגום, שפת המקור, שפת היעד ושפת הזיהוי.",
+                    "request_path": "בקש נתיב",
+                    "service": "ספק שירות",
+                    "stream": "מצב הזרמה",
+                    "title": "OpenAI"
+                },
+                "tencent": {
+                    "secret_id": "",
+                    "secret_key": "מפתח סודי",
+                    "title": ""
+                },
+                "transmart": {
+                    "title": "TranSmart",
                     "token": "טוקן",
-                    "name": "שם האוסף"
+                    "username": "שם-משתמש"
+                },
+                "volcengine": {
+                    "appid": "מזהה אפליקציה",
+                    "secret": "סודי",
+                    "title": ""
+                },
+                "yandex": {
+                    "title": "Yandex"
+                },
+                "youdao": {
+                    "appkey": "מזהה אפליקציה",
+                    "key": "מפתח",
+                    "title": ""
+                }
+            },
+            "tts": {
+                "lingva_tts": {
+                    "request_path": "",
+                    "title": ""
                 }
             }
         },
         "translate": {
-            "translate": "תרגם",
             "add_collection_success": "התןוסף לאוסף בהצלחה",
-            "recognizing": "מזהה…",
-            "translate_back": "תרגום חזרה למקור",
             "copy": "העתק",
-            "retry": "נסה שוב"
-        },
-        "recognize": {
+            "delete_newline": "",
+            "recognizing": "מזהה…",
+            "retry": "נסה שוב",
+            "speak": "",
             "translate": "תרגם",
-            "copy_img": "העתק תמונה",
-            "recognize": "זהה",
-            "copy_text": "העתק"
+            "translate_back": "תרגום חזרה למקור"
+        },
+        "updater": {
+            "cancel": "ביטול",
+            "downloading": "מוריד…",
+            "installed": "ההתקנה הושלמה, הפעל מחדש את האפליקציה כדי שהשינויים ייכנסו לתוקף",
+            "installing": "מתקין…",
+            "latest": "## הגרסה האחרונה מותקנת",
+            "progress": "התקדמות הורדה",
+            "title": "חפש עדכונים",
+            "update": "עדכן"
         }
     }
 }

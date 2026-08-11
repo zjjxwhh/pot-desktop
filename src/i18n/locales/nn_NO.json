@@ -1,14 +1,472 @@
 {
     "translation": {
         "common": {
-            "ok": "Ok"
+            "cancel": "",
+            "clear": "",
+            "coming": "",
+            "ok": "Ok",
+            "plugin": "",
+            "save": "",
+            "write_clipboard": ""
+        },
+        "config": {
+            "about": {
+                "check_update": "",
+                "community": "",
+                "discussion": "",
+                "email": "",
+                "feedback": "",
+                "github": "",
+                "issue": "",
+                "label": "",
+                "qq_channel": "",
+                "qq_group": "",
+                "telegram": "",
+                "title": "",
+                "view_config": "",
+                "view_log": "",
+                "website": ""
+            },
+            "backup": {
+                "aliyun": "",
+                "aliyun_login_first": "",
+                "backup": "",
+                "backup_success": "",
+                "empty": "",
+                "label": "",
+                "list": "",
+                "load_success": "",
+                "local": "",
+                "login_success": "",
+                "logout": "",
+                "password": "",
+                "restore": "",
+                "title": "",
+                "type": "",
+                "username": "",
+                "webdav": "",
+                "webdav_url": ""
+            },
+            "general": {
+                "app_fallback_font": "",
+                "app_font": "",
+                "app_language": "",
+                "app_theme": "",
+                "auto_start": "",
+                "check_update": "",
+                "default_font": "",
+                "dev_mode": "",
+                "event": {
+                    "config": "",
+                    "disable": "",
+                    "ocr_recognize": "",
+                    "ocr_translate": "",
+                    "translate": ""
+                },
+                "font_size": {
+                    "10": "",
+                    "12": "",
+                    "14": "",
+                    "16": "",
+                    "18": "",
+                    "20": "",
+                    "24": "",
+                    "title": ""
+                },
+                "label": "",
+                "proxy": {
+                    "host": "",
+                    "no_proxy": "",
+                    "password": "",
+                    "port": "",
+                    "title": "",
+                    "username": ""
+                },
+                "proxy_change": "",
+                "proxy_error": "",
+                "server_port": "",
+                "server_port_change": "",
+                "theme": {
+                    "dark": "",
+                    "light": "",
+                    "system": ""
+                },
+                "title": "",
+                "transparent": "",
+                "tray_click_event": ""
+            },
+            "history": {
+                "label": "",
+                "title": ""
+            },
+            "hotkey": {
+                "input_translate": "",
+                "is_register": "",
+                "label": "",
+                "ocr_recognize": "",
+                "ocr_translate": "",
+                "selection_translate": "",
+                "set_hotkey": "",
+                "success": "",
+                "title": ""
+            },
+            "recognize": {
+                "auto_copy": "",
+                "close_on_blur": "",
+                "delete_newline": "",
+                "hide_window": "",
+                "label": "",
+                "language": "",
+                "title": ""
+            },
+            "service": {
+                "add_builtin_service": "",
+                "add_external_service": "",
+                "add_service": "",
+                "collection": "",
+                "homepage": "",
+                "install_plugin": "",
+                "label": "",
+                "least": "",
+                "recognize": "",
+                "test_failed": "",
+                "title": "",
+                "translate": "",
+                "tts": "",
+                "uninstall_success": "",
+                "view_plugin_list": ""
+            },
+            "translate": {
+                "always_on_top": "",
+                "auto_copy": "",
+                "baidu": "",
+                "bing": "",
+                "close_on_blur": "",
+                "delete_newline": "",
+                "detect_engine": "",
+                "disable": "",
+                "dynamic_translate": "",
+                "font_size": {
+                    "10": "",
+                    "12": "",
+                    "14": "",
+                    "16": "",
+                    "18": "",
+                    "20": "",
+                    "24": "",
+                    "title": ""
+                },
+                "google": "",
+                "hide_language": "",
+                "hide_source": "",
+                "hide_window": "",
+                "history_disable": "",
+                "incremental_translate": "",
+                "label": "",
+                "local": "",
+                "mouse": "",
+                "niutrans": "",
+                "pre_state": "",
+                "remember_language": "",
+                "remember_window_size": "",
+                "second_language": "",
+                "source": "",
+                "source_language": "",
+                "source_target": "",
+                "target": "",
+                "target_language": "",
+                "tencent": "",
+                "title": "",
+                "window_position": "",
+                "yandex": ""
+            }
+        },
+        "languages": {
+            "ar": "",
+            "auto": "",
+            "de": "",
+            "en": "",
+            "es": "",
+            "fa": "",
+            "fr": "",
+            "he": "",
+            "hi": "",
+            "id": "",
+            "it": "",
+            "ja": "",
+            "km": "",
+            "ko": "",
+            "mn_cy": "",
+            "mn_mo": "",
+            "ms": "",
+            "nb_no": "",
+            "nl": "",
+            "nn_no": "",
+            "pl": "",
+            "pt_br": "",
+            "pt_pt": "",
+            "ru": "",
+            "sv": "",
+            "th": "",
+            "tr": "",
+            "uk": "",
+            "vi": "",
+            "zh_cn": "",
+            "zh_tw": ""
+        },
+        "recognize": {
+            "copy_img": "",
+            "copy_text": "",
+            "delete_newline": "",
+            "delete_space": "",
+            "recognize": "",
+            "translate": ""
         },
         "services": {
+            "collection": {
+                "anki": {
+                    "port": "",
+                    "title": ""
+                },
+                "eudic": {
+                    "name": "",
+                    "title": "",
+                    "token": ""
+                }
+            },
+            "help": "",
+            "instance_name": "",
+            "no_need": "",
+            "recognize": {
+                "baidu_accurate_ocr": {
+                    "client_id": "",
+                    "client_secret": "",
+                    "title": ""
+                },
+                "baidu_img_ocr": {
+                    "appid": "",
+                    "secret": "",
+                    "title": ""
+                },
+                "baidu_ocr": {
+                    "client_id": "",
+                    "client_secret": "",
+                    "title": ""
+                },
+                "iflytek_intsig_ocr": {
+                    "apikey": "",
+                    "apisecret": "",
+                    "appid": "",
+                    "title": ""
+                },
+                "iflytek_latex_ocr": {
+                    "apikey": "",
+                    "apisecret": "",
+                    "appid": "",
+                    "title": ""
+                },
+                "iflytek_ocr": {
+                    "apikey": "",
+                    "apisecret": "",
+                    "appid": "",
+                    "title": ""
+                },
+                "qrcode": {
+                    "title": ""
+                },
+                "simple_latex_ocr": {
+                    "title": "",
+                    "token": ""
+                },
+                "system": {
+                    "title": ""
+                },
+                "tencent_accurate_ocr": {
+                    "secret_id": "",
+                    "secret_key": "",
+                    "title": ""
+                },
+                "tencent_img_ocr": {
+                    "secret_id": "",
+                    "secret_key": "",
+                    "title": ""
+                },
+                "tencent_ocr": {
+                    "secret_id": "",
+                    "secret_key": "",
+                    "title": ""
+                },
+                "tesseract": {
+                    "title": ""
+                },
+                "volcengine_multi_lang_ocr": {
+                    "appid": "",
+                    "secret": "",
+                    "title": ""
+                },
+                "volcengine_ocr": {
+                    "appid": "",
+                    "secret": "",
+                    "title": ""
+                }
+            },
             "translate": {
+                "alibaba": {
+                    "accesskey_id": "",
+                    "accesskey_secret": "",
+                    "title": ""
+                },
+                "baidu": {
+                    "appid": "",
+                    "secret": "",
+                    "title": ""
+                },
+                "baidu_field": {
+                    "academic": "",
+                    "aerospace": "",
+                    "contract": "",
+                    "finance": "",
+                    "it": "",
+                    "law": "",
+                    "machinery": "",
+                    "news": "",
+                    "novel": "",
+                    "senimed": "",
+                    "title": "",
+                    "wiki": ""
+                },
+                "bing": {
+                    "title": ""
+                },
+                "bing_dict": {
+                    "title": ""
+                },
+                "caiyun": {
+                    "title": "",
+                    "token": ""
+                },
+                "cambridge_dict": {
+                    "title": ""
+                },
+                "chatglm": {
+                    "add": "",
+                    "api_key": "",
+                    "chatglm_lite": "",
+                    "chatglm_pro": "",
+                    "chatglm_std": "",
+                    "chatglm_turbo": "",
+                    "model": "",
+                    "prompt_description": "",
+                    "title": ""
+                },
+                "deepl": {
+                    "api": "",
+                    "auth_key": "",
+                    "custom_url": "",
+                    "deeplx": "",
+                    "free": "",
+                    "title": "",
+                    "type": ""
+                },
+                "ecdict": {
+                    "title": ""
+                },
+                "geminipro": {
+                    "add": "",
+                    "api_key": "",
+                    "prompt_description": "",
+                    "request_path": "",
+                    "stream": "",
+                    "title": ""
+                },
+                "google": {
+                    "custom_url": "",
+                    "title": ""
+                },
                 "lingva": {
                     "title": "Lingva"
+                },
+                "niutrans": {
+                    "apikey": "",
+                    "https": "",
+                    "title": ""
+                },
+                "ollama": {
+                    "add": "",
+                    "install_model": "",
+                    "install_ollama": "",
+                    "install_ollama_link": "",
+                    "model": "",
+                    "not_installed": "",
+                    "prompt_description": "",
+                    "ready": "",
+                    "request_path": "",
+                    "stream": "",
+                    "supported_models": "",
+                    "title": ""
+                },
+                "openai": {
+                    "add": "",
+                    "api_key": "",
+                    "azure": "",
+                    "model": "",
+                    "openai": "",
+                    "prompt_description": "",
+                    "request_path": "",
+                    "service": "",
+                    "stream": "",
+                    "title": ""
+                },
+                "tencent": {
+                    "secret_id": "",
+                    "secret_key": "",
+                    "title": ""
+                },
+                "transmart": {
+                    "title": "",
+                    "token": "",
+                    "username": ""
+                },
+                "volcengine": {
+                    "appid": "",
+                    "secret": "",
+                    "title": ""
+                },
+                "yandex": {
+                    "title": ""
+                },
+                "youdao": {
+                    "appkey": "",
+                    "key": "",
+                    "title": ""
+                }
+            },
+            "tts": {
+                "lingva_tts": {
+                    "request_path": "",
+                    "title": ""
                 }
             }
+        },
+        "translate": {
+            "add_collection_success": "",
+            "copy": "",
+            "delete_newline": "",
+            "recognizing": "",
+            "retry": "",
+            "speak": "",
+            "translate": "",
+            "translate_back": ""
+        },
+        "updater": {
+            "cancel": "",
+            "downloading": "",
+            "installed": "",
+            "installing": "",
+            "latest": "",
+            "progress": "",
+            "title": "",
+            "update": ""
         }
     }
 }

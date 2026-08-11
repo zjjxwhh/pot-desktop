@@ -33,6 +33,8 @@ i18n.use(initReactI18next).init({
         default: ['en'],
     },
     debug: false,
+    returnEmptyString: false,
+    returnNull: false,
     interpolation: {
         escapeValue: false,
     },

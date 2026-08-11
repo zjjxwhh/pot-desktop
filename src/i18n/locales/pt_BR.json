@@ -1,472 +1,472 @@
 {
     "translation": {
         "common": {
-            "ok": "OK",
             "cancel": "Cancelar",
-            "save": "Salvar",
-            "write_clipboard": "Escrever na Área de Transferência",
-            "plugin": "Plugin",
+            "clear": "Claro",
             "coming": "Em breve…",
-            "clear": "Claro"
-        },
-        "languages": {
-            "auto": "Detectar Automaticamente",
-            "zh_cn": "Chinês Simplificado",
-            "zh_tw": "Chinês Tradicional",
-            "ja": "Japonês",
-            "en": "Inglês",
-            "ko": "Coreano",
-            "fr": "Francês",
-            "es": "Espanhol",
-            "ru": "Russo",
-            "de": "Alemão",
-            "it": "Italiano",
-            "tr": "Turco",
-            "pt_pt": "Português",
-            "pt_br": "Português (Brasil)",
-            "vi": "Vietnamita",
-            "id": "Indonésio",
-            "th": "Tailandês",
-            "ms": "Malaio",
-            "ar": "Árabe",
-            "hi": "Hindu",
-            "mn_mo": "Mongolês",
-            "mn_cy": "Mongolês (Cirílico)",
-            "km": "Khmer",
-            "nb_no": "Bokmål Norueguês",
-            "nn_no": "Norueguês Nynorsk",
-            "fa": "Persa",
-            "nl": "Holandês",
-            "sv": "Sueco",
-            "pl": "Polonês",
-            "uk": "Ucraniano",
-            "he": "Hebreu"
+            "ok": "OK",
+            "plugin": "Plugin",
+            "save": "Salvar",
+            "write_clipboard": "Escrever na Área de Transferência"
         },
         "config": {
-            "general": {
-                "label": "Geral",
-                "title": "Configurações Gerais",
-                "auto_start": "Iniciar Automaticamente",
+            "about": {
                 "check_update": "Checar por Atualização",
-                "server_port": "Porta de Escuta",
-                "server_port_change": "A porta de escuta foi alterada. Reinicie o aplicativo para que as alterações tenham efeito",
+                "community": "Comunidade",
+                "discussion": "Discussão no GitHub",
+                "email": "Email",
+                "feedback": "Realimentação",
+                "github": "GitHub",
+                "issue": "Problemas",
+                "label": "Sobre",
+                "qq_channel": "Canal no QQ",
+                "qq_group": "Grupo QQ",
+                "telegram": "Telegram",
+                "title": "Sobre o Aplicativo",
+                "view_config": "Exibir Configuração",
+                "view_log": "Exibir Registro",
+                "website": "Website"
+            },
+            "backup": {
+                "aliyun": "Aliyun Drive",
+                "aliyun_login_first": "Por favor, leia o código para fazer login primeiro.",
+                "backup": "Backup",
+                "backup_success": "Backup com Sucesso",
+                "empty": "Você não fez backup ainda",
+                "label": "Backup",
+                "list": "Lista de Backup",
+                "load_success": "Carregar Backup com Sucesso",
+                "local": "Local",
+                "login_success": "Entrou com sucesso",
+                "logout": "Sair",
+                "password": "Senha",
+                "restore": "Restaurar",
+                "title": "Configurações de Backup",
+                "type": "Tipo de Serviço",
+                "username": "Nome de usuário",
+                "webdav": "WebDav",
+                "webdav_url": "URL do WebDav"
+            },
+            "general": {
+                "app_fallback_font": "Fonte Reserva",
+                "app_font": "Fonte",
                 "app_language": "Idioma de Exibição",
                 "app_theme": "Tema",
+                "auto_start": "Iniciar Automaticamente",
+                "check_update": "Checar por Atualização",
+                "default_font": "Padrão",
+                "dev_mode": "Modo de Desenvolvedor",
+                "event": {
+                    "config": "Preferência",
+                    "disable": "Desabilitar",
+                    "ocr_recognize": "Reconhecimento de Texto",
+                    "ocr_translate": "Tradução de Imagem",
+                    "translate": "Traduzir"
+                },
                 "font_size": {
-                    "14": "Pequena (14px)",
-                    "title": "Tamanho da Fonte",
-                    "24": "Extragrande (24px)",
-                    "20": "Muito Grande (20px)",
-                    "12": "Muito Pequena (12px)",
-                    "16": "Padrão (16px)",
                     "10": "Extra pequeno (10px)",
-                    "18": "Grande (18px)"
+                    "12": "Muito Pequena (12px)",
+                    "14": "Pequena (14px)",
+                    "16": "Padrão (16px)",
+                    "18": "Grande (18px)",
+                    "20": "Muito Grande (20px)",
+                    "24": "Extragrande (24px)",
+                    "title": "Tamanho da Fonte"
                 },
-                "theme": {
-                    "light": "Luz",
-                    "dark": "Escuro",
-                    "system": "Sistema"
-                },
-                "transparent": "Efeito de Transparência",
+                "label": "Geral",
                 "proxy": {
-                    "title": "Proxy",
                     "host": "Host",
-                    "port": "Porta",
-                    "username": "Nome de usuário",
+                    "no_proxy": "Sem Proxy",
                     "password": "Senha",
-                    "no_proxy": "Sem Proxy"
+                    "port": "Porta",
+                    "title": "Proxy",
+                    "username": "Nome de usuário"
                 },
                 "proxy_change": "O proxy foi alterado. Reinicie o aplicativo para que as alterações tenham efeito",
                 "proxy_error": "Por favor preencha o host e a porta",
-                "tray_click_event": "Evento de Clique na Bandeja",
-                "event": {
-                    "config": "Preferência",
-                    "translate": "Traduzir",
-                    "disable": "Desabilitar",
-                    "ocr_recognize": "Reconhecimento de Texto",
-                    "ocr_translate": "Tradução de Imagem"
+                "server_port": "Porta de Escuta",
+                "server_port_change": "A porta de escuta foi alterada. Reinicie o aplicativo para que as alterações tenham efeito",
+                "theme": {
+                    "dark": "Escuro",
+                    "light": "Luz",
+                    "system": "Sistema"
                 },
-                "default_font": "Padrão",
-                "app_font": "Fonte",
-                "app_fallback_font": "Fonte Reserva",
-                "dev_mode": "Modo de Desenvolvedor"
-            },
-            "translate": {
-                "label": "Traduzir",
-                "title": "Configurações de Tradução",
-                "source_language": "Idioma de Origem",
-                "target_language": "Idioma de Destino",
-                "second_language": "Idioma de Destino Secundário",
-                "auto_copy": "Copiar Automaticamente",
-                "source": "Origem",
-                "target": "Destino",
-                "source_target": "Origem+Destino",
-                "disable": "Desabilitar",
-                "history_disable": "Desabilitar Histórico",
-                "incremental_translate": "Tradução Incremental",
-                "dynamic_translate": "Tradução Dinâmica",
-                "delete_newline": "Excluir Nova Linha",
-                "remember_language": "Lembrar do Idioma de Destino",
-                "window_position": "Posição da Janela",
-                "mouse": "Seguir o mouse",
-                "pre_state": "Lembrar posição",
-                "remember_window_size": "Lembrar do Tamanho da Janela",
-                "close_on_blur": "Fechar janela quando o foco for perdido",
-                "always_on_top": "Sempre na Frente",
-                "hide_source": "Ocultar Área de Origem",
-                "hide_language": "Ocultar Área do Idioma",
-                "hide_window": "Ocultar Janela de Tradução",
-                "detect_engine": "Mecanismo de Detecção de Idioma",
-                "baidu": "Baidu",
-                "tencent": "Tencent",
-                "google": "Google",
-                "local": "Local",
-                "bing": "Bing",
-                "yandex": "Yandex",
-                "niutrans": "NiuTrans",
-                "font_size": {
-                    "14": "Pequena (14px)",
-                    "title": "Tamanho da Fonte",
-                    "24": "Muito, Muito Grande (24px)",
-                    "20": "Muito Grande (20px)",
-                    "12": "Muito Pequena (12px)",
-                    "16": "Padrão (16px)",
-                    "10": "Muito, Muito Pequena (10px)",
-                    "18": "Grande (18px)"
-                }
-            },
-            "recognize": {
-                "label": "Reconhecimento",
-                "title": "Configurações de Reconhecimento",
-                "language": "Idioma de Reconhecimento",
-                "delete_newline": "Excluir Nova Linha Automaticamente",
-                "auto_copy": "Copiar Automaticamente",
-                "hide_window": "Ocultar Janela de Reconhecimento",
-                "close_on_blur": "Fechar janela quando o foco for perdido"
-            },
-            "hotkey": {
-                "label": "Atalho",
-                "title": "Configurações de Atalhos",
-                "selection_translate": "Traduzir Selecionado",
-                "input_translate": "Tradução do Texto",
-                "ocr_recognize": "Reconhecimento de Texto",
-                "ocr_translate": "Tradução de Imagem",
-                "is_register": "O atalho já está registrado",
-                "success": "Atalho registrado com sucesso",
-                "set_hotkey": "Pressione para Definir a Tecla de Atalho"
-            },
-            "service": {
-                "label": "Serviço",
-                "title": "Configuração do Serviço",
-                "translate": "Traduzir",
-                "tts": "TTS",
-                "recognize": "Reconhecimento",
-                "collection": "Coleção",
-                "least": "Por favor, mantenha pelo menos um",
-                "add_builtin_service": "Adicionar Serviço Integrado",
-                "add_external_service": "Adicionar Extensão",
-                "add_service": "Adicionar Serviço",
-                "test_failed": "Teste Falhou",
-                "install_plugin": "Instalar Plug-in",
-                "uninstall_success": "Plug-in desinstalado com sucesso",
-                "homepage": "Homepage",
-                "view_plugin_list": "Exibir Lista de Plugins"
+                "title": "Configurações Gerais",
+                "transparent": "Efeito de Transparência",
+                "tray_click_event": "Evento de Clique na Bandeja"
             },
             "history": {
                 "label": "Histórico",
                 "title": "Histórico"
             },
-            "backup": {
-                "label": "Backup",
-                "title": "Configurações de Backup",
-                "type": "Tipo de Serviço",
-                "webdav": "WebDav",
-                "local": "Local",
-                "webdav_url": "URL do WebDav",
-                "username": "Nome de usuário",
-                "password": "Senha",
-                "backup": "Backup",
-                "restore": "Restaurar",
-                "list": "Lista de Backup",
-                "load_success": "Carregar Backup com Sucesso",
-                "backup_success": "Backup com Sucesso",
-                "empty": "Você não fez backup ainda",
-                "logout": "Sair",
-                "login_success": "Entrou com sucesso",
-                "aliyun_login_first": "Por favor, leia o código para fazer login primeiro.",
-                "aliyun": "Aliyun Drive"
-            },
-            "about": {
-                "label": "Sobre",
-                "title": "Sobre o Aplicativo",
-                "website": "Website",
-                "github": "GitHub",
-                "feedback": "Realimentação",
-                "issue": "Problemas",
-                "email": "Email",
-                "community": "Comunidade",
-                "check_update": "Checar por Atualização",
-                "view_log": "Exibir Registro",
-                "view_config": "Exibir Configuração",
-                "qq_channel": "Canal no QQ",
-                "qq_group": "Grupo QQ",
-                "telegram": "Telegram",
-                "discussion": "Discussão no GitHub"
-            }
-        },
-        "updater": {
-            "title": "Checar por Atualização",
-            "latest": "## A versão mais recente está instalada",
-            "progress": "Progresso do Download",
-            "update": "Atualizar",
-            "downloading": "Baixando…",
-            "installing": "Instalando…",
-            "cancel": "Cancelar",
-            "installed": "Instalação concluída, reinicie o aplicativo para que as alterações entrem em vigor"
-        },
-        "services": {
-            "help": "Guia de Configuração",
-            "no_need": "Nenhuma Configuração Requerida",
-            "instance_name": "Nome da configuração",
-            "translate": {
-                "deepl": {
-                    "title": "DeepL",
-                    "custom_url": "URL de DeepLX",
-                    "auth_key": "Chave de Autorização",
-                    "type": "Tipo de Serviço",
-                    "free": "Gratuito",
-                    "api": "Chave de Autorização",
-                    "deeplx": "DeepLX"
-                },
-                "google": {
-                    "title": "Google",
-                    "custom_url": "URL personalizada"
-                },
-                "lingva": {
-                    "title": "Lingva"
-                },
-                "bing": {
-                    "title": "Bing"
-                },
-                "openai": {
-                    "title": "OpenAI",
-                    "service": "Prestador de serviços",
-                    "openai": "OpenAI",
-                    "azure": "Azure",
-                    "request_path": "Caminho do Pedido",
-                    "api_key": "Api Key",
-                    "model": "Modelo",
-                    "stream": "Modo de Stream",
-                    "prompt_description": "Ao personalizar o Prompt, você pode personalizar o comportamento do OpenAI. $text $from $to $detect será substituído pelo texto a ser traduzido, idioma de origem, idioma de destino e idioma detectado.",
-                    "add": "Adicionar Prompt"
-                },
-                "yandex": {
-                    "title": "Yandex"
-                },
-                "transmart": {
-                    "title": "TranSmart",
-                    "username": "Nome de usuário",
-                    "token": "Token"
-                },
-                "baidu": {
-                    "title": "Baidu",
-                    "appid": "ID do App",
-                    "secret": "Segredo"
-                },
-                "baidu_field": {
-                    "title": "Campo Baidu",
-                    "it": "Tecnologia da Informação",
-                    "finance": "Finanças e Economia",
-                    "machinery": "Fabricação de Máquinas",
-                    "senimed": "Biomedicina",
-                    "novel": "Literatura de Rede",
-                    "academic": "Papéis Acadêmicos",
-                    "aerospace": "Aeroespacial",
-                    "wiki": "Ciências sociais e humanas",
-                    "news": "Notícias e informações",
-                    "law": "Legislação e Regulamentação",
-                    "contract": "Contrato"
-                },
-                "alibaba": {
-                    "title": "Alibaba",
-                    "accesskey_id": "ID da Chave de Acesso",
-                    "accesskey_secret": "Segredo da Chave de Acesso"
-                },
-                "tencent": {
-                    "title": "Tencent",
-                    "secret_id": "ID Secreto",
-                    "secret_key": "Chave Secreta"
-                },
-                "volcengine": {
-                    "title": "VolcEngine",
-                    "appid": "ID do App",
-                    "secret": "Segredo"
-                },
-                "niutrans": {
-                    "title": "NiuTrans",
-                    "https": "Usando Https",
-                    "apikey": "Chave API"
-                },
-                "youdao": {
-                    "title": "Youdao",
-                    "appkey": "ID do App",
-                    "key": "Chave"
-                },
-                "bing_dict": {
-                    "title": "Bing Dicionário"
-                },
-                "cambridge_dict": {
-                    "title": "Cambridge Dicionário"
-                },
-                "caiyun": {
-                    "title": "Caiyun",
-                    "token": "Token"
-                },
-                "chatglm": {
-                    "title": "ChatGLM",
-                    "api_key": "Chave Api",
-                    "chatglm_lite": "ChatGLM Lite",
-                    "chatglm_pro": "ChatGLM Pro",
-                    "model": "Modelo",
-                    "chatglm_std": "ChatGLM Std",
-                    "add": "Adicionar Prompt",
-                    "prompt_description": "Ao personalizar o Prompt, você pode personalizar o comportamento da IA. $text $from $to $detect será substituído pelo texto a ser traduzido, o idioma de origem, o idioma de destino e o idioma detectado.",
-                    "chatglm_turbo": "ChatGLM Turbo"
-                },
-                "geminipro": {
-                    "add": "Adicionar Prompt",
-                    "api_key": "Chave Api",
-                    "stream": "Modo Stream",
-                    "prompt_description": "Ao personalizar o Prompt, você pode personalizar o comportamento do Gemini Pro. $text $from $to $detect será substituído pelo texto a ser traduzido, idioma de origem, idioma de destino e idioma detectado.",
-                    "title": "Gemini Pro",
-                    "request_path": "Caminho de Solicitação"
-                },
-                "ollama": {
-                    "install_ollama": "Não foi possível conectar-se ao ollama local. Baixe, instale e inicie o ollama primeiro. Se você usar ollama que não está nesta máquina, altere o endereço da solicitação.",
-                    "install_ollama_link": "Baixar Ollama",
-                    "title": "Ollama",
-                    "request_path": "Caminho da Solicitação",
-                    "add": "Adicionar Prompt",
-                    "model": "Modelo",
-                    "supported_models": "Clique para ver uma lista de modelos disponíveis da Ollama",
-                    "install_model": "Instalar",
-                    "stream": "Modo Stream",
-                    "ready": "Pronto",
-                    "not_installed": "Este modelo ainda não foi instalado, clique para baixar e instalar agora",
-                    "prompt_description": "Ao personalizar o Prompt, você pode personalizar o comportamento da IA. $text $from $to $detect será substituído pelo texto a ser traduzido, idioma de origem, idioma de destino e idioma detectado."
-                },
-                "ecdict": {
-                    "title": "ECDict(Online)"
-                }
+            "hotkey": {
+                "input_translate": "Tradução do Texto",
+                "is_register": "O atalho já está registrado",
+                "label": "Atalho",
+                "ocr_recognize": "Reconhecimento de Texto",
+                "ocr_translate": "Tradução de Imagem",
+                "selection_translate": "Traduzir Selecionado",
+                "set_hotkey": "Pressione para Definir a Tecla de Atalho",
+                "success": "Atalho registrado com sucesso",
+                "title": "Configurações de Atalhos"
             },
             "recognize": {
-                "system": {
-                    "title": "OCR do Sistema"
+                "auto_copy": "Copiar Automaticamente",
+                "close_on_blur": "Fechar janela quando o foco for perdido",
+                "delete_newline": "Excluir Nova Linha Automaticamente",
+                "hide_window": "Ocultar Janela de Reconhecimento",
+                "label": "Reconhecimento",
+                "language": "Idioma de Reconhecimento",
+                "title": "Configurações de Reconhecimento"
+            },
+            "service": {
+                "add_builtin_service": "Adicionar Serviço Integrado",
+                "add_external_service": "Adicionar Extensão",
+                "add_service": "Adicionar Serviço",
+                "collection": "Coleção",
+                "homepage": "Homepage",
+                "install_plugin": "Instalar Plug-in",
+                "label": "Serviço",
+                "least": "Por favor, mantenha pelo menos um",
+                "recognize": "Reconhecimento",
+                "test_failed": "Teste Falhou",
+                "title": "Configuração do Serviço",
+                "translate": "Traduzir",
+                "tts": "TTS",
+                "uninstall_success": "Plug-in desinstalado com sucesso",
+                "view_plugin_list": "Exibir Lista de Plugins"
+            },
+            "translate": {
+                "always_on_top": "Sempre na Frente",
+                "auto_copy": "Copiar Automaticamente",
+                "baidu": "Baidu",
+                "bing": "Bing",
+                "close_on_blur": "Fechar janela quando o foco for perdido",
+                "delete_newline": "Excluir Nova Linha",
+                "detect_engine": "Mecanismo de Detecção de Idioma",
+                "disable": "Desabilitar",
+                "dynamic_translate": "Tradução Dinâmica",
+                "font_size": {
+                    "10": "Muito, Muito Pequena (10px)",
+                    "12": "Muito Pequena (12px)",
+                    "14": "Pequena (14px)",
+                    "16": "Padrão (16px)",
+                    "18": "Grande (18px)",
+                    "20": "Muito Grande (20px)",
+                    "24": "Muito, Muito Grande (24px)",
+                    "title": "Tamanho da Fonte"
                 },
-                "tesseract": {
-                    "title": "Tesseract.js"
+                "google": "Google",
+                "hide_language": "Ocultar Área do Idioma",
+                "hide_source": "Ocultar Área de Origem",
+                "hide_window": "Ocultar Janela de Tradução",
+                "history_disable": "Desabilitar Histórico",
+                "incremental_translate": "Tradução Incremental",
+                "label": "Traduzir",
+                "local": "Local",
+                "mouse": "Seguir o mouse",
+                "niutrans": "NiuTrans",
+                "pre_state": "Lembrar posição",
+                "remember_language": "Lembrar do Idioma de Destino",
+                "remember_window_size": "Lembrar do Tamanho da Janela",
+                "second_language": "Idioma de Destino Secundário",
+                "source": "Origem",
+                "source_language": "Idioma de Origem",
+                "source_target": "Origem+Destino",
+                "target": "Destino",
+                "target_language": "Idioma de Destino",
+                "tencent": "Tencent",
+                "title": "Configurações de Tradução",
+                "window_position": "Posição da Janela",
+                "yandex": "Yandex"
+            }
+        },
+        "languages": {
+            "ar": "Árabe",
+            "auto": "Detectar Automaticamente",
+            "de": "Alemão",
+            "en": "Inglês",
+            "es": "Espanhol",
+            "fa": "Persa",
+            "fr": "Francês",
+            "he": "Hebreu",
+            "hi": "Hindu",
+            "id": "Indonésio",
+            "it": "Italiano",
+            "ja": "Japonês",
+            "km": "Khmer",
+            "ko": "Coreano",
+            "mn_cy": "Mongolês (Cirílico)",
+            "mn_mo": "Mongolês",
+            "ms": "Malaio",
+            "nb_no": "Bokmål Norueguês",
+            "nl": "Holandês",
+            "nn_no": "Norueguês Nynorsk",
+            "pl": "Polonês",
+            "pt_br": "Português (Brasil)",
+            "pt_pt": "Português",
+            "ru": "Russo",
+            "sv": "Sueco",
+            "th": "Tailandês",
+            "tr": "Turco",
+            "uk": "Ucraniano",
+            "vi": "Vietnamita",
+            "zh_cn": "Chinês Simplificado",
+            "zh_tw": "Chinês Tradicional"
+        },
+        "recognize": {
+            "copy_img": "Copiar imagem",
+            "copy_text": "Copiar",
+            "delete_newline": "Excluir Quebra de Linha",
+            "delete_space": "Excluir Espaço",
+            "recognize": "Reconhecimento",
+            "translate": "Traduzir"
+        },
+        "services": {
+            "collection": {
+                "anki": {
+                    "port": "Porta",
+                    "title": "Anki"
                 },
-                "baidu_ocr": {
-                    "title": "OCR da Baidu",
-                    "client_id": "Chave API",
-                    "client_secret": "Chave Secreta"
-                },
+                "eudic": {
+                    "name": "Nome da Coleção",
+                    "title": "Eudic",
+                    "token": "Token"
+                }
+            },
+            "help": "Guia de Configuração",
+            "instance_name": "Nome da configuração",
+            "no_need": "Nenhuma Configuração Requerida",
+            "recognize": {
                 "baidu_accurate_ocr": {
-                    "title": "Baidu OCR (Preciso)",
                     "client_id": "Chave API",
-                    "client_secret": "Chave Secreta"
+                    "client_secret": "Chave Secreta",
+                    "title": "Baidu OCR (Preciso)"
                 },
                 "baidu_img_ocr": {
-                    "title": "Tradução de Imagem da Baidu",
                     "appid": "ID do App",
-                    "secret": "Segredo"
+                    "secret": "Segredo",
+                    "title": "Tradução de Imagem da Baidu"
                 },
-                "iflytek_ocr": {
-                    "title": "OCR da iFlyTek",
-                    "appid": "ID do App",
-                    "apisecret": "Segredo da API",
-                    "apikey": "Chave API"
+                "baidu_ocr": {
+                    "client_id": "Chave API",
+                    "client_secret": "Chave Secreta",
+                    "title": "OCR da Baidu"
                 },
                 "iflytek_intsig_ocr": {
-                    "title": "OCR da iFlyTek (Intsig)",
-                    "appid": "ID do App",
+                    "apikey": "Chave API",
                     "apisecret": "Segredo da API",
-                    "apikey": "Chave API"
+                    "appid": "ID do App",
+                    "title": "OCR da iFlyTek (Intsig)"
                 },
                 "iflytek_latex_ocr": {
-                    "title": "iFlyTek LaTeX",
-                    "appid": "ID do App",
+                    "apikey": "Chave API",
                     "apisecret": "Segredo da API",
-                    "apikey": "Chave API"
+                    "appid": "ID do App",
+                    "title": "iFlyTek LaTeX"
+                },
+                "iflytek_ocr": {
+                    "apikey": "Chave API",
+                    "apisecret": "Segredo da API",
+                    "appid": "ID do App",
+                    "title": "OCR da iFlyTek"
+                },
+                "qrcode": {
+                    "title": "Código QR"
                 },
                 "simple_latex_ocr": {
                     "title": "LaTeX Simples",
                     "token": "Token"
                 },
-                "tencent_ocr": {
-                    "title": "OCR da Tencent",
-                    "secret_id": "ID Secreto",
-                    "secret_key": "Chave Secreta"
+                "system": {
+                    "title": "OCR do Sistema"
                 },
                 "tencent_accurate_ocr": {
-                    "title": "OCR da Tencent (Preciso)",
                     "secret_id": "ID Secreto",
-                    "secret_key": "Chave Secreta"
+                    "secret_key": "Chave Secreta",
+                    "title": "OCR da Tencent (Preciso)"
                 },
                 "tencent_img_ocr": {
-                    "title": "Tradução de Imagem da Tencent",
                     "secret_id": "ID Secreto",
-                    "secret_key": "Chave Secreta"
+                    "secret_key": "Chave Secreta",
+                    "title": "Tradução de Imagem da Tencent"
                 },
-                "volcengine_ocr": {
-                    "title": "OCR da VolcEngine",
-                    "appid": "ID do App",
-                    "secret": "Segredo"
+                "tencent_ocr": {
+                    "secret_id": "ID Secreto",
+                    "secret_key": "Chave Secreta",
+                    "title": "OCR da Tencent"
+                },
+                "tesseract": {
+                    "title": "Tesseract.js"
                 },
                 "volcengine_multi_lang_ocr": {
-                    "title": "OCR da VolcEngine (Multi Idiomas)",
                     "appid": "ID do App",
-                    "secret": "Segredo"
+                    "secret": "Segredo",
+                    "title": "OCR da VolcEngine (Multi Idiomas)"
                 },
-                "qrcode": {
-                    "title": "Código QR"
+                "volcengine_ocr": {
+                    "appid": "ID do App",
+                    "secret": "Segredo",
+                    "title": "OCR da VolcEngine"
+                }
+            },
+            "translate": {
+                "alibaba": {
+                    "accesskey_id": "ID da Chave de Acesso",
+                    "accesskey_secret": "Segredo da Chave de Acesso",
+                    "title": "Alibaba"
+                },
+                "baidu": {
+                    "appid": "ID do App",
+                    "secret": "Segredo",
+                    "title": "Baidu"
+                },
+                "baidu_field": {
+                    "academic": "Papéis Acadêmicos",
+                    "aerospace": "Aeroespacial",
+                    "contract": "Contrato",
+                    "finance": "Finanças e Economia",
+                    "it": "Tecnologia da Informação",
+                    "law": "Legislação e Regulamentação",
+                    "machinery": "Fabricação de Máquinas",
+                    "news": "Notícias e informações",
+                    "novel": "Literatura de Rede",
+                    "senimed": "Biomedicina",
+                    "title": "Campo Baidu",
+                    "wiki": "Ciências sociais e humanas"
+                },
+                "bing": {
+                    "title": "Bing"
+                },
+                "bing_dict": {
+                    "title": "Bing Dicionário"
+                },
+                "caiyun": {
+                    "title": "Caiyun",
+                    "token": "Token"
+                },
+                "cambridge_dict": {
+                    "title": "Cambridge Dicionário"
+                },
+                "chatglm": {
+                    "add": "Adicionar Prompt",
+                    "api_key": "Chave Api",
+                    "chatglm_lite": "ChatGLM Lite",
+                    "chatglm_pro": "ChatGLM Pro",
+                    "chatglm_std": "ChatGLM Std",
+                    "chatglm_turbo": "ChatGLM Turbo",
+                    "model": "Modelo",
+                    "prompt_description": "Ao personalizar o Prompt, você pode personalizar o comportamento da IA. $text $from $to $detect será substituído pelo texto a ser traduzido, o idioma de origem, o idioma de destino e o idioma detectado.",
+                    "title": "ChatGLM"
+                },
+                "deepl": {
+                    "api": "Chave de Autorização",
+                    "auth_key": "Chave de Autorização",
+                    "custom_url": "URL de DeepLX",
+                    "deeplx": "DeepLX",
+                    "free": "Gratuito",
+                    "title": "DeepL",
+                    "type": "Tipo de Serviço"
+                },
+                "ecdict": {
+                    "title": "ECDict(Online)"
+                },
+                "geminipro": {
+                    "add": "Adicionar Prompt",
+                    "api_key": "Chave Api",
+                    "prompt_description": "Ao personalizar o Prompt, você pode personalizar o comportamento do Gemini Pro. $text $from $to $detect será substituído pelo texto a ser traduzido, idioma de origem, idioma de destino e idioma detectado.",
+                    "request_path": "Caminho de Solicitação",
+                    "stream": "Modo Stream",
+                    "title": "Gemini Pro"
+                },
+                "google": {
+                    "custom_url": "URL personalizada",
+                    "title": "Google"
+                },
+                "lingva": {
+                    "title": "Lingva"
+                },
+                "niutrans": {
+                    "apikey": "Chave API",
+                    "https": "Usando Https",
+                    "title": "NiuTrans"
+                },
+                "ollama": {
+                    "add": "Adicionar Prompt",
+                    "install_model": "Instalar",
+                    "install_ollama": "Não foi possível conectar-se ao ollama local. Baixe, instale e inicie o ollama primeiro. Se você usar ollama que não está nesta máquina, altere o endereço da solicitação.",
+                    "install_ollama_link": "Baixar Ollama",
+                    "model": "Modelo",
+                    "not_installed": "Este modelo ainda não foi instalado, clique para baixar e instalar agora",
+                    "prompt_description": "Ao personalizar o Prompt, você pode personalizar o comportamento da IA. $text $from $to $detect será substituído pelo texto a ser traduzido, idioma de origem, idioma de destino e idioma detectado.",
+                    "ready": "Pronto",
+                    "request_path": "Caminho da Solicitação",
+                    "stream": "Modo Stream",
+                    "supported_models": "Clique para ver uma lista de modelos disponíveis da Ollama",
+                    "title": "Ollama"
+                },
+                "openai": {
+                    "add": "Adicionar Prompt",
+                    "api_key": "Api Key",
+                    "azure": "Azure",
+                    "model": "Modelo",
+                    "openai": "OpenAI",
+                    "prompt_description": "Ao personalizar o Prompt, você pode personalizar o comportamento do OpenAI. $text $from $to $detect será substituído pelo texto a ser traduzido, idioma de origem, idioma de destino e idioma detectado.",
+                    "request_path": "Caminho do Pedido",
+                    "service": "Prestador de serviços",
+                    "stream": "Modo de Stream",
+                    "title": "OpenAI"
+                },
+                "tencent": {
+                    "secret_id": "ID Secreto",
+                    "secret_key": "Chave Secreta",
+                    "title": "Tencent"
+                },
+                "transmart": {
+                    "title": "TranSmart",
+                    "token": "Token",
+                    "username": "Nome de usuário"
+                },
+                "volcengine": {
+                    "appid": "ID do App",
+                    "secret": "Segredo",
+                    "title": "VolcEngine"
+                },
+                "yandex": {
+                    "title": "Yandex"
+                },
+                "youdao": {
+                    "appkey": "ID do App",
+                    "key": "Chave",
+                    "title": "Youdao"
                 }
             },
             "tts": {
                 "lingva_tts": {
-                    "title": "Lingva",
-                    "request_path": "Caminho do Pedido"
-                }
-            },
-            "collection": {
-                "anki": {
-                    "title": "Anki",
-                    "port": "Porta"
-                },
-                "eudic": {
-                    "title": "Eudic",
-                    "name": "Nome da Coleção",
-                    "token": "Token"
+                    "request_path": "Caminho do Pedido",
+                    "title": "Lingva"
                 }
             }
         },
         "translate": {
-            "translate": "Traduzir",
             "add_collection_success": "Adicionar à coleção com sucesso",
-            "recognizing": "Reconhecendo…",
-            "speak": "Falar",
             "copy": "Copiar",
             "delete_newline": "Excluir Quebra de Linha",
-            "translate_back": "Tradução de volta ao original",
-            "retry": "Tentar novamente"
-        },
-        "recognize": {
-            "recognize": "Reconhecimento",
+            "recognizing": "Reconhecendo…",
+            "retry": "Tentar novamente",
+            "speak": "Falar",
             "translate": "Traduzir",
-            "copy_img": "Copiar imagem",
-            "copy_text": "Copiar",
-            "delete_newline": "Excluir Quebra de Linha",
-            "delete_space": "Excluir Espaço"
+            "translate_back": "Tradução de volta ao original"
+        },
+        "updater": {
+            "cancel": "Cancelar",
+            "downloading": "Baixando…",
+            "installed": "Instalação concluída, reinicie o aplicativo para que as alterações entrem em vigor",
+            "installing": "Instalando…",
+            "latest": "## A versão mais recente está instalada",
+            "progress": "Progresso do Download",
+            "title": "Checar por Atualização",
+            "update": "Atualizar"
         }
     }
 }

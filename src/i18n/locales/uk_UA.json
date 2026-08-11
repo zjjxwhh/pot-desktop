@@ -2,471 +2,471 @@
     "translation": {
         "common": {
             "cancel": "Відміна",
-            "ok": "Ок",
-            "save": "Зберегти",
-            "plugin": "Плагіни",
-            "write_clipboard": "Записати в Буфер обміну",
             "clear": "Очистити",
-            "coming": "Очікується…"
-        },
-        "languages": {
-            "zh_cn": "Спрощена Китайська",
-            "auto": "Автовизначення",
-            "es": "Іспанська",
-            "de": "Німецька",
-            "pt_pt": "Португальська",
-            "pt_br": "Португальська (Бразилія)",
-            "pl": "Польска",
-            "zh_tw": "Традиційна Китайська",
-            "ru": "Російська",
-            "ja": "Японська",
-            "en": "Англійська",
-            "ko": "Корейська",
-            "fr": "Французька",
-            "it": "Італійська",
-            "tr": "Турецька",
-            "vi": "В'єтнамська",
-            "id": "Індонезійська",
-            "th": "Тайська",
-            "ms": "Малайська",
-            "ar": "Арабська",
-            "hi": "Гінді",
-            "mn_mo": "Монгольська",
-            "mn_cy": "Монгольська (Кирилиця)",
-            "km": "Кхмерська",
-            "nb_no": "Норвезька (Букмол)",
-            "nn_no": "Норвезька (Нюношк)",
-            "fa": "Перська",
-            "sv": "Шведська",
-            "nl": "Нідерландська",
-            "uk": "Українська",
-            "he": "Іврит"
+            "coming": "Очікується…",
+            "ok": "Ок",
+            "plugin": "Плагіни",
+            "save": "Зберегти",
+            "write_clipboard": "Записати в Буфер обміну"
         },
         "config": {
-            "general": {
+            "about": {
                 "check_update": "Перевірити оновлення",
+                "community": "Спільнота",
+                "discussion": "Обговорення на GitHub",
+                "email": "Email",
+                "feedback": "Зворотний зв'язок",
+                "github": "GitHub",
+                "issue": "Повідомити про проблему",
+                "label": "Про застосунок",
+                "qq_channel": "QQ-канал",
+                "qq_group": "QQ-група",
+                "telegram": "Telegram",
+                "title": "Про застосунок",
+                "view_config": "Переглянути конфігурацію",
+                "view_log": "Переглянути журнал",
+                "website": "Вебсайт"
+            },
+            "backup": {
+                "aliyun": "Aliyun Drive",
+                "aliyun_login_first": "Спочатку відскануйте QR-код для входу.",
+                "backup": "Резервне копіювання",
+                "backup_success": "Резервну копію створено",
+                "empty": "Резервних копій ще немає",
+                "label": "Резервне копіювання",
+                "list": "Список резервних копій",
+                "load_success": "Резервну копію завантажено",
+                "local": "Локально",
+                "login_success": "Вхід виконано успішно",
+                "logout": "Вийти",
+                "password": "Пароль",
+                "restore": "Відновлення",
+                "title": "Налаштування резервного копіювання",
+                "type": "Тип служби",
+                "username": "Ім'я користувача",
+                "webdav": "WebDav",
+                "webdav_url": "WebDav URL"
+            },
+            "general": {
+                "app_fallback_font": "Запасний шрифт",
+                "app_font": "Шрифт",
+                "app_language": "Мова інтерфейсу",
+                "app_theme": "Тема",
                 "auto_start": "Автозапуск",
-                "label": "Загальні",
-                "title": "Загальні налаштування",
+                "check_update": "Перевірити оновлення",
+                "default_font": "По замовченню",
+                "dev_mode": "Режим розробника",
+                "event": {
+                    "config": "Налаштування",
+                    "disable": "Вимкнути",
+                    "ocr_recognize": "Розпізнавання тексту",
+                    "ocr_translate": "Переклад Знимку Екрана",
+                    "translate": "Переклад"
+                },
                 "font_size": {
-                    "title": "Розмір шрифту",
                     "10": "Дуже малий (10пікс)",
                     "12": "Дуже малий (12px)",
                     "14": "Малий (14px)",
                     "16": "Стандартний (16px)",
                     "18": "Великий (18px)",
                     "20": "Дуже великий (20px)",
-                    "24": "Найбільший (24px)"
+                    "24": "Найбільший (24px)",
+                    "title": "Розмір шрифту"
                 },
+                "label": "Загальні",
                 "proxy": {
+                    "host": "Хост",
+                    "no_proxy": "Без проксі",
+                    "password": "Пароль",
                     "port": "Порт",
                     "title": "Проксі",
-                    "host": "Хост",
-                    "username": "Ім'я користувача",
-                    "password": "Пароль",
-                    "no_proxy": "Без проксі"
+                    "username": "Ім'я користувача"
                 },
-                "app_theme": "Тема",
-                "app_font": "Шрифт",
-                "default_font": "По замовченню",
-                "theme": {
-                    "light": "Світла",
-                    "system": "Системна",
-                    "dark": "Темна"
-                },
-                "event": {
-                    "ocr_translate": "Переклад Знимку Екрана",
-                    "config": "Налаштування",
-                    "translate": "Переклад",
-                    "disable": "Вимкнути",
-                    "ocr_recognize": "Розпізнавання тексту"
-                },
-                "server_port": "Порт, якій слухати",
-                "server_port_change": "Порт прослуховування змінено. Перезапустіть застосунок, щоб зміни набули чинності",
-                "app_language": "Мова інтерфейсу",
-                "app_fallback_font": "Запасний шрифт",
-                "transparent": "Ефект прозорості",
                 "proxy_change": "Налаштування проксі змінено. Перезапустіть застосунок, щоб зміни набули чинності",
                 "proxy_error": "Заповніть хост і порт",
-                "tray_click_event": "Дія при кліку на іконку в треї",
-                "dev_mode": "Режим розробника"
+                "server_port": "Порт, якій слухати",
+                "server_port_change": "Порт прослуховування змінено. Перезапустіть застосунок, щоб зміни набули чинності",
+                "theme": {
+                    "dark": "Темна",
+                    "light": "Світла",
+                    "system": "Системна"
+                },
+                "title": "Загальні налаштування",
+                "transparent": "Ефект прозорості",
+                "tray_click_event": "Дія при кліку на іконку в треї"
+            },
+            "history": {
+                "label": "Історія",
+                "title": "Історія"
+            },
+            "hotkey": {
+                "input_translate": "Переклад введеного тексту",
+                "is_register": "Ця гаряча клавіша вже зайнята",
+                "label": "Гарячі клавіші",
+                "ocr_recognize": "Розпізнавання тексту",
+                "ocr_translate": "Переклад знімку екрана",
+                "selection_translate": "Переклад виділеного тексту",
+                "set_hotkey": "Натисніть для встановлення гарячої клавіші",
+                "success": "Гарячу клавішу зареєстровано",
+                "title": "Налаштування гарячих клавіш"
+            },
+            "recognize": {
+                "auto_copy": "Автокопіювання",
+                "close_on_blur": "Закривати вікно при втраті фокусу",
+                "delete_newline": "Автоматично видаляти переноси рядків",
+                "hide_window": "Приховувати вікно розпізнавання",
+                "label": "Розпізнати",
+                "language": "Мова розпізнавання",
+                "title": "Налаштування розпізнавання"
+            },
+            "service": {
+                "add_builtin_service": "Додати вбудовану службу",
+                "add_external_service": "Додати розширення",
+                "add_service": "Додати службу",
+                "collection": "Словник",
+                "homepage": "Домашня сторінка",
+                "install_plugin": "Встановити плагін",
+                "label": "Служба",
+                "least": "Залиште хоча б одну службу",
+                "recognize": "Розпізнати",
+                "test_failed": "Тест не пройдено",
+                "title": "Налаштування служб",
+                "translate": "Переклад",
+                "tts": "TTS",
+                "uninstall_success": "Плагін успішно видалено",
+                "view_plugin_list": "Переглянути список плагінів"
             },
             "translate": {
+                "always_on_top": "Завжди поверх",
+                "auto_copy": "Автокопіювання",
+                "baidu": "Baidu",
+                "bing": "Bing",
+                "close_on_blur": "Закривати вікно при втраті фокусу",
+                "delete_newline": "Видаляти переноси рядків",
+                "detect_engine": "Рушій визначення мови",
+                "disable": "Вимкнути",
+                "dynamic_translate": "Динамічний переклад",
                 "font_size": {
-                    "title": "Розмір шрифту",
                     "10": "Дуже дуже малий (10 пікс.)",
                     "12": "Дуже малий (12 пікс.)",
                     "14": "Малий (14 пікс.)",
                     "16": "Стандартний (16 пікс.)",
                     "18": "Великий (18 пікс.)",
                     "20": "Дуже великий (20 пікс.)",
-                    "24": "Дуже дуже великий (24 пікс.)"
+                    "24": "Дуже дуже великий (24 пікс.)",
+                    "title": "Розмір шрифту"
                 },
-                "history_disable": "Вимкнути історію",
-                "window_position": "Позиція вікна",
-                "remember_window_size": "Запам'ятати розмір вікна",
-                "mouse": "Слідувати за курсором",
-                "pre_state": "Запам'ятати позицію",
-                "label": "Переклад",
-                "title": "Налаштування перекладу",
-                "source_language": "Мова оригіналу",
-                "target_language": "Мова перекладу",
-                "second_language": "Додаткова мова перекладу",
-                "auto_copy": "Автокопіювання",
-                "source": "Оригінал",
-                "target": "Переклад",
-                "source_target": "Оригінал + Переклад",
-                "disable": "Вимкнути",
-                "incremental_translate": "Поступовий переклад",
-                "dynamic_translate": "Динамічний переклад",
-                "delete_newline": "Видаляти переноси рядків",
-                "remember_language": "Запам'ятовувати мову перекладу",
-                "close_on_blur": "Закривати вікно при втраті фокусу",
-                "always_on_top": "Завжди поверх",
-                "hide_source": "Приховати область оригіналу",
-                "hide_language": "Приховати область мови",
-                "hide_window": "Приховувати вікно перекладу",
-                "detect_engine": "Рушій визначення мови",
-                "baidu": "Baidu",
-                "tencent": "Tencent",
-                "niutrans": "NiuTrans",
                 "google": "Google",
-                "bing": "Bing",
-                "yandex": "Yandex",
-                "local": "Локально"
-            },
-            "recognize": {
-                "label": "Розпізнати",
-                "title": "Налаштування розпізнавання",
-                "language": "Мова розпізнавання",
-                "delete_newline": "Автоматично видаляти переноси рядків",
-                "auto_copy": "Автокопіювання",
-                "close_on_blur": "Закривати вікно при втраті фокусу",
-                "hide_window": "Приховувати вікно розпізнавання"
-            },
-            "hotkey": {
-                "label": "Гарячі клавіші",
-                "title": "Налаштування гарячих клавіш",
-                "selection_translate": "Переклад виділеного тексту",
-                "input_translate": "Переклад введеного тексту",
-                "ocr_recognize": "Розпізнавання тексту",
-                "ocr_translate": "Переклад знімку екрана",
-                "is_register": "Ця гаряча клавіша вже зайнята",
-                "success": "Гарячу клавішу зареєстровано",
-                "set_hotkey": "Натисніть для встановлення гарячої клавіші"
-            },
-            "service": {
-                "label": "Служба",
-                "title": "Налаштування служб",
-                "translate": "Переклад",
-                "tts": "TTS",
-                "recognize": "Розпізнати",
-                "collection": "Словник",
-                "least": "Залиште хоча б одну службу",
-                "add_builtin_service": "Додати вбудовану службу",
-                "add_external_service": "Додати розширення",
-                "add_service": "Додати службу",
-                "test_failed": "Тест не пройдено",
-                "install_plugin": "Встановити плагін",
-                "view_plugin_list": "Переглянути список плагінів",
-                "uninstall_success": "Плагін успішно видалено",
-                "homepage": "Домашня сторінка"
-            },
-            "history": {
-                "label": "Історія",
-                "title": "Історія"
-            },
-            "backup": {
-                "label": "Резервне копіювання",
-                "title": "Налаштування резервного копіювання",
-                "type": "Тип служби",
-                "webdav": "WebDav",
-                "aliyun": "Aliyun Drive",
+                "hide_language": "Приховати область мови",
+                "hide_source": "Приховати область оригіналу",
+                "hide_window": "Приховувати вікно перекладу",
+                "history_disable": "Вимкнути історію",
+                "incremental_translate": "Поступовий переклад",
+                "label": "Переклад",
                 "local": "Локально",
-                "webdav_url": "WebDav URL",
-                "username": "Ім'я користувача",
-                "password": "Пароль",
-                "logout": "Вийти",
-                "aliyun_login_first": "Спочатку відскануйте QR-код для входу.",
-                "login_success": "Вхід виконано успішно",
-                "backup": "Резервне копіювання",
-                "restore": "Відновлення",
-                "list": "Список резервних копій",
-                "load_success": "Резервну копію завантажено",
-                "backup_success": "Резервну копію створено",
-                "empty": "Резервних копій ще немає"
-            },
-            "about": {
-                "label": "Про застосунок",
-                "title": "Про застосунок",
-                "website": "Вебсайт",
-                "github": "GitHub",
-                "feedback": "Зворотний зв'язок",
-                "issue": "Повідомити про проблему",
-                "email": "Email",
-                "community": "Спільнота",
-                "check_update": "Перевірити оновлення",
-                "view_log": "Переглянути журнал",
-                "view_config": "Переглянути конфігурацію",
-                "qq_channel": "QQ-канал",
-                "qq_group": "QQ-група",
-                "telegram": "Telegram",
-                "discussion": "Обговорення на GitHub"
+                "mouse": "Слідувати за курсором",
+                "niutrans": "NiuTrans",
+                "pre_state": "Запам'ятати позицію",
+                "remember_language": "Запам'ятовувати мову перекладу",
+                "remember_window_size": "Запам'ятати розмір вікна",
+                "second_language": "Додаткова мова перекладу",
+                "source": "Оригінал",
+                "source_language": "Мова оригіналу",
+                "source_target": "Оригінал + Переклад",
+                "target": "Переклад",
+                "target_language": "Мова перекладу",
+                "tencent": "Tencent",
+                "title": "Налаштування перекладу",
+                "window_position": "Позиція вікна",
+                "yandex": "Yandex"
             }
         },
+        "languages": {
+            "ar": "Арабська",
+            "auto": "Автовизначення",
+            "de": "Німецька",
+            "en": "Англійська",
+            "es": "Іспанська",
+            "fa": "Перська",
+            "fr": "Французька",
+            "he": "Іврит",
+            "hi": "Гінді",
+            "id": "Індонезійська",
+            "it": "Італійська",
+            "ja": "Японська",
+            "km": "Кхмерська",
+            "ko": "Корейська",
+            "mn_cy": "Монгольська (Кирилиця)",
+            "mn_mo": "Монгольська",
+            "ms": "Малайська",
+            "nb_no": "Норвезька (Букмол)",
+            "nl": "Нідерландська",
+            "nn_no": "Норвезька (Нюношк)",
+            "pl": "Польска",
+            "pt_br": "Португальська (Бразилія)",
+            "pt_pt": "Португальська",
+            "ru": "Російська",
+            "sv": "Шведська",
+            "th": "Тайська",
+            "tr": "Турецька",
+            "uk": "Українська",
+            "vi": "В'єтнамська",
+            "zh_cn": "Спрощена Китайська",
+            "zh_tw": "Традиційна Китайська"
+        },
+        "recognize": {
+            "copy_img": "Скопіювати зображення",
+            "copy_text": "Скопіювати",
+            "delete_newline": "Видалити новий рядок",
+            "delete_space": "Видалити пробіл",
+            "recognize": "Розпізнати",
+            "translate": "Перекласти"
+        },
         "services": {
-            "recognize": {
-                "baidu_accurate_ocr": {
-                    "client_id": "API Ключ",
-                    "title": "Baidu OCR (Точний)",
-                    "client_secret": "Secret Key"
-                },
-                "baidu_ocr": {
-                    "client_id": "API Ключ",
-                    "title": "Baidu OCR",
-                    "client_secret": "Secret Key"
-                },
-                "iflytek_latex_ocr": {
-                    "apikey": "API Ключ",
-                    "title": "iFlyTek LaTeX OCR",
-                    "appid": "App ID",
-                    "apisecret": "API Secret"
-                },
-                "qrcode": {
-                    "title": "QR Код"
-                },
-                "iflytek_intsig_ocr": {
-                    "apikey": "API Ключ",
-                    "title": "iFlyTek OCR (Intsig)",
-                    "appid": "App ID",
-                    "apisecret": "API Secret"
-                },
-                "iflytek_ocr": {
-                    "apikey": "API Ключ",
-                    "apisecret": "API Secret",
-                    "title": "iFlyTek OCR",
-                    "appid": "App ID"
-                },
-                "system": {
-                    "title": "Системний OCR"
-                },
-                "tesseract": {
-                    "title": "Tesseract.js"
-                },
-                "tencent_accurate_ocr": {
-                    "title": "Tencent OCR (Точний)",
-                    "secret_id": "Secret ID",
-                    "secret_key": "Secret Key"
-                },
-                "volcengine_multi_lang_ocr": {
-                    "secret": "Secret",
-                    "title": "VolcEngine OCR (Мультимовний)",
-                    "appid": "App ID"
-                },
-                "baidu_img_ocr": {
-                    "title": "Baidu — переклад зображень",
-                    "appid": "App ID",
-                    "secret": "Secret"
-                },
-                "simple_latex_ocr": {
-                    "title": "Simple LaTeX OCR",
-                    "token": "Токен"
-                },
-                "tencent_ocr": {
-                    "title": "Tencent OCR",
-                    "secret_id": "Secret ID",
-                    "secret_key": "Secret Key"
-                },
-                "tencent_img_ocr": {
-                    "title": "Tencent — переклад зображень",
-                    "secret_id": "Secret ID",
-                    "secret_key": "Secret Key"
-                },
-                "volcengine_ocr": {
-                    "title": "VolcEngine OCR",
-                    "appid": "App ID",
-                    "secret": "Secret"
-                }
-            },
             "collection": {
                 "anki": {
                     "port": "Порт",
                     "title": "Анкі (Anki)"
                 },
                 "eudic": {
-                    "token": "Токен",
+                    "name": "Назва словника",
                     "title": "Eudic",
-                    "name": "Назва словника"
+                    "token": "Токен"
                 }
             },
             "help": "Посібник з налаштування",
+            "instance_name": "Назва конфігурації",
             "no_need": "Конфігурація не потрібна",
-            "translate": {
-                "deepl": {
-                    "title": "DeepL",
-                    "custom_url": "URL DeepLX",
-                    "auth_key": "Ключ автентифікації",
-                    "type": "Тип служби",
-                    "free": "Безкоштовний",
-                    "api": "Ключ автентифікації",
-                    "deeplx": "DeepLX"
+            "recognize": {
+                "baidu_accurate_ocr": {
+                    "client_id": "API Ключ",
+                    "client_secret": "Secret Key",
+                    "title": "Baidu OCR (Точний)"
                 },
-                "google": {
-                    "title": "Google",
-                    "custom_url": "Власний URL"
+                "baidu_img_ocr": {
+                    "appid": "App ID",
+                    "secret": "Secret",
+                    "title": "Baidu — переклад зображень"
+                },
+                "baidu_ocr": {
+                    "client_id": "API Ключ",
+                    "client_secret": "Secret Key",
+                    "title": "Baidu OCR"
+                },
+                "iflytek_intsig_ocr": {
+                    "apikey": "API Ключ",
+                    "apisecret": "API Secret",
+                    "appid": "App ID",
+                    "title": "iFlyTek OCR (Intsig)"
+                },
+                "iflytek_latex_ocr": {
+                    "apikey": "API Ключ",
+                    "apisecret": "API Secret",
+                    "appid": "App ID",
+                    "title": "iFlyTek LaTeX OCR"
+                },
+                "iflytek_ocr": {
+                    "apikey": "API Ключ",
+                    "apisecret": "API Secret",
+                    "appid": "App ID",
+                    "title": "iFlyTek OCR"
+                },
+                "qrcode": {
+                    "title": "QR Код"
+                },
+                "simple_latex_ocr": {
+                    "title": "Simple LaTeX OCR",
+                    "token": "Токен"
+                },
+                "system": {
+                    "title": "Системний OCR"
+                },
+                "tencent_accurate_ocr": {
+                    "secret_id": "Secret ID",
+                    "secret_key": "Secret Key",
+                    "title": "Tencent OCR (Точний)"
+                },
+                "tencent_img_ocr": {
+                    "secret_id": "Secret ID",
+                    "secret_key": "Secret Key",
+                    "title": "Tencent — переклад зображень"
+                },
+                "tencent_ocr": {
+                    "secret_id": "Secret ID",
+                    "secret_key": "Secret Key",
+                    "title": "Tencent OCR"
+                },
+                "tesseract": {
+                    "title": "Tesseract.js"
+                },
+                "volcengine_multi_lang_ocr": {
+                    "appid": "App ID",
+                    "secret": "Secret",
+                    "title": "VolcEngine OCR (Мультимовний)"
+                },
+                "volcengine_ocr": {
+                    "appid": "App ID",
+                    "secret": "Secret",
+                    "title": "VolcEngine OCR"
+                }
+            },
+            "translate": {
+                "alibaba": {
+                    "accesskey_id": "AccessKey ID",
+                    "accesskey_secret": "AccessKey Secret",
+                    "title": "Alibaba"
+                },
+                "baidu": {
+                    "appid": "App ID",
+                    "secret": "Secret",
+                    "title": "Baidu"
+                },
+                "baidu_field": {
+                    "academic": "Академічні статті",
+                    "aerospace": "Авіакосмічна промисловість",
+                    "contract": "Контракти",
+                    "finance": "Фінанси та економіка",
+                    "it": "Інформаційні технології",
+                    "law": "Юридична сфера",
+                    "machinery": "Машинобудування",
+                    "news": "Новинні матеріали",
+                    "novel": "Онлайн-література",
+                    "senimed": "Біомедицина",
+                    "title": "Baidu (Галузевий)",
+                    "wiki": "Людинознавство та суспільствознавство"
                 },
                 "bing": {
                     "title": "Bing"
                 },
-                "openai": {
-                    "title": "OpenAI",
-                    "service": "Постачальник послуг",
-                    "openai": "OpenAI",
-                    "azure": "Azure",
-                    "request_path": "Шлях запиту",
-                    "api_key": "API-ключ",
-                    "model": "Модель",
-                    "stream": "Потоковий режим",
-                    "prompt_description": "За допомогою власного Prompt можна налаштувати поведінку OpenAI. $text, $from, $to, $detect замінюються на текст, мову оригіналу, мову перекладу та виявлену мову відповідно.",
-                    "add": "Додати Prompt"
-                },
-                "geminipro": {
-                    "title": "Gemini Pro",
-                    "api_key": "API-ключ",
-                    "stream": "Потоковий режим",
-                    "prompt_description": "За допомогою власного Prompt можна налаштувати поведінку Gemini Pro. $text, $from, $to, $detect замінюються на текст, мову оригіналу, мову перекладу та виявлену мову відповідно.",
-                    "add": "Додати Prompt",
-                    "request_path": "Шлях запиту"
-                },
-                "chatglm": {
-                    "title": "ChatGLM",
-                    "model": "Модель",
-                    "chatglm_turbo": "ChatGLM Turbo",
-                    "chatglm_pro": "ChatGLM Pro",
-                    "chatglm_std": "ChatGLM Std",
-                    "chatglm_lite": "ChatGLM Lite",
-                    "api_key": "API-ключ",
-                    "prompt_description": "За допомогою власного Prompt можна налаштувати поведінку ШІ. $text, $from, $to, $detect замінюються на текст, мову оригіналу, мову перекладу та виявлену мову відповідно.",
-                    "add": "Додати Prompt"
-                },
-                "yandex": {
-                    "title": "Yandex"
-                },
-                "transmart": {
-                    "title": "TranSmart",
-                    "username": "Ім'я користувача",
-                    "token": "Токен"
-                },
-                "baidu": {
-                    "title": "Baidu",
-                    "appid": "App ID",
-                    "secret": "Secret"
-                },
-                "baidu_field": {
-                    "title": "Baidu (Галузевий)",
-                    "it": "Інформаційні технології",
-                    "finance": "Фінанси та економіка",
-                    "machinery": "Машинобудування",
-                    "senimed": "Біомедицина",
-                    "novel": "Онлайн-література",
-                    "academic": "Академічні статті",
-                    "aerospace": "Авіакосмічна промисловість",
-                    "wiki": "Людинознавство та суспільствознавство",
-                    "news": "Новинні матеріали",
-                    "law": "Юридична сфера",
-                    "contract": "Контракти"
-                },
-                "alibaba": {
-                    "title": "Alibaba",
-                    "accesskey_id": "AccessKey ID",
-                    "accesskey_secret": "AccessKey Secret"
-                },
-                "tencent": {
-                    "title": "Tencent",
-                    "secret_id": "Secret ID",
-                    "secret_key": "Secret Key"
-                },
-                "volcengine": {
-                    "title": "VolcEngine",
-                    "appid": "App ID",
-                    "secret": "Secret"
-                },
-                "niutrans": {
-                    "title": "NiuTrans",
-                    "https": "Використовувати HTTPS",
-                    "apikey": "API Key"
-                },
-                "youdao": {
-                    "title": "Youdao",
-                    "appkey": "App ID",
-                    "key": "Ключ"
-                },
                 "bing_dict": {
                     "title": "Словник Bing"
-                },
-                "cambridge_dict": {
-                    "title": "Словник Cambridge"
                 },
                 "caiyun": {
                     "title": "Caiyun",
                     "token": "Токен"
                 },
-                "ollama": {
-                    "title": "Ollama",
+                "cambridge_dict": {
+                    "title": "Словник Cambridge"
+                },
+                "chatglm": {
                     "add": "Додати Prompt",
-                    "install_ollama": "Не вдалося підключитися до локального Ollama. Завантажте, встановіть і запустіть Ollama. Якщо Ollama запущено на іншому пристрої — змініть адресу запиту.",
-                    "install_ollama_link": "Завантажити Ollama",
-                    "request_path": "Шлях запиту",
-                    "stream": "Потоковий режим",
+                    "api_key": "API-ключ",
+                    "chatglm_lite": "ChatGLM Lite",
+                    "chatglm_pro": "ChatGLM Pro",
+                    "chatglm_std": "ChatGLM Std",
+                    "chatglm_turbo": "ChatGLM Turbo",
                     "model": "Модель",
-                    "install_model": "Встановити",
-                    "ready": "Готово",
-                    "not_installed": "Цю модель ще не встановлено. Натисніть, щоб завантажити та встановити її",
-                    "supported_models": "Натисніть, щоб переглянути список доступних моделей Ollama",
-                    "prompt_description": "За допомогою власного Prompt можна налаштувати поведінку ШІ. $text, $from, $to, $detect замінюються на текст, мову оригіналу, мову перекладу та виявлену мову відповідно."
+                    "prompt_description": "За допомогою власного Prompt можна налаштувати поведінку ШІ. $text, $from, $to, $detect замінюються на текст, мову оригіналу, мову перекладу та виявлену мову відповідно.",
+                    "title": "ChatGLM"
+                },
+                "deepl": {
+                    "api": "Ключ автентифікації",
+                    "auth_key": "Ключ автентифікації",
+                    "custom_url": "URL DeepLX",
+                    "deeplx": "DeepLX",
+                    "free": "Безкоштовний",
+                    "title": "DeepL",
+                    "type": "Тип служби"
                 },
                 "ecdict": {
                     "title": "ECDict (Онлайн)"
                 },
+                "geminipro": {
+                    "add": "Додати Prompt",
+                    "api_key": "API-ключ",
+                    "prompt_description": "За допомогою власного Prompt можна налаштувати поведінку Gemini Pro. $text, $from, $to, $detect замінюються на текст, мову оригіналу, мову перекладу та виявлену мову відповідно.",
+                    "request_path": "Шлях запиту",
+                    "stream": "Потоковий режим",
+                    "title": "Gemini Pro"
+                },
+                "google": {
+                    "custom_url": "Власний URL",
+                    "title": "Google"
+                },
                 "lingva": {
                     "title": "Lingva"
+                },
+                "niutrans": {
+                    "apikey": "API Key",
+                    "https": "Використовувати HTTPS",
+                    "title": "NiuTrans"
+                },
+                "ollama": {
+                    "add": "Додати Prompt",
+                    "install_model": "Встановити",
+                    "install_ollama": "Не вдалося підключитися до локального Ollama. Завантажте, встановіть і запустіть Ollama. Якщо Ollama запущено на іншому пристрої — змініть адресу запиту.",
+                    "install_ollama_link": "Завантажити Ollama",
+                    "model": "Модель",
+                    "not_installed": "Цю модель ще не встановлено. Натисніть, щоб завантажити та встановити її",
+                    "prompt_description": "За допомогою власного Prompt можна налаштувати поведінку ШІ. $text, $from, $to, $detect замінюються на текст, мову оригіналу, мову перекладу та виявлену мову відповідно.",
+                    "ready": "Готово",
+                    "request_path": "Шлях запиту",
+                    "stream": "Потоковий режим",
+                    "supported_models": "Натисніть, щоб переглянути список доступних моделей Ollama",
+                    "title": "Ollama"
+                },
+                "openai": {
+                    "add": "Додати Prompt",
+                    "api_key": "API-ключ",
+                    "azure": "Azure",
+                    "model": "Модель",
+                    "openai": "OpenAI",
+                    "prompt_description": "За допомогою власного Prompt можна налаштувати поведінку OpenAI. $text, $from, $to, $detect замінюються на текст, мову оригіналу, мову перекладу та виявлену мову відповідно.",
+                    "request_path": "Шлях запиту",
+                    "service": "Постачальник послуг",
+                    "stream": "Потоковий режим",
+                    "title": "OpenAI"
+                },
+                "tencent": {
+                    "secret_id": "Secret ID",
+                    "secret_key": "Secret Key",
+                    "title": "Tencent"
+                },
+                "transmart": {
+                    "title": "TranSmart",
+                    "token": "Токен",
+                    "username": "Ім'я користувача"
+                },
+                "volcengine": {
+                    "appid": "App ID",
+                    "secret": "Secret",
+                    "title": "VolcEngine"
+                },
+                "yandex": {
+                    "title": "Yandex"
+                },
+                "youdao": {
+                    "appkey": "App ID",
+                    "key": "Ключ",
+                    "title": "Youdao"
                 }
             },
             "tts": {
                 "lingva_tts": {
-                    "title": "Lingva",
-                    "request_path": "Шлях запиту"
+                    "request_path": "Шлях запиту",
+                    "title": "Lingva"
                 }
-            },
-            "instance_name": "Назва конфігурації"
+            }
         },
         "translate": {
-            "translate": "Переклад",
-            "retry": "Спробуй знову",
+            "add_collection_success": "Успішно додано до словника",
             "copy": "Скопіюй",
             "delete_newline": "Видалити новий рядок",
-            "add_collection_success": "Успішно додано до словника",
             "recognizing": "Розпізнавання…",
+            "retry": "Спробуй знову",
             "speak": "Озвучити",
+            "translate": "Переклад",
             "translate_back": "Перекласти назад на мову оригіналу"
         },
-        "recognize": {
-            "translate": "Перекласти",
-            "copy_text": "Скопіювати",
-            "copy_img": "Скопіювати зображення",
-            "delete_space": "Видалити пробіл",
-            "recognize": "Розпізнати",
-            "delete_newline": "Видалити новий рядок"
-        },
         "updater": {
-            "title": "Перевірити оновлення",
+            "cancel": "Скасувати",
+            "downloading": "Завантаження…",
+            "installed": "Встановлення завершено. Перезапустіть застосунок, щоб зміни набули чинності",
+            "installing": "Встановлення…",
             "latest": "## Встановлено найновішу версію",
             "progress": "Прогрес завантаження",
-            "update": "Оновити",
-            "downloading": "Завантаження…",
-            "installing": "Встановлення…",
-            "cancel": "Скасувати",
-            "installed": "Встановлення завершено. Перезапустіть застосунок, щоб зміни набули чинності"
+            "title": "Перевірити оновлення",
+            "update": "Оновити"
         }
     }
 }

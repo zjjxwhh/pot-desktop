@@ -9,6 +9,8 @@
         "preview": "vite preview",
         "tauri": "tauri",
         "sync:tesseract": "node scripts/sync-tesseract-assets.mjs",
+        "i18n:check": "node scripts/normalize-i18n-locales.mjs --check",
+        "i18n:sync": "node scripts/normalize-i18n-locales.mjs",
         "updater": "node updater/updater.mjs",
         "updater:fixRuntime": "node updater/updater-for-fix-runtime.mjs"
     },

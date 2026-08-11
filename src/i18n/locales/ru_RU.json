@@ -1,472 +1,472 @@
 {
     "translation": {
         "common": {
-            "ok": "ОК",
             "cancel": "Отмена",
-            "save": "Сохранить",
-            "write_clipboard": "Сохранить в буфер обмена",
-            "plugin": "Плагин",
+            "clear": "Очистить",
             "coming": "Скоро…",
-            "clear": "Очистить"
-        },
-        "languages": {
-            "auto": "Автоопределение",
-            "zh_cn": "Упрощённый китайский",
-            "zh_tw": "Традиционный китайский",
-            "ja": "Японский",
-            "en": "Английский",
-            "ko": "Корейский",
-            "fr": "Французский",
-            "es": "Испанский",
-            "ru": "Русский",
-            "de": "Немецкий",
-            "it": "Итальянский",
-            "tr": "Турецкий",
-            "pt_pt": "Португальский",
-            "pt_br": "Португальский (Бразилия)",
-            "vi": "Вьетнамский",
-            "id": "Индонезийский",
-            "th": "Тайский",
-            "ms": "Малайский",
-            "ar": "Арабский",
-            "hi": "Хинди",
-            "mn_mo": "Монгольский",
-            "mn_cy": "Монгольский (кириллица)",
-            "km": "Кхмерский",
-            "nb_no": "Букмол (Норвежский)",
-            "fa": "Персидский",
-            "nn_no": "Новонорвежский",
-            "nl": "Нидерландский",
-            "sv": "Шведский",
-            "pl": "Польский",
-            "uk": "Украинский",
-            "he": "Иврит"
+            "ok": "ОК",
+            "plugin": "Плагин",
+            "save": "Сохранить",
+            "write_clipboard": "Сохранить в буфер обмена"
         },
         "config": {
+            "about": {
+                "check_update": "Обновление",
+                "community": "Сообщество",
+                "discussion": "Обсуждение на GitHub",
+                "email": "Эл. почта",
+                "feedback": "Обратная связь",
+                "github": "GitHub",
+                "issue": "Проблема",
+                "label": "О программе",
+                "qq_channel": "QQ канал",
+                "qq_group": "QQ группа",
+                "telegram": "Telegram",
+                "title": "О программе",
+                "view_config": "Конфигурация",
+                "view_log": "Журнал",
+                "website": "Сайт"
+            },
+            "backup": {
+                "aliyun": "Aliyun Drive",
+                "aliyun_login_first": "Для входа отсканируйте код.",
+                "backup": "Бэкап",
+                "backup_success": "Бэкап выполнен",
+                "empty": "Вы ещё не создали бэкап",
+                "label": "Бэкап",
+                "list": "Список бэкапов",
+                "load_success": "Успешная загрузка бэкапа",
+                "local": "Локально",
+                "login_success": "Вход выполнен",
+                "logout": "Выйти",
+                "password": "Пароль",
+                "restore": "Восстановить",
+                "title": "Настройки бэкапа",
+                "type": "Тип сервиса",
+                "username": "Имя пользователя",
+                "webdav": "WebDav",
+                "webdav_url": "WebDav ссылка"
+            },
             "general": {
-                "label": "Общие",
-                "title": "Общие настройки",
-                "auto_start": "Автозагрузка",
-                "check_update": "Проверка обновлений",
-                "server_port": "Порт прослушивания",
-                "server_port_change": "Порт прослушивания был изменён. Перезапустите приложение, чтобы изменения вступили в силу",
+                "app_fallback_font": "Резервный шрифт",
+                "app_font": "Шрифт",
                 "app_language": "Язык интерфейса",
                 "app_theme": "Тема",
+                "auto_start": "Автозагрузка",
+                "check_update": "Проверка обновлений",
+                "default_font": "По умолчанию",
+                "dev_mode": "Режим разработчика",
+                "event": {
+                    "config": "Настройки",
+                    "disable": "Нет",
+                    "ocr_recognize": "Распознавание текста",
+                    "ocr_translate": "Перевод скриншота",
+                    "translate": "Перевести"
+                },
                 "font_size": {
-                    "14": "Мелкий (14 пикс.)",
-                    "title": "Размер шрифта",
-                    "24": "Самый крупный (24 пикс.)",
-                    "20": "Очень крупный (20 пикс.)",
-                    "12": "Очень мелкий (12 пикс.)",
-                    "16": "Стандартный (16 пикс.)",
                     "10": "Самый мелкий (10 пикс.)",
-                    "18": "Крупный (18 пикс.)"
+                    "12": "Очень мелкий (12 пикс.)",
+                    "14": "Мелкий (14 пикс.)",
+                    "16": "Стандартный (16 пикс.)",
+                    "18": "Крупный (18 пикс.)",
+                    "20": "Очень крупный (20 пикс.)",
+                    "24": "Самый крупный (24 пикс.)",
+                    "title": "Размер шрифта"
                 },
-                "theme": {
-                    "light": "Светлая",
-                    "dark": "Тёмная",
-                    "system": "Системная"
-                },
-                "transparent": "Эффект прозрачности",
+                "label": "Общие",
                 "proxy": {
-                    "title": "Прокси",
                     "host": "Хостинг",
-                    "port": "Порт",
-                    "username": "Имя пользователя",
+                    "no_proxy": "Без прокси",
                     "password": "Пароль",
-                    "no_proxy": "Без прокси"
+                    "port": "Порт",
+                    "title": "Прокси",
+                    "username": "Имя пользователя"
                 },
                 "proxy_change": "Прокси-сервер изменён. Перезапустите приложение, чтобы изменения вступили в силу",
                 "proxy_error": "Пожалуйста, укажите хост и порт",
-                "tray_click_event": "Действие по значку в трее",
-                "event": {
-                    "config": "Настройки",
-                    "translate": "Перевести",
-                    "disable": "Нет",
-                    "ocr_recognize": "Распознавание текста",
-                    "ocr_translate": "Перевод скриншота"
+                "server_port": "Порт прослушивания",
+                "server_port_change": "Порт прослушивания был изменён. Перезапустите приложение, чтобы изменения вступили в силу",
+                "theme": {
+                    "dark": "Тёмная",
+                    "light": "Светлая",
+                    "system": "Системная"
                 },
-                "default_font": "По умолчанию",
-                "app_font": "Шрифт",
-                "app_fallback_font": "Резервный шрифт",
-                "dev_mode": "Режим разработчика"
-            },
-            "translate": {
-                "label": "Перевести",
-                "title": "Настройки перевода",
-                "source_language": "Исходный язык",
-                "target_language": "Целевой язык",
-                "second_language": "Второй целевой язык",
-                "auto_copy": "Автокопирование",
-                "source": "Исходный",
-                "target": "Перевод",
-                "source_target": "Исходный+Перевод",
-                "disable": "Отключить",
-                "history_disable": "Отключить историю",
-                "incremental_translate": "Инкрементный перевод",
-                "dynamic_translate": "Динамический перевод",
-                "delete_newline": "Удаление новой строки",
-                "remember_language": "Запомнить целевой язык",
-                "window_position": "Положение окна",
-                "mouse": "Следовать за курсором",
-                "pre_state": "Запомнить позицию",
-                "remember_window_size": "Запомнить размер окна",
-                "hide_source": "Скрыть область исходника",
-                "hide_language": "Скрыть область языков",
-                "hide_window": "Скрыть окно перевода",
-                "detect_engine": "Система определения языка",
-                "baidu": "Baidu",
-                "tencent": "Tencent",
-                "google": "Google",
-                "local": "Локально",
-                "bing": "Bing",
-                "yandex": "Яндекс",
-                "niutrans": "NiuTrans",
-                "always_on_top": "Поверх других окон",
-                "close_on_blur": "Закрыть окно при потере фокуса",
-                "font_size": {
-                    "14": "Мелкий (14 пикс.)",
-                    "title": "Размер шрифта",
-                    "24": "Самый крупный (24 пикс.)",
-                    "20": "Очень крупный (20 пикс.)",
-                    "12": "Очень мелкий (12 пикс.)",
-                    "16": "Стандартный (16 пикс.)",
-                    "10": "Самый мелкий (10 пикс.)",
-                    "18": "Крупный (18 пикс.)"
-                }
-            },
-            "recognize": {
-                "label": "Распознавание",
-                "title": "Настройки распознавания",
-                "language": "Язык распознавания",
-                "delete_newline": "Автоудаление новой строки",
-                "auto_copy": "Автокопирование",
-                "hide_window": "Скрыть окно распознавания",
-                "close_on_blur": "Закрыть окно при потере фокуса"
-            },
-            "hotkey": {
-                "label": "Горячие клавиши",
-                "title": "Настройки горячих клавиш",
-                "selection_translate": "Перевод выделенного",
-                "input_translate": "Перевод текста",
-                "ocr_recognize": "Распознавание текста",
-                "ocr_translate": "Перевод скриншота",
-                "is_register": "Горячая клавиша уже назначена",
-                "success": "Горячая клавиша успешно назначена",
-                "set_hotkey": "Нажмите комбинацию клавиш"
-            },
-            "service": {
-                "label": "Сервисы",
-                "title": "Настройки сервисов",
-                "translate": "Перевести",
-                "tts": "TTS",
-                "recognize": "Распознавание",
-                "collection": "Коллекция",
-                "least": "Пожалуйста, сохраните хотя бы один",
-                "add_builtin_service": "Добавить встроенный сервис",
-                "add_external_service": "Добавить плагин",
-                "add_service": "Добавить сервис",
-                "test_failed": "Ошибка теста",
-                "install_plugin": "Установить плагин",
-                "uninstall_success": "Плагин успешно удалён",
-                "homepage": "Домашняя страница",
-                "view_plugin_list": "Список плагинов"
+                "title": "Общие настройки",
+                "transparent": "Эффект прозрачности",
+                "tray_click_event": "Действие по значку в трее"
             },
             "history": {
                 "label": "История",
                 "title": "История"
             },
-            "backup": {
-                "label": "Бэкап",
-                "title": "Настройки бэкапа",
-                "type": "Тип сервиса",
-                "webdav": "WebDav",
-                "local": "Локально",
-                "webdav_url": "WebDav ссылка",
-                "username": "Имя пользователя",
-                "password": "Пароль",
-                "backup": "Бэкап",
-                "restore": "Восстановить",
-                "list": "Список бэкапов",
-                "load_success": "Успешная загрузка бэкапа",
-                "backup_success": "Бэкап выполнен",
-                "empty": "Вы ещё не создали бэкап",
-                "aliyun": "Aliyun Drive",
-                "logout": "Выйти",
-                "login_success": "Вход выполнен",
-                "aliyun_login_first": "Для входа отсканируйте код."
-            },
-            "about": {
-                "label": "О программе",
-                "title": "О программе",
-                "website": "Сайт",
-                "github": "GitHub",
-                "feedback": "Обратная связь",
-                "issue": "Проблема",
-                "email": "Эл. почта",
-                "community": "Сообщество",
-                "check_update": "Обновление",
-                "view_log": "Журнал",
-                "view_config": "Конфигурация",
-                "qq_channel": "QQ канал",
-                "qq_group": "QQ группа",
-                "telegram": "Telegram",
-                "discussion": "Обсуждение на GitHub"
-            }
-        },
-        "updater": {
-            "title": "Проверка обновления",
-            "latest": "## Установлена последняя версия",
-            "progress": "Прогресс загрузки",
-            "update": "Обновить",
-            "downloading": "Загрузка…",
-            "installing": "Установка…",
-            "cancel": "Отмена",
-            "installed": "Установка завершена, перезапустите приложение, чтобы изменения вступили в силу"
-        },
-        "services": {
-            "help": "Руководство по настройке",
-            "no_need": "Настройка не требуется",
-            "instance_name": "Имя конфигурации",
-            "translate": {
-                "deepl": {
-                    "title": "DeepL",
-                    "custom_url": "DeepLX URL",
-                    "auth_key": "Auth Key",
-                    "type": "Тип сервиса",
-                    "free": "Бесплатный",
-                    "api": "Auth Key",
-                    "deeplx": "DeepLX"
-                },
-                "google": {
-                    "title": "Google",
-                    "custom_url": "Пользовательский адрес"
-                },
-                "lingva": {
-                    "title": "Lingva"
-                },
-                "bing": {
-                    "title": "Bing"
-                },
-                "openai": {
-                    "title": "OpenAI",
-                    "service": "Поставщик услуг",
-                    "openai": "OpenAI",
-                    "azure": "Azure",
-                    "request_path": "Путь запроса",
-                    "api_key": "Api Key",
-                    "model": "Модель",
-                    "stream": "Режим потока",
-                    "prompt_description": "Указав Промт, вы можете настроить поведение OpenAI. $text $from $to $detect будет заменён текстом для перевода, исходным языком, целевым языком и определённым языком.",
-                    "add": "Добавить Промт"
-                },
-                "yandex": {
-                    "title": "Яндекс"
-                },
-                "transmart": {
-                    "title": "TranSmart",
-                    "username": "Имя пользователя",
-                    "token": "Токен"
-                },
-                "baidu": {
-                    "title": "Baidu",
-                    "appid": "App ID",
-                    "secret": "Secret"
-                },
-                "baidu_field": {
-                    "title": "Baidu Field",
-                    "it": "Информационные технологии",
-                    "finance": "Финансы и экономика",
-                    "machinery": "Машиностроение",
-                    "senimed": "Биомедицина",
-                    "novel": "Сетевая литература",
-                    "academic": "Научная статья",
-                    "aerospace": "Аэрокосмос",
-                    "wiki": "Гуманитарные и социальные науки",
-                    "news": "Новости и информация",
-                    "law": "Законы и нормативные акты",
-                    "contract": "Контракт"
-                },
-                "alibaba": {
-                    "title": "Alibaba",
-                    "accesskey_id": "AccessKey ID",
-                    "accesskey_secret": "AccessKey Secret"
-                },
-                "tencent": {
-                    "title": "Tencent",
-                    "secret_id": "Secret ID",
-                    "secret_key": "Secret Key"
-                },
-                "volcengine": {
-                    "title": "VolcEngine",
-                    "appid": "App ID",
-                    "secret": "Secret"
-                },
-                "niutrans": {
-                    "title": "NiuTrans",
-                    "https": "Исп. Https",
-                    "apikey": "API Key"
-                },
-                "youdao": {
-                    "title": "Youdao",
-                    "appkey": "App ID",
-                    "key": "Key"
-                },
-                "bing_dict": {
-                    "title": "Bing Dictionary"
-                },
-                "cambridge_dict": {
-                    "title": "Кембриджский словарь"
-                },
-                "caiyun": {
-                    "title": "Caiyun",
-                    "token": "Токен"
-                },
-                "chatglm": {
-                    "title": "ChatGLM",
-                    "api_key": "Api Key",
-                    "chatglm_lite": "ChatGLM Lite",
-                    "chatglm_pro": "ChatGLM Pro",
-                    "model": "Модель",
-                    "chatglm_std": "ChatGLM Std",
-                    "add": "Добавить Промт",
-                    "prompt_description": "Указав Промт, вы можете настроить поведение ИИ. $text $from $to $detect будет заменён текстом для перевода, исходным языком, целевым языком и определённым языком.",
-                    "chatglm_turbo": "ChatGLM Turbo"
-                },
-                "geminipro": {
-                    "add": "Добавить Промт",
-                    "api_key": "Api Key",
-                    "stream": "Потоковый режим",
-                    "prompt_description": "Указав Промт, вы можете настроить поведение Gemini Pro. $text $from $to $detect будет заменён текстом для перевода, исходным языком, целевым языком и определённым языком.",
-                    "title": "Gemini Pro",
-                    "request_path": "Путь запроса"
-                },
-                "ollama": {
-                    "title": "Ollama",
-                    "add": "Добавить Промт",
-                    "supported_models": "Нажмите, чтобы просмотреть список моделей Ollama",
-                    "prompt_description": "Указав Промт, вы можете настроить поведение ИИ. $text $from $to $detect будет заменён текстом для перевода, исходным языком, целевым языком и определённым языком.",
-                    "install_ollama": "Не удаётся подключиться к локальному Ollama. Пожалуйста, загрузите и установите Ollama. Если вы используете Ollama, которая не установлена на этом компьютере, пожалуйста, измените адрес запроса.",
-                    "request_path": "Путь запроса",
-                    "model": "Модель",
-                    "install_model": "Установить",
-                    "ready": "Готово",
-                    "not_installed": "Эта модель ещё не установлена, нажмите, чтобы загрузить и установить",
-                    "stream": "Потоковый режим",
-                    "install_ollama_link": "Загрузить Ollama"
-                },
-                "ecdict": {
-                    "title": "ECDict (Online)"
-                }
+            "hotkey": {
+                "input_translate": "Перевод текста",
+                "is_register": "Горячая клавиша уже назначена",
+                "label": "Горячие клавиши",
+                "ocr_recognize": "Распознавание текста",
+                "ocr_translate": "Перевод скриншота",
+                "selection_translate": "Перевод выделенного",
+                "set_hotkey": "Нажмите комбинацию клавиш",
+                "success": "Горячая клавиша успешно назначена",
+                "title": "Настройки горячих клавиш"
             },
             "recognize": {
-                "system": {
-                    "title": "Системный OCR"
+                "auto_copy": "Автокопирование",
+                "close_on_blur": "Закрыть окно при потере фокуса",
+                "delete_newline": "Автоудаление новой строки",
+                "hide_window": "Скрыть окно распознавания",
+                "label": "Распознавание",
+                "language": "Язык распознавания",
+                "title": "Настройки распознавания"
+            },
+            "service": {
+                "add_builtin_service": "Добавить встроенный сервис",
+                "add_external_service": "Добавить плагин",
+                "add_service": "Добавить сервис",
+                "collection": "Коллекция",
+                "homepage": "Домашняя страница",
+                "install_plugin": "Установить плагин",
+                "label": "Сервисы",
+                "least": "Пожалуйста, сохраните хотя бы один",
+                "recognize": "Распознавание",
+                "test_failed": "Ошибка теста",
+                "title": "Настройки сервисов",
+                "translate": "Перевести",
+                "tts": "TTS",
+                "uninstall_success": "Плагин успешно удалён",
+                "view_plugin_list": "Список плагинов"
+            },
+            "translate": {
+                "always_on_top": "Поверх других окон",
+                "auto_copy": "Автокопирование",
+                "baidu": "Baidu",
+                "bing": "Bing",
+                "close_on_blur": "Закрыть окно при потере фокуса",
+                "delete_newline": "Удаление новой строки",
+                "detect_engine": "Система определения языка",
+                "disable": "Отключить",
+                "dynamic_translate": "Динамический перевод",
+                "font_size": {
+                    "10": "Самый мелкий (10 пикс.)",
+                    "12": "Очень мелкий (12 пикс.)",
+                    "14": "Мелкий (14 пикс.)",
+                    "16": "Стандартный (16 пикс.)",
+                    "18": "Крупный (18 пикс.)",
+                    "20": "Очень крупный (20 пикс.)",
+                    "24": "Самый крупный (24 пикс.)",
+                    "title": "Размер шрифта"
                 },
-                "tesseract": {
-                    "title": "Tesseract.js"
+                "google": "Google",
+                "hide_language": "Скрыть область языков",
+                "hide_source": "Скрыть область исходника",
+                "hide_window": "Скрыть окно перевода",
+                "history_disable": "Отключить историю",
+                "incremental_translate": "Инкрементный перевод",
+                "label": "Перевести",
+                "local": "Локально",
+                "mouse": "Следовать за курсором",
+                "niutrans": "NiuTrans",
+                "pre_state": "Запомнить позицию",
+                "remember_language": "Запомнить целевой язык",
+                "remember_window_size": "Запомнить размер окна",
+                "second_language": "Второй целевой язык",
+                "source": "Исходный",
+                "source_language": "Исходный язык",
+                "source_target": "Исходный+Перевод",
+                "target": "Перевод",
+                "target_language": "Целевой язык",
+                "tencent": "Tencent",
+                "title": "Настройки перевода",
+                "window_position": "Положение окна",
+                "yandex": "Яндекс"
+            }
+        },
+        "languages": {
+            "ar": "Арабский",
+            "auto": "Автоопределение",
+            "de": "Немецкий",
+            "en": "Английский",
+            "es": "Испанский",
+            "fa": "Персидский",
+            "fr": "Французский",
+            "he": "Иврит",
+            "hi": "Хинди",
+            "id": "Индонезийский",
+            "it": "Итальянский",
+            "ja": "Японский",
+            "km": "Кхмерский",
+            "ko": "Корейский",
+            "mn_cy": "Монгольский (кириллица)",
+            "mn_mo": "Монгольский",
+            "ms": "Малайский",
+            "nb_no": "Букмол (Норвежский)",
+            "nl": "Нидерландский",
+            "nn_no": "Новонорвежский",
+            "pl": "Польский",
+            "pt_br": "Португальский (Бразилия)",
+            "pt_pt": "Португальский",
+            "ru": "Русский",
+            "sv": "Шведский",
+            "th": "Тайский",
+            "tr": "Турецкий",
+            "uk": "Украинский",
+            "vi": "Вьетнамский",
+            "zh_cn": "Упрощённый китайский",
+            "zh_tw": "Традиционный китайский"
+        },
+        "recognize": {
+            "copy_img": "Копировать изображение",
+            "copy_text": "Копировать",
+            "delete_newline": "Удалить новую строку",
+            "delete_space": "Удалить пробелы",
+            "recognize": "Распознать",
+            "translate": "Перевести"
+        },
+        "services": {
+            "collection": {
+                "anki": {
+                    "port": "Порт",
+                    "title": "Anki"
                 },
-                "baidu_ocr": {
-                    "title": "Baidu OCR",
-                    "client_id": "API Key",
-                    "client_secret": "Secret Key"
-                },
+                "eudic": {
+                    "name": "Название коллекции",
+                    "title": "Eudic",
+                    "token": "Токен"
+                }
+            },
+            "help": "Руководство по настройке",
+            "instance_name": "Имя конфигурации",
+            "no_need": "Настройка не требуется",
+            "recognize": {
                 "baidu_accurate_ocr": {
-                    "title": "Baidu OCR (Точный)",
                     "client_id": "API Key",
-                    "client_secret": "Secret Key"
+                    "client_secret": "Secret Key",
+                    "title": "Baidu OCR (Точный)"
                 },
                 "baidu_img_ocr": {
-                    "title": "Перевод изображений Baidu",
                     "appid": "App ID",
-                    "secret": "Secret"
+                    "secret": "Secret",
+                    "title": "Перевод изображений Baidu"
                 },
-                "iflytek_ocr": {
-                    "title": "iFlyTek OCR",
-                    "appid": "App ID",
-                    "apisecret": "API Secret",
-                    "apikey": "API Key"
+                "baidu_ocr": {
+                    "client_id": "API Key",
+                    "client_secret": "Secret Key",
+                    "title": "Baidu OCR"
                 },
                 "iflytek_intsig_ocr": {
-                    "title": "iFlyTek OCR (Intsig)",
-                    "appid": "App ID",
+                    "apikey": "API Key",
                     "apisecret": "API Secret",
-                    "apikey": "API Key"
+                    "appid": "App ID",
+                    "title": "iFlyTek OCR (Intsig)"
                 },
                 "iflytek_latex_ocr": {
-                    "title": "iFlyTek LaTeX",
-                    "appid": "App ID",
+                    "apikey": "API Key",
                     "apisecret": "API Secret",
-                    "apikey": "API Key"
+                    "appid": "App ID",
+                    "title": "iFlyTek LaTeX"
+                },
+                "iflytek_ocr": {
+                    "apikey": "API Key",
+                    "apisecret": "API Secret",
+                    "appid": "App ID",
+                    "title": "iFlyTek OCR"
+                },
+                "qrcode": {
+                    "title": "QR-код"
                 },
                 "simple_latex_ocr": {
                     "title": "Simple LaTeX",
                     "token": "Токен"
                 },
-                "tencent_ocr": {
-                    "title": "Tencent OCR",
-                    "secret_id": "Secret ID",
-                    "secret_key": "Secret Key"
+                "system": {
+                    "title": "Системный OCR"
                 },
                 "tencent_accurate_ocr": {
-                    "title": "Tencent OCR (Точный)",
                     "secret_id": "Secret ID",
-                    "secret_key": "Secret Key"
+                    "secret_key": "Secret Key",
+                    "title": "Tencent OCR (Точный)"
                 },
                 "tencent_img_ocr": {
-                    "title": "Перевод изображений Tencent",
                     "secret_id": "Secret ID",
-                    "secret_key": "Secret Key"
+                    "secret_key": "Secret Key",
+                    "title": "Перевод изображений Tencent"
                 },
-                "volcengine_ocr": {
-                    "title": "VolcEngine OCR",
-                    "appid": "App ID",
-                    "secret": "Secret"
+                "tencent_ocr": {
+                    "secret_id": "Secret ID",
+                    "secret_key": "Secret Key",
+                    "title": "Tencent OCR"
+                },
+                "tesseract": {
+                    "title": "Tesseract.js"
                 },
                 "volcengine_multi_lang_ocr": {
-                    "title": "VolcEngine OCR (Многоязычный)",
                     "appid": "App ID",
-                    "secret": "Secret"
+                    "secret": "Secret",
+                    "title": "VolcEngine OCR (Многоязычный)"
                 },
-                "qrcode": {
-                    "title": "QR-код"
+                "volcengine_ocr": {
+                    "appid": "App ID",
+                    "secret": "Secret",
+                    "title": "VolcEngine OCR"
+                }
+            },
+            "translate": {
+                "alibaba": {
+                    "accesskey_id": "AccessKey ID",
+                    "accesskey_secret": "AccessKey Secret",
+                    "title": "Alibaba"
+                },
+                "baidu": {
+                    "appid": "App ID",
+                    "secret": "Secret",
+                    "title": "Baidu"
+                },
+                "baidu_field": {
+                    "academic": "Научная статья",
+                    "aerospace": "Аэрокосмос",
+                    "contract": "Контракт",
+                    "finance": "Финансы и экономика",
+                    "it": "Информационные технологии",
+                    "law": "Законы и нормативные акты",
+                    "machinery": "Машиностроение",
+                    "news": "Новости и информация",
+                    "novel": "Сетевая литература",
+                    "senimed": "Биомедицина",
+                    "title": "Baidu Field",
+                    "wiki": "Гуманитарные и социальные науки"
+                },
+                "bing": {
+                    "title": "Bing"
+                },
+                "bing_dict": {
+                    "title": "Bing Dictionary"
+                },
+                "caiyun": {
+                    "title": "Caiyun",
+                    "token": "Токен"
+                },
+                "cambridge_dict": {
+                    "title": "Кембриджский словарь"
+                },
+                "chatglm": {
+                    "add": "Добавить Промт",
+                    "api_key": "Api Key",
+                    "chatglm_lite": "ChatGLM Lite",
+                    "chatglm_pro": "ChatGLM Pro",
+                    "chatglm_std": "ChatGLM Std",
+                    "chatglm_turbo": "ChatGLM Turbo",
+                    "model": "Модель",
+                    "prompt_description": "Указав Промт, вы можете настроить поведение ИИ. $text $from $to $detect будет заменён текстом для перевода, исходным языком, целевым языком и определённым языком.",
+                    "title": "ChatGLM"
+                },
+                "deepl": {
+                    "api": "Auth Key",
+                    "auth_key": "Auth Key",
+                    "custom_url": "DeepLX URL",
+                    "deeplx": "DeepLX",
+                    "free": "Бесплатный",
+                    "title": "DeepL",
+                    "type": "Тип сервиса"
+                },
+                "ecdict": {
+                    "title": "ECDict (Online)"
+                },
+                "geminipro": {
+                    "add": "Добавить Промт",
+                    "api_key": "Api Key",
+                    "prompt_description": "Указав Промт, вы можете настроить поведение Gemini Pro. $text $from $to $detect будет заменён текстом для перевода, исходным языком, целевым языком и определённым языком.",
+                    "request_path": "Путь запроса",
+                    "stream": "Потоковый режим",
+                    "title": "Gemini Pro"
+                },
+                "google": {
+                    "custom_url": "Пользовательский адрес",
+                    "title": "Google"
+                },
+                "lingva": {
+                    "title": "Lingva"
+                },
+                "niutrans": {
+                    "apikey": "API Key",
+                    "https": "Исп. Https",
+                    "title": "NiuTrans"
+                },
+                "ollama": {
+                    "add": "Добавить Промт",
+                    "install_model": "Установить",
+                    "install_ollama": "Не удаётся подключиться к локальному Ollama. Пожалуйста, загрузите и установите Ollama. Если вы используете Ollama, которая не установлена на этом компьютере, пожалуйста, измените адрес запроса.",
+                    "install_ollama_link": "Загрузить Ollama",
+                    "model": "Модель",
+                    "not_installed": "Эта модель ещё не установлена, нажмите, чтобы загрузить и установить",
+                    "prompt_description": "Указав Промт, вы можете настроить поведение ИИ. $text $from $to $detect будет заменён текстом для перевода, исходным языком, целевым языком и определённым языком.",
+                    "ready": "Готово",
+                    "request_path": "Путь запроса",
+                    "stream": "Потоковый режим",
+                    "supported_models": "Нажмите, чтобы просмотреть список моделей Ollama",
+                    "title": "Ollama"
+                },
+                "openai": {
+                    "add": "Добавить Промт",
+                    "api_key": "Api Key",
+                    "azure": "Azure",
+                    "model": "Модель",
+                    "openai": "OpenAI",
+                    "prompt_description": "Указав Промт, вы можете настроить поведение OpenAI. $text $from $to $detect будет заменён текстом для перевода, исходным языком, целевым языком и определённым языком.",
+                    "request_path": "Путь запроса",
+                    "service": "Поставщик услуг",
+                    "stream": "Режим потока",
+                    "title": "OpenAI"
+                },
+                "tencent": {
+                    "secret_id": "Secret ID",
+                    "secret_key": "Secret Key",
+                    "title": "Tencent"
+                },
+                "transmart": {
+                    "title": "TranSmart",
+                    "token": "Токен",
+                    "username": "Имя пользователя"
+                },
+                "volcengine": {
+                    "appid": "App ID",
+                    "secret": "Secret",
+                    "title": "VolcEngine"
+                },
+                "yandex": {
+                    "title": "Яндекс"
+                },
+                "youdao": {
+                    "appkey": "App ID",
+                    "key": "Key",
+                    "title": "Youdao"
                 }
             },
             "tts": {
                 "lingva_tts": {
-                    "title": "Lingva",
-                    "request_path": "Путь запроса"
-                }
-            },
-            "collection": {
-                "anki": {
-                    "title": "Anki",
-                    "port": "Порт"
-                },
-                "eudic": {
-                    "title": "Eudic",
-                    "name": "Название коллекции",
-                    "token": "Токен"
+                    "request_path": "Путь запроса",
+                    "title": "Lingva"
                 }
             }
         },
         "translate": {
-            "translate": "Перевести",
             "add_collection_success": "Успешно добавлено в коллекцию",
-            "recognizing": "Распознавание…",
-            "speak": "Озвучить",
             "copy": "Копировать",
-            "retry": "Пробовать снова",
             "delete_newline": "Удалить новую строку",
+            "recognizing": "Распознавание…",
+            "retry": "Пробовать снова",
+            "speak": "Озвучить",
+            "translate": "Перевести",
             "translate_back": "Перевод обратно к оригиналу"
         },
-        "recognize": {
-            "recognize": "Распознать",
-            "translate": "Перевести",
-            "copy_img": "Копировать изображение",
-            "copy_text": "Копировать",
-            "delete_newline": "Удалить новую строку",
-            "delete_space": "Удалить пробелы"
+        "updater": {
+            "cancel": "Отмена",
+            "downloading": "Загрузка…",
+            "installed": "Установка завершена, перезапустите приложение, чтобы изменения вступили в силу",
+            "installing": "Установка…",
+            "latest": "## Установлена последняя версия",
+            "progress": "Прогресс загрузки",
+            "title": "Проверка обновления",
+            "update": "Обновить"
         }
     }
 }

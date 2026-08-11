@@ -1,123 +1,472 @@
 {
     "translation": {
-        "languages": {
-            "mn_cy": "مغولی (سیریلیک)",
-            "ar": "عربی",
-            "it": "ایتالیایی",
-            "vi": "ویتنامی",
-            "zh_cn": "چینی ساده شده",
-            "id": "اندونزیایی",
-            "zh_tw": "چینی سنتی",
-            "km": "خمر",
-            "ru": "روسی",
-            "mn_mo": "مغولی",
-            "en": "انگلیسی",
-            "th": "تایلندی",
-            "ja": "ژاپنی",
-            "ms": "مالایی",
-            "fr": "فرانسه",
-            "de": "آلمانی",
-            "nb_no": "نروژی بوکمال",
-            "fa": "فارسی",
-            "es": "اسپانیایی",
-            "pt_pt": "پرتغالی",
-            "nn_no": "نینورسک نروژی",
-            "ko": "کره ایی",
-            "tr": "ترکی",
-            "auto": "حذف خودکار",
-            "pt_br": "پرتغالی (برزیل)",
-            "hi": "هندی",
-            "nl": "آلمانی",
-            "pl": "هلندی"
-        },
         "common": {
-            "plugin": "افزونه",
             "cancel": "رد",
-            "write_clipboard": "نوشتن در کلیپ بورد",
-            "ok": "تایید",
-            "save": "ذخیره",
             "clear": "پاک کردن",
-            "coming": "به زودی …"
+            "coming": "به زودی …",
+            "ok": "تایید",
+            "plugin": "افزونه",
+            "save": "ذخیره",
+            "write_clipboard": "نوشتن در کلیپ بورد"
         },
         "config": {
+            "about": {
+                "check_update": "",
+                "community": "",
+                "discussion": "",
+                "email": "",
+                "feedback": "",
+                "github": "",
+                "issue": "",
+                "label": "",
+                "qq_channel": "",
+                "qq_group": "",
+                "telegram": "",
+                "title": "",
+                "view_config": "",
+                "view_log": "",
+                "website": ""
+            },
+            "backup": {
+                "aliyun": "",
+                "aliyun_login_first": "",
+                "backup": "",
+                "backup_success": "",
+                "empty": "",
+                "label": "",
+                "list": "",
+                "load_success": "",
+                "local": "",
+                "login_success": "",
+                "logout": "",
+                "password": "",
+                "restore": "",
+                "title": "",
+                "type": "",
+                "username": "",
+                "webdav": "",
+                "webdav_url": ""
+            },
             "general": {
-                "tray_click_event": "رویداد کلیک tray",
-                "auto_start": "راه اندازی خودکار",
-                "proxy": {
-                    "title": "پروکسی",
-                    "port": "پورت",
-                    "host": "هاست",
-                    "password": "گذرواژه",
-                    "username": "نام کابری",
-                    "no_proxy": "بدون پروکسی"
-                },
-                "proxy_change": "پروکسی تغییر کرده است، برنامه را مجددا راه اندازی کنید تا تغییرات اعمال شوند",
-                "app_theme": "تم",
-                "event": {
-                    "disable": "غیرفعال",
-                    "translate": "ترجمه",
-                    "ocr_translate": "ترجمه اسکرین شات",
-                    "config": "پیکربندی",
-                    "ocr_recognize": "تشخیص متن"
-                },
-                "label": "عمومی",
-                "theme": {
-                    "light": "روشن",
-                    "system": "سیستم",
-                    "dark": "تاریک"
-                },
-                "server_port_change": "پورت شنونده تغییر کرده است، لطفاً برنامه را مجدداً راه اندازی کنید تا تغییرات اعمال شوند",
-                "server_port": "پورت شنونده",
-                "proxy_error": "لطفا هاست و پورت را پر کنید",
-                "check_update": "بررسی بروزرسانی",
+                "app_fallback_font": "فونت جایگزین",
+                "app_font": "فونت",
                 "app_language": "زبان برنامه",
-                "transparent": "اثر شفافیت",
-                "title": "تنظیمات عمومی",
+                "app_theme": "تم",
+                "auto_start": "راه اندازی خودکار",
+                "check_update": "بررسی بروزرسانی",
                 "default_font": "پیشفرض",
+                "dev_mode": "",
+                "event": {
+                    "config": "پیکربندی",
+                    "disable": "غیرفعال",
+                    "ocr_recognize": "تشخیص متن",
+                    "ocr_translate": "ترجمه اسکرین شات",
+                    "translate": "ترجمه"
+                },
                 "font_size": {
-                    "20": "خیلی بزرگ (20px)",
-                    "18": "بزرگ (18px)",
+                    "10": "خیلی خیلی کوچک (10px)",
+                    "12": "خیلی کوچک (12px)",
                     "14": "کوچک (14px)",
                     "16": "استاندارد (16px)",
-                    "12": "خیلی کوچک (12px)",
+                    "18": "بزرگ (18px)",
+                    "20": "خیلی بزرگ (20px)",
                     "24": "خیلی خیلی بزرگ (24px)",
-                    "10": "خیلی خیلی کوچک (10px)",
                     "title": "اندازه فونت"
                 },
-                "app_font": "فونت",
-                "app_fallback_font": "فونت جایگزین"
+                "label": "عمومی",
+                "proxy": {
+                    "host": "هاست",
+                    "no_proxy": "بدون پروکسی",
+                    "password": "گذرواژه",
+                    "port": "پورت",
+                    "title": "پروکسی",
+                    "username": "نام کابری"
+                },
+                "proxy_change": "پروکسی تغییر کرده است، برنامه را مجددا راه اندازی کنید تا تغییرات اعمال شوند",
+                "proxy_error": "لطفا هاست و پورت را پر کنید",
+                "server_port": "پورت شنونده",
+                "server_port_change": "پورت شنونده تغییر کرده است، لطفاً برنامه را مجدداً راه اندازی کنید تا تغییرات اعمال شوند",
+                "theme": {
+                    "dark": "تاریک",
+                    "light": "روشن",
+                    "system": "سیستم"
+                },
+                "title": "تنظیمات عمومی",
+                "transparent": "اثر شفافیت",
+                "tray_click_event": "رویداد کلیک tray"
+            },
+            "history": {
+                "label": "",
+                "title": ""
+            },
+            "hotkey": {
+                "input_translate": "",
+                "is_register": "",
+                "label": "",
+                "ocr_recognize": "",
+                "ocr_translate": "",
+                "selection_translate": "",
+                "set_hotkey": "",
+                "success": "",
+                "title": ""
+            },
+            "recognize": {
+                "auto_copy": "",
+                "close_on_blur": "",
+                "delete_newline": "",
+                "hide_window": "",
+                "label": "",
+                "language": "",
+                "title": ""
+            },
+            "service": {
+                "add_builtin_service": "",
+                "add_external_service": "",
+                "add_service": "",
+                "collection": "",
+                "homepage": "",
+                "install_plugin": "",
+                "label": "",
+                "least": "",
+                "recognize": "",
+                "test_failed": "",
+                "title": "",
+                "translate": "",
+                "tts": "",
+                "uninstall_success": "",
+                "view_plugin_list": ""
             },
             "translate": {
-                "target": "مقصد",
-                "title": "تنظیمات ترجمه",
-                "disable": "غیر فعال کردن",
-                "remember_window_size": "اندازه پنجره را به خاطر بسپارید",
+                "always_on_top": "",
+                "auto_copy": "کپی خودکار",
+                "baidu": "",
+                "bing": "",
+                "close_on_blur": "روی Blur ببندید",
                 "delete_newline": "خط جدید را حذف کنید",
+                "detect_engine": "",
+                "disable": "غیر فعال کردن",
+                "dynamic_translate": "ترجمه پویا",
+                "font_size": {
+                    "10": "",
+                    "12": "",
+                    "14": "",
+                    "16": "",
+                    "18": "",
+                    "20": "",
+                    "24": "",
+                    "title": ""
+                },
+                "google": "",
+                "hide_language": "",
+                "hide_source": "",
+                "hide_window": "",
+                "history_disable": "",
+                "incremental_translate": "ترجمه افزایشی",
+                "label": "ترجمه",
+                "local": "",
+                "mouse": "دنبال کردن موس",
+                "niutrans": "",
+                "pre_state": "موقعیت را به خاطر بسپار",
                 "remember_language": "زبان مقصد را به خاطر بسپارید",
-                "window_position": "موقعیت پنجره",
+                "remember_window_size": "اندازه پنجره را به خاطر بسپارید",
                 "second_language": "زبان مقصد دوم",
                 "source": "منبع",
-                "label": "ترجمه",
-                "auto_copy": "کپی خودکار",
-                "dynamic_translate": "ترجمه پویا",
-                "mouse": "دنبال کردن موس",
-                "source_target": "منبع + مقصد",
                 "source_language": "زبان مبدأ",
-                "pre_state": "موقعیت را به خاطر بسپار",
-                "close_on_blur": "روی Blur ببندید",
-                "incremental_translate": "ترجمه افزایشی",
-                "target_language": "زبان مقصد"
+                "source_target": "منبع + مقصد",
+                "target": "مقصد",
+                "target_language": "زبان مقصد",
+                "tencent": "",
+                "title": "تنظیمات ترجمه",
+                "window_position": "موقعیت پنجره",
+                "yandex": ""
+            }
+        },
+        "languages": {
+            "ar": "عربی",
+            "auto": "حذف خودکار",
+            "de": "آلمانی",
+            "en": "انگلیسی",
+            "es": "اسپانیایی",
+            "fa": "فارسی",
+            "fr": "فرانسه",
+            "he": "",
+            "hi": "هندی",
+            "id": "اندونزیایی",
+            "it": "ایتالیایی",
+            "ja": "ژاپنی",
+            "km": "خمر",
+            "ko": "کره ایی",
+            "mn_cy": "مغولی (سیریلیک)",
+            "mn_mo": "مغولی",
+            "ms": "مالایی",
+            "nb_no": "نروژی بوکمال",
+            "nl": "آلمانی",
+            "nn_no": "نینورسک نروژی",
+            "pl": "هلندی",
+            "pt_br": "پرتغالی (برزیل)",
+            "pt_pt": "پرتغالی",
+            "ru": "روسی",
+            "sv": "",
+            "th": "تایلندی",
+            "tr": "ترکی",
+            "uk": "",
+            "vi": "ویتنامی",
+            "zh_cn": "چینی ساده شده",
+            "zh_tw": "چینی سنتی"
+        },
+        "recognize": {
+            "copy_img": "کپی عکس",
+            "copy_text": "کپی",
+            "delete_newline": "پاک کردن خط جدید",
+            "delete_space": "پاک کردن فاصله",
+            "recognize": "",
+            "translate": ""
+        },
+        "services": {
+            "collection": {
+                "anki": {
+                    "port": "",
+                    "title": ""
+                },
+                "eudic": {
+                    "name": "",
+                    "title": "",
+                    "token": ""
+                }
+            },
+            "help": "",
+            "instance_name": "",
+            "no_need": "",
+            "recognize": {
+                "baidu_accurate_ocr": {
+                    "client_id": "",
+                    "client_secret": "",
+                    "title": ""
+                },
+                "baidu_img_ocr": {
+                    "appid": "",
+                    "secret": "",
+                    "title": ""
+                },
+                "baidu_ocr": {
+                    "client_id": "",
+                    "client_secret": "",
+                    "title": ""
+                },
+                "iflytek_intsig_ocr": {
+                    "apikey": "",
+                    "apisecret": "",
+                    "appid": "",
+                    "title": ""
+                },
+                "iflytek_latex_ocr": {
+                    "apikey": "",
+                    "apisecret": "",
+                    "appid": "",
+                    "title": ""
+                },
+                "iflytek_ocr": {
+                    "apikey": "",
+                    "apisecret": "",
+                    "appid": "",
+                    "title": ""
+                },
+                "qrcode": {
+                    "title": ""
+                },
+                "simple_latex_ocr": {
+                    "title": "",
+                    "token": ""
+                },
+                "system": {
+                    "title": ""
+                },
+                "tencent_accurate_ocr": {
+                    "secret_id": "",
+                    "secret_key": "",
+                    "title": ""
+                },
+                "tencent_img_ocr": {
+                    "secret_id": "",
+                    "secret_key": "",
+                    "title": ""
+                },
+                "tencent_ocr": {
+                    "secret_id": "",
+                    "secret_key": "",
+                    "title": ""
+                },
+                "tesseract": {
+                    "title": ""
+                },
+                "volcengine_multi_lang_ocr": {
+                    "appid": "",
+                    "secret": "",
+                    "title": ""
+                },
+                "volcengine_ocr": {
+                    "appid": "",
+                    "secret": "",
+                    "title": ""
+                }
+            },
+            "translate": {
+                "alibaba": {
+                    "accesskey_id": "",
+                    "accesskey_secret": "",
+                    "title": ""
+                },
+                "baidu": {
+                    "appid": "",
+                    "secret": "",
+                    "title": ""
+                },
+                "baidu_field": {
+                    "academic": "",
+                    "aerospace": "",
+                    "contract": "",
+                    "finance": "",
+                    "it": "",
+                    "law": "",
+                    "machinery": "",
+                    "news": "",
+                    "novel": "",
+                    "senimed": "",
+                    "title": "",
+                    "wiki": ""
+                },
+                "bing": {
+                    "title": ""
+                },
+                "bing_dict": {
+                    "title": ""
+                },
+                "caiyun": {
+                    "title": "",
+                    "token": ""
+                },
+                "cambridge_dict": {
+                    "title": ""
+                },
+                "chatglm": {
+                    "add": "",
+                    "api_key": "",
+                    "chatglm_lite": "",
+                    "chatglm_pro": "",
+                    "chatglm_std": "",
+                    "chatglm_turbo": "",
+                    "model": "",
+                    "prompt_description": "",
+                    "title": ""
+                },
+                "deepl": {
+                    "api": "",
+                    "auth_key": "",
+                    "custom_url": "",
+                    "deeplx": "",
+                    "free": "",
+                    "title": "",
+                    "type": ""
+                },
+                "ecdict": {
+                    "title": ""
+                },
+                "geminipro": {
+                    "add": "",
+                    "api_key": "",
+                    "prompt_description": "",
+                    "request_path": "",
+                    "stream": "",
+                    "title": ""
+                },
+                "google": {
+                    "custom_url": "",
+                    "title": ""
+                },
+                "lingva": {
+                    "title": ""
+                },
+                "niutrans": {
+                    "apikey": "",
+                    "https": "",
+                    "title": ""
+                },
+                "ollama": {
+                    "add": "",
+                    "install_model": "",
+                    "install_ollama": "",
+                    "install_ollama_link": "",
+                    "model": "",
+                    "not_installed": "",
+                    "prompt_description": "",
+                    "ready": "",
+                    "request_path": "",
+                    "stream": "",
+                    "supported_models": "",
+                    "title": ""
+                },
+                "openai": {
+                    "add": "",
+                    "api_key": "",
+                    "azure": "",
+                    "model": "",
+                    "openai": "",
+                    "prompt_description": "",
+                    "request_path": "",
+                    "service": "",
+                    "stream": "",
+                    "title": ""
+                },
+                "tencent": {
+                    "secret_id": "",
+                    "secret_key": "",
+                    "title": ""
+                },
+                "transmart": {
+                    "title": "",
+                    "token": "",
+                    "username": ""
+                },
+                "volcengine": {
+                    "appid": "",
+                    "secret": "",
+                    "title": ""
+                },
+                "yandex": {
+                    "title": ""
+                },
+                "youdao": {
+                    "appkey": "",
+                    "key": "",
+                    "title": ""
+                }
+            },
+            "tts": {
+                "lingva_tts": {
+                    "request_path": "",
+                    "title": ""
+                }
             }
         },
         "translate": {
+            "add_collection_success": "",
+            "copy": "",
             "delete_newline": "پاک کردن خط جدید",
-            "retry": "تلاش مجدد"
+            "recognizing": "",
+            "retry": "تلاش مجدد",
+            "speak": "",
+            "translate": "",
+            "translate_back": ""
         },
-        "recognize": {
-            "delete_newline": "پاک کردن خط جدید",
-            "copy_text": "کپی",
-            "delete_space": "پاک کردن فاصله",
-            "copy_img": "کپی عکس"
+        "updater": {
+            "cancel": "",
+            "downloading": "",
+            "installed": "",
+            "installing": "",
+            "latest": "",
+            "progress": "",
+            "title": "",
+            "update": ""
         }
     }
 }
