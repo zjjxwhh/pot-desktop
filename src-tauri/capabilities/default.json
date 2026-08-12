@@ -96,6 +96,7 @@
                 { "url": "http://**:*" },
                 { "url": "https://**:*" }
             ]
-        }
+        },
+        "websocket:default"
     ]
 }

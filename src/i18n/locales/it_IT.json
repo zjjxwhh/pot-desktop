@@ -442,6 +442,13 @@
                 }
             },
             "tts": {
+                "edge_tts": {
+                    "add": "",
+                    "preview": "",
+                    "title": "",
+                    "voice_config": "",
+                    "voice_config_description": ""
+                },
                 "lingva_tts": {
                     "request_path": "Percorso richiesto",
                     "title": "Lingva"

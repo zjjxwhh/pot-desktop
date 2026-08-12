@@ -5,6 +5,7 @@ import React from 'react';
 
 import { initStore } from './utils/store';
 import { initEnv } from './utils/env';
+import { initEdgeTtsVersion } from './utils/edge_tts_version';
 import App from './App';
 
 window.addEventListener('error', (e) => {
@@ -34,6 +35,7 @@ initStore()
     .then(async () => {
         await initEnv();
         renderApp();
+        void initEdgeTtsVersion();
     })
     .catch((e) => {
         logError(`init failed: ${e?.stack || e}`);

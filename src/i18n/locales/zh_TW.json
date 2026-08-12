@@ -442,6 +442,13 @@
                 }
             },
             "tts": {
+                "edge_tts": {
+                    "add": "新增設定",
+                    "preview": "試聽",
+                    "title": "Edge TTS",
+                    "voice_config": "音色設定",
+                    "voice_config_description": "每種語言預設使用其預設音色，新增項目可為指定語言選擇其他音色。"
+                },
                 "lingva_tts": {
                     "request_path": "請求路徑",
                     "title": "Lingva"

@@ -442,6 +442,13 @@
                 }
             },
             "tts": {
+                "edge_tts": {
+                    "add": "Add Config",
+                    "preview": "Preview",
+                    "title": "Edge TTS",
+                    "voice_config": "Voice Configuration",
+                    "voice_config_description": "Every language uses its default voice. Add an entry to pick a different voice for the selected language."
+                },
                 "lingva_tts": {
                     "request_path": "Request Path",
                     "title": "Lingva"
