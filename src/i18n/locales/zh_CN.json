@@ -44,8 +44,8 @@
                 "title": "备份设置",
                 "type": "服务类型",
                 "username": "用户名",
-                "webdav": "WebDav",
-                "webdav_url": "WebDav地址"
+                "webdav": "WebDAV",
+                "webdav_url": "WebDAV 地址"
             },
             "general": {
                 "app_fallback_font": "后备字体",
@@ -76,7 +76,7 @@
                 "label": "常规设置",
                 "proxy": {
                     "host": "代理地址",
-                    "no_proxy": "不使用代理的地址或IP",
+                    "no_proxy": "不使用代理的地址或 IP",
                     "password": "密码",
                     "port": "代理端口",
                     "title": "网络代理",
@@ -97,6 +97,13 @@
             },
             "history": {
                 "label": "历史记录",
+                "no_history": "暂无历史记录",
+                "result": "译文",
+                "service": "服务",
+                "source": "源语言",
+                "target": "目标语言",
+                "text": "原文",
+                "timestamp": "时间",
                 "title": "历史记录"
             },
             "hotkey": {
@@ -126,6 +133,7 @@
                 "collection": "生词本",
                 "homepage": "插件主页",
                 "install_plugin": "安装外部插件",
+                "installed_plugins": "已安装 {{count}} 个插件",
                 "label": "服务设置",
                 "least": "请至少保留一个",
                 "recognize": "文字识别",
@@ -172,7 +180,7 @@
                 "second_language": "第二目标语言",
                 "source": "原文",
                 "source_language": "源语言",
-                "source_target": "原文+译文",
+                "source_target": "原文 + 译文",
                 "target": "译文",
                 "target_language": "目标语言",
                 "tencent": "腾讯",
@@ -196,7 +204,7 @@
             "ja": "日语",
             "km": "高棉语",
             "ko": "韩语",
-            "mn_cy": "蒙古语(西里尔)",
+            "mn_cy": "蒙古语 (西里尔)",
             "mn_mo": "蒙古语",
             "ms": "马来语",
             "nb_no": "书面挪威语",
@@ -219,6 +227,7 @@
             "copy_text": "复制",
             "delete_newline": "删除换行",
             "delete_space": "删除空格",
+            "language_not_supported": "文字识别服务不支持该语言",
             "recognize": "重新识别",
             "translate": "翻译"
         },
@@ -349,14 +358,16 @@
                     "title": "剑桥词典"
                 },
                 "chatglm": {
-                    "add": "添加 Prompt",
-                    "api_key": "Api Key",
+                    "add": "添加提示词",
+                    "api_key": "API Key",
                     "chatglm_lite": "ChatGLM Lite",
                     "chatglm_pro": "ChatGLM Pro",
                     "chatglm_std": "ChatGLM Std",
                     "chatglm_turbo": "ChatGLM Turbo",
+                    "input_some_prompt": "输入 {{role}} 的提示词",
                     "model": "模型",
-                    "prompt_description": "通过自定义Prompt自定义AI行为, $text $from $to $detect 将会被替换为 待翻译文本，源语言，目标语言和检测到的语言。",
+                    "prompt_description": "通过自定义提示词自定义 智谱 AI 的行为，{{$text}}、{{$from}}、{{$to}}、{{$detect}} 将会被替换为 {{待翻译文本}}、{{源语言}}、{{目标语言}}、{{检测到的语言}}。",
+                    "prompt_list": "提示词列表",
                     "title": "智谱 AI"
                 },
                 "deepl": {
@@ -369,12 +380,14 @@
                     "type": "服务类型"
                 },
                 "ecdict": {
-                    "title": "ECDict(在线)"
+                    "title": "ECDict (在线)"
                 },
                 "geminipro": {
-                    "add": "添加 Prompt",
-                    "api_key": "Api Key",
-                    "prompt_description": "通过自定义Prompt自定义Gemini Pro的行为, $text $from $to $detect 将会被替换为 待翻译文本，源语言，目标语言和检测到的语言。",
+                    "add": "添加提示词",
+                    "api_key": "API Key",
+                    "input_some_prompt": "输入 {{role}} 的提示词",
+                    "prompt_description": "通过自定义提示词自定义 Gemini Pro 的行为，{{$text}}、{{$from}}、{{$to}}、{{$detect}} 将会被替换为 {{待翻译文本}}、{{源语言}}、{{目标语言}}、{{检测到的语言}}。",
+                    "prompt_list": "提示词列表",
                     "request_path": "请求地址",
                     "stream": "流式输出",
                     "title": "Gemini Pro"
@@ -388,17 +401,19 @@
                 },
                 "niutrans": {
                     "apikey": "API Key",
-                    "https": "使用 Https",
+                    "https": "使用 HTTPS",
                     "title": "小牛翻译"
                 },
                 "ollama": {
-                    "add": "添加 Prompt",
+                    "add": "添加提示词",
+                    "input_some_prompt": "输入 {{role}} 的提示词",
                     "install_model": "安装",
-                    "install_ollama": "无法连接到本地ollama，请先下载安装并启动ollama，如果您使用不在本机上的ollama，请更改请求地址",
+                    "install_ollama": "无法连接到本地 Ollama，请先下载安装并启动 Ollama，如果您使用不在本机上的 Ollama，请更改请求地址",
                     "install_ollama_link": "Ollama 下载地址",
                     "model": "模型",
                     "not_installed": "该模型还未安装，点击立即下载安装",
-                    "prompt_description": "通过自定义Prompt自定义AI的行为, $text $from $to $detect 将会被替换为 待翻译文本，源语言，目标语言和检测到的语言。",
+                    "prompt_description": "通过自定义提示词自定义 Ollama 的行为，{{$text}}、{{$from}}、{{$to}}、{{$detect}} 将会被替换为 {{待翻译文本}}、{{源语言}}、{{目标语言}}、{{检测到的语言}}。",
+                    "prompt_list": "提示词列表",
                     "ready": "就绪",
                     "request_path": "请求地址",
                     "stream": "流式输出",
@@ -406,12 +421,16 @@
                     "title": "Ollama"
                 },
                 "openai": {
-                    "add": "添加 Prompt",
-                    "api_key": "Api Key",
+                    "add": "添加提示词",
+                    "api_key": "API Key",
                     "azure": "Azure",
+                    "input_request_arguments": "输入 API 请求参数",
+                    "input_some_prompt": "输入 {{role}} 的提示词",
                     "model": "模型",
                     "openai": "OpenAI",
-                    "prompt_description": "通过自定义Prompt自定义OpenAI行为, $text $from $to $detect 将会被替换为 待翻译文本，源语言，目标语言和检测到的语言。",
+                    "prompt_description": "通过自定义提示词自定义 OpenAI 的行为，{{$text}}、{{$from}}、{{$to}}、{{$detect}} 将会被替换为 {{待翻译文本}}、{{源语言}}、{{目标语言}}、{{检测到的语言}}。",
+                    "prompt_list": "提示词列表",
+                    "request_arguments": "请求参数",
                     "request_path": "请求地址",
                     "service": "服务提供商",
                     "stream": "流式输出",
@@ -459,6 +478,7 @@
             "add_collection_success": "添加成功",
             "copy": "复制",
             "delete_newline": "删除换行",
+            "language_not_supported": "翻译服务不支持该语言",
             "recognizing": "识别中…",
             "retry": "重试",
             "speak": "朗读",

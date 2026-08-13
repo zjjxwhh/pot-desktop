@@ -97,6 +97,13 @@
             },
             "history": {
                 "label": "السجل",
+                "no_history": "",
+                "result": "",
+                "service": "",
+                "source": "",
+                "target": "",
+                "text": "",
+                "timestamp": "",
                 "title": "السجل"
             },
             "hotkey": {
@@ -126,6 +133,7 @@
                 "collection": "المجموعة",
                 "homepage": "الصفحة الرئيسية",
                 "install_plugin": "ثبت الملحق",
+                "installed_plugins": "",
                 "label": "الخدمات",
                 "least": "فضلا احتفظ بواحد على الأقل",
                 "recognize": "التعرف",
@@ -219,6 +227,7 @@
             "copy_text": "انسخ",
             "delete_newline": "احذف السطر الجديد",
             "delete_space": "احذف المسافة",
+            "language_not_supported": "",
             "recognize": "جاري التعرف",
             "translate": "ترجمة"
         },
@@ -355,8 +364,10 @@
                     "chatglm_pro": "ChatGLM احترافي",
                     "chatglm_std": "ChatGLM قياسي",
                     "chatglm_turbo": "ChatGLM فائق",
+                    "input_some_prompt": "",
                     "model": "النموذج",
                     "prompt_description": "من خلال تخصيص الموجه يمكنك تخصيص سلوك الذكاء الاصطناعي. $text $from $to $detect سيتم استبدالها بالنص المراد ترجمته واللغة المصدر واللغة الهدف واللغة المكتشفة.",
+                    "prompt_list": "",
                     "title": "chatGLM"
                 },
                 "deepl": {
@@ -374,7 +385,9 @@
                 "geminipro": {
                     "add": "اضف موجه",
                     "api_key": "مفتاح Api",
+                    "input_some_prompt": "",
                     "prompt_description": "من خلال تخصيص الموجه يمكنك تخصيص سلوك Gemini Pro. $text $from $to $detect سيتم استبدالها بالنص المراد ترجمته واللغة المصدر واللغة الهدف واللغة المكتشفة.",
+                    "prompt_list": "",
                     "request_path": "مسار الطلب",
                     "stream": "وضع البث",
                     "title": "Gemini الاحترافية"
@@ -393,12 +406,14 @@
                 },
                 "ollama": {
                     "add": "اضف موجه",
+                    "input_some_prompt": "",
                     "install_model": "ثبت",
                     "install_ollama": "غير قادر على الاتصال بـ ollama المحلي، يرجى تنزيل ollama وتثبيته وبدء تشغيله أولاً. إذا كنت تستخدم ollama غير موجود على هذا الجهاز، يرجى تغيير عنوان الطلب.",
                     "install_ollama_link": "حمل Ollama",
                     "model": "النموذج",
                     "not_installed": "لم يتم تثبيت هذا النموذج بعد، انقر للتحميل والتثبيت الآن",
                     "prompt_description": "من خلال تخصيص الموجه يمكنك تخصيص سلوك الذكاء الاصطناعي. $text $from $to $detect سيتم استبدالها بالنص المراد ترجمته واللغة المصدر واللغة الهدف واللغة المكتشفة.",
+                    "prompt_list": "",
                     "ready": "جاهز",
                     "request_path": "مسار الطلب",
                     "stream": "وضع البث",
@@ -409,9 +424,13 @@
                     "add": "اضف موجه",
                     "api_key": "مفتاح Api",
                     "azure": "Azure",
+                    "input_request_arguments": "",
+                    "input_some_prompt": "",
                     "model": "النموذج",
                     "openai": "OpenAI",
                     "prompt_description": "من خلال تخصيص الموجه يمكنك تخصيص سلوك OpenAI. $text $from $to $detect سيتم استبدالها بالنص المراد ترجمته واللغة المصدر واللغة الهدف واللغة المكتشفة.",
+                    "prompt_list": "",
+                    "request_arguments": "",
                     "request_path": "مسار الطلب",
                     "service": "مزود خدمة",
                     "stream": "وضع البث",
@@ -459,6 +478,7 @@
             "add_collection_success": "تمت الإضافة إلى المجموعة بنجاح",
             "copy": "انسخ",
             "delete_newline": "احذف السطر الجديد",
+            "language_not_supported": "",
             "recognizing": "جاري التعرف",
             "retry": "حاول مرة اخرى",
             "speak": "تكلم",

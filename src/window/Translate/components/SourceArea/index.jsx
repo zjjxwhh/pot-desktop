@@ -90,7 +90,7 @@ export default function SourceArea(props) {
                         }
                     );
                 } else {
-                    setSourceText('Language not supported');
+                    setSourceText(t('translate.language_not_supported'));
                 }
             } else {
                 if (recognizeLanguage in recognizeServices[getServiceName(serviceInstanceKey)].Language) {
@@ -120,7 +120,7 @@ export default function SourceArea(props) {
                             }
                         );
                 } else {
-                    setSourceText('Language not supported');
+                    setSourceText(t('translate.language_not_supported'));
                 }
             }
         } else {
@@ -158,7 +158,7 @@ export default function SourceArea(props) {
         }
         if (getServiceSouceType(instanceKey) === ServiceSourceType.PLUGIN) {
             if (!(detected in ttsPluginInfo.language)) {
-                throw new Error('Language not supported');
+                throw new Error(t('translate.language_not_supported'));
             }
             const pluginConfig = serviceInstanceConfigMap[instanceKey];
             let [func, utils] = await invoke_plugin('tts', getServiceName(instanceKey));
@@ -169,7 +169,7 @@ export default function SourceArea(props) {
             speak(data);
         } else {
             if (!(detected in builtinTtsServices[getServiceName(instanceKey)].Language)) {
-                throw new Error('Language not supported');
+                throw new Error(t('translate.language_not_supported'));
             }
             const instanceConfig = serviceInstanceConfigMap[instanceKey];
             let data = await builtinTtsServices[getServiceName(instanceKey)].tts(

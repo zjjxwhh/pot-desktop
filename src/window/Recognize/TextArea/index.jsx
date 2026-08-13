@@ -117,7 +117,7 @@ export default function TextArea(props) {
                             }
                         );
                 } else {
-                    setError('Language not supported');
+                    setError(t('recognize.language_not_supported'));
                     setLoading(false);
                 }
             }

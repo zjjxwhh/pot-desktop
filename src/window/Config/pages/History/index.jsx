@@ -155,7 +155,7 @@ export default function History() {
                         {items.length === 0 ? (
                             <EmptyState className='flex h-full w-full flex-col items-center justify-center gap-4 text-center'>
                                 <IconInbox className='size-8 text-muted' />
-                                <span className='text-base text-muted'>No History to Display</span>
+                                <span className='text-base text-muted'>{t('config.history.no_history')}</span>
                             </EmptyState>
                         ) : (
                             <Table.Content
@@ -168,12 +168,12 @@ export default function History() {
                                 }}
                             >
                                 <Table.Header className='hidden'>
-                                    <Table.Column id='service' isRowHeader>service</Table.Column>
-                                    <Table.Column id='text'>text</Table.Column>
-                                    <Table.Column id='source'>source</Table.Column>
-                                    <Table.Column id='target'>target</Table.Column>
-                                    <Table.Column id='result'>result</Table.Column>
-                                    <Table.Column id='timestamp'>timestamp</Table.Column>
+                                    <Table.Column id='service' isRowHeader>{t('config.history.service')}</Table.Column>
+                                    <Table.Column id='text'>{t('config.history.text')}</Table.Column>
+                                    <Table.Column id='source'>{t('config.history.source')}</Table.Column>
+                                    <Table.Column id='target'>{t('config.history.target')}</Table.Column>
+                                    <Table.Column id='result'>{t('config.history.result')}</Table.Column>
+                                    <Table.Column id='timestamp'>{t('config.history.timestamp')}</Table.Column>
                                 </Table.Header>
                                 <Table.Body items={items}>
                                 {(item) =>

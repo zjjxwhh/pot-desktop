@@ -97,6 +97,13 @@
             },
             "history": {
                 "label": "History",
+                "no_history": "No History to Display",
+                "result": "Result",
+                "service": "Service",
+                "source": "Source",
+                "target": "Target",
+                "text": "Text",
+                "timestamp": "Timestamp",
                 "title": "History"
             },
             "hotkey": {
@@ -126,6 +133,7 @@
                 "collection": "Collection",
                 "homepage": "Homepage",
                 "install_plugin": "Install Plugin",
+                "installed_plugins": "Installed {{count}} plugins",
                 "label": "Service",
                 "least": "Please keep at least one",
                 "recognize": "Recognize",
@@ -196,7 +204,7 @@
             "ja": "Japanese",
             "km": "Khmer",
             "ko": "Korean",
-            "mn_cy": "Mongolian(Cyrillic)",
+            "mn_cy": "Mongolian (Cyrillic)",
             "mn_mo": "Mongolian",
             "ms": "Malay",
             "nb_no": "Norwegian Bokmål",
@@ -219,6 +227,7 @@
             "copy_text": "Copy",
             "delete_newline": "Delete Newline",
             "delete_space": "Delete Space",
+            "language_not_supported": "Language not supported",
             "recognize": "Recognize",
             "translate": "Translate"
         },
@@ -355,8 +364,10 @@
                     "chatglm_pro": "ChatGLM Pro",
                     "chatglm_std": "ChatGLM Std",
                     "chatglm_turbo": "ChatGLM Turbo",
+                    "input_some_prompt": "Input Some {{role}} Prompt",
                     "model": "Model",
-                    "prompt_description": "By customizing the Prompt, you can customize the behavior of AI. $text $from $to $detect will be replaced with the text to be translated, source language, target language and detected language.",
+                    "prompt_description": "By customizing the Prompt, you can customize the behavior of ChatGLM. {{$text}}, {{$from}}, {{$to}}, {{$detect}} will be replaced with {{the text to be translated}}, {{source language}}, {{target language}}, {{detected language}}.",
+                    "prompt_list": "Prompt List",
                     "title": "ChatGLM"
                 },
                 "deepl": {
@@ -369,12 +380,14 @@
                     "type": "Service Type"
                 },
                 "ecdict": {
-                    "title": "ECDict(Online)"
+                    "title": "ECDict (Online)"
                 },
                 "geminipro": {
                     "add": "Add Prompt",
                     "api_key": "Api Key",
-                    "prompt_description": "By customizing the Prompt, you can customize the behavior of Gemini Pro. $text $from $to $detect will be replaced with the text to be translated, source language, target language and detected language.",
+                    "input_some_prompt": "Input Some {{role}} Prompt",
+                    "prompt_description": "By customizing the Prompt, you can customize the behavior of Gemini Pro. {{$text}}, {{$from}}, {{$to}}, {{$detect}} will be replaced with {{the text to be translated}}, {{source language}}, {{target language}}, {{detected language}}.",
+                    "prompt_list": "Prompt List",
                     "request_path": "Request Path",
                     "stream": "Stream Mode",
                     "title": "Gemini Pro"
@@ -393,12 +406,14 @@
                 },
                 "ollama": {
                     "add": "Add Prompt",
+                    "input_some_prompt": "Input Some {{role}} Prompt",
                     "install_model": "Install",
-                    "install_ollama": "Unable to connect to local ollama, please download, install and start ollama first. If you use ollama that is not on this machine, please change the request address.",
+                    "install_ollama": "Unable to connect to local Ollama, please download, install and start ollama first. If you use ollama that is not on this machine, please change the request address.",
                     "install_ollama_link": "Download Ollama",
                     "model": "Model",
                     "not_installed": "This model has not been installed yet, click to download and install now",
-                    "prompt_description": "By customizing the Prompt, you can customize the behavior of AI. $text $from $to $detect will be replaced with the text to be translated, source language, target language and detected language.",
+                    "prompt_description": "By customizing the Prompt, you can customize the behavior of Ollama. {{$text}}, {{$from}}, {{$to}}, {{$detect}} will be replaced with {{the text to be translated}}, {{source language}}, {{target language}}, {{detected language}}.",
+                    "prompt_list": "Prompt List",
                     "ready": "Ready",
                     "request_path": "Request Path",
                     "stream": "Stream Mode",
@@ -409,9 +424,13 @@
                     "add": "Add Prompt",
                     "api_key": "Api Key",
                     "azure": "Azure",
+                    "input_request_arguments": "Input API Request Arguments",
+                    "input_some_prompt": "Input Some {{role}} Prompt",
                     "model": "Model",
                     "openai": "OpenAI",
-                    "prompt_description": "By customizing the Prompt, you can customize the behavior of OpenAI. $text $from $to $detect will be replaced with the text to be translated, source language, target language and detected language.",
+                    "prompt_description": "By customizing the Prompt, you can customize the behavior of OpenAI. {{$text}}, {{$from}}, {{$to}}, {{$detect}} will be replaced with {{the text to be translated}}, {{source language}}, {{target language}}, {{detected language}}.",
+                    "prompt_list": "Prompt List",
+                    "request_arguments": "Request Arguments",
                     "request_path": "Request Path",
                     "service": "Service Provider",
                     "stream": "Stream Mode",
@@ -459,6 +478,7 @@
             "add_collection_success": "Add to collection successfully",
             "copy": "Copy",
             "delete_newline": "Delete Newline",
+            "language_not_supported": "Language not supported",
             "recognizing": "Recognizing…",
             "retry": "Try again",
             "speak": "Speak",

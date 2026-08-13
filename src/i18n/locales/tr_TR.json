@@ -97,6 +97,13 @@
             },
             "history": {
                 "label": "",
+                "no_history": "",
+                "result": "",
+                "service": "",
+                "source": "",
+                "target": "",
+                "text": "",
+                "timestamp": "",
                 "title": ""
             },
             "hotkey": {
@@ -126,6 +133,7 @@
                 "collection": "",
                 "homepage": "",
                 "install_plugin": "",
+                "installed_plugins": "",
                 "label": "",
                 "least": "",
                 "recognize": "",
@@ -219,6 +227,7 @@
             "copy_text": "",
             "delete_newline": "",
             "delete_space": "",
+            "language_not_supported": "",
             "recognize": "",
             "translate": ""
         },
@@ -355,8 +364,10 @@
                     "chatglm_pro": "",
                     "chatglm_std": "",
                     "chatglm_turbo": "",
+                    "input_some_prompt": "",
                     "model": "",
                     "prompt_description": "",
+                    "prompt_list": "",
                     "title": ""
                 },
                 "deepl": {
@@ -374,7 +385,9 @@
                 "geminipro": {
                     "add": "",
                     "api_key": "",
+                    "input_some_prompt": "",
                     "prompt_description": "",
+                    "prompt_list": "",
                     "request_path": "",
                     "stream": "",
                     "title": ""
@@ -393,12 +406,14 @@
                 },
                 "ollama": {
                     "add": "",
+                    "input_some_prompt": "",
                     "install_model": "",
                     "install_ollama": "",
                     "install_ollama_link": "",
                     "model": "",
                     "not_installed": "",
                     "prompt_description": "",
+                    "prompt_list": "",
                     "ready": "",
                     "request_path": "",
                     "stream": "",
@@ -409,9 +424,13 @@
                     "add": "",
                     "api_key": "",
                     "azure": "",
+                    "input_request_arguments": "",
+                    "input_some_prompt": "",
                     "model": "",
                     "openai": "",
                     "prompt_description": "",
+                    "prompt_list": "",
+                    "request_arguments": "",
                     "request_path": "",
                     "service": "",
                     "stream": "",
@@ -459,6 +478,7 @@
             "add_collection_success": "",
             "copy": "",
             "delete_newline": "",
+            "language_not_supported": "",
             "recognizing": "",
             "retry": "",
             "speak": "",

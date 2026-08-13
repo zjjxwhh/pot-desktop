@@ -134,7 +134,7 @@ export function Config(props) {
                     </TextField>
                 </div>
 
-                <h3 className='my-auto'>Prompt List</h3>
+                <h3 className='my-auto'>{t('services.translate.chatglm.prompt_list')}</h3>
                 <p className='text-xs text-foreground py-2'>{t('services.translate.chatglm.prompt_description')}</p>
 
                 <Surface
@@ -169,7 +169,9 @@ export function Config(props) {
                                             variant='secondary'
                                             rows={6}
                                             className={'border-2 border-muted'}
-                                            placeholder={`Input Some ${prompt.role} Prompt`}
+                                            placeholder={t('services.translate.chatglm.input_some_prompt', {
+                                                role: prompt.role,
+                                            })}
                                         />
                                     </TextField>
                                     <Button

@@ -213,7 +213,7 @@ export function Config(props) {
                         <Input variant='secondary' />
                     </TextField>
                 </div>
-                <h3 className='my-auto'>Prompt List</h3>
+                <h3 className='my-auto'>{t('services.translate.openai.prompt_list')}</h3>
                 <p className='text-xs text-foreground py-2'>{t('services.translate.openai.prompt_description')}</p>
 
                 <Surface
@@ -255,7 +255,9 @@ export function Config(props) {
                                             variant='secondary'
                                             rows={6}
                                             className={'border-2 border-muted'}
-                                            placeholder={`Input Some ${prompt.role} Prompt`}
+                                            placeholder={t('services.translate.openai.input_some_prompt', {
+                                                role: prompt.role,
+                                            })}
                                         />
                                     </TextField>
                                     <Button
@@ -300,7 +302,7 @@ export function Config(props) {
                 </Surface>
                 <br />
 
-                <h3 className='my-auto'>Request Arguments</h3>
+                <h3 className='my-auto'>{t('services.translate.openai.request_arguments')}</h3>
                 <div className='config-item'>
                     <TextField
                         fullWidth
@@ -315,7 +317,7 @@ export function Config(props) {
                         <TextArea
                             variant='secondary'
                             rows={3}
-                            placeholder={`Input API Request Arguments`}
+                            placeholder={t('services.translate.openai.input_request_arguments')}
                         />
                     </TextField>
                 </div>

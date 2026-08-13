@@ -97,6 +97,13 @@
             },
             "history": {
                 "label": "Verlauf",
+                "no_history": "",
+                "result": "",
+                "service": "",
+                "source": "",
+                "target": "",
+                "text": "",
+                "timestamp": "",
                 "title": "Verlauf"
             },
             "hotkey": {
@@ -126,6 +133,7 @@
                 "collection": "Vokabelheft",
                 "homepage": "Plugin-Homepage",
                 "install_plugin": "Externes Plugin installieren",
+                "installed_plugins": "",
                 "label": "Dienst",
                 "least": "Bitte mindestens einen behalten",
                 "recognize": "Texterkennung",
@@ -219,6 +227,7 @@
             "copy_text": "Kopieren",
             "delete_newline": "Zeilenumbruch löschen",
             "delete_space": "Leerzeichen löschen",
+            "language_not_supported": "",
             "recognize": "Erneut erkennen",
             "translate": "Übersetzen"
         },
@@ -355,8 +364,10 @@
                     "chatglm_pro": "ChatGLM Pro",
                     "chatglm_std": "ChatGLM Std",
                     "chatglm_turbo": "ChatGLM Turbo",
+                    "input_some_prompt": "",
                     "model": "Modell",
                     "prompt_description": "Passen Sie das Verhalten von KI durch benutzerdefinierte Prompts an. $text $from $to $detect werden durch den zu übersetzenden Text, die Ausgangs- und Zielsprache sowie die erkannte Sprache ersetzt.",
+                    "prompt_list": "",
                     "title": "ChatGLM"
                 },
                 "deepl": {
@@ -374,7 +385,9 @@
                 "geminipro": {
                     "add": "Prompt hinzufügen",
                     "api_key": "API-Schlüssel",
+                    "input_some_prompt": "",
                     "prompt_description": "Passen Sie das Verhalten von Gemini Pro durch benutzerdefinierte Prompts an. $text $from $to $detect werden durch den zu übersetzenden Text, die Ausgangs- und Zielsprache sowie die erkannte Sprache ersetzt.",
+                    "prompt_list": "",
                     "request_path": "",
                     "stream": "Stream-Modus",
                     "title": "Gemini Pro"
@@ -393,12 +406,14 @@
                 },
                 "ollama": {
                     "add": "",
+                    "input_some_prompt": "",
                     "install_model": "",
                     "install_ollama": "",
                     "install_ollama_link": "",
                     "model": "",
                     "not_installed": "",
                     "prompt_description": "",
+                    "prompt_list": "",
                     "ready": "",
                     "request_path": "",
                     "stream": "",
@@ -409,9 +424,13 @@
                     "add": "Prompt hinzufügen",
                     "api_key": "API-Schlüssel",
                     "azure": "Azure",
+                    "input_request_arguments": "",
+                    "input_some_prompt": "",
                     "model": "Modell",
                     "openai": "OpenAI",
                     "prompt_description": "Passen Sie das Verhalten von OpenAI durch benutzerdefinierte Prompts an. $text $from $to $detect werden durch den zu übersetzenden Text, die Ausgangs- und Zielsprache sowie die erkannte Sprache ersetzt.",
+                    "prompt_list": "",
+                    "request_arguments": "",
                     "request_path": "Request-Pfad",
                     "service": "Dienstanbieter",
                     "stream": "Stream-Modus",
@@ -459,6 +478,7 @@
             "add_collection_success": "Erfolgreich hinzugefügt",
             "copy": "Kopieren",
             "delete_newline": "Zeilenumbruch löschen",
+            "language_not_supported": "",
             "recognizing": "Erkennen...",
             "retry": "Erneut versuchen",
             "speak": "Sprechen",
