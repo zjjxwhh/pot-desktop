@@ -1,5 +1,5 @@
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
-import { TextField, Label, Input, TextArea, Button, Dropdown, Surface, toast } from '@heroui/react';
+import { TextField, Label, Input, TextArea, Button, Surface, toast } from '@heroui/react';
 import { IconTrash } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-shell';
@@ -10,8 +10,6 @@ import { translate } from './index';
 import { Language } from './index';
 
 // https://docs.bigmodel.cn/cn/guide/start/model-overview#%E6%96%87%E6%9C%AC%E6%A8%A1%E5%9E%8B
-const availableModels = ['glm-4.5', 'glm-4.5-x', 'glm-4.5-air', 'glm-4.5-airx', 'glm-4-plus', 'glm-4-air-250414', 'glm-4-long', 'glm-4-airx', 'glm-4-flashx-250414', 'glm-z1-air', 'glm-z1-airx', 'glm-z1-flashx', 'glm-4.5-flash', 'glm-4-flash-250414', 'glm-z1-flash']
-
 export function Config(props) {
     const { instanceKey, updateServiceList, onClose } = props;
     const { t } = useTranslation();
@@ -19,7 +17,7 @@ export function Config(props) {
         instanceKey,
         {
             [INSTANCE_NAME_CONFIG_KEY]: t('services.translate.chatglm.title'),
-            model: 'chatglm_turbo',
+            model: '',
             apiKey: '',
             promptList: [
                 {
@@ -85,38 +83,6 @@ export function Config(props) {
                     </Button>
                 </div>
                 <div className='config-item'>
-                    <h3 className='my-auto'>{t('services.translate.chatglm.model')}</h3>
-                    <Dropdown>
-                        <Button
-                            size='sm'
-                            variant='tertiary'
-                        >
-                            {serviceConfig.model}
-                        </Button>
-                        <Dropdown.Popover>
-                            <Dropdown.Menu
-                                autoFocus='first'
-                                aria-label='model'
-                                onAction={(key) => {
-                                    setServiceConfig({
-                                        ...serviceConfig,
-                                        model: key,
-                                    });
-                                }}
-                            >
-                                {availableModels.map((it) => (
-                                    <Dropdown.Item
-                                        id={it}
-                                        textValue={it}
-                                    >
-                                        <Label>{it}</Label>
-                                    </Dropdown.Item>
-                                ))}
-                            </Dropdown.Menu>
-                        </Dropdown.Popover>
-                    </Dropdown>
-                </div>
-                <div className='config-item'>
                     <h3 className='my-auto'>{t('services.translate.chatglm.api_key')}</h3>
                     <TextField
                         value={serviceConfig['apiKey']}
@@ -131,6 +97,20 @@ export function Config(props) {
                             type='password'
                             variant='secondary'
                         />
+                    </TextField>
+                </div>
+                <div className='config-item'>
+                    <h3 className='my-auto'>{t('services.translate.chatglm.model')}</h3>
+                    <TextField
+                        value={serviceConfig.model}
+                        onChange={(value) => {
+                            setServiceConfig({
+                                ...serviceConfig,
+                                model: value,
+                            });
+                        }}
+                    >
+                        <Input variant='secondary' />
                     </TextField>
                 </div>
 

@@ -18,7 +18,7 @@ export function Config(props) {
         {
             [INSTANCE_NAME_CONFIG_KEY]: t('services.translate.ollama.title'),
             stream: true,
-            model: 'gemma:2b',
+            model: '',
             requestPath: 'http://localhost:11434',
             promptList: [
                 {

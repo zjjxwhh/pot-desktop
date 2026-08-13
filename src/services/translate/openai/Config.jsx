@@ -25,7 +25,7 @@ export function Config(props) {
             [INSTANCE_NAME_CONFIG_KEY]: t('services.translate.openai.title'),
             service: 'openai',
             requestPath: 'https://api.openai.com/v1/chat/completions',
-            model: 'gpt-3.5-turbo',
+            model: '',
             apiKey: '',
             stream: false,
             promptList: [
