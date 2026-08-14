@@ -1,3 +1,4 @@
+import i18n from '../../../../../i18n';
 import { save, open } from '@tauri-apps/plugin-dialog';
 import { invoke } from '@tauri-apps/api/core';
 
@@ -16,7 +17,7 @@ export async function backup() {
             path: selected,
         });
     } else {
-        throw 'Invalid File';
+        throw i18n.t('config.backup.invalid_file');
     }
 }
 
@@ -38,6 +39,6 @@ export async function get() {
             path: selected,
         });
     } else {
-        throw 'Invalid File';
+        throw i18n.t('config.backup.invalid_file');
     }
 }

@@ -1,3 +1,4 @@
+import i18n from '../../../i18n';
 import { fetch } from '@tauri-apps/plugin-http';
 import HmacSHA1 from 'crypto-js/hmac-sha1';
 import base64 from 'crypto-js/enc-base64';
@@ -12,7 +13,7 @@ export async function translate(text, from, to, options = {}) {
         return rand * 1000;
     }
     if (accesskey_id === '' || accesskey_secret === '') {
-        throw 'Please configure AccessKey ID and AccessKey Secret';
+        throw i18n.t('services.translate.alibaba.accesskey_secret_required');
     }
 
     let today = new Date();
@@ -49,10 +50,10 @@ export async function translate(text, from, to, options = {}) {
         if (result['Code'] === '200') {
             return result['Data']['Translated'].trim();
         } else {
-            throw JSON.stringify(result);
+            throw i18n.t('config.service.service_request_error', { detail: JSON.stringify(result) });
         }
     } else {
-        throw `Http Request Error\nHttp Status: ${res.status}\n${JSON.stringify(await res.json())}`;
+        throw i18n.t('config.service.http_request_error', { status: res.status, detail: JSON.stringify(await res.json()) });
     }
 }
 

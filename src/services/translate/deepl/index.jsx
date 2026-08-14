@@ -1,3 +1,4 @@
+import i18n from '../../../i18n';
 import { fetch } from '@tauri-apps/plugin-http';
 
 export async function translate(text, from, to, options = {}) {
@@ -52,13 +53,13 @@ async function translate_by_free(text, from, to) {
         if (result && result.result && result.result.texts) {
             return result.result.texts[0].text.trim();
         } else {
-            throw JSON.stringify(result);
+            throw i18n.t('config.service.service_request_error', { detail: JSON.stringify(result) });
         }
     } else {
         if (result && result.error) {
-            throw `Status Code: ${res.status}\n${result.error.message}`;
+            throw i18n.t('services.translate.deepl.status_code_error', { status: res.status, detail: result.error.message });
         } else {
-            throw `Http Request Error\nHttp Status: ${res.status}\n${JSON.stringify(result)}`;
+            throw i18n.t('config.service.http_request_error', { status: res.status, detail: JSON.stringify(result) });
         }
     }
 }
@@ -78,10 +79,10 @@ async function translate_by_deeplx(text, from, to, url) {
         if (result && result['data']) {
             return result['data'];
         } else {
-            throw JSON.stringify(result);
+            throw i18n.t('config.service.service_request_error', { detail: JSON.stringify(result) });
         }
     } else {
-        throw `Http Request Error\nHttp Status: ${res.status}\n${JSON.stringify(result)}`;
+        throw i18n.t('config.service.http_request_error', { status: res.status, detail: JSON.stringify(result) });
     }
 }
 
@@ -116,13 +117,13 @@ async function translate_by_key(text, from, to, key) {
         if (result && result.translations && result.translations[0]) {
             return result.translations[0].text.trim();
         } else {
-            throw JSON.stringify(result);
+            throw i18n.t('config.service.service_request_error', { detail: JSON.stringify(result) });
         }
     } else {
         if (result && result.error) {
-            throw `Status Code: ${res.status}\n${result.error.message}`;
+            throw i18n.t('services.translate.deepl.status_code_error', { status: res.status, detail: result.error.message });
         } else {
-            throw `Http Request Error\nHttp Status: ${res.status}\n${JSON.stringify(result)}`;
+            throw i18n.t('config.service.http_request_error', { status: res.status, detail: JSON.stringify(result) });
         }
     }
 }

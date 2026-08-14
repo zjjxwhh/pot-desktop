@@ -1,3 +1,4 @@
+import i18n from '../../../i18n';
 import { fetch } from '@tauri-apps/plugin-http';
 const DISPLAY_FORMAT_DEFAULT = '发音, 快速释义, 变形';
 
@@ -24,7 +25,7 @@ export async function translate(text, from, to) {
         const result = await res.json();
         const meaningGroups = result.value[0].meaningGroups;
         if (meaningGroups.length === 0) {
-            throw `Words not yet included: ${text}`;
+            throw i18n.t('services.translate.bing_dict.words_not_included', { text });
         }
         const formats = DISPLAY_FORMAT_DEFAULT.trim().split(/,\s*/);
         const formatGroups = meaningGroups.reduce(
@@ -63,7 +64,7 @@ export async function translate(text, from, to) {
         }
         return target;
     } else {
-        throw `Http Request Error\nHttp Status: ${res.status}\n${JSON.stringify(await res.json())}`;
+        throw i18n.t('config.service.http_request_error', { status: res.status, detail: JSON.stringify(await res.json()) });
     }
 }
 

@@ -1,3 +1,4 @@
+import i18n from '../../../i18n';
 import jsQR from 'jsqr';
 
 export async function recognize(base64, language, options = {}) {
@@ -25,7 +26,7 @@ export async function recognize(base64, language, options = {}) {
     if (code) {
         return code.data;
     } else {
-        throw 'QR code not recognized or multiple QR codes exist';
+        throw i18n.t('services.recognize.qrcode.not_recognized');
     }
 }
 

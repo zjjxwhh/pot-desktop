@@ -33,6 +33,7 @@
                 "backup": "Backup",
                 "backup_success": "Backup com Sucesso",
                 "empty": "Ainda não fez backup",
+                "invalid_file": "",
                 "label": "Backup",
                 "list": "Lista de Backup",
                 "load_success": "Carregar Backup com Sucesso",
@@ -132,11 +133,13 @@
                 "add_service": "Adicionar Serviço",
                 "collection": "Coleção",
                 "homepage": "Homepage",
+                "http_request_error": "",
                 "install_plugin": "Instalar Plug-in",
                 "installed_plugins": "",
                 "label": "Serviço",
                 "least": "Por favor, mantenha pelo menos um",
                 "recognize": "Reconhecimento",
+                "service_request_error": "",
                 "test_failed": "Teste Falhou",
                 "title": "Configuração do Serviço",
                 "translate": "Traduzir",
@@ -238,6 +241,8 @@
                     "title": "Anki"
                 },
                 "eudic": {
+                    "create_category_failed": "",
+                    "get_category_failed": "",
                     "name": "Nome da Coleção",
                     "title": "Eudic",
                     "token": "Token"
@@ -250,22 +255,27 @@
                 "baidu_accurate_ocr": {
                     "client_id": "Chave API",
                     "client_secret": "Chave Secreta",
+                    "get_access_token_failed": "",
                     "title": "Baidu OCR (Preciso)"
                 },
                 "baidu_img_ocr": {
                     "appid": "ID do App",
+                    "appid_secret_required": "",
                     "secret": "Segredo",
                     "title": "Tradução de Imagem da Baidu"
                 },
                 "baidu_ocr": {
                     "client_id": "Chave de API",
                     "client_secret": "Chave Secreta",
+                    "get_access_token_failed": "",
                     "title": "OCR da Baidu"
                 },
                 "iflytek_intsig_ocr": {
                     "apikey": "Chave API",
                     "apisecret": "Segredo da API",
                     "appid": "ID do App",
+                    "data_not_found": "",
+                    "payload_not_found": "",
                     "title": "OCR da iFlyTek (Intsig)"
                 },
                 "iflytek_latex_ocr": {
@@ -278,9 +288,12 @@
                     "apikey": "Chave API",
                     "apisecret": "Segredo da API",
                     "appid": "ID do App",
+                    "data_not_found": "",
+                    "payload_not_found": "",
                     "title": "OCR da iFlyTek"
                 },
                 "qrcode": {
+                    "not_recognized": "",
                     "title": "Código QR"
                 },
                 "simple_latex_ocr": {
@@ -323,16 +336,19 @@
                 "alibaba": {
                     "accesskey_id": "ID da Chave de Acesso",
                     "accesskey_secret": "Segredo da Chave de Acesso",
+                    "accesskey_secret_required": "",
                     "title": "Alibaba"
                 },
                 "baidu": {
                     "appid": "ID do App",
+                    "appid_secret_required": "",
                     "secret": "Segredo",
                     "title": "Baidu"
                 },
                 "baidu_field": {
                     "academic": "Papéis Acadêmicos",
                     "aerospace": "Aeroespacial",
+                    "appid_secret_required": "",
                     "contract": "Contrato",
                     "finance": "Finanças e Economia",
                     "it": "Tecnologia da Informação",
@@ -345,17 +361,21 @@
                     "wiki": "Ciências sociais e humanas"
                 },
                 "bing": {
+                    "get_token_failed": "",
                     "title": "Bing"
                 },
                 "bing_dict": {
-                    "title": "Bing Dicionário"
+                    "title": "Bing Dicionário",
+                    "words_not_included": ""
                 },
                 "caiyun": {
                     "title": "Caiyun",
-                    "token": "Token"
+                    "token": "Token",
+                    "token_required": ""
                 },
                 "cambridge_dict": {
-                    "title": "Cambridge Dicionário"
+                    "title": "Cambridge Dicionário",
+                    "words_not_included": ""
                 },
                 "chatglm": {
                     "add": "Adicionar Prompt",
@@ -365,6 +385,7 @@
                     "chatglm_std": "ChatGLM Std",
                     "chatglm_turbo": "ChatGLM Turbo",
                     "input_some_prompt": "",
+                    "invalid_apikey": "",
                     "model": "Modelo",
                     "prompt_description": "Ao personalizar o Prompt, pode personalizar o comportamento da IA. $text $from $to $detet será substituído pelo texto a ser traduzido, o idioma de origem, o idioma de destino e o idioma detetado.",
                     "prompt_list": "",
@@ -376,6 +397,7 @@
                     "custom_url": "URL de DeepLX",
                     "deeplx": "DeepLX",
                     "free": "Gratuito",
+                    "status_code_error": "",
                     "title": "DeepL",
                     "type": "Tipo de Serviço"
                 },
@@ -463,8 +485,13 @@
             "tts": {
                 "edge_tts": {
                     "add": "",
+                    "connection_closed": "",
+                    "no_audio_data": "",
                     "preview": "",
+                    "request_timeout": "",
+                    "text_empty": "",
                     "title": "",
+                    "unsupported_language": "",
                     "voice_config": "",
                     "voice_config_description": ""
                 },

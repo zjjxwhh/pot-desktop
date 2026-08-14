@@ -33,6 +33,7 @@
                 "backup": "نسخة احتياطية",
                 "backup_success": "نسخ احتياطي ناجح",
                 "empty": "لم تنسخ نسخة احتياطية بعد",
+                "invalid_file": "",
                 "label": "نسخة احتياطية",
                 "list": "قائمة النُسخ الاحتياطية",
                 "load_success": "حمل النسخ الإحتياطي بنجاح",
@@ -132,11 +133,13 @@
                 "add_service": "أضف خدمة",
                 "collection": "المجموعة",
                 "homepage": "الصفحة الرئيسية",
+                "http_request_error": "",
                 "install_plugin": "ثبت الملحق",
                 "installed_plugins": "",
                 "label": "الخدمات",
                 "least": "فضلا احتفظ بواحد على الأقل",
                 "recognize": "التعرف",
+                "service_request_error": "",
                 "test_failed": "فشل الاختبار",
                 "title": "إعدادات الخدمات",
                 "translate": "الترجمة",
@@ -238,6 +241,8 @@
                     "title": "أنكي"
                 },
                 "eudic": {
+                    "create_category_failed": "",
+                    "get_category_failed": "",
                     "name": "اسم المجموعة",
                     "title": "يوديك",
                     "token": "رمز"
@@ -250,22 +255,27 @@
                 "baidu_accurate_ocr": {
                     "client_id": "مفتاح API",
                     "client_secret": "المفتاح السري",
+                    "get_access_token_failed": "",
                     "title": "النسخه الدقيقه من نظام التعرف البصري على الحروف من بايدو"
                 },
                 "baidu_img_ocr": {
                     "appid": "معرّف التطبيق",
+                    "appid_secret_required": "",
                     "secret": "السري",
                     "title": "ترجمة الصور من بايدو"
                 },
                 "baidu_ocr": {
                     "client_id": "مفتاح API",
                     "client_secret": "المفتاح السري",
+                    "get_access_token_failed": "",
                     "title": "نظام التعرف على الحرةف من بايدو"
                 },
                 "iflytek_intsig_ocr": {
                     "apikey": "مفتاح API",
                     "apisecret": "مفتاح API السري",
                     "appid": "معرّف التطبيق",
+                    "data_not_found": "",
+                    "payload_not_found": "",
                     "title": "التعرف البصري على الحروف من آي فلاي تيك"
                 },
                 "iflytek_latex_ocr": {
@@ -278,9 +288,12 @@
                     "apikey": "مفتاح API",
                     "apisecret": "مفتاح API السري",
                     "appid": "معرّف التطبيق",
+                    "data_not_found": "",
+                    "payload_not_found": "",
                     "title": "التعرف البصري على الحروف من iFlyTek"
                 },
                 "qrcode": {
+                    "not_recognized": "",
                     "title": "رمز الاستجابة السريعة"
                 },
                 "simple_latex_ocr": {
@@ -323,16 +336,19 @@
                 "alibaba": {
                     "accesskey_id": "معرّف مفتاح الوصول",
                     "accesskey_secret": "مفتاح الوصول السري",
+                    "accesskey_secret_required": "",
                     "title": "علي بابا"
                 },
                 "baidu": {
                     "appid": "معرّف التطبيق",
+                    "appid_secret_required": "",
                     "secret": "السري",
                     "title": "مئة مرة او مرات كثيرة"
                 },
                 "baidu_field": {
                     "academic": "بحث اكاديمي",
                     "aerospace": "قطاع الطيران والفضاء",
+                    "appid_secret_required": "",
                     "contract": "عقد",
                     "finance": "التمويل والاقتصاد",
                     "it": "تقنية المعلومات",
@@ -345,17 +361,21 @@
                     "wiki": "العلوم الانسانية والاجتماعية"
                 },
                 "bing": {
+                    "get_token_failed": "",
                     "title": "Bing"
                 },
                 "bing_dict": {
-                    "title": "قاموس بينغ"
+                    "title": "قاموس بينغ",
+                    "words_not_included": ""
                 },
                 "caiyun": {
                     "title": "سايون",
-                    "token": "رمز"
+                    "token": "رمز",
+                    "token_required": ""
                 },
                 "cambridge_dict": {
-                    "title": "قاموس كامبريدج"
+                    "title": "قاموس كامبريدج",
+                    "words_not_included": ""
                 },
                 "chatglm": {
                     "add": "اضف موجه",
@@ -365,6 +385,7 @@
                     "chatglm_std": "ChatGLM قياسي",
                     "chatglm_turbo": "ChatGLM فائق",
                     "input_some_prompt": "",
+                    "invalid_apikey": "",
                     "model": "النموذج",
                     "prompt_description": "من خلال تخصيص الموجه يمكنك تخصيص سلوك الذكاء الاصطناعي. $text $from $to $detect سيتم استبدالها بالنص المراد ترجمته واللغة المصدر واللغة الهدف واللغة المكتشفة.",
                     "prompt_list": "",
@@ -376,6 +397,7 @@
                     "custom_url": "عنوان DeepLX",
                     "deeplx": "DeepLX",
                     "free": "محاني",
+                    "status_code_error": "",
                     "title": "DeepL",
                     "type": "نوع الخدمة"
                 },
@@ -463,8 +485,13 @@
             "tts": {
                 "edge_tts": {
                     "add": "",
+                    "connection_closed": "",
+                    "no_audio_data": "",
                     "preview": "",
+                    "request_timeout": "",
+                    "text_empty": "",
                     "title": "",
+                    "unsupported_language": "",
                     "voice_config": "",
                     "voice_config_description": ""
                 },

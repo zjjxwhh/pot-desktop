@@ -33,6 +33,7 @@
                 "backup": "Copia de seguridad",
                 "backup_success": "Copia de seguridad hecha con éxito",
                 "empty": "",
+                "invalid_file": "",
                 "label": "Copia de seguridad",
                 "list": "Hacer copia de seguridad de lista",
                 "load_success": "Cargar copia de seguridad con éxito",
@@ -132,11 +133,13 @@
                 "add_service": "Añadir servicio",
                 "collection": "",
                 "homepage": "Inicio",
+                "http_request_error": "",
                 "install_plugin": "Instalar complemento",
                 "installed_plugins": "",
                 "label": "Servicio",
                 "least": "",
                 "recognize": "",
+                "service_request_error": "",
                 "test_failed": "Prueba fallida",
                 "title": "Ajustes de servicio",
                 "translate": "Traducir",
@@ -238,6 +241,8 @@
                     "title": "Anki"
                 },
                 "eudic": {
+                    "create_category_failed": "",
+                    "get_category_failed": "",
                     "name": "",
                     "title": "Eudic",
                     "token": "Token"
@@ -250,22 +255,27 @@
                 "baidu_accurate_ocr": {
                     "client_id": "",
                     "client_secret": "",
+                    "get_access_token_failed": "",
                     "title": ""
                 },
                 "baidu_img_ocr": {
                     "appid": "",
+                    "appid_secret_required": "",
                     "secret": "",
                     "title": ""
                 },
                 "baidu_ocr": {
                     "client_id": "",
                     "client_secret": "",
+                    "get_access_token_failed": "",
                     "title": "Baidu OCR"
                 },
                 "iflytek_intsig_ocr": {
                     "apikey": "",
                     "apisecret": "",
                     "appid": "",
+                    "data_not_found": "",
+                    "payload_not_found": "",
                     "title": ""
                 },
                 "iflytek_latex_ocr": {
@@ -278,9 +288,12 @@
                     "apikey": "",
                     "apisecret": "",
                     "appid": "",
+                    "data_not_found": "",
+                    "payload_not_found": "",
                     "title": "iFlyTek OCR"
                 },
                 "qrcode": {
+                    "not_recognized": "",
                     "title": "Código QR"
                 },
                 "simple_latex_ocr": {
@@ -323,16 +336,19 @@
                 "alibaba": {
                     "accesskey_id": "",
                     "accesskey_secret": "",
+                    "accesskey_secret_required": "",
                     "title": "Alibaba"
                 },
                 "baidu": {
                     "appid": "",
+                    "appid_secret_required": "",
                     "secret": "",
                     "title": "Baidu"
                 },
                 "baidu_field": {
                     "academic": "",
                     "aerospace": "",
+                    "appid_secret_required": "",
                     "contract": "",
                     "finance": "",
                     "it": "",
@@ -345,17 +361,21 @@
                     "wiki": ""
                 },
                 "bing": {
+                    "get_token_failed": "",
                     "title": "Bing"
                 },
                 "bing_dict": {
-                    "title": "Diccionario Bing"
+                    "title": "Diccionario Bing",
+                    "words_not_included": ""
                 },
                 "caiyun": {
                     "title": "Caiyun",
-                    "token": "Token"
+                    "token": "Token",
+                    "token_required": ""
                 },
                 "cambridge_dict": {
-                    "title": "Diccionario Cambridge"
+                    "title": "Diccionario Cambridge",
+                    "words_not_included": ""
                 },
                 "chatglm": {
                     "add": "",
@@ -365,6 +385,7 @@
                     "chatglm_std": "ChatGLM Std",
                     "chatglm_turbo": "ChatGLM Turbo",
                     "input_some_prompt": "",
+                    "invalid_apikey": "",
                     "model": "",
                     "prompt_description": "",
                     "prompt_list": "",
@@ -376,6 +397,7 @@
                     "custom_url": "",
                     "deeplx": "DeepLX",
                     "free": "Gratis",
+                    "status_code_error": "",
                     "title": "DeepL",
                     "type": ""
                 },
@@ -463,8 +485,13 @@
             "tts": {
                 "edge_tts": {
                     "add": "",
+                    "connection_closed": "",
+                    "no_audio_data": "",
                     "preview": "",
+                    "request_timeout": "",
+                    "text_empty": "",
                     "title": "",
+                    "unsupported_language": "",
                     "voice_config": "",
                     "voice_config_description": ""
                 },

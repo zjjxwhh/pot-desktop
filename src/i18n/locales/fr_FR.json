@@ -33,6 +33,7 @@
                 "backup": "Sauvegarde",
                 "backup_success": "Sauvegarde réussie",
                 "empty": "Vous n'avez encore rien sauvegardé",
+                "invalid_file": "",
                 "label": "Sauvegarde",
                 "list": "Liste de sauvegardes",
                 "load_success": "La sauvegarde a bien été chargée",
@@ -132,11 +133,13 @@
                 "add_service": "Ajouter un service",
                 "collection": "Collection",
                 "homepage": "Page d'accueil",
+                "http_request_error": "",
                 "install_plugin": "Installer l'extension",
                 "installed_plugins": "",
                 "label": "Service",
                 "least": "Veuillez en conserver au moins un",
                 "recognize": "Reconnaissance",
+                "service_request_error": "",
                 "test_failed": "Le test a échoué",
                 "title": "Paramètres de service",
                 "translate": "Traduire",
@@ -238,6 +241,8 @@
                     "title": "Anki"
                 },
                 "eudic": {
+                    "create_category_failed": "",
+                    "get_category_failed": "",
                     "name": "Nom de la collection",
                     "title": "Eudic",
                     "token": "Jeton"
@@ -250,22 +255,27 @@
                 "baidu_accurate_ocr": {
                     "client_id": "Clé d'API",
                     "client_secret": "Clé secrète",
+                    "get_access_token_failed": "",
                     "title": "Reconnaissance d'image de Baidu (précise)"
                 },
                 "baidu_img_ocr": {
                     "appid": "ID d'application",
+                    "appid_secret_required": "",
                     "secret": "Clé secrète",
                     "title": "Traduction d’images Baidu"
                 },
                 "baidu_ocr": {
                     "client_id": "Clé d'API",
                     "client_secret": "Clé secrète",
+                    "get_access_token_failed": "",
                     "title": "Reconnaissance d'image de Baidu"
                 },
                 "iflytek_intsig_ocr": {
                     "apikey": "Clé d'API",
                     "apisecret": "Clé secrète de l'API",
                     "appid": "ID de l'application",
+                    "data_not_found": "",
+                    "payload_not_found": "",
                     "title": "Reconnaissance d'image de iFlyTek (Intsig)"
                 },
                 "iflytek_latex_ocr": {
@@ -278,9 +288,12 @@
                     "apikey": "Clé d'API",
                     "apisecret": "Clé secrète de l'API",
                     "appid": "ID de l'application",
+                    "data_not_found": "",
+                    "payload_not_found": "",
                     "title": "Reconnaissance d'image de iFlyTek"
                 },
                 "qrcode": {
+                    "not_recognized": "",
                     "title": "Code QR"
                 },
                 "simple_latex_ocr": {
@@ -323,16 +336,19 @@
                 "alibaba": {
                     "accesskey_id": "ID AccessKey",
                     "accesskey_secret": "Clé secrète AccessKey",
+                    "accesskey_secret_required": "",
                     "title": "Alibaba"
                 },
                 "baidu": {
                     "appid": "ID d'application",
+                    "appid_secret_required": "",
                     "secret": "Clé secrète",
                     "title": "Baidu"
                 },
                 "baidu_field": {
                     "academic": "Document académique",
                     "aerospace": "Aérospatial",
+                    "appid_secret_required": "",
                     "contract": "Contrat",
                     "finance": "Finance et économie",
                     "it": "Informatique",
@@ -345,17 +361,21 @@
                     "wiki": "Humanités et sciences sociales"
                 },
                 "bing": {
+                    "get_token_failed": "",
                     "title": "Bing"
                 },
                 "bing_dict": {
-                    "title": "Dictionnaire Bing"
+                    "title": "Dictionnaire Bing",
+                    "words_not_included": ""
                 },
                 "caiyun": {
                     "title": "Caiyun",
-                    "token": "Jeton"
+                    "token": "Jeton",
+                    "token_required": ""
                 },
                 "cambridge_dict": {
-                    "title": "Dictionnaire Cambridge"
+                    "title": "Dictionnaire Cambridge",
+                    "words_not_included": ""
                 },
                 "chatglm": {
                     "add": "Ajouter une invite",
@@ -365,6 +385,7 @@
                     "chatglm_std": "ChatGLM Std",
                     "chatglm_turbo": "ChatGLM Turbo",
                     "input_some_prompt": "",
+                    "invalid_apikey": "",
                     "model": "Modèle",
                     "prompt_description": "En personnalisant l'invite, vous pouvez personnaliser le comportement de l'IA. Le texte $from $to $detect sera remplacé par le texte à traduire, la langue d'origine, la langue de destination et la langue détectée.",
                     "prompt_list": "",
@@ -376,6 +397,7 @@
                     "custom_url": "URL DeepLX",
                     "deeplx": "DeepLX",
                     "free": "Gratuit",
+                    "status_code_error": "",
                     "title": "DeepL",
                     "type": "Type de service"
                 },
@@ -463,8 +485,13 @@
             "tts": {
                 "edge_tts": {
                     "add": "",
+                    "connection_closed": "",
+                    "no_audio_data": "",
                     "preview": "",
+                    "request_timeout": "",
+                    "text_empty": "",
                     "title": "",
+                    "unsupported_language": "",
                     "voice_config": "",
                     "voice_config_description": ""
                 },

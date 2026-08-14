@@ -33,6 +33,7 @@
                 "backup": "備份",
                 "backup_success": "備份成功",
                 "empty": "您尚未進行備份",
+                "invalid_file": "無效的檔案",
                 "label": "備份設定",
                 "list": "備份列表",
                 "load_success": "載入備份成功",
@@ -132,11 +133,13 @@
                 "add_service": "新增服務",
                 "collection": "生詞本",
                 "homepage": "外掛程式首頁",
+                "http_request_error": "HTTP 請求錯誤 ({{status}})：\n{{detail}}",
                 "install_plugin": "安裝外掛程式",
                 "installed_plugins": "已安裝 {{count}} 個外掛程式",
                 "label": "服務設定",
                 "least": "請至少保留一個",
                 "recognize": "文字辨識",
+                "service_request_error": "服務請求錯誤：\n{{detail}}",
                 "test_failed": "測試失敗",
                 "title": "服務設定",
                 "translate": "翻譯",
@@ -238,6 +241,8 @@
                     "title": "Anki"
                 },
                 "eudic": {
+                    "create_category_failed": "建立分類失敗",
+                    "get_category_failed": "取得分類失敗",
                     "name": "生詞本名稱",
                     "title": "歐路詞典",
                     "token": "Token"
@@ -250,22 +255,27 @@
                 "baidu_accurate_ocr": {
                     "client_id": "API Key",
                     "client_secret": "Secret Key",
+                    "get_access_token_failed": "取得 Access Token 失敗",
                     "title": "百度 OCR（高精度）"
                 },
                 "baidu_img_ocr": {
                     "appid": "應用程式 ID",
+                    "appid_secret_required": "請先設定 AppID 和金鑰",
                     "secret": "Secret",
                     "title": "百度圖片翻譯"
                 },
                 "baidu_ocr": {
                     "client_id": "API Key",
                     "client_secret": "Secret Key",
+                    "get_access_token_failed": "取得 Access Token 失敗",
                     "title": "百度 OCR"
                 },
                 "iflytek_intsig_ocr": {
                     "apikey": "API Key",
                     "apisecret": "API Secret",
                     "appid": "應用程式 ID",
+                    "data_not_found": "找不到結果資料\n結果：\n{{detail}}",
+                    "payload_not_found": "找不到結果負載\n結果：\n{{detail}}",
                     "title": "訊飛 OCR (Intsig)"
                 },
                 "iflytek_latex_ocr": {
@@ -278,9 +288,12 @@
                     "apikey": "API Key",
                     "apisecret": "API Secret",
                     "appid": "應用程式 ID",
+                    "data_not_found": "找不到結果資料\n結果：\n{{detail}}",
+                    "payload_not_found": "找不到結果負載\n結果：\n{{detail}}",
                     "title": "訊飛 OCR"
                 },
                 "qrcode": {
+                    "not_recognized": "未辨識到 QR Code 或存在多個 QR Code",
                     "title": "QR Code"
                 },
                 "simple_latex_ocr": {
@@ -323,16 +336,19 @@
                 "alibaba": {
                     "accesskey_id": "AccessKey ID",
                     "accesskey_secret": "AccessKey Secret",
+                    "accesskey_secret_required": "請先設定 AccessKey ID 和 AccessKey Secret",
                     "title": "阿里翻譯"
                 },
                 "baidu": {
                     "appid": "應用程式 ID",
+                    "appid_secret_required": "請先設定 AppID 和金鑰",
                     "secret": "Secret",
                     "title": "百度翻譯"
                 },
                 "baidu_field": {
                     "academic": "學術論文",
                     "aerospace": "航空航天",
+                    "appid_secret_required": "請先設定 AppID 和金鑰",
                     "contract": "合約",
                     "finance": "金融財經",
                     "it": "資訊科技",
@@ -345,17 +361,21 @@
                     "wiki": "人文社科"
                 },
                 "bing": {
+                    "get_token_failed": "取得 Token 失敗",
                     "title": "Bing 翻譯"
                 },
                 "bing_dict": {
-                    "title": "必應詞典"
+                    "title": "必應詞典",
+                    "words_not_included": "尚未收錄該詞條：{{text}}"
                 },
                 "caiyun": {
                     "title": "彩雲小譯",
-                    "token": "Token"
+                    "token": "Token",
+                    "token_required": "請先設定 Token"
                 },
                 "cambridge_dict": {
-                    "title": "劍橋詞典"
+                    "title": "劍橋詞典",
+                    "words_not_included": "尚未收錄該詞條：{{text}}"
                 },
                 "chatglm": {
                     "add": "新增提示詞",
@@ -365,6 +385,7 @@
                     "chatglm_std": "ChatGLM Std",
                     "chatglm_turbo": "ChatGLM Turbo",
                     "input_some_prompt": "輸入 {{role}} 的提示詞",
+                    "invalid_apikey": "API Key 無效",
                     "model": "模型",
                     "prompt_description": "透過自訂提示詞，您可以自訂 智譜 AI 的行為。$text $from $to $detect 將被替換為待翻譯的文字、來源語言、目標語言和偵測到的語言。",
                     "prompt_list": "提示詞列表",
@@ -376,6 +397,7 @@
                     "custom_url": "DeepLX 網址",
                     "deeplx": "DeepLX",
                     "free": "免費版",
+                    "status_code_error": "狀態碼：{{status}}\n{{detail}}",
                     "title": "DeepL",
                     "type": "服務類型"
                 },
@@ -463,8 +485,13 @@
             "tts": {
                 "edge_tts": {
                     "add": "新增設定",
+                    "connection_closed": "Edge TTS 連線已關閉：{{detail}}",
+                    "no_audio_data": "Edge TTS 未傳回音訊資料",
                     "preview": "試聽",
+                    "request_timeout": "Edge TTS 請求逾時",
+                    "text_empty": "文字為空",
                     "title": "Edge TTS",
+                    "unsupported_language": "不支援的語言：{{lang}}",
                     "voice_config": "音色設定",
                     "voice_config_description": "每種語言預設使用其預設音色，新增項目可為指定語言選擇其他音色。"
                 },

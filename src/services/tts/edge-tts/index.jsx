@@ -1,3 +1,4 @@
+import i18n from '../../../i18n';
 import WebSocket from '@tauri-apps/plugin-websocket';
 import { v4 as uuidv4 } from 'uuid';
 import SHA256 from 'crypto-js/sha256';
@@ -177,7 +178,7 @@ async function synthesize(ssmlList) {
             };
             const resetIdleTimer = () => {
                 clearTimeout(timer);
-                timer = setTimeout(() => settle(reject, 'Edge TTS request timeout'), IDLE_TIMEOUT);
+                timer = setTimeout(() => settle(reject, i18n.t('services.tts.edge_tts.request_timeout')), IDLE_TIMEOUT);
             };
             resetIdleTimer();
 
@@ -197,7 +198,7 @@ async function synthesize(ssmlList) {
                     if (index < ssmlList.length) {
                         sendCurrent().catch((e) => settle(reject, e));
                     } else if (parts.length === 0) {
-                        settle(reject, 'Edge TTS returned no audio data');
+                        settle(reject, i18n.t('services.tts.edge_tts.no_audio_data'));
                     } else {
                         settle(resolve, mergeAudio(parts));
                     }
@@ -215,7 +216,7 @@ async function synthesize(ssmlList) {
                 if (message.type === 'Close') {
                     settle(
                         reject,
-                        `Edge TTS connection closed: ${message.data?.code ?? ''} ${message.data?.reason ?? ''}`.trim()
+                        i18n.t('services.tts.edge_tts.connection_closed', { detail: `${message.data?.code ?? ''} ${message.data?.reason ?? ''}`.trim() })
                     );
                 }
             });
@@ -238,12 +239,12 @@ export async function tts(text, lang, options = {}) {
 
     const voice = resolveVoice(lang, config);
     if (!voice) {
-        throw `Unsupported language: ${lang}`;
+        throw i18n.t('services.tts.edge_tts.unsupported_language', { lang });
     }
     // 去掉 XML 不接受的控制字符，避免服务端直接断开连接
     const content = text.replace(/\p{Cc}/gu, ' ').trim();
     if (content === '') {
-        throw 'Text is empty';
+        throw i18n.t('services.tts.edge_tts.text_empty');
     }
 
     return await synthesize(splitText(content, MAX_CHUNK_BYTES).map((chunk) => buildSSML(voice, chunk)));

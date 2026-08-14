@@ -1,3 +1,4 @@
+import i18n from '../../../i18n';
 import { readFile, BaseDirectory } from '@tauri-apps/plugin-fs';
 import { fetch } from '@tauri-apps/plugin-http';
 import { nanoid } from 'nanoid';
@@ -12,7 +13,7 @@ export async function recognize(base64, language, options = {}) {
 
     const salt = nanoid();
     if (appid === '' || secret === '') {
-        throw 'Please configure appid and secret';
+        throw i18n.t('services.recognize.baidu_img_ocr.appid_secret_required');
     }
 
     let file = await readFile('pot_screenshot_cut.png', { baseDir: BaseDirectory.AppCache });
@@ -44,10 +45,10 @@ export async function recognize(base64, language, options = {}) {
                 return result['data']['sumDst'].trim();
             }
         } else {
-            throw JSON.stringify(result);
+            throw i18n.t('config.service.service_request_error', { detail: JSON.stringify(result) });
         }
     } else {
-        throw `Http Request Error\nHttp Status: ${res.status}\n${JSON.stringify(await res.json())}`;
+        throw i18n.t('config.service.http_request_error', { status: res.status, detail: JSON.stringify(await res.json()) });
     }
 }
 

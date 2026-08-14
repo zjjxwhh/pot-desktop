@@ -33,6 +33,7 @@
                 "backup": "백업",
                 "backup_success": "백업 성공",
                 "empty": "백업한 이력이 없습니다",
+                "invalid_file": "",
                 "label": "백업",
                 "list": "백업 목록",
                 "load_success": "백업 불러오기에 성공하였습니다",
@@ -132,11 +133,13 @@
                 "add_service": "서비스 추가",
                 "collection": "어휘",
                 "homepage": "홈페이지",
+                "http_request_error": "",
                 "install_plugin": "플러그인 설치",
                 "installed_plugins": "",
                 "label": "서비스",
                 "least": "최소한 하나 이상은 선택해야 합니다",
                 "recognize": "인식",
+                "service_request_error": "",
                 "test_failed": "테스트 실패",
                 "title": "서비스 설정",
                 "translate": "번역",
@@ -238,6 +241,8 @@
                     "title": ""
                 },
                 "eudic": {
+                    "create_category_failed": "",
+                    "get_category_failed": "",
                     "name": "",
                     "title": "",
                     "token": ""
@@ -250,22 +255,27 @@
                 "baidu_accurate_ocr": {
                     "client_id": "",
                     "client_secret": "",
+                    "get_access_token_failed": "",
                     "title": ""
                 },
                 "baidu_img_ocr": {
                     "appid": "",
+                    "appid_secret_required": "",
                     "secret": "",
                     "title": ""
                 },
                 "baidu_ocr": {
                     "client_id": "",
                     "client_secret": "",
+                    "get_access_token_failed": "",
                     "title": ""
                 },
                 "iflytek_intsig_ocr": {
                     "apikey": "",
                     "apisecret": "",
                     "appid": "",
+                    "data_not_found": "",
+                    "payload_not_found": "",
                     "title": ""
                 },
                 "iflytek_latex_ocr": {
@@ -278,9 +288,12 @@
                     "apikey": "",
                     "apisecret": "",
                     "appid": "",
+                    "data_not_found": "",
+                    "payload_not_found": "",
                     "title": ""
                 },
                 "qrcode": {
+                    "not_recognized": "",
                     "title": ""
                 },
                 "simple_latex_ocr": {
@@ -323,16 +336,19 @@
                 "alibaba": {
                     "accesskey_id": "",
                     "accesskey_secret": "",
+                    "accesskey_secret_required": "",
                     "title": ""
                 },
                 "baidu": {
                     "appid": "",
+                    "appid_secret_required": "",
                     "secret": "",
                     "title": ""
                 },
                 "baidu_field": {
                     "academic": "",
                     "aerospace": "",
+                    "appid_secret_required": "",
                     "contract": "",
                     "finance": "",
                     "it": "",
@@ -345,17 +361,21 @@
                     "wiki": ""
                 },
                 "bing": {
+                    "get_token_failed": "",
                     "title": "Bing"
                 },
                 "bing_dict": {
-                    "title": ""
+                    "title": "",
+                    "words_not_included": ""
                 },
                 "caiyun": {
                     "title": "",
-                    "token": ""
+                    "token": "",
+                    "token_required": ""
                 },
                 "cambridge_dict": {
-                    "title": ""
+                    "title": "",
+                    "words_not_included": ""
                 },
                 "chatglm": {
                     "add": "",
@@ -365,6 +385,7 @@
                     "chatglm_std": "",
                     "chatglm_turbo": "",
                     "input_some_prompt": "",
+                    "invalid_apikey": "",
                     "model": "",
                     "prompt_description": "",
                     "prompt_list": "",
@@ -376,6 +397,7 @@
                     "custom_url": "DeepLX 주소",
                     "deeplx": "DeepLX",
                     "free": "무료",
+                    "status_code_error": "",
                     "title": "DeepL",
                     "type": "서비스 유형"
                 },
@@ -463,8 +485,13 @@
             "tts": {
                 "edge_tts": {
                     "add": "",
+                    "connection_closed": "",
+                    "no_audio_data": "",
                     "preview": "",
+                    "request_timeout": "",
+                    "text_empty": "",
                     "title": "",
+                    "unsupported_language": "",
                     "voice_config": "",
                     "voice_config_description": ""
                 },

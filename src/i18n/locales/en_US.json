@@ -33,6 +33,7 @@
                 "backup": "Backup",
                 "backup_success": "Backup Success",
                 "empty": "You have not backed up yet",
+                "invalid_file": "Invalid File",
                 "label": "Backup",
                 "list": "Backup List",
                 "load_success": "Load Backup Success",
@@ -132,11 +133,13 @@
                 "add_service": "Add Service",
                 "collection": "Collection",
                 "homepage": "Homepage",
+                "http_request_error": "HTTP Request Error ({{status}}):\n{{detail}}",
                 "install_plugin": "Install Plugin",
                 "installed_plugins": "Installed {{count}} plugins",
                 "label": "Service",
                 "least": "Please keep at least one",
                 "recognize": "Recognize",
+                "service_request_error": "Service Request Error:\n{{detail}}",
                 "test_failed": "Test Failed",
                 "title": "Service Settings",
                 "translate": "Translate",
@@ -238,6 +241,8 @@
                     "title": "Anki"
                 },
                 "eudic": {
+                    "create_category_failed": "Create Category Failed",
+                    "get_category_failed": "Get Category Failed",
                     "name": "Collection Name",
                     "title": "Eudic",
                     "token": "Token"
@@ -250,22 +255,27 @@
                 "baidu_accurate_ocr": {
                     "client_id": "API Key",
                     "client_secret": "Secret Key",
+                    "get_access_token_failed": "Get Access Token Failed!",
                     "title": "Baidu OCR (Accurate)"
                 },
                 "baidu_img_ocr": {
                     "appid": "App ID",
+                    "appid_secret_required": "Please configure appid and secret",
                     "secret": "Secret",
                     "title": "Baidu Image Translation"
                 },
                 "baidu_ocr": {
                     "client_id": "API Key",
                     "client_secret": "Secret Key",
+                    "get_access_token_failed": "Get Access Token Failed!",
                     "title": "Baidu OCR"
                 },
                 "iflytek_intsig_ocr": {
                     "apikey": "API Key",
                     "apisecret": "API Secret",
                     "appid": "App ID",
+                    "data_not_found": "Result data not found",
+                    "payload_not_found": "Result payload not found\nResult:\n{{detail}}",
                     "title": "iFlyTek OCR (Intsig)"
                 },
                 "iflytek_latex_ocr": {
@@ -278,9 +288,12 @@
                     "apikey": "API Key",
                     "apisecret": "API Secret",
                     "appid": "App ID",
+                    "data_not_found": "Result data not found\nResult:\n{{detail}}",
+                    "payload_not_found": "Result payload not found\nResult:\n{{detail}}",
                     "title": "iFlyTek OCR"
                 },
                 "qrcode": {
+                    "not_recognized": "QR code not recognized or multiple QR codes exist",
                     "title": "QR Code"
                 },
                 "simple_latex_ocr": {
@@ -323,16 +336,19 @@
                 "alibaba": {
                     "accesskey_id": "AccessKey ID",
                     "accesskey_secret": "AccessKey Secret",
+                    "accesskey_secret_required": "Please configure AccessKey ID and AccessKey Secret",
                     "title": "Alibaba"
                 },
                 "baidu": {
                     "appid": "App ID",
+                    "appid_secret_required": "Please configure appid and secret",
                     "secret": "Secret",
                     "title": "Baidu"
                 },
                 "baidu_field": {
                     "academic": "Academic Paper",
                     "aerospace": "Aerospace",
+                    "appid_secret_required": "Please configure appid and secret",
                     "contract": "Contract",
                     "finance": "Finance and Economics",
                     "it": "Information Technology",
@@ -345,17 +361,21 @@
                     "wiki": "Humanities and Social Sciences"
                 },
                 "bing": {
+                    "get_token_failed": "Get Token Failed",
                     "title": "Bing"
                 },
                 "bing_dict": {
-                    "title": "Bing Dictionary"
+                    "title": "Bing Dictionary",
+                    "words_not_included": "Words not yet included: {{text}}"
                 },
                 "caiyun": {
                     "title": "Caiyun",
-                    "token": "Token"
+                    "token": "Token",
+                    "token_required": "Please configure token"
                 },
                 "cambridge_dict": {
-                    "title": "Cambridge Dictionary"
+                    "title": "Cambridge Dictionary",
+                    "words_not_included": "Words not yet included: {{text}}"
                 },
                 "chatglm": {
                     "add": "Add Prompt",
@@ -365,6 +385,7 @@
                     "chatglm_std": "ChatGLM Std",
                     "chatglm_turbo": "ChatGLM Turbo",
                     "input_some_prompt": "Input Some {{role}} Prompt",
+                    "invalid_apikey": "invalid apikey",
                     "model": "Model",
                     "prompt_description": "By customizing the Prompt, you can customize the behavior of ChatGLM. {{$text}}, {{$from}}, {{$to}}, {{$detect}} will be replaced with {{the text to be translated}}, {{source language}}, {{target language}}, {{detected language}}.",
                     "prompt_list": "Prompt List",
@@ -376,6 +397,7 @@
                     "custom_url": "DeepLX URL",
                     "deeplx": "DeepLX",
                     "free": "Free",
+                    "status_code_error": "Status Code: {{status}}\n{{detail}}",
                     "title": "DeepL",
                     "type": "Service Type"
                 },
@@ -463,8 +485,13 @@
             "tts": {
                 "edge_tts": {
                     "add": "Add Config",
+                    "connection_closed": "Edge TTS connection closed: {{detail}}",
+                    "no_audio_data": "Edge TTS returned no audio data",
                     "preview": "Preview",
+                    "request_timeout": "Edge TTS request timeout",
+                    "text_empty": "Text is empty",
                     "title": "Edge TTS",
+                    "unsupported_language": "Unsupported language: {{lang}}",
                     "voice_config": "Voice Configuration",
                     "voice_config_description": "Every language uses its default voice. Add an entry to pick a different voice for the selected language."
                 },

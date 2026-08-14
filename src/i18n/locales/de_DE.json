@@ -33,6 +33,7 @@
                 "backup": "Sichern",
                 "backup_success": "Backup erfolgreich durchgeführt",
                 "empty": "Sie haben noch keine Backups",
+                "invalid_file": "",
                 "label": "Backup",
                 "list": "Backup-Liste",
                 "load_success": "Backup erfolgreich geladen",
@@ -132,11 +133,13 @@
                 "add_service": "Dienst hinzufügen",
                 "collection": "Vokabelheft",
                 "homepage": "Plugin-Homepage",
+                "http_request_error": "",
                 "install_plugin": "Externes Plugin installieren",
                 "installed_plugins": "",
                 "label": "Dienst",
                 "least": "Bitte mindestens einen behalten",
                 "recognize": "Texterkennung",
+                "service_request_error": "",
                 "test_failed": "Test fehlgeschlagen",
                 "title": "Diensteinstellungen",
                 "translate": "Übersetzung",
@@ -238,6 +241,8 @@
                     "title": "Anki"
                 },
                 "eudic": {
+                    "create_category_failed": "",
+                    "get_category_failed": "",
                     "name": "Name des Vokabelheftes",
                     "title": "Eudic",
                     "token": "Token"
@@ -250,22 +255,27 @@
                 "baidu_accurate_ocr": {
                     "client_id": "API-Schlüssel",
                     "client_secret": "Secret Key",
+                    "get_access_token_failed": "",
                     "title": "Baidu OCR (Hochpräzise)"
                 },
                 "baidu_img_ocr": {
                     "appid": "App ID",
+                    "appid_secret_required": "",
                     "secret": "Secret",
                     "title": "Baidu Bildübersetzung"
                 },
                 "baidu_ocr": {
                     "client_id": "API-Schlüssel",
                     "client_secret": "Secret Key",
+                    "get_access_token_failed": "",
                     "title": "Baidu OCR"
                 },
                 "iflytek_intsig_ocr": {
                     "apikey": "API-Schlüssel",
                     "apisecret": "API Secret",
                     "appid": "App ID",
+                    "data_not_found": "",
+                    "payload_not_found": "",
                     "title": "iFlyTek OCR (Intsig)"
                 },
                 "iflytek_latex_ocr": {
@@ -278,9 +288,12 @@
                     "apikey": "API-Schlüssel",
                     "apisecret": "API Secret",
                     "appid": "App ID",
+                    "data_not_found": "",
+                    "payload_not_found": "",
                     "title": "iFlyTek OCR"
                 },
                 "qrcode": {
+                    "not_recognized": "",
                     "title": "QR-Code-Erkennung"
                 },
                 "simple_latex_ocr": {
@@ -323,16 +336,19 @@
                 "alibaba": {
                     "accesskey_id": "AccessKey ID",
                     "accesskey_secret": "AccessKey Secret",
+                    "accesskey_secret_required": "",
                     "title": "Alibaba Übersetzung"
                 },
                 "baidu": {
                     "appid": "App ID",
+                    "appid_secret_required": "",
                     "secret": "Secret",
                     "title": "Baidu Übersetzung"
                 },
                 "baidu_field": {
                     "academic": "Wissenschaftliche Arbeit",
                     "aerospace": "Luft- und Raumfahrt",
+                    "appid_secret_required": "",
                     "contract": "Vertrag",
                     "finance": "Finanzwesen",
                     "it": "Informationstechnologie",
@@ -345,17 +361,21 @@
                     "wiki": "Geisteswissenschaften"
                 },
                 "bing": {
+                    "get_token_failed": "",
                     "title": "Bing Übersetzung"
                 },
                 "bing_dict": {
-                    "title": "Bing Wörterbuch"
+                    "title": "Bing Wörterbuch",
+                    "words_not_included": ""
                 },
                 "caiyun": {
                     "title": "Caiyun",
-                    "token": "Token"
+                    "token": "Token",
+                    "token_required": ""
                 },
                 "cambridge_dict": {
-                    "title": "Cambridge Wörterbuch"
+                    "title": "Cambridge Wörterbuch",
+                    "words_not_included": ""
                 },
                 "chatglm": {
                     "add": "Prompt hinzufügen",
@@ -365,6 +385,7 @@
                     "chatglm_std": "ChatGLM Std",
                     "chatglm_turbo": "ChatGLM Turbo",
                     "input_some_prompt": "",
+                    "invalid_apikey": "",
                     "model": "Modell",
                     "prompt_description": "Passen Sie das Verhalten von KI durch benutzerdefinierte Prompts an. $text $from $to $detect werden durch den zu übersetzenden Text, die Ausgangs- und Zielsprache sowie die erkannte Sprache ersetzt.",
                     "prompt_list": "",
@@ -376,6 +397,7 @@
                     "custom_url": "DeepLX URL",
                     "deeplx": "DeepLX",
                     "free": "Integrierter kostenloser Dienst",
+                    "status_code_error": "",
                     "title": "DeepL",
                     "type": "Diensttyp"
                 },
@@ -463,8 +485,13 @@
             "tts": {
                 "edge_tts": {
                     "add": "",
+                    "connection_closed": "",
+                    "no_audio_data": "",
                     "preview": "",
+                    "request_timeout": "",
+                    "text_empty": "",
                     "title": "",
+                    "unsupported_language": "",
                     "voice_config": "",
                     "voice_config_description": ""
                 },

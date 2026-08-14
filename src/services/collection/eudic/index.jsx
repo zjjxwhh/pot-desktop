@@ -1,3 +1,4 @@
+import i18n from '../../../i18n';
 import { fetch } from '@tauri-apps/plugin-http';
 
 export async function collection(source, target, options = {}) {
@@ -44,10 +45,10 @@ async function checkCategory(name, token) {
         if (result1.data) {
             return result1.data.id;
         } else {
-            throw 'Create Category Failed';
+            throw i18n.t('services.collection.eudic.create_category_failed');
         }
     } else {
-        throw 'Get Category Failed';
+        throw i18n.t('services.collection.eudic.get_category_failed');
     }
 }
 

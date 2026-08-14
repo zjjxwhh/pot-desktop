@@ -24,3 +24,9 @@ html {
     --tooltip-delay: 250ms;
     --tooltip-close-delay: 250ms;
 }
+
+/* Toast 描述文本保留换行符 */
+.toast__description {
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}

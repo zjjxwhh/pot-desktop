@@ -33,6 +33,7 @@
                 "backup": "காப்புப்பிரதி",
                 "backup_success": "காப்பு செய்",
                 "empty": "நீங்கள் இன்னும் காப்புப் பிரதி எடுக்கவில்லை",
+                "invalid_file": "",
                 "label": "காப்புப்பிரதி",
                 "list": "காப்பு பட்டியல்",
                 "load_success": "காப்பு வெற்றியை ஏற்றவும்",
@@ -132,11 +133,13 @@
                 "add_service": "சேவையைச் சேர்க்கவும்",
                 "collection": "சேகரிப்பு",
                 "homepage": "முகப்புப்பக்கம்",
+                "http_request_error": "",
                 "install_plugin": "சொருகி நிறுவவும்",
                 "installed_plugins": "",
                 "label": "பணி",
                 "least": "தயவுசெய்து குறைந்தபட்சம் ஒன்றை வைத்திருங்கள்",
                 "recognize": "அங்கீகரிக்கவும்",
+                "service_request_error": "",
                 "test_failed": "சோதனை தோல்வியடைந்தது",
                 "title": "பணி அமைப்புகள்",
                 "translate": "மொழிபெயர்த்திடு",
@@ -238,6 +241,8 @@
                     "title": "அங்கி"
                 },
                 "eudic": {
+                    "create_category_failed": "",
+                    "get_category_failed": "",
                     "name": "சேகரிப்பு பெயர்",
                     "title": "யூடிக்",
                     "token": "கிள்ளாக்கு"
@@ -250,22 +255,27 @@
                 "baidu_accurate_ocr": {
                     "client_id": "பநிஇ விசை",
                     "client_secret": "ரகசிய விசை",
+                    "get_access_token_failed": "",
                     "title": "பைடு OCR (துல்லியமானது)"
                 },
                 "baidu_img_ocr": {
                     "appid": "பயன்பாட்டு ஐடி",
+                    "appid_secret_required": "",
                     "secret": "மறைபொருள்",
                     "title": "பைடு பட மொழிபெயர்ப்பு"
                 },
                 "baidu_ocr": {
                     "client_id": "பநிஇ விசை",
                     "client_secret": "ரகசிய விசை",
+                    "get_access_token_failed": "",
                     "title": "பைடு ஓ.சி.ஆர்"
                 },
                 "iflytek_intsig_ocr": {
                     "apikey": "பநிஇ விசை",
                     "apisecret": "பநிஇ மறைபொருள்",
                     "appid": "பயன்பாட்டு ஐடி",
+                    "data_not_found": "",
+                    "payload_not_found": "",
                     "title": "Iflytek ocr (insig)"
                 },
                 "iflytek_latex_ocr": {
@@ -278,9 +288,12 @@
                     "apikey": "பநிஇ விசை",
                     "apisecret": "பநிஇ மறைபொருள்",
                     "appid": "பயன்பாட்டு ஐடி",
+                    "data_not_found": "",
+                    "payload_not_found": "",
                     "title": "iflytek ocr"
                 },
                 "qrcode": {
+                    "not_recognized": "",
                     "title": "QR குறியீடு"
                 },
                 "simple_latex_ocr": {
@@ -323,16 +336,19 @@
                 "alibaba": {
                     "accesskey_id": "அணுகல் ஐடி",
                     "accesskey_secret": "AccessKey மறைபொருள்",
+                    "accesskey_secret_required": "",
                     "title": "அலிபாபா"
                 },
                 "baidu": {
                     "appid": "பயன்பாட்டு ஐடி",
+                    "appid_secret_required": "",
                     "secret": "மறைபொருள்",
                     "title": "பைடு"
                 },
                 "baidu_field": {
                     "academic": "கல்வித் தாள்",
                     "aerospace": "ஏரோச்பேச்",
+                    "appid_secret_required": "",
                     "contract": "ஒப்பந்தம்",
                     "finance": "பொருள் மற்றும் பொருளாதாரம்",
                     "it": "செய்தி தொழில்நுட்பம்",
@@ -345,17 +361,21 @@
                     "wiki": "மனிதநேயம் மற்றும் சமூக அறிவியல்"
                 },
                 "bing": {
+                    "get_token_failed": "",
                     "title": "பிங்"
                 },
                 "bing_dict": {
-                    "title": "பிங் அகராதி"
+                    "title": "பிங் அகராதி",
+                    "words_not_included": ""
                 },
                 "caiyun": {
                     "title": "காய் முகில்",
-                    "token": "கிள்ளாக்கு"
+                    "token": "கிள்ளாக்கு",
+                    "token_required": ""
                 },
                 "cambridge_dict": {
-                    "title": "கேம்பிரிட்ச் அகராதி"
+                    "title": "கேம்பிரிட்ச் அகராதி",
+                    "words_not_included": ""
                 },
                 "chatglm": {
                     "add": "வரியில் சேர்க்கவும்",
@@ -365,6 +385,7 @@
                     "chatglm_std": "Chatglm std",
                     "chatglm_turbo": "சாட்எல்எம் டர்போ",
                     "input_some_prompt": "",
+                    "invalid_apikey": "",
                     "model": "மாதிரியுரு",
                     "prompt_description": "வரியில் தனிப்பயனாக்குவதன் மூலம், AI இன் நடத்தையைத் தனிப்பயனாக்கலாம். $ உரை $ முதல் $ கண்டறிதல் வரை மொழிபெயர்க்கப்பட வேண்டிய உரை, மூல மொழி, இலக்கு மொழி மற்றும் கண்டறியப்பட்ட மொழி மூலம் மாற்றப்படும்.",
                     "prompt_list": "",
@@ -376,6 +397,7 @@
                     "custom_url": "Deeplx முகவரி",
                     "deeplx": "Deeplx",
                     "free": "இலவசம்",
+                    "status_code_error": "",
                     "title": "ஆழம்எல்",
                     "type": "பணி வகை"
                 },
@@ -463,8 +485,13 @@
             "tts": {
                 "edge_tts": {
                     "add": "",
+                    "connection_closed": "",
+                    "no_audio_data": "",
                     "preview": "",
+                    "request_timeout": "",
+                    "text_empty": "",
                     "title": "",
+                    "unsupported_language": "",
                     "voice_config": "",
                     "voice_config_description": ""
                 },

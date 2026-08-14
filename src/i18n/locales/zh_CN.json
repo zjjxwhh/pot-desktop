@@ -33,6 +33,7 @@
                 "backup": "备份",
                 "backup_success": "备份成功",
                 "empty": "您还没有备份",
+                "invalid_file": "无效的文件",
                 "label": "备份设置",
                 "list": "备份列表",
                 "load_success": "载入备份成功",
@@ -132,11 +133,13 @@
                 "add_service": "添加服务",
                 "collection": "生词本",
                 "homepage": "插件主页",
+                "http_request_error": "HTTP 请求错误 ({{status}})：\n{{detail}}",
                 "install_plugin": "安装外部插件",
                 "installed_plugins": "已安装 {{count}} 个插件",
                 "label": "服务设置",
                 "least": "请至少保留一个",
                 "recognize": "文字识别",
+                "service_request_error": "服务请求错误：\n{{detail}}",
                 "test_failed": "测试失败",
                 "title": "服务设置",
                 "translate": "翻译",
@@ -238,6 +241,8 @@
                     "title": "Anki"
                 },
                 "eudic": {
+                    "create_category_failed": "创建分类失败",
+                    "get_category_failed": "获取分类失败",
                     "name": "生词本名称",
                     "title": "欧路词典",
                     "token": "Token"
@@ -250,22 +255,27 @@
                 "baidu_accurate_ocr": {
                     "client_id": "API Key",
                     "client_secret": "Secret Key",
+                    "get_access_token_failed": "获取 Access Token 失败",
                     "title": "百度 OCR (高精度)"
                 },
                 "baidu_img_ocr": {
                     "appid": "App ID",
+                    "appid_secret_required": "请先配置 AppID 和密钥",
                     "secret": "Secret",
                     "title": "百度图片翻译"
                 },
                 "baidu_ocr": {
                     "client_id": "API Key",
                     "client_secret": "Secret Key",
+                    "get_access_token_failed": "获取 Access Token 失败",
                     "title": "百度 OCR"
                 },
                 "iflytek_intsig_ocr": {
                     "apikey": "API Key",
                     "apisecret": "API Secret",
                     "appid": "App ID",
+                    "data_not_found": "未找到结果数据\n结果：\n{{detail}}",
+                    "payload_not_found": "未找到结果负载\n结果：\n{{detail}}",
                     "title": "讯飞 OCR (Intsig)"
                 },
                 "iflytek_latex_ocr": {
@@ -278,9 +288,12 @@
                     "apikey": "API Key",
                     "apisecret": "API Secret",
                     "appid": "App ID",
+                    "data_not_found": "未找到结果数据\n结果：\n{{detail}}",
+                    "payload_not_found": "未找到结果负载\n结果：\n{{detail}}",
                     "title": "讯飞 OCR"
                 },
                 "qrcode": {
+                    "not_recognized": "未识别到二维码或存在多个二维码",
                     "title": "二维码识别"
                 },
                 "simple_latex_ocr": {
@@ -323,16 +336,19 @@
                 "alibaba": {
                     "accesskey_id": "AccessKey ID",
                     "accesskey_secret": "AccessKey Secret",
+                    "accesskey_secret_required": "请先配置 AccessKey ID 和 AccessKey Secret",
                     "title": "阿里翻译"
                 },
                 "baidu": {
                     "appid": "App ID",
+                    "appid_secret_required": "请先配置 AppID 和密钥",
                     "secret": "Secret",
                     "title": "百度翻译"
                 },
                 "baidu_field": {
                     "academic": "学术论文",
                     "aerospace": "航空航天",
+                    "appid_secret_required": "请先配置 AppID 和密钥",
                     "contract": "合同",
                     "finance": "金融财经",
                     "it": "信息技术",
@@ -345,17 +361,21 @@
                     "wiki": "人文社科"
                 },
                 "bing": {
+                    "get_token_failed": "获取 Token 失败",
                     "title": "必应翻译"
                 },
                 "bing_dict": {
-                    "title": "必应词典"
+                    "title": "必应词典",
+                    "words_not_included": "暂未收录该词条：{{text}}"
                 },
                 "caiyun": {
                     "title": "彩云小译",
-                    "token": "Token"
+                    "token": "Token",
+                    "token_required": "请先配置 Token"
                 },
                 "cambridge_dict": {
-                    "title": "剑桥词典"
+                    "title": "剑桥词典",
+                    "words_not_included": "暂未收录该词条：{{text}}"
                 },
                 "chatglm": {
                     "add": "添加提示词",
@@ -365,6 +385,7 @@
                     "chatglm_std": "ChatGLM Std",
                     "chatglm_turbo": "ChatGLM Turbo",
                     "input_some_prompt": "输入 {{role}} 的提示词",
+                    "invalid_apikey": "API Key 无效",
                     "model": "模型",
                     "prompt_description": "通过自定义提示词自定义 智谱 AI 的行为，{{$text}}、{{$from}}、{{$to}}、{{$detect}} 将会被替换为 {{待翻译文本}}、{{源语言}}、{{目标语言}}、{{检测到的语言}}。",
                     "prompt_list": "提示词列表",
@@ -376,6 +397,7 @@
                     "custom_url": "DeepLX 地址",
                     "deeplx": "DeepLX",
                     "free": "内置免费",
+                    "status_code_error": "状态码：{{status}}\n{{detail}}",
                     "title": "DeepL",
                     "type": "服务类型"
                 },
@@ -463,8 +485,13 @@
             "tts": {
                 "edge_tts": {
                     "add": "添加配置",
+                    "connection_closed": "Edge TTS 连接已关闭：{{detail}}",
+                    "no_audio_data": "Edge TTS 未返回音频数据",
                     "preview": "试听",
+                    "request_timeout": "Edge TTS 请求超时",
+                    "text_empty": "文本为空",
                     "title": "Edge TTS",
+                    "unsupported_language": "不支持的语言：{{lang}}",
                     "voice_config": "音色配置",
                     "voice_config_description": "每种语言默认使用其默认音色，添加条目可为指定语言选择其他音色。"
                 },

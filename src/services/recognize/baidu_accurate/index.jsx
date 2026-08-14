@@ -1,3 +1,4 @@
+import i18n from '../../../i18n';
 import { fetch } from '@tauri-apps/plugin-http';
 
 export async function recognize(base64, language, options = {}) {
@@ -48,16 +49,16 @@ export async function recognize(base64, language, options = {}) {
                     }
                     return target.trim();
                 } else {
-                    throw JSON.stringify(result);
+                    throw i18n.t('config.service.service_request_error', { detail: JSON.stringify(result) });
                 }
             } else {
-                throw `Http Request Error\nHttp Status: ${res.status}\n${JSON.stringify(await res.json())}`;
+                throw i18n.t('config.service.http_request_error', { status: res.status, detail: JSON.stringify(await res.json()) });
             }
         } else {
-            throw 'Get Access Token Failed!';
+            throw i18n.t('services.recognize.baidu_accurate_ocr.get_access_token_failed');
         }
     } else {
-        throw `Http Request Error\nHttp Status: ${token_res.status}\n${JSON.stringify(await token_res.json())}`;
+        throw i18n.t('config.service.http_request_error', { status: token_res.status, detail: JSON.stringify(await token_res.json()) });
     }
 }
 

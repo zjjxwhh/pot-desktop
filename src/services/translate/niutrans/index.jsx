@@ -1,3 +1,4 @@
+import i18n from '../../../i18n';
 import { fetch } from '@tauri-apps/plugin-http';
 
 export async function translate(text, from, to, options = {}) {
@@ -26,10 +27,10 @@ export async function translate(text, from, to, options = {}) {
         if (result && result['tgt_text']) {
             return result['tgt_text'].trim();
         } else {
-            throw JSON.stringify(result);
+            throw i18n.t('config.service.service_request_error', { detail: JSON.stringify(result) });
         }
     } else {
-        throw `Http Request Error\nHttp Status: ${res.status}\n${JSON.stringify(await res.json())}`;
+        throw i18n.t('config.service.http_request_error', { status: res.status, detail: JSON.stringify(await res.json()) });
     }
 }
 

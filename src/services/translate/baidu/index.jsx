@@ -1,3 +1,4 @@
+import i18n from '../../../i18n';
 import { fetch } from '@tauri-apps/plugin-http';
 import { nanoid } from 'nanoid';
 import md5 from 'md5';
@@ -11,7 +12,7 @@ export async function translate(text, from, to, options = {}) {
 
     const salt = nanoid();
     if (appid === '' || secret === '') {
-        throw 'Please configure appid and secret';
+        throw i18n.t('services.translate.baidu.appid_secret_required');
     }
 
     const str = appid + text + salt + secret;
@@ -40,10 +41,10 @@ export async function translate(text, from, to, options = {}) {
             }
             return target.trim();
         } else {
-            throw JSON.stringify(result);
+            throw i18n.t('config.service.service_request_error', { detail: JSON.stringify(result) });
         }
     } else {
-        throw `Http Request Error\nHttp Status: ${res.status}\n${JSON.stringify(await res.json())}`;
+        throw i18n.t('config.service.http_request_error', { status: res.status, detail: JSON.stringify(await res.json()) });
     }
 }
 

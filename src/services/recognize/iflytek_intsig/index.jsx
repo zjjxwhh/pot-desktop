@@ -1,3 +1,4 @@
+import i18n from '../../../i18n';
 import { fetch } from '@tauri-apps/plugin-http';
 import CryptoJS from 'crypto-js';
 import { iflytek_auth } from '../iflytek';
@@ -53,15 +54,15 @@ export async function recognize(base64, language, options = {}) {
 
     // 处理结果
     if (!res.ok) {
-        throw `Http Request Error\nHttp Status: ${res.status}\n${JSON.stringify(await res.json())}`;
+        throw i18n.t('config.service.http_request_error', { status: res.status, detail: JSON.stringify(await res.json()) });
     }
     let data = await res.json().catch(() => null);
     if (!data) {
-        throw `Result data not found`;
+        throw i18n.t('services.recognize.iflytek_intsig_ocr.data_not_found');
     }
     let res_payload = data['payload'];
     if (!res_payload) {
-        throw `Result payload not found\nResult:\n${JSON.stringify(data)}`;
+        throw i18n.t('services.recognize.iflytek_intsig_ocr.payload_not_found', { detail: JSON.stringify(data) });
     }
 
     let text = CryptoJS.enc.Base64.parse(res_payload['recognizeDocumentRes']['text']); // Base64解码

@@ -33,6 +33,7 @@
                 "backup": "Резервне копіювання",
                 "backup_success": "Резервну копію створено",
                 "empty": "Резервних копій ще немає",
+                "invalid_file": "",
                 "label": "Резервне копіювання",
                 "list": "Список резервних копій",
                 "load_success": "Резервну копію завантажено",
@@ -132,11 +133,13 @@
                 "add_service": "Додати службу",
                 "collection": "Словник",
                 "homepage": "Домашня сторінка",
+                "http_request_error": "",
                 "install_plugin": "Встановити плагін",
                 "installed_plugins": "",
                 "label": "Служба",
                 "least": "Залиште хоча б одну службу",
                 "recognize": "Розпізнати",
+                "service_request_error": "",
                 "test_failed": "Тест не пройдено",
                 "title": "Налаштування служб",
                 "translate": "Переклад",
@@ -238,6 +241,8 @@
                     "title": "Анкі (Anki)"
                 },
                 "eudic": {
+                    "create_category_failed": "",
+                    "get_category_failed": "",
                     "name": "Назва словника",
                     "title": "Eudic",
                     "token": "Токен"
@@ -250,22 +255,27 @@
                 "baidu_accurate_ocr": {
                     "client_id": "API Ключ",
                     "client_secret": "Secret Key",
+                    "get_access_token_failed": "",
                     "title": "Baidu OCR (Точний)"
                 },
                 "baidu_img_ocr": {
                     "appid": "App ID",
+                    "appid_secret_required": "",
                     "secret": "Secret",
                     "title": "Baidu — переклад зображень"
                 },
                 "baidu_ocr": {
                     "client_id": "API Ключ",
                     "client_secret": "Secret Key",
+                    "get_access_token_failed": "",
                     "title": "Baidu OCR"
                 },
                 "iflytek_intsig_ocr": {
                     "apikey": "API Ключ",
                     "apisecret": "API Secret",
                     "appid": "App ID",
+                    "data_not_found": "",
+                    "payload_not_found": "",
                     "title": "iFlyTek OCR (Intsig)"
                 },
                 "iflytek_latex_ocr": {
@@ -278,9 +288,12 @@
                     "apikey": "API Ключ",
                     "apisecret": "API Secret",
                     "appid": "App ID",
+                    "data_not_found": "",
+                    "payload_not_found": "",
                     "title": "iFlyTek OCR"
                 },
                 "qrcode": {
+                    "not_recognized": "",
                     "title": "QR Код"
                 },
                 "simple_latex_ocr": {
@@ -323,16 +336,19 @@
                 "alibaba": {
                     "accesskey_id": "AccessKey ID",
                     "accesskey_secret": "AccessKey Secret",
+                    "accesskey_secret_required": "",
                     "title": "Alibaba"
                 },
                 "baidu": {
                     "appid": "App ID",
+                    "appid_secret_required": "",
                     "secret": "Secret",
                     "title": "Baidu"
                 },
                 "baidu_field": {
                     "academic": "Академічні статті",
                     "aerospace": "Авіакосмічна промисловість",
+                    "appid_secret_required": "",
                     "contract": "Контракти",
                     "finance": "Фінанси та економіка",
                     "it": "Інформаційні технології",
@@ -345,17 +361,21 @@
                     "wiki": "Людинознавство та суспільствознавство"
                 },
                 "bing": {
+                    "get_token_failed": "",
                     "title": "Bing"
                 },
                 "bing_dict": {
-                    "title": "Словник Bing"
+                    "title": "Словник Bing",
+                    "words_not_included": ""
                 },
                 "caiyun": {
                     "title": "Caiyun",
-                    "token": "Токен"
+                    "token": "Токен",
+                    "token_required": ""
                 },
                 "cambridge_dict": {
-                    "title": "Словник Cambridge"
+                    "title": "Словник Cambridge",
+                    "words_not_included": ""
                 },
                 "chatglm": {
                     "add": "Додати Prompt",
@@ -365,6 +385,7 @@
                     "chatglm_std": "ChatGLM Std",
                     "chatglm_turbo": "ChatGLM Turbo",
                     "input_some_prompt": "",
+                    "invalid_apikey": "",
                     "model": "Модель",
                     "prompt_description": "За допомогою власного Prompt можна налаштувати поведінку ШІ. $text, $from, $to, $detect замінюються на текст, мову оригіналу, мову перекладу та виявлену мову відповідно.",
                     "prompt_list": "",
@@ -376,6 +397,7 @@
                     "custom_url": "URL DeepLX",
                     "deeplx": "DeepLX",
                     "free": "Безкоштовний",
+                    "status_code_error": "",
                     "title": "DeepL",
                     "type": "Тип служби"
                 },
@@ -463,8 +485,13 @@
             "tts": {
                 "edge_tts": {
                     "add": "",
+                    "connection_closed": "",
+                    "no_audio_data": "",
                     "preview": "",
+                    "request_timeout": "",
+                    "text_empty": "",
                     "title": "",
+                    "unsupported_language": "",
                     "voice_config": "",
                     "voice_config_description": ""
                 },

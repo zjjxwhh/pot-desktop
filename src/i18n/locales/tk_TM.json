@@ -33,6 +33,7 @@
                 "backup": "",
                 "backup_success": "",
                 "empty": "",
+                "invalid_file": "",
                 "label": "",
                 "list": "",
                 "load_success": "",
@@ -132,11 +133,13 @@
                 "add_service": "",
                 "collection": "",
                 "homepage": "",
+                "http_request_error": "",
                 "install_plugin": "",
                 "installed_plugins": "",
                 "label": "",
                 "least": "",
                 "recognize": "",
+                "service_request_error": "",
                 "test_failed": "",
                 "title": "",
                 "translate": "",
@@ -238,6 +241,8 @@
                     "title": ""
                 },
                 "eudic": {
+                    "create_category_failed": "",
+                    "get_category_failed": "",
                     "name": "",
                     "title": "",
                     "token": ""
@@ -250,22 +255,27 @@
                 "baidu_accurate_ocr": {
                     "client_id": "",
                     "client_secret": "",
+                    "get_access_token_failed": "",
                     "title": ""
                 },
                 "baidu_img_ocr": {
                     "appid": "",
+                    "appid_secret_required": "",
                     "secret": "",
                     "title": ""
                 },
                 "baidu_ocr": {
                     "client_id": "",
                     "client_secret": "",
+                    "get_access_token_failed": "",
                     "title": ""
                 },
                 "iflytek_intsig_ocr": {
                     "apikey": "",
                     "apisecret": "",
                     "appid": "",
+                    "data_not_found": "",
+                    "payload_not_found": "",
                     "title": ""
                 },
                 "iflytek_latex_ocr": {
@@ -278,9 +288,12 @@
                     "apikey": "",
                     "apisecret": "",
                     "appid": "",
+                    "data_not_found": "",
+                    "payload_not_found": "",
                     "title": ""
                 },
                 "qrcode": {
+                    "not_recognized": "",
                     "title": ""
                 },
                 "simple_latex_ocr": {
@@ -323,16 +336,19 @@
                 "alibaba": {
                     "accesskey_id": "",
                     "accesskey_secret": "",
+                    "accesskey_secret_required": "",
                     "title": ""
                 },
                 "baidu": {
                     "appid": "",
+                    "appid_secret_required": "",
                     "secret": "",
                     "title": ""
                 },
                 "baidu_field": {
                     "academic": "",
                     "aerospace": "",
+                    "appid_secret_required": "",
                     "contract": "",
                     "finance": "",
                     "it": "",
@@ -345,17 +361,21 @@
                     "wiki": ""
                 },
                 "bing": {
+                    "get_token_failed": "",
                     "title": ""
                 },
                 "bing_dict": {
-                    "title": ""
+                    "title": "",
+                    "words_not_included": ""
                 },
                 "caiyun": {
                     "title": "",
-                    "token": ""
+                    "token": "",
+                    "token_required": ""
                 },
                 "cambridge_dict": {
-                    "title": ""
+                    "title": "",
+                    "words_not_included": ""
                 },
                 "chatglm": {
                     "add": "",
@@ -365,6 +385,7 @@
                     "chatglm_std": "",
                     "chatglm_turbo": "",
                     "input_some_prompt": "",
+                    "invalid_apikey": "",
                     "model": "",
                     "prompt_description": "",
                     "prompt_list": "",
@@ -376,6 +397,7 @@
                     "custom_url": "",
                     "deeplx": "",
                     "free": "",
+                    "status_code_error": "",
                     "title": "",
                     "type": ""
                 },
@@ -463,8 +485,13 @@
             "tts": {
                 "edge_tts": {
                     "add": "",
+                    "connection_closed": "",
+                    "no_audio_data": "",
                     "preview": "",
+                    "request_timeout": "",
+                    "text_empty": "",
                     "title": "",
+                    "unsupported_language": "",
                     "voice_config": "",
                     "voice_config_description": ""
                 },

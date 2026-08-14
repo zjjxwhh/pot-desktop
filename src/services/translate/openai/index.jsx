@@ -1,3 +1,4 @@
+import i18n from '../../../i18n';
 import { fetch } from '@tauri-apps/plugin-http';
 import { Language } from './info';
 import { defaultRequestArguments } from './Config';
@@ -115,7 +116,7 @@ export async function translate(text, from, to, options) {
                 reader.releaseLock();
             }
         } else {
-            throw `Http Request Error\nHttp Status: ${res.status}\n${JSON.stringify(await res.json())}`;
+            throw i18n.t('config.service.http_request_error', { status: res.status, detail: JSON.stringify(await res.json()) });
         }
     } else {
         let res = await fetch(apiUrl.href, {
@@ -140,10 +141,10 @@ export async function translate(text, from, to, options) {
                     throw JSON.stringify(choices);
                 }
             } else {
-                throw JSON.stringify(result);
+                throw i18n.t('config.service.service_request_error', { detail: JSON.stringify(result) });
             }
         } else {
-            throw `Http Request Error\nHttp Status: ${res.status}\n${JSON.stringify(await res.json())}`;
+            throw i18n.t('config.service.http_request_error', { status: res.status, detail: JSON.stringify(await res.json()) });
         }
     }
 }

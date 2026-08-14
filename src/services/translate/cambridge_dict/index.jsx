@@ -1,3 +1,4 @@
+import i18n from '../../../i18n';
 import { fetch } from '@tauri-apps/plugin-http';
 import { Language } from './info';
 
@@ -49,13 +50,13 @@ export async function translate(text, from, to) {
     });
 
     if (!res.ok) {
-        throw new Error(`Http Request Error\nHttp Status: ${res.status}\n${await res.text()}`);
+        throw i18n.t('config.service.http_request_error', { status: res.status, detail: await res.text() });
     }
     const html = await res.text();
     const doc = new DOMParser().parseFromString(html, 'text/html');
     const entryNodes = doc.querySelectorAll('.pr.entry-body__el');
     if (entryNodes.length === 0) {
-        throw new Error(`Words not yet included: ${text}`);
+        throw i18n.t('services.translate.cambridge_dict.words_not_included', { text });
     }
 
     const resultMap = [...entryNodes].reduce((dict, entryNode) => {

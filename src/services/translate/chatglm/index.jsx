@@ -1,3 +1,4 @@
+import i18n from '../../../i18n';
 import { Language } from './info';
 import * as jose from 'jose';
 import { fetch } from '@tauri-apps/plugin-http';
@@ -9,7 +10,7 @@ export async function translate(text, from, to, options = {}) {
 
     let [id, secret] = apiKey.split('.');
     if (id === undefined || secret === undefined) {
-        return Promise.reject('invalid apikey');
+        return Promise.reject(i18n.t('services.translate.chatglm.invalid_apikey'));
     }
     promptList = promptList.map((item) => {
         return {
@@ -55,7 +56,7 @@ export async function translate(text, from, to, options = {}) {
             body: JSON.stringify(body),
         });
         if (!response.ok) {
-            throw new Error(`Http Request Error\nHttp Status: ${response.status}\n${await response.text()}`);
+            throw i18n.t('config.service.http_request_error', { status: response.status, detail: await response.text() });
         }
 
         let buffer = '';

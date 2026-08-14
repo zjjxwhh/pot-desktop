@@ -1,3 +1,4 @@
+import i18n from '../../../i18n';
 import { fetch } from '@tauri-apps/plugin-http';
 import CryptoJS from 'crypto-js';
 
@@ -51,15 +52,15 @@ export async function recognize(base64, language, options = {}) {
     });
 
     if (!res.ok) {
-        throw `Http Request Error\nHttp Status: ${res.status}\n${JSON.stringify(await res.json())}`;
+        throw i18n.t('config.service.http_request_error', { status: res.status, detail: JSON.stringify(await res.json()) });
     }
     let data = await res.json().catch(() => null);
     if (!data) {
-        throw `Result data not found\nResult:\n${JSON.stringify(await res.json())}`;
+        throw i18n.t('services.recognize.iflytek_ocr.data_not_found', { detail: JSON.stringify(await res.json()) });
     }
     let res_payload = data['payload'];
     if (!res_payload) {
-        throw `Result payload not found\nResult:\n${JSON.stringify(data)}`;
+        throw i18n.t('services.recognize.iflytek_ocr.payload_not_found', { detail: JSON.stringify(data) });
     }
 
     let text = CryptoJS.enc.Base64.parse(res_payload['result']['text']); // Base64解码
