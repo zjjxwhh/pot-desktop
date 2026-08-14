@@ -64,7 +64,7 @@ export default function Service() {
         pluginList !== null && (
             <Tabs className='h-full flex flex-col min-h-0'>
                 <Tabs.ListContainer className='mx-15'>
-                    <Tabs.List aria-label='Service tabs' className='whitespace-nowrap'>
+                    <Tabs.List className='whitespace-nowrap'>
                         <Tabs.Tab id='translate'>
                             {t(`config.service.translate`)}
                             <Tabs.Indicator />

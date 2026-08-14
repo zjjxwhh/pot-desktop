@@ -25,7 +25,6 @@ export default function Recognize() {
                             </Button>
                             <Dropdown.Popover>
                                 <Dropdown.Menu
-                                    aria-label='recognize language'
                                     className='max-h-[50vh] overflow-y-auto'
                                     onAction={(key) => {
                                         setRecognizeLanguage(key);

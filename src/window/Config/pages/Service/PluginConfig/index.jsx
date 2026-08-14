@@ -82,7 +82,6 @@ export function PluginConfig(props) {
                                         </Button>
                                         <Dropdown.Popover>
                                             <Dropdown.Menu
-                                                aria-label={x.key}
                                                 className='max-h-[40vh] overflow-y-auto'
                                                 onAction={(key) => {
                                                     setPluginConfig({

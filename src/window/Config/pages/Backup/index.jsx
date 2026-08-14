@@ -179,7 +179,6 @@ export default function Backup() {
                             <Button variant='tertiary'>{t(`config.backup.${backupType}`)}</Button>
                             <Dropdown.Popover>
                                 <Dropdown.Menu
-                                    aria-label='backup type'
                                     onAction={(key) => {
                                         setBackupType(key);
                                     }}

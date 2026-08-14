@@ -78,7 +78,6 @@ export default function ControlArea(props) {
                     </Button>
                     <Dropdown.Popover>
                         <Dropdown.Menu
-                            aria-label='service name'
                             className='max-h-[70vh] overflow-y-auto'
                             onAction={(key) => {
                                 setCurrentServiceInstanceKey(key);
@@ -116,7 +115,6 @@ export default function ControlArea(props) {
                     </Button>
                     <Dropdown.Popover>
                         <Dropdown.Menu
-                            aria-label='language'
                             className='max-h-[70vh] overflow-y-auto'
                             onAction={(key) => {
                                 setLanguage(key);

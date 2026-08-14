@@ -159,7 +159,6 @@ export default function History() {
                             </EmptyState>
                         ) : (
                             <Table.Content
-                                aria-label='History Table'
                                 selectionMode='single'
                                 selectionBehavior='toggle'
                                 onRowAction={(id) => {

@@ -41,7 +41,6 @@ export default function Translate() {
                                 </Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
-                                        aria-label='source language'
                                         className='max-h-[50vh] overflow-y-auto'
                                         onAction={(key) => {
                                             setSourceLanguage(key);
@@ -74,7 +73,6 @@ export default function Translate() {
                                 </Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
-                                        aria-label='target language'
                                         className='max-h-[50vh] overflow-y-auto'
                                         onAction={(key) => {
                                             setTargetLanguage(key);
@@ -103,7 +101,6 @@ export default function Translate() {
                                 </Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
-                                        aria-label='second language'
                                         className='max-h-[50vh] overflow-y-auto'
                                         onAction={(key) => {
                                             setSecondLanguage(key);
@@ -129,7 +126,6 @@ export default function Translate() {
                                 <Button variant='tertiary'>{t(`config.translate.${detectEngine}`)}</Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
-                                        aria-label='detect engine'
                                         className='max-h-[50vh] overflow-y-auto'
                                         onAction={(key) => {
                                             setDetectEngine(key);
@@ -172,7 +168,6 @@ export default function Translate() {
                                 <Button variant='tertiary'>{t(`config.translate.${autoCopy}`)}</Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
-                                        aria-label='auto copy'
                                         className='max-h-[50vh] overflow-y-auto'
                                         onAction={(key) => {
                                             setAutoCopy(key);
@@ -296,7 +291,6 @@ export default function Translate() {
                                 </Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
-                                        aria-label='window position'
                                         className='max-h-[50vh] overflow-y-auto'
                                         onAction={(key) => {
                                             setTranslateFontSize(key);
@@ -335,7 +329,6 @@ export default function Translate() {
                                 <Button variant='tertiary'>{t(`config.translate.${windowPosition}`)}</Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
-                                        aria-label='window position'
                                         className='max-h-[50vh] overflow-y-auto'
                                         onAction={(key) => {
                                             setWindowPosition(key);

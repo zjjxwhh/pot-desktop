@@ -95,7 +95,6 @@ export function Config(props) {
                         <Dropdown.Popover>
                             <Dropdown.Menu
                                 autoFocus='first'
-                                aria-label='app language'
                                 className='max-h-[50vh] overflow-y-auto'
                                 onAction={(key) => {
                                     setConfig({

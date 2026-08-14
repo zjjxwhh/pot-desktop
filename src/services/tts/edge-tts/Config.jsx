@@ -181,7 +181,6 @@ export function Config(props) {
                                         </Button>
                                         <Dropdown.Popover className='max-h-[50vh]'>
                                             <Dropdown.Menu
-                                                aria-label='voice language'
                                                 onAction={(key) => {
                                                     // 换语言后原音色不再属于该语言，回落到新语言的默认音色
                                                     setVoiceConfig(
@@ -220,7 +219,6 @@ export function Config(props) {
                                         </Button>
                                         <Dropdown.Popover className='max-h-[50vh]'>
                                             <Dropdown.Menu
-                                                aria-label='voice'
                                                 selectionMode='single'
                                                 selectedKeys={[item.voice]}
                                                 onAction={(key) => {
@@ -244,7 +242,6 @@ export function Config(props) {
                                                         <Label>{getVoiceLabel(voice)}</Label>
                                                         <button
                                                             type='button'
-                                                            aria-label={t('services.tts.edge_tts.preview')}
                                                             className='ms-auto flex size-6 shrink-0 items-center justify-center rounded-full border border-muted text-muted transition-colors hover:bg-foreground/15 hover:text-foreground'
                                                             onClick={(e) => {
                                                                 // 阻止事件冒泡，避免触发音色选中

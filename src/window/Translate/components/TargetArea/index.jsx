@@ -403,7 +403,6 @@ export default function TargetArea(props) {
                         </Button>
                         <Dropdown.Popover>
                             <Dropdown.Menu
-                                aria-label='app language'
                                 className='max-h-[40vh] overflow-y-auto'
                                 onAction={(key) => {
                                     setCurrentTranslateServiceInstanceKey(key);

@@ -86,7 +86,6 @@ export function Config(props) {
                         <Dropdown.Popover>
                             <Dropdown.Menu
                                 autoFocus='first'
-                                aria-label='app language'
                                 onAction={(key) => {
                                     setDeeplConfig({
                                         ...deeplConfig,

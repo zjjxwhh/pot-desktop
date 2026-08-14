@@ -170,7 +170,6 @@ export default function General() {
                                 </Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
-                                        aria-label='app language'
                                         className='max-h-[40vh] overflow-y-auto'
                                         onAction={(key) => {
                                             setAppLanguage(key);
@@ -323,7 +322,6 @@ export default function General() {
                                 <Button variant='tertiary'>{t(`config.general.theme.${appTheme}`)}</Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
-                                        aria-label='app theme'
                                         onAction={(key) => {
                                             setAppTheme(key);
                                             if (key !== 'system') {
@@ -383,7 +381,6 @@ export default function General() {
                                 </Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
-                                        aria-label='app font'
                                         className='max-h-[50vh] overflow-y-auto'
                                         onAction={(key) => {
                                             document.documentElement.style.fontFamily = `"${
@@ -430,7 +427,6 @@ export default function General() {
                                 </Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
-                                        aria-label='app font'
                                         className='max-h-[50vh] overflow-y-auto'
                                         onAction={(key) => {
                                             document.documentElement.style.fontFamily = `"${
@@ -470,7 +466,6 @@ export default function General() {
                                 <Button variant='tertiary'>{t(`config.general.font_size.${appFontSize}`)}</Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
-                                        aria-label='window position'
                                         className='max-h-[50vh] overflow-y-auto'
                                         onAction={(key) => {
                                             document.documentElement.style.fontSize = `${key}px`;
@@ -531,7 +526,6 @@ export default function General() {
                                 <Button variant='tertiary'>{t(`config.general.event.${trayClickEvent}`)}</Button>
                                 <Dropdown.Popover>
                                     <Dropdown.Menu
-                                        aria-label='tray click event'
                                         onAction={(key) => {
                                             setTrayClickEvent(key);
                                         }}
@@ -646,7 +640,6 @@ export default function General() {
                                     setProxyHost(v);
                                 }}
                                 isRequired
-                                aria-label={t('config.general.proxy.host')}
                                 className='w-[40%]'
                             >
                                 <InputGroup
@@ -679,7 +672,6 @@ export default function General() {
                                     }
                                 }}
                                 isRequired
-                                aria-label={t('config.general.proxy.port')}
                                 className='w-[40%]'
                             >
                                 <Input
@@ -699,7 +691,6 @@ export default function General() {
                                     setProxyUsername(v);
                                 }}
                                 isDisabled
-                                aria-label={t('config.general.proxy.username')}
                                 className='w-[40%]'
                             >
                                 <Input
@@ -719,7 +710,6 @@ export default function General() {
                                     setProxyPassword(v);
                                 }}
                                 isDisabled
-                                aria-label={t('config.general.proxy.password')}
                                 className='w-[40%]'
                             >
                                 <Input
@@ -738,7 +728,6 @@ export default function General() {
                                 onChange={(v) => {
                                     setNoProxy(v);
                                 }}
-                                aria-label={t('config.general.proxy.no_proxy')}
                                 className='w-[40%]'
                             >
                                 <Input

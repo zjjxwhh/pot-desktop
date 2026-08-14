@@ -123,7 +123,6 @@ export default function Updater() {
             </Card>
             {downloaded !== 0 && (
                 <ProgressBar
-                    aria-label='Downloading...'
                     value={(downloaded / total) * 100}
                     className='w-full px-20'
                     size='sm'

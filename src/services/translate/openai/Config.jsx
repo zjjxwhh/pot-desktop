@@ -124,7 +124,6 @@ export function Config(props) {
                         <Dropdown.Popover>
                             <Dropdown.Menu
                                 autoFocus='first'
-                                aria-label='service'
                                 onAction={(key) => {
                                     setOpenaiConfig({
                                         ...openaiConfig,
