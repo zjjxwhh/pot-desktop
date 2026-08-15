@@ -2,7 +2,7 @@ name: Package
 on:
     push:
         branches: [master]
-        tags-ignore: [updater]
+        tags-ignore: [updater, WebView2]
 permissions: write-all
 
 jobs:
