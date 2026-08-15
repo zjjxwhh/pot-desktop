@@ -34,7 +34,6 @@ export default function Updater() {
             },
             (e) => {
                 setBody(e.toString());
-                toast.danger(e.toString());
             }
         );
     }, []);
@@ -75,7 +74,6 @@ export default function Updater() {
                         </div>
                     ) : (
                         <ReactMarkdown
-                            className='markdown-body select-text'
                             components={{
                                 code: ({ node, ...props }) => {
                                     const { children } = props;
@@ -139,7 +137,7 @@ export default function Updater() {
                 <Button
                     variant='tertiary'
                     isPending={downloaded !== 0}
-                    isDisabled={downloaded !== 0}
+                    isDisabled={downloaded !== 0 || !update}
                     onPress={() => {
                         if (!update) {
                             return;
