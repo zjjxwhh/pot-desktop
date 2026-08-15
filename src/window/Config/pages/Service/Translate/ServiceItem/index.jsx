@@ -6,6 +6,7 @@ import React from 'react';
 import * as builtinServices from '../../../../../../services/translate';
 import { useConfig } from '../../../../../../hooks';
 import { INSTANCE_NAME_CONFIG_KEY, ServiceSourceType, getDisplayInstanceName, getServiceName, getServiceSouceType } from '../../../../../../utils/service_instance';
+import { resolveServiceIcon } from '../../../../../../utils/service_icon';
 
 export default function ServiceItem(props) {
     const { serviceInstanceKey, pluginList, deleteServiceInstance, setCurrentConfigKey, onConfigOpen, ...drag } = props;
@@ -32,7 +33,7 @@ export default function ServiceItem(props) {
                     {serviceSourceType === ServiceSourceType.BUILDIN && (
                         <>
                             <img
-                                src={`${builtinServices[serviceName].info.icon}`}
+                                src={resolveServiceIcon(serviceInstanceConfig, builtinServices[serviceName].info.icon)}
                                 className='size-6 shrink-0 my-auto'
                                 draggable={false}
                             />

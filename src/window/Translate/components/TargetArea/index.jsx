@@ -37,6 +37,7 @@ import {
     getServiceSouceType,
     whetherPluginService,
 } from '../../../../utils/service_instance';
+import { resolveServiceIcon } from '../../../../utils/service_icon';
 
 let translateID = [];
 
@@ -385,7 +386,10 @@ export default function TargetArea(props) {
                                 />
                             ) : (
                                 <img
-                                    src={builtinServices[getServiceName(currentTranslateServiceInstanceKey)].info.icon}
+                                    src={resolveServiceIcon(
+                                        serviceInstanceConfigMap[currentTranslateServiceInstanceKey],
+                                        builtinServices[getServiceName(currentTranslateServiceInstanceKey)].info.icon
+                                    )}
                                     className='size-4 shrink-0 my-auto'
                                 />
                             )}
@@ -433,7 +437,10 @@ export default function TargetArea(props) {
                                                 />
                                             ) : (
                                                 <img
-                                                    src={builtinServices[getServiceName(instanceKey)].info.icon}
+                                                    src={resolveServiceIcon(
+                                                        serviceInstanceConfigMap[instanceKey],
+                                                        builtinServices[getServiceName(instanceKey)].info.icon
+                                                    )}
                                                     className='size-4 shrink-0 my-auto'
                                                 />
                                             )}

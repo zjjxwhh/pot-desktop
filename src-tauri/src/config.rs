@@ -76,6 +76,7 @@ pub fn check_service_available() -> Result<(), Error> {
         "niutrans",
         "ollama",
         "openai",
+        "openai_compatible",
         "google",
         "tencent",
         "transmart",

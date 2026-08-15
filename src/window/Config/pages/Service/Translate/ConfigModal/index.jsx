@@ -5,6 +5,8 @@ import React from 'react';
 import * as builtinServices from '../../../../../../services/translate';
 import { PluginConfig } from '../../PluginConfig';
 import { ServiceSourceType, getServiceName, getServiceSouceType, whetherPluginService } from '../../../../../../utils/service_instance';
+import { useConfig } from '../../../../../../hooks';
+import { resolveServiceIcon } from '../../../../../../utils/service_icon';
 
 export default function ConfigModal(props) {
     const { serviceInstanceKey, pluginList, isOpen, onOpenChange, updateServiceInstanceList } = props;
@@ -13,6 +15,8 @@ export default function ConfigModal(props) {
     const serviceSourceType = getServiceSouceType(serviceInstanceKey)
     const pluginServiceFlag = whetherPluginService(serviceInstanceKey)
     const serviceName = getServiceName(serviceInstanceKey)
+
+    const [serviceInstanceConfig] = useConfig(serviceInstanceKey, {});
 
     const { t } = useTranslation();
     const ConfigComponent = pluginServiceFlag ? PluginConfig : builtinServices[serviceName].Config;
@@ -32,7 +36,10 @@ export default function ConfigModal(props) {
                                     {serviceSourceType === ServiceSourceType.BUILDIN && (
                                         <>
                                             <img
-                                                src={builtinServices[serviceName].info.icon}
+                                                src={resolveServiceIcon(
+                                                    serviceInstanceConfig,
+                                                    builtinServices[serviceName].info.icon
+                                                )}
                                                 className='size-6 shrink-0 my-auto'
                                                 draggable={false}
                                             />
