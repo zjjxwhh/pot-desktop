@@ -7,7 +7,7 @@
             "timestampUrl": "",
             "webviewInstallMode": {
                 "type": "fixedRuntime",
-                "path": "./Microsoft.WebView2.FixedVersionRuntime.109.0.1518.78.x64/"
+                "path": "./Microsoft.WebView2.FixedVersionRuntime.151.0.4129.86.x64/"
             },
             "nsis": {
                 "displayLanguageSelector": true,
@@ -22,7 +22,7 @@
             "endpoints": [
                 "https://github.com/zjjxwhh/pot-desktop/releases/download/updater/update-fix-runtime.json"
             ],
-            "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDVBRTQxQTNDQjM5QzQzM0EKUldRNlE1eXpQQnJrV21mM1Bram5LRlF6UDA3K0Jab2FYL2lZSWhXTE5McWs2NUdJS0dtYkd5VGMK"
+            "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEFDRjA0MzAyNDhFMDY2QTAKUldTZ1p1QklBa1B3ckdCRHowSEtXeisrU0NMK3NvQXBxOGR4SWR3RW9HTTlVaEhJVjMySmJTYVAK"
         }
     }
 }

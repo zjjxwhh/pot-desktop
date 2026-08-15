@@ -101,7 +101,7 @@ jobs:
             - name: Setup Nodejs
               uses: actions/setup-node@v4
               with:
-                  node-version: 21
+                  node-version: 24
             - name: Install Rust Stable
               uses: dtolnay/rust-toolchain@stable
             - name: install dependencies
@@ -110,7 +110,7 @@ jobs:
             - name: Setup pnpm
               uses: pnpm/action-setup@v4
               with:
-                  version: 9
+                  version: 11
             - name: Install Dependencies
               run: pnpm install
             - name: Code Format
@@ -119,15 +119,7 @@ jobs:
               run: |
                   export TAURI_PRIVATE_KEY="${{ secrets.TAURI_PRIVATE_KEY }}"
                   export TAURI_KEY_PASSWORD="${{ secrets.TAURI_KEY_PASSWORD }}"
-                  export APPLE_SIGNING_IDENTITY="${{ secrets.APPLE_SIGNING_IDENTITY }}"
-                  export APPLE_CERTIFICATE="${{ secrets.APPLE_CERTIFICATE }}"
-                  export APPLE_CERTIFICATE_PASSWORD="${{ secrets.APPLE_CERTIFICATE_PASSWORD }}"
-                  export APPLE_TEAM_ID="${{ secrets.APPLE_TEAM_ID }}"
-                  export APPLE_API_ISSUER="${{ secrets.APPLE_API_ISSUER }}"
-                  export APPLE_API_KEY="${{ secrets.APPLE_API_KEY }}"
-                  export APPLE_ID="${{ secrets.APPLE_ID }}"
-                  export APPLE_PASSWORD="${{ secrets.APPLE_PASSWORD }}"
-                  pnpm tauri build --target ${{ matrix.target }}
+                  pnpm tauri build --no-sign -b app,dmg --target ${{ matrix.target }}
                   sudo chmod +x src-tauri/resources/*
                   chmod +x src-tauri/resources/*
             - name: Change File Name
@@ -192,7 +184,7 @@ jobs:
             - name: Setup Nodejs
               uses: actions/setup-node@v4
               with:
-                  node-version: 21
+                  node-version: 24
             - name: Install Rust Stable
               uses: dtolnay/rust-toolchain@stable
             - name: install dependencies
@@ -202,7 +194,7 @@ jobs:
             - name: Setup pnpm
               uses: pnpm/action-setup@v4
               with:
-                  version: 9
+                  version: 11
             - name: Install Dependencies
               run: pnpm install
             - name: Code Format
@@ -211,7 +203,7 @@ jobs:
               run: |
                   $env:TAURI_PRIVATE_KEY="${{ secrets.TAURI_PRIVATE_KEY }}"
                   $env:TAURI_KEY_PASSWORD="${{ secrets.TAURI_KEY_PASSWORD }}"
-                  pnpm tauri build -b nsis,updater --target ${{ matrix.target }}
+                  pnpm tauri build -b nsis --target ${{ matrix.target }}
             - name: Upload Artifacts
               uses: actions/upload-artifact@v4
               with:
@@ -254,7 +246,7 @@ jobs:
             - name: Setup Nodejs
               uses: actions/setup-node@v4
               with:
-                  node-version: 21
+                  node-version: 24
             - name: Install Rust Stable
               uses: dtolnay/rust-toolchain@stable
             - name: install dependencies
@@ -264,22 +256,22 @@ jobs:
             - name: Setup pnpm
               uses: pnpm/action-setup@v4
               with:
-                  version: 9
+                  version: 11
             - name: Install Dependencies
               run: pnpm install
             - name: Code Format
               run: pnpm prettier --write .
             - name: Download WebView2 Runtime
               run: |
-                  invoke-webrequest -uri https://github.com/westinyang/WebView2RuntimeArchive/releases/download/109.0.1518.78/Microsoft.WebView2.FixedVersionRuntime.109.0.1518.78.${{ matrix.arch }}.cab -outfile Microsoft.WebView2.FixedVersionRuntime.109.0.1518.78.${{ matrix.arch }}.cab
-                  Expand .\Microsoft.WebView2.FixedVersionRuntime.109.0.1518.78.${{ matrix.arch }}.cab -F:* ./src-tauri
+                  invoke-webrequest -uri https://github.com/zjjxwhh/pot-desktop/releases/download/WebView2/Microsoft.WebView2.FixedVersionRuntime.151.0.4129.86.${{ matrix.arch }}.cab -outfile Microsoft.WebView2.FixedVersionRuntime.151.0.4129.86.${{ matrix.arch }}.cab
+                  Expand .\Microsoft.WebView2.FixedVersionRuntime.151.0.4129.86.${{ matrix.arch }}.cab -F:* ./src-tauri
                   Remove-Item .\src-tauri\tauri.windows.conf.json
                   Rename-Item .\src-tauri\webview.${{ matrix.arch }}.json tauri.windows.conf.json
             - name: Build and Package
               run: |
                   $env:TAURI_PRIVATE_KEY="${{ secrets.TAURI_PRIVATE_KEY }}"
                   $env:TAURI_KEY_PASSWORD="${{ secrets.TAURI_KEY_PASSWORD }}"
-                  pnpm tauri build -b nsis,updater --target ${{ matrix.target }}
+                  pnpm tauri build -b nsis --target ${{ matrix.target }}
                   Rename-Item .\src-tauri\target\${{ matrix.target }}\release\bundle\nsis\pot_${{needs.change-version.outputs.version}}_${{ matrix.arch }}-setup.exe pot_${{needs.change-version.outputs.version}}_${{ matrix.arch }}_fix_webview2_runtime-setup.exe
                   Rename-Item .\src-tauri\target\${{ matrix.target }}\release\bundle\nsis\pot_${{needs.change-version.outputs.version}}_${{ matrix.arch }}-setup.nsis.zip pot_${{needs.change-version.outputs.version}}_${{ matrix.arch }}_fix_webview2_runtime-setup.nsis.zip
                   Rename-Item .\src-tauri\target\${{ matrix.target }}\release\bundle\nsis\pot_${{needs.change-version.outputs.version}}_${{ matrix.arch }}-setup.nsis.zip.sig pot_${{needs.change-version.outputs.version}}_${{ matrix.arch }}_fix_webview2_runtime-setup.nsis.zip.sig
@@ -377,18 +369,6 @@ jobs:
                   token: ${{ secrets.GITHUB_TOKEN }}
                   files: src-tauri/target/${{ matrix.target }}/release/bundle/rpm/*.rpm
 
-    trigger-docs-update:
-        needs: [build-for-macos, build-for-windows, build-for-linux]
-        runs-on: ubuntu-latest
-        if: startsWith(github.ref, 'refs/tags')
-        steps:
-            - name: Trigger update
-              run: |
-                  curl -X POST https://api.github.com/repos/pot-app/pot-docs/dispatches \
-                    -H "Accept: application/vnd.github.everest-preview+json" \
-                    -H "Authorization: token ${{ secrets.TOKEN }}" \
-                    -d '{"event_type": "plugins-updated"}'
-
     release-update:
         needs: [build-for-macos, build-for-windows, build-for-linux, build-for-windows-fix-runtime]
         runs-on: ubuntu-latest
@@ -406,10 +386,14 @@ jobs:
               run: |
                   echo "VERSION=$(git describe --tags | sed 's/-[0-9]*-.*//g')" >> $GITHUB_ENV
                   echo "VERSION=$(git describe --tags | sed 's/-[0-9]*-.*//g')"
+            - name: Setup Nodejs
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 24
             - name: Setup pnpm
               uses: pnpm/action-setup@v4
               with:
-                  version: 9
+                  version: 11
             - name: pnpm install
               run: pnpm install
             - name: Release updater file
@@ -427,61 +411,3 @@ jobs:
                   files: |
                       update.json
                       update-fix-runtime.json
-
-    homebrew:
-        name: Update Homebrew cask
-        needs: build-for-macos
-        runs-on: macos-latest
-        if: startsWith(github.ref, 'refs/tags')
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
-            - name: Get Tag Name
-              run: |
-                  echo "VERSION=$(git describe --tags | sed 's/-[0-9]*-.*//g')" >> $GITHUB_ENV
-                  echo "VERSION=$(git describe --tags | sed 's/-[0-9]*-.*//g')"
-            - name: Set up Homebrew
-              uses: Homebrew/actions/setup-homebrew@master
-            - name: Set up Git
-              run: |
-                  # sudo apt-get install git -y
-                  git config --global user.email support@pot-app.com
-                  git config --global user.name pot-app
-            - name: Update Homebrew cask
-              env:
-                  HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.TOKEN }}
-              run: |
-                  brew tap pot-app/homebrew-tap
-                  brew update
-                  brew bump-cask-pr pot --version ${{ env.VERSION }} --no-browse
-
-    winget:
-        name: Update WinGet Package
-        needs: build-for-windows
-        runs-on: ubuntu-latest
-        if: startsWith(github.ref, 'refs/tags')
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
-            - name: Install git
-              run: |
-                  sudo apt-get update
-                  sudo apt-get install -y git
-            - name: Get Tag Name
-              run: |
-                  echo "VERSION=$(git describe --tags | sed 's/-[0-9]*-.*//g')" >> $GITHUB_ENV
-                  echo "VERSION=$(git describe --tags | sed 's/-[0-9]*-.*//g')"
-            - name: Upload WinGet
-              if: startsWith(github.ref, 'refs/tags')
-              uses: vedantmgoyal2009/winget-releaser@v2
-              with:
-                  identifier: Pylogmon.pot
-                  version: ${{env.VERSION}}
-                  installers-regex: '\.exe$'
-                  token: ${{ secrets.TOKEN }}
-                  fork-user: Pylogmon
-              continue-on-error: true
