@@ -31,17 +31,7 @@ export default function About() {
                         className='my-1.5'
                         size='sm'
                         onPress={() => {
-                            open('https://pot-app.com');
-                        }}
-                    >
-                        {t('config.about.website')}
-                    </Button>
-                    <Button
-                        variant='tertiary'
-                        className='my-1.5'
-                        size='sm'
-                        onPress={() => {
-                            open('https://github.com/pot-app/pot-desktop');
+                            open('https://github.com/zjjxwhh/pot-desktop');
                         }}
                     >
                         {t('config.about.github')}
@@ -51,7 +41,7 @@ export default function About() {
                         className='my-1.5'
                         size='sm'
                         onPress={() => {
-                            open('https://github.com/pot-app/pot-desktop/issues');
+                            open('https://github.com/zjjxwhh/pot-desktop/issues');
                         }}
                     >
                         {t('config.about.feedback')}
@@ -61,7 +51,7 @@ export default function About() {
                         className='my-1.5'
                         size='sm'
                         onPress={() => {
-                            open('https://github.com/pot-app/pot-desktop/discussions');
+                            open('https://github.com/zjjxwhh/pot-desktop/discussions');
                         }}
                     >
                         {t('config.about.community')}
