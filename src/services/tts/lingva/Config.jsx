@@ -16,7 +16,7 @@ export function Config(props) {
         instanceKey,
         {
             [INSTANCE_NAME_CONFIG_KEY]: t('services.tts.lingva_tts.title'),
-            requestPath: 'lingva.pot-app.com',
+            requestPath: '',
         },
         { sync: false }
     );
@@ -43,7 +43,7 @@ export function Config(props) {
                     <Button
                         size='sm'
                         onPress={() => {
-                            open('https://pot-app.com/docs/api/tts/lingva.html');
+                            open('https://github.com/thedaviddelta/lingva-translate');
                         }}
                     >
                         {t('services.help')}
@@ -60,9 +60,7 @@ export function Config(props) {
                             });
                         }}
                     >
-                        <Input
-                            variant='secondary'
-                        />
+                        <Input variant='secondary' />
                     </TextField>
                 </div>
                 <div>

@@ -419,6 +419,8 @@
                     "title": "Google Übersetzung"
                 },
                 "lingva": {
+                    "request_path": "",
+                    "request_path_required": "",
                     "title": "Lingva"
                 },
                 "niutrans": {
@@ -522,6 +524,7 @@
                 },
                 "lingva_tts": {
                     "request_path": "Request-Pfad",
+                    "request_path_required": "",
                     "title": "Lingva"
                 }
             }

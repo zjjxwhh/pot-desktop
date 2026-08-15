@@ -1,12 +1,12 @@
+import i18n from '../../../i18n';
 import { fetch } from '@tauri-apps/plugin-http';
 
 export async function tts(text, lang, options = {}) {
     const { config } = options;
+    let requestPath = config['requestPath'];
 
-    let { requestPath = 'lingva.pot-app.com' } = config;
-
-    if (requestPath.length === 0) {
-        requestPath = 'lingva.pot-app.com';
+    if (!requestPath) {
+        throw i18n.t('services.tts.lingva_tts.request_path_required');
     }
 
     if (!requestPath.startsWith('http')) {

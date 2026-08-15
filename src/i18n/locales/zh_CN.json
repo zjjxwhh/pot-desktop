@@ -419,6 +419,8 @@
                     "title": "谷歌翻译"
                 },
                 "lingva": {
+                    "request_path": "请求地址",
+                    "request_path_required": "请先配置请求地址",
                     "title": "Lingva"
                 },
                 "niutrans": {
@@ -522,6 +524,7 @@
                 },
                 "lingva_tts": {
                     "request_path": "请求地址",
+                    "request_path_required": "请先配置请求地址",
                     "title": "Lingva"
                 }
             }

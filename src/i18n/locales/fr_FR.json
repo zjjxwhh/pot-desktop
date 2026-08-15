@@ -419,6 +419,8 @@
                     "title": "Google"
                 },
                 "lingva": {
+                    "request_path": "",
+                    "request_path_required": "",
                     "title": "Lingva"
                 },
                 "niutrans": {
@@ -522,6 +524,7 @@
                 },
                 "lingva_tts": {
                     "request_path": "Chemin de la requête",
+                    "request_path_required": "",
                     "title": "Lingva"
                 }
             }
