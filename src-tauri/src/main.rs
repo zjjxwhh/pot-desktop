@@ -163,8 +163,7 @@ fn main() {
             webdav,
             local,
             install_plugin,
-            font_list,
-            aliyun
+            font_list
         ])
         .build(tauri::generate_context!())
         .expect("error while running tauri application")

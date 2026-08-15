@@ -7,8 +7,6 @@ import {
     Label,
     Input,
     Card,
-    Avatar,
-    Tooltip,
     useOverlayState,
     toast,
 } from '@heroui/react';
@@ -18,25 +16,23 @@ import { useConfig } from '../../../../hooks';
 import { osType } from '../../../../utils/env';
 import * as webdav from './utils/webdav';
 import WebDavModal from './WebDavModal';
-import AliyunModal from './AliyunModal';
 import * as local from './utils/local';
-import * as aliyun from './utils/aliyun';
-
-let refreshTimer = null;
 
 export default function Backup() {
     const [backupType, setBackupType] = useConfig('backup_type', 'webdav');
     const [davUserName, setDavUserName] = useConfig('webdav_username', '');
     const [davPassword, setDavPassword] = useConfig('webdav_password', '');
     const [davUrl, setDavUrl] = useConfig('webdav_url', '');
-    const [aliyunQrCodeUrl, setAliyunQrCodeUrl] = useState('');
-    const [aliyunUserInfo, setAliyunUserInfo] = useState(null);
-    const [aliyunAccessToken, setAliyunAccessToken] = useConfig('aliyun_access_token', '');
-    // const [aliyunRefreshToken, setAliyunRefreshToken] = useConfig('aliyun_refresh_token', '');
     const webdavState = useOverlayState();
-    const aliyunState = useOverlayState();
     const [uploading, setUploading] = useState(false);
     const { t } = useTranslation();
+
+    // 兼容旧版本：阿里云盘同步已移除，若之前保存的是 aliyun 则回退到 webdav
+    useEffect(() => {
+        if (backupType === 'aliyun') {
+            setBackupType('webdav');
+        }
+    }, [backupType]);
 
     const onBackup = async () => {
         setUploading(true);
@@ -52,14 +48,6 @@ export default function Backup() {
                 break;
             case 'local':
                 result = local.backup(fileName);
-                break;
-            case 'aliyun':
-                if (aliyunAccessToken === '') {
-                    toast.danger(t('config.backup.aliyun_login_first'));
-                    setUploading(false);
-                } else {
-                    result = aliyun.backup(aliyunAccessToken, fileName + '.zip');
-                }
                 break;
             default:
                 warn('Unknown backup type');
@@ -92,82 +80,10 @@ export default function Backup() {
                     }
                 );
                 break;
-            case 'aliyun':
-                if (aliyunAccessToken === '') {
-                    toast.danger(t('config.backup.aliyun_login_first'));
-                } else {
-                    aliyunState.open();
-                }
-
-                break;
             default:
                 warn('Unknown backup type');
         }
     };
-
-    const pollingStatus = async (sid) => {
-        refreshTimer = setInterval(async () => {
-            try {
-                const { status, code } = await aliyun.status(sid);
-                switch (status) {
-                    case 'QRCodeExpired': {
-                        refreshQrCode();
-                        break;
-                    }
-                    case 'LoginSuccess': {
-                        clearInterval(refreshTimer);
-                        toast.success(t('config.backup.login_success'));
-                        const token = await aliyun.accessToken(code);
-                        setAliyunAccessToken(token);
-                        await refreshUserInfo(token);
-                        break;
-                    }
-                }
-            } catch (e) {
-                toast.danger(e.toString());
-                refreshQrCode();
-            }
-        }, 2000);
-    };
-
-    const refreshQrCode = async () => {
-        try {
-            const { url, sid } = await aliyun.qrcode();
-            setAliyunQrCodeUrl(url);
-            if (refreshTimer) {
-                clearInterval(refreshTimer);
-            }
-            pollingStatus(sid);
-        } catch (e) {
-            setAliyunQrCodeUrl('');
-            toast.danger(e.toString());
-        }
-    };
-
-    const refreshUserInfo = async (token) => {
-        try {
-            const info = await aliyun.userInfo(token);
-            setAliyunQrCodeUrl('');
-            setAliyunUserInfo(info);
-        } catch (e) {
-            toast.danger(e.toString());
-            setAliyunAccessToken('');
-            refreshQrCode();
-        }
-    };
-
-    useEffect(() => {
-        if (backupType === null || backupType !== 'aliyun') return;
-        if (aliyunAccessToken === '') {
-            refreshQrCode();
-        } else {
-            refreshUserInfo(aliyunAccessToken);
-        }
-
-        return () => {
-            clearInterval(refreshTimer);
-        };
-    }, [backupType]);
 
     return (
         <Card className='mb-2.5'>
@@ -188,12 +104,6 @@ export default function Backup() {
                                         textValue={t('config.backup.webdav')}
                                     >
                                         <Label>{t('config.backup.webdav')}</Label>
-                                    </Dropdown.Item>
-                                    <Dropdown.Item
-                                        id='aliyun'
-                                        textValue={t('config.backup.aliyun')}
-                                    >
-                                        <Label>{t('config.backup.aliyun')}</Label>
                                     </Dropdown.Item>
                                     <Dropdown.Item
                                         id='local'
@@ -260,38 +170,6 @@ export default function Backup() {
                         )}
                     </div>
                 </div>
-                <div className={`flex justify-center ${backupType !== 'aliyun' ? 'hidden' : ''}`}>
-                    <img
-                        src={aliyunQrCodeUrl}
-                        className={`h-50 mb-2 ${aliyunQrCodeUrl === '' ? 'hidden' : ''}`}
-                    />
-                </div>
-                <div className={`config-item ${backupType !== 'aliyun' ? 'hidden' : ''}`}>
-                    {aliyunUserInfo !== null && (
-                        <>
-                            <h3 className='my-auto'>{t('config.backup.username')}</h3>
-                            <Tooltip>
-                                <Button
-                                    variant='tertiary'
-                                    onPress={() => {
-                                        setAliyunAccessToken('');
-                                        // setAliyunRefreshToken('');
-                                        setAliyunUserInfo(null);
-                                        refreshQrCode();
-                                    }}
-                                >
-                                    <Avatar size='sm'>
-                                        <Avatar.Image src={aliyunUserInfo.avatar} />
-                                    </Avatar>
-                                    <h3 className='my-auto'>{aliyunUserInfo.name}</h3>
-                                </Button>
-                                <Tooltip.Content placement='bottom'>
-                                    <p>{t('config.backup.logout')}</p>
-                                </Tooltip.Content>
-                            </Tooltip>
-                        </>
-                    )}
-                </div>
                 <div className='flex justify-around'>
                     <Button
                         variant='primary'
@@ -313,11 +191,6 @@ export default function Backup() {
                 url={davUrl}
                 username={davUserName}
                 password={davPassword}
-            />
-            <AliyunModal
-                state={aliyunState}
-                accessToken={aliyunAccessToken}
-                // refreshToken={aliyunRefreshToken}
             />
         </Card>
     );
