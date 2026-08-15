@@ -1,11 +1,17 @@
+> [!NOTE]
+>
+> 이 프로젝트는 [pot-app/pot-desktop](https://github.com/pot-app/pot-desktop)에서 fork한 저장소로, 커밋 [`594d32`](https://github.com/pot-app/pot-desktop/commit/594d32ede96acd106b0256deaa8bb440ffcdff40)을 기반으로 개발되었습니다.
+>
+> 원 프로젝트와 모든 개발자분들의 뛰어난 작업에 진심으로 감사드립니다. 이 프로젝트는 그들의 어깨 위에서 시작되었습니다.
+
 <img width="200px" src="public/icon.svg" align="left"/>
 
 # Pot (간편 번역기)
 
-> A cross-platform translator application ([Telegram Group](https://t.me/pot_app))
+> A cross-platform translator application
 
-![License](https://img.shields.io/github/license/pot-app/pot-desktop.svg)
-![Tauri](https://img.shields.io/badge/Tauri-1.6.8-blue?logo=tauri)
+![License](https://img.shields.io/github/license/zjjxwhh/pot-desktop)
+![Tauri](https://img.shields.io/badge/Tauri-2.11-blue?logo=tauri)
 ![JavaScript](https://img.shields.io/badge/-JavaScript-yellow?logo=javascript&logoColor=white)
 ![Rust](https://img.shields.io/badge/-Rust-orange?logo=rust&logoColor=white)
 ![Windows](https://img.shields.io/badge/-Windows-blue?logo=windows&logoColor=white)
@@ -36,9 +42,6 @@
 -   [설치](#installation)
 -   [외부호출](#external-calls)
 -   [Wayland 지원](#wayland-support)
--   [다국어](#internationalizationweblate)
--   [기여자](#contributors)
--   [감사한 사람들](#thanks)
 
 <div align="center">
 
@@ -100,7 +103,6 @@
 -   [x] [Yandex](https://translate.yandex.com/)
 -   [x] [Lingva](https://github.com/TheDavidDelta/lingva-translate) ([Plugin](https://github.com/pot-app/pot-app-translate-plugin-template))
 -   [x] [Tatoeba](https://tatoeba.org/) ([Plugin](https://github.com/pot-app/pot-app-translate-plugin-tatoeba))
--   [x] [ECDICT](https://github.com/skywind3000/ECDICT) ([Plugin](https://github.com/pot-app/pot-app-translate-plugin-ecdict))
 
 추가항목은 다음을 참고 [Plugin System](#plugin-system)
 
@@ -175,15 +177,9 @@
 
 ## Windows 윈도우
 
-### Winget 을 이용한 설치
-
-```powershell
-winget install Pylogmon.pot
-```
-
 ### 수동 설치
 
-1. 최신버전 다운로드 페이지 [Release](https://github.com/pot-app/pot-desktop/releases/latest)에서 `.exe` 파일을 다운받습니다.
+1. 최신버전 다운로드 페이지 [Release](https://github.com/zjjxwhh/pot-desktop/releases/latest)에서 `.exe` 파일을 다운받습니다.
 
     - 64-bit 버전 사용시, `pot_{version}_x64-setup.exe`
     - 32-bit 버전 사용시, `pot_{version}_x86-setup.exe`
@@ -197,35 +193,15 @@ winget install Pylogmon.pot
 
     윈도우-브라우저에서 사용하는 WebView2 기능이 설치되지 않았거나 비활성화 된 경우 입니다. 이 때는 WebView2 를 설치하거나 기능을 재설정 하십시오.
 
-    회사/기업 사용자의 경우 WebView2 기능이 설치되지 않았거나 비활성화된 경우가 있습니다. 이 경우 다음을 설치하십시오. WebView2 version `pot_{version} at [Release](https://github.com/pot-app/pot-desktop/releases/latest) _{arch}_fix_webview2_runtime-setup.exe`
+    회사/기업 사용자의 경우 WebView2 기능이 설치되지 않았거나 비활성화된 경우가 있습니다. 이 경우 다음을 설치하십시오. WebView2 version `pot_{version} at [Release](https://github.com/zjjxwhh/pot-desktop/releases/latest) _{arch}_fix_webview2_runtime-setup.exe`
 
     문제가 해결되지 않는 경우, Windows 7 compatibility mode에서 시도해 보십시오.
 
 ## MacOS 맥OS
 
-### Brew를 통한 설치
-
-1. 탭에 추가:
-
-```bash
-brew tap pot-app/homebrew-tap
-```
-
-2. 설치:
-
-```bash
-brew install --cask pot
-```
-
-3. 업데이트:
-
-```bash
-brew upgrade --cask pot
-```
-
 ### 수동설치
 
-1. 최신버전 다운로드 페이지 [Release](https://github.com/pot-app/pot-desktop/releases/latest)에서 `.dmg` 파일을 다운받습니다. (M1 사용자이면, 다음 파일명을 다운로드 합니다 `pot_{version}_aarch64.dmg`, 기타 사용자는 다음 파일을 다운로드 합니다. `pot_{version}_x64.dmg`)
+1. 최신버전 다운로드 페이지 [Release](https://github.com/zjjxwhh/pot-desktop/releases/latest)에서 `.dmg` 파일을 다운받습니다. (M1 사용자이면, 다음 파일명을 다운로드 합니다 `pot_{version}_aarch64.dmg`, 기타 사용자는 다음 파일을 다운로드 합니다. `pot_{version}_x64.dmg`)
 2. 더블클릭하여 설치를 합니다.
 
 ### 문제해결
@@ -245,42 +221,9 @@ brew upgrade --cask pot
 
 ## Linux
 
-### Debian/Ubuntu 데비안/우분투
-
 리눅스 환경을 위해 `deb` 파일이 제공됩니다
 
 참고 : 두 가지 버전이 제공됩니다. `glibc2.28`기반의 `universal`과 `openssl-1.1` 버전입니다. 프로그램이 당신의 컴퓨터에서 정상적으로 실행되지 않는다면 dependency와 관련된 문제일 경우가 많습니다. `universal`버전을 사용하면 이전 버전의 dependency를 사용하여 실행하면 대부분 실행이 가능합니다.
-
-### Arch/Manjaro
-
-> [!WARNING]  
-> In newer version of [Webkit2Gtk](https://archlinux.org/packages/extra/x86_64/webkit2gtk) (2.42.0), Because Nvidia Proprietary drives are not fully implemented DMABUF, it will cause failure to start and crash.<br>
-> Please downgrade or add the `WEBKIT_DISABLE_DMABUF_RENDERER=1` environment variable to `/etc/environment` (or other places where environment variables are set) to turn off the use of DMABUF.
-
-1. View on [AUR](https://aur.archlinux.org/packages?O=0&K=pot-translation)
-
-Use aur helper：
-
-```bash
-yay -S pot-translation # or pot-translation-bin or pot-translation-git
-# or
-paru -S pot-translation # or pot-translation-bin or pot-translation-git
-```
-
-2. If you are using `archlinuxcn`, you can install directly using pacman:
-
-```bash
-sudo pacman -S pot-translation
-```
-
-### Flatpak
-
-> [!WARNING]
-> 시스템 트레이 아이콘이 Flatpak을 통해 설치하면 표시되지 않습니다.
-
-<a href='https://flathub.org/apps/com.pot_app.pot'>
-    <img width='240' alt='Download on Flathub' src='https://flathub.org/api/badge?locale=en'/>
-</a>
 
 <div align="center">
 
@@ -343,14 +286,14 @@ rm ~/.cache/com.pot-app.desktop/pot_screenshot_cut.png && flameshot gui -s -p ~/
 ### SnipDo (Windows)
 
 1. SnipDo를 [Microsoft Store](https://apps.microsoft.com/store/detail/snipdo/9NPZ2TVKJVT7) 에서 다운받아 설치합니다.
-2. DSnipDo 확장팩을 최신버전 다운 경로에서 [Release](https://github.com/pot-app/pot-desktop/releases/latest) (pot.pbar) 다운받습니다.
+2. DSnipDo 확장팩을 최신버전 다운 경로에서 [Release](https://github.com/zjjxwhh/pot-desktop/releases/latest) (pot.pbar) 다운받습니다.
 3. 더블클릭하여 설치합니다.
 4. 특정단어를 선택하게 되면, 선택영역의 오른쪽 윗 부분에 번역아이콘이 보이게 됩니다. 클릭하여 번역을 진행합니다.
 
 ### PopClip (MacOS)
 
 1. PopClip를 [App Store](https://apps.apple.com/us/app/popclip/id445189367?mt=12) 에서 다운받아 설치합니다.
-2. PopClip 확장팩을 최신버전 다운 경로에서 [Release](https://github.com/pot-app/pot-desktop/releases/latest) (pot.popclipextz) 다운받습니다.
+2. PopClip 확장팩을 최신버전 다운 경로에서 [Release](https://github.com/zjjxwhh/pot-desktop/releases/latest) (pot.popclipextz) 다운받습니다.
 3. 더블클릭하여 설치합니다.
 4. PopClip settings에서 기능을 활성화 하면 선택영역의 번역을 할 수 있습니다.
 
@@ -395,31 +338,13 @@ windowrulev2 = float, class:(pot), title:(Translator|OCR|PopClip|Screenshot Tran
 windowrulev2 = move cursor 0 0, class:(pot), title:(Translator|PopClip|Screenshot Translate) # Translation window follows the mouse position.
 ```
 
-<div align="center">
-
-# 다중언어 지원([Weblate](https://hosted.weblate.org/engage/pot-app/))
-
-[![](https://hosted.weblate.org/widget/pot-app/pot-desktop/svg-badge.svg)](https://hosted.weblate.org/engage/pot-app/)
-
-[![](https://hosted.weblate.org/widget/pot-app/pot-desktop/multi-auto.svg)](https://hosted.weblate.org/engage/pot-app/)
-
-</div>
-
-<div align="center">
-
-# 기여자
-
-</div>
-
-<img src="https://github.com/pot-app/.github/blob/master/pot-desktop-contributions.svg?raw=true" width="100%"/>
-
 ## 사용자 컴파일
 
 ### 요구사항
 
-Node.js >= 18.0.0
+Node.js >= 22.0.0
 
-pnpm >= 8.5.0
+pnpm >= 9.0.0
 
 Rust >= 1.80.0
 
@@ -428,7 +353,7 @@ Rust >= 1.80.0
 1. repository을 복사합니다
 
     ```bash
-    git clone https://github.com/pot-app/pot-desktop.git
+    git clone https://github.com/zjjxwhh/pot-desktop.git
     ```
 
 2. dependencies를 설치합니다
@@ -454,17 +379,3 @@ Rust >= 1.80.0
     ```bash
     pnpm tauri build # Build into installation package
     ```
-
-<div align="center">
-
-# 관련사항
-
-</div>
-
--   [Bob](https://github.com/ripperhe/Bob) Inspiration
--   [bob-plugin-openai-translator](https://github.com/yetone/bob-plugin-openai-translator) OpenAI API Reference
--   [@uiYzzi](https://github.com/uiYzzi) Implementation ideas
--   [@Lichenkass](https://github.com/Lichenkass) Maintaining the Deepin App Store.
--   [Tauri](https://github.com/tauri-apps/tauri) A user-friendly GUI framework.
-
-<div align="center">

@@ -1,11 +1,17 @@
+> [!NOTE]
+>
+> 本项目由 [pot-app/pot-desktop](https://github.com/pot-app/pot-desktop) fork 而来，基于提交 [`594d32`](https://github.com/pot-app/pot-desktop/commit/594d32ede96acd106b0256deaa8bb440ffcdff40) 二次开发。
+>
+> 衷心感谢原项目及所有开发者们的卓越工作，本项目正是站在他们的肩膀上。
+
 <img width="200px" src="public/icon.svg" align="left"/>
 
 # Pot (派了个萌的翻译器)
 
-> 🌈 一个跨平台的划词翻译软件 ([QQ 频道](https://pd.qq.com/s/akns94e1r))
+> 🌈 一个跨平台的划词翻译软件
 
-![License](https://img.shields.io/github/license/pot-app/pot-desktop.svg)
-![Tauri](https://img.shields.io/badge/Tauri-1.6.8-blue?logo=tauri)
+![License](https://img.shields.io/github/license/zjjxwhh/pot-desktop)
+![Tauri](https://img.shields.io/badge/Tauri-2.11-blue?logo=tauri)
 ![JavaScript](https://img.shields.io/badge/-JavaScript-yellow?logo=javascript&logoColor=white)
 ![Rust](https://img.shields.io/badge/-Rust-orange?logo=rust&logoColor=white)
 ![Windows](https://img.shields.io/badge/-Windows-blue?logo=windows&logoColor=white)
@@ -36,9 +42,6 @@
 -   [安装指南](#安装指南)
 -   [外部调用](#外部调用)
 -   [Wayland 支持](#wayland-支持)
--   [国际化](#国际化weblate)
--   [贡献者](#贡献者)
--   [感谢](#感谢)
 
 <div align="center">
 
@@ -100,7 +103,6 @@
 -   [x] [Yandex](https://translate.yandex.com/)
 -   [x] [Lingva](https://github.com/TheDavidDelta/lingva-translate) ([插件](https://github.com/pot-app/pot-app-translate-plugin-template))
 -   [x] [Tatoeba](https://tatoeba.org/) ([插件](https://github.com/pot-app/pot-app-translate-plugin-tatoeba))
--   [x] [ECDICT](https://github.com/skywind3000/ECDICT) ([插件](https://github.com/pot-app/pot-app-translate-plugin-ecdict))
 
 更多接口支持见 [插件系统](#插件系统)
 
@@ -175,15 +177,9 @@ pot 插件的扩展名为 `.potext`, 下载得到`.potext`文件之后， 在 �
 
 ## Windows
 
-### 通过 Winget 安装
-
-```powershell
-winget install Pylogmon.pot
-```
-
 ### 手动安装
 
-1. 在 [Release](https://github.com/pot-app/pot-desktop/releases/latest) 页面下载最新 `exe` 安装包。
+1. 在 [Release](https://github.com/zjjxwhh/pot-desktop/releases/latest) 页面下载最新 `exe` 安装包。
 
     - 64 位机器下载 `pot_{version}_x64-setup.exe`
     - 32 位机器下载 `pot_{version}_x86-setup.exe`
@@ -197,35 +193,15 @@ winget install Pylogmon.pot
 
     检查是否卸载/禁用了 WebView2，如果卸载/禁用了 WebView2，请手动安装 WebView2 或将其恢复。
 
-    如果是企业版系统不方便安装或无法安装 WebView2，请尝试在 [Release](https://github.com/pot-app/pot-desktop/releases/latest) 下载内置 WebView2 的版本 `pot_{version}_{arch}_fix_webview2_runtime-setup.exe`
+    如果是企业版系统不方便安装或无法安装 WebView2，请尝试在 [Release](https://github.com/zjjxwhh/pot-desktop/releases/latest) 下载内置 WebView2 的版本 `pot_{version}_{arch}_fix_webview2_runtime-setup.exe`
 
     若问题仍然存在请尝试使用 Windows7 兼容模式启动。
 
 ## MacOS
 
-### 通过 Brew 安装
-
-1. 添加我们的 tap:
-
-```bash
-brew tap pot-app/homebrew-tap
-```
-
-2. 安装 pot:
-
-```bash
-brew install --cask pot
-```
-
-3. 更新 pot
-
-```bash
-brew upgrade --cask pot
-```
-
 ### 手动安装
 
-1. 从 [Release](https://github.com/pot-app/pot-desktop/releases/latest) 页面下载最新的 `dmg` 安装包。（如果您使用的是 M1 芯片，请下载名为`pot_{version}_aarch64.dmg`的安装包，否则请下载名为`pot_{version}_x64.dmg`的安装包）
+1. 从 [Release](https://github.com/zjjxwhh/pot-desktop/releases/latest) 页面下载最新的 `dmg` 安装包。（如果您使用的是 M1 芯片，请下载名为`pot_{version}_aarch64.dmg`的安装包，否则请下载名为`pot_{version}_x64.dmg`的安装包）
 2. 双击下载的文件后将 pot 拖入 Applications 文件夹即可完成安装。
 
 ### 故障排除
@@ -244,46 +220,13 @@ brew upgrade --cask pot
 
 ## Linux
 
-### Debian/Ubuntu
-
-1. 从 [Release](https://github.com/pot-app/pot-desktop/releases/latest) 页面下载最新的对应架构的 `deb` 安装包。
+1. 从 [Release](https://github.com/zjjxwhh/pot-desktop/releases/latest) 页面下载最新的对应架构的 `deb` 安装包。
 
 2. 使用 `apt-get` 进行安装
 
     ```bash
     sudo apt-get install ./pot_{version}_amd64.deb
     ```
-
-### Arch/Manjaro
-
-> [!WARNING]
-> 在最新版本的 [Webkit2Gtk](https://archlinux.org/packages/extra/x86_64/webkit2gtk) (2.42.0) 中，由于 Nvidia 专有驱动未完全实现 DMABUF，将导致无法启动和崩溃的情况发生。<br>
-> 请降级或在 `/etc/environment` （或者其他设置环境变量的地方）中加入 `WEBKIT_DISABLE_DMABUF_RENDERER=1` 环境变量关闭 DMABUF 的使用。
-
-1. 在 [AUR](https://aur.archlinux.org/packages?O=0&K=pot-translation) 查看
-
-使用 `AUR helper` 安装：
-
-```bash
-yay -S pot-translation # 或 pot-translation-bin
-
-# paru -S pot-translation # 或 pot-translation-bin
-```
-
-2. 如果你使用 `archlinuxcn` 源，可以直接使用 pacman 安装
-
-```bash
-sudo pacman -S pot-translation
-```
-
-### Flatpak
-
-> [!WARNING]
-> Flatpak 版本缺失托盘图标。
-
-<a href='https://flathub.org/apps/com.pot_app.pot'>
-    <img width='240' alt='Download on Flathub' src='https://flathub.org/api/badge?locale=zh-Hans'/>
-</a>
 
 <div align="center">
 
@@ -346,14 +289,14 @@ rm ~/.cache/com.pot-app.desktop/pot_screenshot_cut.png && flameshot gui -s -p ~/
 ### SnipDo (Windows)
 
 1. 从 [Microsoft Store](https://apps.microsoft.com/store/detail/snipdo/9NPZ2TVKJVT7) 下载安装 SnipDo。
-2. 从 [Release](https://github.com/pot-app/pot-desktop/releases/latest) 下载 pot 的 SnipDo 扩展 (pot.pbar)
+2. 从 [Release](https://github.com/zjjxwhh/pot-desktop/releases/latest) 下载 pot 的 SnipDo 扩展 (pot.pbar)
 3. 双击下载的扩展文件完成安装。
 4. 选中文字，可以看到弹出的 SnipDo 工具条，点击翻译按钮即可翻译。
 
 ### PopClip (MacOS)
 
 1. 从 [App Store](https://apps.apple.com/us/app/popclip/id445189367?mt=12) 下载安装 PopClip
-2. 从 [Release](https://github.com/pot-app/pot-desktop/releases/latest) 下载 pot 的 PopClip 扩展 (pot.popclipextz)
+2. 从 [Release](https://github.com/zjjxwhh/pot-desktop/releases/latest) 下载 pot 的 PopClip 扩展 (pot.popclipextz)
 3. 双击下载的扩展文件完成安装。
 4. 在 PopClip 的扩展中启用 pot 扩展，选中文本即可点击翻译。
 
@@ -397,31 +340,13 @@ windowrulev2 = float, class:(pot), title:(Translator|OCR|PopClip|Screenshot Tran
 windowrulev2 = move cursor 0 0, class:(pot), title:(Translator|PopClip|Screenshot Translate) # Translation window follows the mouse position.
 ```
 
-<div align="center">
-
-# 国际化([Weblate](https://hosted.weblate.org/engage/pot-app/))
-
-[![](https://hosted.weblate.org/widget/pot-app/pot-desktop/svg-badge.svg)](https://hosted.weblate.org/engage/pot-app/)
-
-[![](https://hosted.weblate.org/widget/pot-app/pot-desktop/zh_Hans/multi-auto.svg)](https://hosted.weblate.org/engage/pot-app/)
-
-</div>
-
-<div align="center">
-
-# 贡献者
-
-</div>
-
-<img src="https://github.com/pot-app/.github/blob/master/pot-desktop-contributions.svg?raw=true" width="100%"/>
-
 ## 手动编译
 
 ### 环境要求
 
-Node.js >= 18.0.0
+Node.js >= 22.0.0
 
-pnpm >= 8.5.0
+pnpm >= 9.0.0
 
 Rust >= 1.80.0
 
@@ -430,7 +355,7 @@ Rust >= 1.80.0
 1. Clone 仓库
 
     ```bash
-    git clone https://github.com/pot-app/pot-desktop.git
+    git clone https://github.com/zjjxwhh/pot-desktop.git
     ```
 
 2. 安装依赖
@@ -456,17 +381,3 @@ Rust >= 1.80.0
     ```bash
     pnpm tauri build # Build into installation package
     ```
-
-<div align="center">
-
-# 感谢
-
-</div>
-
--   [Bob](https://github.com/ripperhe/Bob) 灵感来源
--   [bob-plugin-openai-translator](https://github.com/yetone/bob-plugin-openai-translator) OpenAI 接口参考
--   [@uiYzzi](https://github.com/uiYzzi) 实现思路
--   [@Lichenkass](https://github.com/Lichenkass) 维护 Deepin 应用商店中的 pot
--   [Tauri](https://github.com/tauri-apps/tauri) 好用的 GUI 框架
-
-<div align="center">

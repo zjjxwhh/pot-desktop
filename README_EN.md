@@ -1,11 +1,17 @@
+> [!NOTE]
+>
+> This project is a fork of [pot-app/pot-desktop](https://github.com/pot-app/pot-desktop), developed based on commit [`594d32`](https://github.com/pot-app/pot-desktop/commit/594d32ede96acd106b0256deaa8bb440ffcdff40).
+>
+> We sincerely thank the original project and all its developers for their outstanding work — this project stands on their shoulders.
+
 <img width="200px" src="public/icon.svg" align="left"/>
 
 # Pot (A cute translator)
 
-> A cross-platform translator application ([Telegram Group](https://t.me/pot_app))
+> A cross-platform translator application
 
-![License](https://img.shields.io/github/license/pot-app/pot-desktop.svg)
-![Tauri](https://img.shields.io/badge/Tauri-1.6.8-blue?logo=tauri)
+![License](https://img.shields.io/github/license/zjjxwhh/pot-desktop)
+![Tauri](https://img.shields.io/badge/Tauri-2.11-blue?logo=tauri)
 ![JavaScript](https://img.shields.io/badge/-JavaScript-yellow?logo=javascript&logoColor=white)
 ![Rust](https://img.shields.io/badge/-Rust-orange?logo=rust&logoColor=white)
 ![Windows](https://img.shields.io/badge/-Windows-blue?logo=windows&logoColor=white)
@@ -36,9 +42,6 @@
 -   [Installation](#installation)
 -   [External Calls](#external-calls)
 -   [Wayland Support](#wayland-support)
--   [Internationalization](#internationalizationweblate)
--   [Contributors](#contributors)
--   [Thanks](#thanks)
 
 <div align="center">
 
@@ -100,7 +103,6 @@
 -   [x] [Yandex](https://translate.yandex.com/)
 -   [x] [Lingva](https://github.com/TheDavidDelta/lingva-translate) ([Plugin](https://github.com/pot-app/pot-app-translate-plugin-template))
 -   [x] [Tatoeba](https://tatoeba.org/) ([Plugin](https://github.com/pot-app/pot-app-translate-plugin-tatoeba))
--   [x] [ECDICT](https://github.com/skywind3000/ECDICT) ([Plugin](https://github.com/pot-app/pot-app-translate-plugin-ecdict))
 
 More Services see [Plugin System](#plugin-system)
 
@@ -175,15 +177,9 @@ The [Template](https://pot-app.com/en/plugin.html#template) section in the [Plug
 
 ## Windows
 
-### Install via Winget
-
-```powershell
-winget install Pylogmon.pot
-```
-
 ### Install Manually
 
-1. Download the installation package ending in `.exe` from the Latest [Release](https://github.com/pot-app/pot-desktop/releases/latest) page.
+1. Download the installation package ending in `.exe` from the Latest [Release](https://github.com/zjjxwhh/pot-desktop/releases/latest) page.
 
     - 64-bit machine download `pot_{version}_x64-setup.exe`
     - 32-bit machine download `pot_{version}_x86-setup.exe`
@@ -197,35 +193,15 @@ winget install Pylogmon.pot
 
     Check if WebView2 is uninstalled/disabled, if so, install WebView2 manually or restore it.
 
-    If the enterprise edition system is inconvenient to install or cannot install WebView2, please try to download the fix WebView2 version `pot_{version} at [Release](https://github.com/pot-app/pot-desktop/releases/latest) _{arch}_fix_webview2_runtime-setup.exe`
+    If the enterprise edition system is inconvenient to install or cannot install WebView2, please try to download the fix WebView2 version `pot_{version} at [Release](https://github.com/zjjxwhh/pot-desktop/releases/latest) _{arch}_fix_webview2_runtime-setup.exe`
 
     If the issue persists, please try starting in Windows 7 compatibility mode.
 
 ## MacOS
 
-### Install via Brew
-
-1. Add our tap:
-
-```bash
-brew tap pot-app/homebrew-tap
-```
-
-2. Install pot:
-
-```bash
-brew install --cask pot
-```
-
-3. Upgrade pot
-
-```bash
-brew upgrade --cask pot
-```
-
 ### Install Manually
 
-1. Download the installation package ending in `.dmg` from the Latest [Release](https://github.com/pot-app/pot-desktop/releases/latest) page. (If you are using M1, please download the installation package named `pot_{version}_aarch64.dmg`, otherwise download the installation package named `pot_{version}_x64.dmg`)
+1. Download the installation package ending in `.dmg` from the Latest [Release](https://github.com/zjjxwhh/pot-desktop/releases/latest) page. (If you are using M1, please download the installation package named `pot_{version}_aarch64.dmg`, otherwise download the installation package named `pot_{version}_x64.dmg`)
 2. Double click the downloaded file to install it.
 
 ### Troubleshooting
@@ -244,42 +220,9 @@ brew upgrade --cask pot
 
 ## Linux
 
-### Debian/Ubuntu
-
 We provide `deb` packages for Linux.
 
 Please note that: There are two deb package, `universal` is based on `glibc2.28` and `openssl-1.1`, If the regular deb package can't run on your machine due to dependency problems, please download the `universal` package, Due to its low version dependency, it can run on most systems.
-
-### Arch/Manjaro
-
-> [!WARNING]  
-> In newer version of [Webkit2Gtk](https://archlinux.org/packages/extra/x86_64/webkit2gtk) (2.42.0), Because Nvidia Proprietary drives are not fully implemented DMABUF, it will cause failure to start and crash.<br>
-> Please downgrade or add the `WEBKIT_DISABLE_DMABUF_RENDERER=1` environment variable to `/etc/environment` (or other places where environment variables are set) to turn off the use of DMABUF.
-
-1. View on [AUR](https://aur.archlinux.org/packages?O=0&K=pot-translation)
-
-Use aur helper：
-
-```bash
-yay -S pot-translation # or pot-translation-bin or pot-translation-git
-# or
-paru -S pot-translation # or pot-translation-bin or pot-translation-git
-```
-
-2. If you are using `archlinuxcn`, you can install directly using pacman:
-
-```bash
-sudo pacman -S pot-translation
-```
-
-### Flatpak
-
-> [!WARNING]
-> The tray icon is missing in Flatpak version.
-
-<a href='https://flathub.org/apps/com.pot_app.pot'>
-    <img width='240' alt='Download on Flathub' src='https://flathub.org/api/badge?locale=en'/>
-</a>
 
 <div align="center">
 
@@ -342,14 +285,14 @@ rm ~/.cache/com.pot-app.desktop/pot_screenshot_cut.png && flameshot gui -s -p ~/
 ### SnipDo (Windows)
 
 1. Download and install SnipDo in the [Microsoft Store](https://apps.microsoft.com/store/detail/snipdo/9NPZ2TVKJVT7)
-2. Download the SnipDo extension of pot from the Latest [Release](https://github.com/pot-app/pot-desktop/releases/latest) (pot.pbar)
+2. Download the SnipDo extension of pot from the Latest [Release](https://github.com/zjjxwhh/pot-desktop/releases/latest) (pot.pbar)
 3. Double click the downloaded file to install it.
 4. Selection some text, you can see the pot icon in the upper right corner of the selection, click the icon to translate.
 
 ### PopClip (MacOS)
 
 1. Download and install PopClip in the [App Store](https://apps.apple.com/us/app/popclip/id445189367?mt=12)
-2. Download the PopClip extension of pot from the Latest [Release](https://github.com/pot-app/pot-desktop/releases/latest) (pot.popclipextz)
+2. Download the PopClip extension of pot from the Latest [Release](https://github.com/zjjxwhh/pot-desktop/releases/latest) (pot.popclipextz)
 3. Double click the downloaded file to install it.
 4. Enable the pot extension in PopClip settings, and then you can translate by selecting text.
 
@@ -395,31 +338,13 @@ windowrulev2 = float, class:(pot), title:(Translator|OCR|PopClip|Screenshot Tran
 windowrulev2 = move cursor 0 0, class:(pot), title:(Translator|PopClip|Screenshot Translate) # Translation window follows the mouse position.
 ```
 
-<div align="center">
-
-# Internationalization([Weblate](https://hosted.weblate.org/engage/pot-app/))
-
-[![](https://hosted.weblate.org/widget/pot-app/pot-desktop/svg-badge.svg)](https://hosted.weblate.org/engage/pot-app/)
-
-[![](https://hosted.weblate.org/widget/pot-app/pot-desktop/multi-auto.svg)](https://hosted.weblate.org/engage/pot-app/)
-
-</div>
-
-<div align="center">
-
-# Contributors
-
-</div>
-
-<img src="https://github.com/pot-app/.github/blob/master/pot-desktop-contributions.svg?raw=true" width="100%"/>
-
 ## Manual compilation
 
 ### Requirements
 
-Node.js >= 18.0.0
+Node.js >= 22.0.0
 
-pnpm >= 8.5.0
+pnpm >= 9.0.0
 
 Rust >= 1.80.0
 
@@ -428,7 +353,7 @@ Rust >= 1.80.0
 1. Clone the repository
 
     ```bash
-    git clone https://github.com/pot-app/pot-desktop.git
+    git clone https://github.com/zjjxwhh/pot-desktop.git
     ```
 
 2. Install dependencies
@@ -454,17 +379,3 @@ Rust >= 1.80.0
     ```bash
     pnpm tauri build # Build into installation package
     ```
-
-<div align="center">
-
-# Acknowledgement
-
-</div>
-
--   [Bob](https://github.com/ripperhe/Bob) Inspiration
--   [bob-plugin-openai-translator](https://github.com/yetone/bob-plugin-openai-translator) OpenAI API Reference
--   [@uiYzzi](https://github.com/uiYzzi) Implementation ideas
--   [@Lichenkass](https://github.com/Lichenkass) Maintaining the Deepin App Store.
--   [Tauri](https://github.com/tauri-apps/tauri) A user-friendly GUI framework.
-
-<div align="center">
