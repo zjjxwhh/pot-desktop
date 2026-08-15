@@ -22,7 +22,6 @@ export default function Translate(props) {
         'lingva',
         'yandex',
         'google',
-        'ecdict',
     ]);
 
     const { t } = useTranslation();

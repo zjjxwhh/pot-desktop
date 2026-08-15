@@ -18,7 +18,6 @@ import * as _chatglm from './chatglm';
 import * as _openai_compatible from './openai_compatible';
 import * as _geminipro from './geminipro';
 import * as _ollama from './ollama';
-import * as _ecdict from './ecdict';
 import * as _lingva from './lingva';
 
 export const deepl = _deepl;
@@ -41,5 +40,4 @@ export const chatglm = _chatglm;
 export const openai_compatible = _openai_compatible;
 export const geminipro = _geminipro;
 export const ollama = _ollama;
-export const ecdict = _ecdict;
 export const lingva = _lingva;
