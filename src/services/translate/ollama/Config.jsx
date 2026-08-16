@@ -1,4 +1,18 @@
-import { TextField, Label, Input, TextArea, Button, Switch, Card, Link, Tooltip, ProgressBar, Surface, InputGroup, toast } from '@heroui/react';
+import {
+    TextField,
+    Label,
+    Input,
+    TextArea,
+    Button,
+    Switch,
+    Card,
+    Link,
+    Tooltip,
+    ProgressBar,
+    Surface,
+    InputGroup,
+    toast,
+} from '@heroui/react';
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
 import { IconTrash } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
@@ -11,7 +25,7 @@ import { translate } from './index';
 import { Language } from './index';
 
 export function Config(props) {
-    const { instanceKey, updateServiceList, onClose } = props;
+    const { instanceKey, updateServiceList, onClose, formId, setSavePending } = props;
     const { t } = useTranslation();
     const [serviceConfig, setServiceConfig] = useConfig(
         instanceKey,
@@ -31,7 +45,6 @@ export function Config(props) {
         },
         { sync: false }
     );
-    const [isLoading, setIsLoading] = useState(false);
     const [isPulling, setIsPulling] = useState(false);
     const [progress, setProgress] = useState(0);
     const [pullingStatus, setPullingStatus] = useState('');
@@ -79,18 +92,19 @@ export function Config(props) {
     return (
         serviceConfig !== null && (
             <form
+                id={formId}
                 onSubmit={(e) => {
                     e.preventDefault();
-                    setIsLoading(true);
+                    setSavePending(true);
                     translate('hello', Language.auto, Language.zh_cn, { config: serviceConfig }).then(
                         () => {
-                            setIsLoading(false);
+                            setSavePending(false);
                             setServiceConfig(serviceConfig, true);
                             updateServiceList(instanceKey);
                             onClose();
                         },
                         (e) => {
-                            setIsLoading(false);
+                            setSavePending(false);
                             toast.danger(t('config.service.test_failed'), {
                                 description: e.toString(),
                             });
@@ -333,15 +347,6 @@ export function Config(props) {
                         {t('services.translate.ollama.add')}
                     </Button>
                 </Surface>
-                <br />
-                <Button
-                    type='submit'
-                    isPending={isLoading}
-                    fullWidth
-                    variant='primary'
-                >
-                    {t('common.save')}
-                </Button>
             </form>
         )
     );

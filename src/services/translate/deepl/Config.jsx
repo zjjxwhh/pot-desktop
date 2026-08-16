@@ -2,14 +2,14 @@ import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
 import { TextField, Label, Input, Button, Dropdown, toast } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-shell';
-import React, { useState } from 'react';
+import React from 'react';
 
 import { useConfig } from '../../../hooks/useConfig';
 import { translate } from './index';
 import { Language } from './index';
 
 export function Config(props) {
-    const { instanceKey, updateServiceList, onClose } = props;
+    const { instanceKey, updateServiceList, onClose, formId, setSavePending } = props;
     const { t } = useTranslation();
     const [deeplConfig, setDeeplConfig] = useConfig(
         instanceKey,
@@ -21,23 +21,23 @@ export function Config(props) {
         },
         { sync: false }
     );
-    const [isLoading, setIsLoading] = useState(false);
 
     return (
         deeplConfig !== null && (
             <form
+                id={formId}
                 onSubmit={(e) => {
                     e.preventDefault();
-                    setIsLoading(true);
+                    setSavePending(true);
                     translate('hello', Language.auto, Language.zh_cn, { config: deeplConfig }).then(
                         () => {
-                            setIsLoading(false);
+                            setSavePending(false);
                             setDeeplConfig(deeplConfig, true);
                             updateServiceList(instanceKey);
                             onClose();
                         },
                         (e) => {
-                            setIsLoading(false);
+                            setSavePending(false);
                             toast.danger(t('config.service.test_failed'), {
                                 description: e.toString(),
                             });
@@ -146,14 +146,6 @@ export function Config(props) {
                         <Input variant='secondary' />
                     </TextField>
                 </div>
-                <Button
-                    type='submit'
-                    isPending={isLoading}
-                    variant='primary'
-                    fullWidth
-                >
-                    {t('common.save')}
-                </Button>
             </form>
         )
     );

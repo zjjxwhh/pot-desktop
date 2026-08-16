@@ -1,7 +1,7 @@
 import { Button, Dropdown, Input, Label, Surface, TextField, toast } from '@heroui/react';
 import { IconTrash, IconVolume } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
-import React, { useState } from 'react';
+import React from 'react';
 
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
 import { languageList, LanguageFlag } from '../../../utils/language';
@@ -82,7 +82,7 @@ function playPreview(data) {
 }
 
 export function Config(props) {
-    const { instanceKey, updateServiceList, onClose } = props;
+    const { instanceKey, updateServiceList, onClose, formId, setSavePending } = props;
     const { t } = useTranslation();
     const [edgeConfig, setEdgeConfig] = useConfig(
         instanceKey,
@@ -92,7 +92,6 @@ export function Config(props) {
         },
         { sync: false }
     );
-    const [isLoading, setIsLoading] = useState(false);
 
     const setVoiceConfig = (voiceConfig) => {
         setEdgeConfig({
@@ -121,18 +120,19 @@ export function Config(props) {
     return (
         edgeConfig !== null && (
             <form
+                id={formId}
                 onSubmit={(e) => {
                     e.preventDefault();
-                    setIsLoading(true);
+                    setSavePending(true);
                     tts('hello', Language.en, { config: edgeConfig }).then(
                         () => {
-                            setIsLoading(false);
+                            setSavePending(false);
                             setEdgeConfig(edgeConfig, true);
                             updateServiceList(instanceKey);
                             onClose();
                         },
                         (e) => {
-                            setIsLoading(false);
+                            setSavePending(false);
                             toast.danger(t('config.service.test_failed'), {
                                 description: e.toString(),
                             });
@@ -235,7 +235,9 @@ export function Config(props) {
                                                         id={voice}
                                                         textValue={getVoiceLabel(voice)}
                                                         className={({ isSelected }) =>
-                                                            isSelected ? 'bg-accent/15 text-accent font-medium' : undefined
+                                                            isSelected
+                                                                ? 'bg-accent/15 text-accent font-medium'
+                                                                : undefined
                                                         }
                                                     >
                                                         <Dropdown.ItemIndicator type='checkmark' />
@@ -279,16 +281,6 @@ export function Config(props) {
                         {t('services.tts.edge_tts.add')}
                     </Button>
                 </Surface>
-                <br />
-
-                <Button
-                    type='submit'
-                    isPending={isLoading}
-                    fullWidth
-                    variant='primary'
-                >
-                    {t('common.save')}
-                </Button>
             </form>
         )
     );

@@ -7,12 +7,20 @@ import React from 'react';
 import { useConfig } from '../../../../../hooks';
 
 export function PluginConfig(props) {
-    const { instanceKey, updateServiceList, onClose, name, pluginList } = props;
+    const { instanceKey, updateServiceList, onClose, name, pluginList, formId } = props;
     const [pluginConfig, setPluginConfig] = useConfig(instanceKey, {}, { sync: false });
     const { t } = useTranslation();
 
     return (
-        <>
+        <form
+            id={formId}
+            onSubmit={(e) => {
+                e.preventDefault();
+                setPluginConfig(pluginConfig, true);
+                updateServiceList(instanceKey);
+                onClose();
+            }}
+        >
             <div className={'config-item'}>
                 <h3 className='my-auto select-none cursor-default'>{t('config.service.homepage')}</h3>
                 <Button
@@ -92,7 +100,11 @@ export function PluginConfig(props) {
                                             >
                                                 {Object.keys(x.options).map((y) => {
                                                     return (
-                                                        <Dropdown.Item key={y} id={y} textValue={x.options[y]}>
+                                                        <Dropdown.Item
+                                                            key={y}
+                                                            id={y}
+                                                            textValue={x.options[y]}
+                                                        >
                                                             <Label>{x.options[y]}</Label>
                                                         </Dropdown.Item>
                                                     );
@@ -125,20 +137,6 @@ export function PluginConfig(props) {
                     );
                 })
             )}
-
-            <div>
-                <Button
-                    fullWidth
-                    variant='primary'
-                    onPress={() => {
-                        setPluginConfig(pluginConfig, true);
-                        updateServiceList(instanceKey);
-                        onClose();
-                    }}
-                >
-                    {t('common.save')}
-                </Button>
-            </div>
-        </>
+        </form>
     );
 }

@@ -2,15 +2,14 @@ import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
 import { Button, Input, TextField, toast } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-shell';
-import React, { useState } from 'react';
+import React from 'react';
 
 import { useConfig } from '../../../hooks';
 import { collection } from './index';
 
 export function Config(props) {
-    const [isLoading, setIsLoading] = useState(false);
     const { t } = useTranslation();
-    const { instanceKey, updateServiceList, onClose } = props;
+    const { instanceKey, updateServiceList, onClose, formId, setSavePending } = props;
     const [ankiConfig, setAnkiConfig] = useConfig(
         instanceKey,
         {
@@ -24,18 +23,19 @@ export function Config(props) {
         ankiConfig !== null && (
             <>
                 <form
+                    id={formId}
                     onSubmit={(e) => {
                         e.preventDefault();
-                        setIsLoading(true);
+                        setSavePending(true);
                         collection('test', '测试', { config: ankiConfig }).then(
                             () => {
-                                setIsLoading(false);
+                                setSavePending(false);
                                 setAnkiConfig(ankiConfig, true);
                                 updateServiceList(instanceKey);
                                 onClose();
                             },
                             (e) => {
-                                setIsLoading(false);
+                                setSavePending(false);
                                 toast.danger(t('config.service.test_failed'), {
                                     description: e.toString(),
                                 });
@@ -85,14 +85,6 @@ export function Config(props) {
                             />
                         </TextField>
                     </div>
-                    <Button
-                        type='submit'
-                        isPending={isLoading}
-                        fullWidth
-                        variant='primary'
-                    >
-                        {t('common.save')}
-                    </Button>
                 </form>
             </>
         )

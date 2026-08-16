@@ -1,6 +1,6 @@
 import { Modal, useOverlayState, Button } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
-import React from 'react';
+import React, { useId, useState } from 'react';
 
 import {
     ServiceSourceType,
@@ -14,6 +14,8 @@ import { PluginConfig } from '../../PluginConfig';
 export default function ConfigModal(props) {
     const { serviceInstanceKey, pluginList, isOpen, onOpenChange, updateServiceInstanceList } = props;
     const state = useOverlayState({ isOpen, onOpenChange });
+    const formId = useId();
+    const [savePending, setSavePending] = useState(false);
 
     const serviceSourceType = getServiceSouceType(serviceInstanceKey);
     const pluginServiceFlag = whetherPluginService(serviceInstanceKey);
@@ -24,9 +26,7 @@ export default function ConfigModal(props) {
     return pluginServiceFlag && !(serviceName in pluginList) ? (
         <></>
     ) : (
-        <Modal
-            state={state}
-        >
+        <Modal state={state}>
             <Modal.Backdrop>
                 <Modal.Container scroll='inside'>
                     <Modal.Dialog className='max-h-[75vh]'>
@@ -60,13 +60,23 @@ export default function ConfigModal(props) {
                                     <ConfigComponent
                                         name={serviceName}
                                         instanceKey={serviceInstanceKey}
-                                        pluginType='translate'
+                                        pluginType='tts'
                                         pluginList={pluginList}
                                         updateServiceList={updateServiceInstanceList}
                                         onClose={close}
+                                        formId={formId}
+                                        setSavePending={setSavePending}
                                     />
                                 </Modal.Body>
                                 <Modal.Footer>
+                                    <Button
+                                        type='submit'
+                                        form={formId}
+                                        isPending={savePending}
+                                        variant='primary'
+                                    >
+                                        {t('common.save')}
+                                    </Button>
                                     <Button
                                         variant='danger-soft'
                                         onPress={close}
