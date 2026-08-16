@@ -27,8 +27,22 @@ export const useConfig = (key, defaultValue, options = {}) => {
             store.get(key).then((v) => {
                 if (v === null || v === undefined) {
                     setPropertyState(defaultValue);
-                    store.set(key, defaultValue);
-                    store.save();
+                    // 默认值仅在必要时才写入 store，避免打开配置模态框就持久化默认值，
+                    // 取消后残留孤儿 key：
+                    // - sync:false 的配置（如服务实例配置）只在保存时持久化
+                    // - 空对象默认值（如模态框只读图标用的 useConfig(key, {})）无需写入
+                    if (
+                        sync &&
+                        !(
+                            defaultValue !== null &&
+                            typeof defaultValue === 'object' &&
+                            !Array.isArray(defaultValue) &&
+                            Object.keys(defaultValue).length === 0
+                        )
+                    ) {
+                        store.set(key, defaultValue);
+                        store.save();
+                    }
                 } else {
                     setPropertyState(v);
                 }
