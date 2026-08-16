@@ -162,6 +162,7 @@ fn main() {
             lang_detect,
             webdav,
             local,
+            s3,
             install_plugin,
             font_list
         ])

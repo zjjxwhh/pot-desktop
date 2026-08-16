@@ -25,6 +25,8 @@ pub enum Error {
     Selection(#[from] font_kit::error::SelectionError),
     #[error(transparent)]
     Reqwest(#[from] reqwest::Error),
+    #[error(transparent)]
+    S3(#[from] s3::error::S3Error),
 }
 
 // we must manually implement serde::Serialize
