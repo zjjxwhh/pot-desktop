@@ -17,7 +17,11 @@ export default function ServiceItem(props) {
 
     const { t } = useTranslation();
 
-    const [serviceInstanceConfig, setServiceInstanceConfig] = useConfig(serviceInstanceKey, {});
+    const [serviceInstanceConfig, setServiceInstanceConfig] = useConfig(
+        serviceInstanceKey,
+        {},
+        { persistDefault: false }
+    );
 
     const serviceSourceType = getServiceSouceType(serviceInstanceKey);
     const serviceName = getServiceName(serviceInstanceKey);

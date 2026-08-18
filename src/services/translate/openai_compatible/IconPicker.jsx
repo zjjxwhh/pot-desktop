@@ -22,7 +22,7 @@ function toVisibleColor(color) {
 }
 
 export default function IconPicker(props) {
-    const { value, onChange } = props;
+    const { value, iconId, onChange } = props;
     const { t } = useTranslation();
     const state = useOverlayState();
     const [iconsData, setIconsData] = useState(null);
@@ -47,12 +47,12 @@ export default function IconPicker(props) {
         }
     }, [state.isOpen, iconsData]);
 
-    // 每次打开时清空搜索文本并重置分组
+    // 每次打开时清空搜索文本并重置分组，同时预先选中当前已选定的图标
     useEffect(() => {
         if (state.isOpen) {
             setSearch('');
             setGroup('all');
-            setSelectedId(null);
+            setSelectedId(iconId || null);
         }
     }, [state.isOpen]);
 
@@ -97,7 +97,7 @@ export default function IconPicker(props) {
                 // Mono 变体使用 currentColor，在 <img> 中会解析为黑色，强制替换为品牌主色
                 svg = svg.replaceAll('fill="currentColor"', `fill="${primary}"`);
             }
-            onChange(`data:image/svg+xml,${encodeURIComponent(svg)}`);
+            onChange(`data:image/svg+xml,${encodeURIComponent(svg)}`, item.id);
             state.setOpen(false);
         } catch (e) {
             toast.danger(t('services.translate.openai_compatible.icon_create_failed'), {
@@ -115,7 +115,7 @@ export default function IconPicker(props) {
                     <Button
                         size='sm'
                         variant='outline'
-                        onPress={() => onChange('')}
+                        onPress={() => onChange('', '')}
                     >
                         {t('services.translate.openai_compatible.restore_default')}
                     </Button>

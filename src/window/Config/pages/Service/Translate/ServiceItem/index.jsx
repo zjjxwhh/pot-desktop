@@ -11,7 +11,11 @@ import { resolveServiceIcon } from '../../../../../../utils/service_icon';
 export default function ServiceItem(props) {
     const { serviceInstanceKey, pluginList, deleteServiceInstance, setCurrentConfigKey, onConfigOpen, ...drag } = props;
     const { t } = useTranslation();
-    const [serviceInstanceConfig, setServiceInstanceConfig] = useConfig(serviceInstanceKey, {});
+    const [serviceInstanceConfig, setServiceInstanceConfig] = useConfig(
+        serviceInstanceKey,
+        {},
+        { persistDefault: false }
+    );
 
     const serviceSourceType = getServiceSouceType(serviceInstanceKey)
     const serviceName = getServiceName(serviceInstanceKey)

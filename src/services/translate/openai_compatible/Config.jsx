@@ -18,7 +18,7 @@ export const defaultRequestArguments = JSON.stringify({
 });
 
 export function Config(props) {
-    const { instanceKey, updateServiceList, onClose, formId, setSavePending } = props;
+    const { instanceKey, updateServiceList, onClose, formId, setSavePending, setDraftIcon } = props;
     const { t } = useTranslation();
     const [openaiConfig, setOpenaiConfig] = useConfig(
         instanceKey,
@@ -39,6 +39,7 @@ export function Config(props) {
             ],
             requestArguments: defaultRequestArguments,
             icon: '',
+            iconId: '',
         },
         { sync: false }
     );
@@ -106,14 +107,14 @@ export function Config(props) {
                     <h3 className='my-auto'>{t('services.translate.openai_compatible.icon')}</h3>
                     <IconPicker
                         value={openaiConfig['icon'] ?? ''}
-                        onChange={(value) => {
-                            setOpenaiConfig(
-                                {
-                                    ...openaiConfig,
-                                    icon: value,
-                                },
-                                true
-                            );
+                        iconId={openaiConfig['iconId'] ?? ''}
+                        onChange={(icon, iconId) => {
+                            setOpenaiConfig({
+                                ...openaiConfig,
+                                icon,
+                                iconId,
+                            });
+                            setDraftIcon?.(icon);
                         }}
                     />
                 </div>

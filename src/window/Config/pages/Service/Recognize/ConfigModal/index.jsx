@@ -1,7 +1,7 @@
 import { Modal, useOverlayState, Button } from '@heroui/react';
 
 import { useTranslation } from 'react-i18next';
-import React, { useId, useState } from 'react';
+import React, { useEffect, useId, useState } from 'react';
 
 import {
     ServiceSourceType,
@@ -18,6 +18,11 @@ export default function ConfigModal(props) {
     const state = useOverlayState({ isOpen, onOpenChange });
     const formId = useId();
     const [savePending, setSavePending] = useState(false);
+
+    // 切换服务实例或开关模态框时重置模态框级状态：savePending
+    useEffect(() => {
+        setSavePending(false);
+    }, [serviceInstanceKey, isOpen]);
 
     const serviceSourceType = getServiceSouceType(serviceInstanceKey);
     const pluginServiceFlag = whetherPluginService(serviceInstanceKey);

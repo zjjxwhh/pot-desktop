@@ -6,7 +6,11 @@ import { debounce } from '../utils';
 
 export const useConfig = (key, defaultValue, options = {}) => {
     const [property, setPropertyState, getProperty] = useGetState(null);
-    const { sync = true } = options;
+    // persistDefault：store 中读不到 key 时，是否把默认值写回 store。
+    // 默认跟随 sync —— sync:false 的配置（如服务实例配置）只在保存时持久化，
+    // 初始化时自然也不该写入。只读取现有配置的场景（如列表项、模态框标题栏图标）
+    // 应显式传 persistDefault:false，避免打开界面就产生孤儿 key。
+    const { sync = true, persistDefault = sync } = options;
 
     // 同步到Store (State -> Store)
     const syncToStore = useCallback(
@@ -27,19 +31,7 @@ export const useConfig = (key, defaultValue, options = {}) => {
             store.get(key).then((v) => {
                 if (v === null || v === undefined) {
                     setPropertyState(defaultValue);
-                    // 默认值仅在必要时才写入 store，避免打开配置模态框就持久化默认值，
-                    // 取消后残留孤儿 key：
-                    // - sync:false 的配置（如服务实例配置）只在保存时持久化
-                    // - 空对象默认值（如模态框只读图标用的 useConfig(key, {})）无需写入
-                    if (
-                        sync &&
-                        !(
-                            defaultValue !== null &&
-                            typeof defaultValue === 'object' &&
-                            !Array.isArray(defaultValue) &&
-                            Object.keys(defaultValue).length === 0
-                        )
-                    ) {
+                    if (persistDefault) {
                         store.set(key, defaultValue);
                         store.save();
                     }
