@@ -364,128 +364,139 @@ export default function TargetArea(props) {
     });
 
     return (
-        <Card className='gap-0 bg-surface overflow-hidden p-0'>
+        <Card className='gap-0 bg-surface overflow-clip p-0 min-h-[calc(2*min(32px,var(--radius-3xl)))]'>
             <Card.Header
-                className={`flex flex-row items-center justify-between py-1 px-0 bg-surface-secondary`}
+                className={`sticky top-0 z-20 bg-background p-0`}
                 {...drag}
             >
-                {/* current service instance and available service instance to change */}
-                <div className='flex'>
-                    <Dropdown>
+                <div className='flex flex-row items-center justify-between py-1 px-0 bg-surface-secondary'>
+                    {/* current service instance and available service instance to change */}
+                    <div className='flex'>
+                        <Dropdown>
+                            <Button
+                                size='sm'
+                                variant='ghost'
+                                className={'h-7 ml-1'}
+                            >
+                                {whetherPluginService(currentTranslateServiceInstanceKey) ? (
+                                    <img
+                                        src={
+                                            pluginList['translate'][getServiceName(currentTranslateServiceInstanceKey)]
+                                                .icon
+                                        }
+                                        className='size-4 shrink-0 my-auto'
+                                    />
+                                ) : (
+                                    <img
+                                        src={resolveServiceIcon(
+                                            serviceInstanceConfigMap[currentTranslateServiceInstanceKey],
+                                            builtinServices[getServiceName(currentTranslateServiceInstanceKey)].info
+                                                .icon
+                                        )}
+                                        className='size-4 shrink-0 my-auto'
+                                    />
+                                )}
+                                {whetherPluginService(currentTranslateServiceInstanceKey) ? (
+                                    <div className='my-auto'>{`${getInstanceName(currentTranslateServiceInstanceKey, () => pluginList['translate'][getServiceName(currentTranslateServiceInstanceKey)].display)} `}</div>
+                                ) : (
+                                    <div className='my-auto'>
+                                        {getInstanceName(currentTranslateServiceInstanceKey, () =>
+                                            t(
+                                                `services.translate.${getServiceName(currentTranslateServiceInstanceKey)}.title`
+                                            )
+                                        )}
+                                    </div>
+                                )}
+                            </Button>
+                            <Dropdown.Popover>
+                                <Dropdown.Menu
+                                    className='max-h-[40vh] overflow-y-auto'
+                                    onAction={(key) => {
+                                        setCurrentTranslateServiceInstanceKey(key);
+                                    }}
+                                >
+                                    {translateServiceInstanceList.map((instanceKey) => {
+                                        return (
+                                            <Dropdown.Item
+                                                id={instanceKey}
+                                                key={instanceKey}
+                                                textValue={
+                                                    whetherPluginService(instanceKey)
+                                                        ? getInstanceName(
+                                                              instanceKey,
+                                                              () =>
+                                                                  pluginList['translate'][getServiceName(instanceKey)]
+                                                                      .display
+                                                          )
+                                                        : getInstanceName(instanceKey, () =>
+                                                              t(
+                                                                  `services.translate.${getServiceName(instanceKey)}.title`
+                                                              )
+                                                          )
+                                                }
+                                            >
+                                                {whetherPluginService(instanceKey) ? (
+                                                    <img
+                                                        src={pluginList['translate'][getServiceName(instanceKey)].icon}
+                                                        className='size-4 shrink-0 my-auto'
+                                                    />
+                                                ) : (
+                                                    <img
+                                                        src={resolveServiceIcon(
+                                                            serviceInstanceConfigMap[instanceKey],
+                                                            builtinServices[getServiceName(instanceKey)].info.icon
+                                                        )}
+                                                        className='size-4 shrink-0 my-auto'
+                                                    />
+                                                )}
+                                                <Label>
+                                                    {whetherPluginService(instanceKey) ? (
+                                                        <div className='my-auto'>{`${getInstanceName(instanceKey, () => pluginList['translate'][getServiceName(instanceKey)].display)} `}</div>
+                                                    ) : (
+                                                        <div className='my-auto'>
+                                                            {getInstanceName(instanceKey, () =>
+                                                                t(
+                                                                    `services.translate.${getServiceName(instanceKey)}.title`
+                                                                )
+                                                            )}
+                                                        </div>
+                                                    )}
+                                                </Label>
+                                            </Dropdown.Item>
+                                        );
+                                    })}
+                                </Dropdown.Menu>
+                            </Dropdown.Popover>
+                        </Dropdown>
+                        <PulseLoader
+                            loading={isLoading}
+                            color={'var(--muted)'}
+                            size={8}
+                            cssOverride={{
+                                display: 'inline-block',
+                                margin: 'auto',
+                                marginLeft: '20px',
+                            }}
+                        />
+                    </div>
+                    {/* content collapse */}
+                    <div className='flex'>
                         <Button
                             size='sm'
+                            isIconOnly
                             variant='ghost'
-                            className={'h-7 ml-1'}
+                            className={'h-7 mr-1'}
+                            onPress={() => setHide(!hide)}
                         >
-                            {whetherPluginService(currentTranslateServiceInstanceKey) ? (
-                                <img
-                                    src={
-                                        pluginList['translate'][getServiceName(currentTranslateServiceInstanceKey)].icon
-                                    }
-                                    className='size-4 shrink-0 my-auto'
-                                />
-                            ) : (
-                                <img
-                                    src={resolveServiceIcon(
-                                        serviceInstanceConfigMap[currentTranslateServiceInstanceKey],
-                                        builtinServices[getServiceName(currentTranslateServiceInstanceKey)].info.icon
-                                    )}
-                                    className='size-4 shrink-0 my-auto'
-                                />
-                            )}
-                            {whetherPluginService(currentTranslateServiceInstanceKey) ? (
-                                <div className='my-auto'>{`${getInstanceName(currentTranslateServiceInstanceKey, () => pluginList['translate'][getServiceName(currentTranslateServiceInstanceKey)].display)} `}</div>
-                            ) : (
-                                <div className='my-auto'>
-                                    {getInstanceName(currentTranslateServiceInstanceKey, () =>
-                                        t(
-                                            `services.translate.${getServiceName(currentTranslateServiceInstanceKey)}.title`
-                                        )
-                                    )}
-                                </div>
-                            )}
+                            {hide ? <IconChevronUp /> : <IconChevronDown />}
                         </Button>
-                        <Dropdown.Popover>
-                            <Dropdown.Menu
-                                className='max-h-[40vh] overflow-y-auto'
-                                onAction={(key) => {
-                                    setCurrentTranslateServiceInstanceKey(key);
-                                }}
-                            >
-                                {translateServiceInstanceList.map((instanceKey) => {
-                                    return (
-                                        <Dropdown.Item
-                                            id={instanceKey}
-                                            key={instanceKey}
-                                            textValue={
-                                                whetherPluginService(instanceKey)
-                                                    ? getInstanceName(
-                                                          instanceKey,
-                                                          () =>
-                                                              pluginList['translate'][getServiceName(instanceKey)]
-                                                                  .display
-                                                      )
-                                                    : getInstanceName(instanceKey, () =>
-                                                          t(`services.translate.${getServiceName(instanceKey)}.title`)
-                                                      )
-                                            }
-                                        >
-                                            {whetherPluginService(instanceKey) ? (
-                                                <img
-                                                    src={pluginList['translate'][getServiceName(instanceKey)].icon}
-                                                    className='size-4 shrink-0 my-auto'
-                                                />
-                                            ) : (
-                                                <img
-                                                    src={resolveServiceIcon(
-                                                        serviceInstanceConfigMap[instanceKey],
-                                                        builtinServices[getServiceName(instanceKey)].info.icon
-                                                    )}
-                                                    className='size-4 shrink-0 my-auto'
-                                                />
-                                            )}
-                                            <Label>
-                                                {whetherPluginService(instanceKey) ? (
-                                                    <div className='my-auto'>{`${getInstanceName(instanceKey, () => pluginList['translate'][getServiceName(instanceKey)].display)} `}</div>
-                                                ) : (
-                                                    <div className='my-auto'>
-                                                        {getInstanceName(instanceKey, () =>
-                                                            t(`services.translate.${getServiceName(instanceKey)}.title`)
-                                                        )}
-                                                    </div>
-                                                )}
-                                            </Label>
-                                        </Dropdown.Item>
-                                    );
-                                })}
-                            </Dropdown.Menu>
-                        </Dropdown.Popover>
-                    </Dropdown>
-                    <PulseLoader
-                        loading={isLoading}
-                        color={'var(--muted)'}
-                        size={8}
-                        cssOverride={{
-                            display: 'inline-block',
-                            margin: 'auto',
-                            marginLeft: '20px',
-                        }}
-                    />
-                </div>
-                {/* content collapse */}
-                <div className='flex'>
-                    <Button
-                        size='sm'
-                        isIconOnly
-                        variant='ghost'
-                        className={'h-7 mr-1'}
-                        onPress={() => setHide(!hide)}
-                    >
-                        {hide ? <IconChevronUp /> : <IconChevronDown />}
-                    </Button>
+                    </div>
                 </div>
             </Card.Header>
-            <animated.div style={{ ...springs }}>
+            <animated.div
+                className='overflow-hidden'
+                style={{ ...springs }}
+            >
                 <div ref={boundRef}>
                     {/* result content */}
                     <Card.Content className={`px-4 pt-2 pb-2.5 ${hide && 'h-0 p-0'}`}>
@@ -504,14 +515,10 @@ export default function TargetArea(props) {
                                         return (
                                             <div key={nanoid()}>
                                                 {pronunciation['region'] && (
-                                                    <span className={'mr-3 text-muted'}>
-                                                        {pronunciation['region']}
-                                                    </span>
+                                                    <span className={'mr-3 text-muted'}>{pronunciation['region']}</span>
                                                 )}
                                                 {pronunciation['symbol'] && (
-                                                    <span className={'mr-3 text-muted'}>
-                                                        {pronunciation['symbol']}
-                                                    </span>
+                                                    <span className={'mr-3 text-muted'}>{pronunciation['symbol']}</span>
                                                 )}
                                                 {pronunciation['voice'] && pronunciation['voice'] !== '' && (
                                                     <IconVolume
@@ -561,9 +568,7 @@ export default function TargetArea(props) {
                                     result['associations'].map((association) => {
                                         return (
                                             <div key={nanoid()}>
-                                                <span className={'text-muted'}>
-                                                    {association}
-                                                </span>
+                                                <span className={'text-muted'}>{association}</span>
                                             </div>
                                         );
                                     })}
@@ -571,9 +576,7 @@ export default function TargetArea(props) {
                                     result['sentence'].map((sentence, index) => {
                                         return (
                                             <div key={nanoid()}>
-                                                <span className={'mr-3'}>
-                                                    {index + 1}.
-                                                </span>
+                                                <span className={'mr-3'}>{index + 1}.</span>
                                                 <>
                                                     {sentence['source'] && (
                                                         <span
