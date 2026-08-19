@@ -249,7 +249,7 @@ fn translate_window() -> WebviewWindow {
 }
 
 pub fn selection_translate() {
-    use selection::get_text;
+    use crate::selection::get_text;
     // Get Selected Text
     let text = get_text();
     if !text.trim().is_empty() {

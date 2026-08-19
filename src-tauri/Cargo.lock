@@ -5145,9 +5145,13 @@ dependencies = [
 name = "pot"
 version = "0.0.0"
 dependencies = [
+ "accessibility-ng",
+ "accessibility-sys-ng",
  "arboard",
  "base64 0.23.1",
+ "core-foundation 0.9.4",
  "dirs 6.0.0",
+ "enigo",
  "font-kit",
  "image 0.25.10",
  "lingua",
@@ -5159,7 +5163,6 @@ dependencies = [
  "reqwest_dav",
  "rust-s3",
  "screenshots",
- "selection",
  "serde",
  "serde_json",
  "tauri",
@@ -5185,6 +5188,8 @@ dependencies = [
  "tiny_http",
  "walkdir",
  "windows 0.62.2",
+ "wl-clipboard-rs 0.8.2",
+ "x11-clipboard",
  "zip 8.6.0",
 ]
 
@@ -6301,23 +6306,6 @@ checksum = "6ce2691df843ecc5d231c0b14ece2acc3efb62c0a398c7e1d875f3983ce020e3"
 dependencies = [
  "core-foundation-sys",
  "libc",
-]
-
-[[package]]
-name = "selection"
-version = "1.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c56bdfb3cbb220dd9ae541e7a50318f6073cc7920949684c9788c54ba78edd64"
-dependencies = [
- "accessibility-ng",
- "accessibility-sys-ng",
- "arboard",
- "core-foundation 0.9.4",
- "enigo",
- "log",
- "windows 0.56.0",
- "wl-clipboard-rs 0.8.2",
- "x11-clipboard",
 ]
 
 [[package]]
