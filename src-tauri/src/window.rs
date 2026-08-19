@@ -250,17 +250,52 @@ fn translate_window() -> WebviewWindow {
 
 pub fn selection_translate() {
     use crate::selection::get_text;
-    // Get Selected Text
-    let text = get_text();
-    if !text.trim().is_empty() {
-        let app_handle = APP.get().unwrap();
-        // Write into State
-        let state: tauri::State<StringWrapper> = app_handle.state();
-        state.0.lock().unwrap().replace_range(.., &text);
+    use std::sync::atomic::{AtomicBool, Ordering};
+
+    // Capturing the selection blocks for up to a second: it waits for the user to
+    // let go of the hotkey, then for the target application to answer Ctrl+C. The
+    // hotkey handler runs inside the main thread's window procedure, so doing that
+    // inline would freeze the UI and starve the message pump COM relies on.
+    // Only the capture moves off the main thread; the window work goes back onto it.
+    static CAPTURING: AtomicBool = AtomicBool::new(false);
+
+    struct CaptureGuard;
+
+    impl Drop for CaptureGuard {
+        fn drop(&mut self) {
+            CAPTURING.store(false, Ordering::Release);
+        }
     }
 
-    let window = translate_window();
-    window.emit("new_text", text).unwrap();
+    // One capture at a time: it drives the physical clipboard, so concurrent runs
+    // would fight over it and over each other's backup.
+    if CAPTURING.swap(true, Ordering::AcqRel) {
+        info!("A selection capture is already running, ignoring this trigger");
+        return;
+    }
+
+    std::thread::spawn(move || {
+        // Get Selected Text
+        let text = {
+            let _guard = CaptureGuard;
+            get_text()
+        };
+
+        let app_handle = APP.get().unwrap();
+        let show = move || {
+            if !text.trim().is_empty() {
+                // Write into State
+                let state: tauri::State<StringWrapper> = app_handle.state();
+                state.0.lock().unwrap().replace_range(.., &text);
+            }
+
+            let window = translate_window();
+            window.emit("new_text", text).unwrap();
+        };
+        if let Err(err) = app_handle.run_on_main_thread(show) {
+            warn!("Failed to open the translate window: {err}");
+        }
+    });
 }
 
 pub fn input_translate() {
