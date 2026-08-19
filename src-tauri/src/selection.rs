@@ -10,11 +10,11 @@ mod macos;
 mod windows;
 
 #[cfg(target_os = "linux")]
-use crate::selection::linux::get_text as _get_text;
+use self::linux::get_text as _get_text;
 #[cfg(target_os = "macos")]
-use crate::selection::macos::get_text as _get_text;
+use self::macos::get_text as _get_text;
 #[cfg(target_os = "windows")]
-use crate::selection::windows::get_text as _get_text;
+use self::windows::get_text as _get_text;
 
 /// Get the text selected by the cursor
 ///
