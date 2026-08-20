@@ -85,6 +85,7 @@ export default function General() {
                         <h3>{t('config.general.auto_start')}</h3>
                         {autoStart !== null && (
                             <Switch
+                                size='lg'
                                 isSelected={autoStart}
                                 onChange={(v) => {
                                     setAutoStart(v);
@@ -111,6 +112,7 @@ export default function General() {
                         <h3>{t('config.general.check_update')}</h3>
                         {checkUpdate !== null && (
                             <Switch
+                                size='lg'
                                 isSelected={checkUpdate}
                                 onChange={(v) => {
                                     setCheckUpdate(v);
@@ -570,6 +572,7 @@ export default function General() {
                         <h3>{t('config.general.transparent')}</h3>
                         {transparent !== null && (
                             <Switch
+                                size='lg'
                                 isSelected={transparent}
                                 onChange={(v) => {
                                     setTransparent(v);
@@ -591,6 +594,7 @@ export default function General() {
                         <h3>{t('config.general.proxy.title')}</h3>
                         {proxyEnable !== null && (
                             <Switch
+                                size='lg'
                                 isSelected={proxyEnable}
                                 onChange={async (v) => {
                                     if (v) {
@@ -776,6 +780,7 @@ export default function General() {
                         <h3>{t('config.general.dev_mode')}</h3>
                         {devMode !== null && (
                             <Switch
+                                size='lg'
                                 isSelected={devMode}
                                 onChange={(v) => {
                                     setDevMode(v);

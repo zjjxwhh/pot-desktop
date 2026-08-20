@@ -1,7 +1,11 @@
 @layer base {
     .config-item {
-        margin: 10px 0;
+        min-height: 2.25rem;
+        margin: 8px 0;
         display: flex;
         justify-content: space-between;
+    }
+    .config-item > * {
+        margin-block: auto;
     }
 }

@@ -291,6 +291,7 @@ export default function Backup() {
                         <h3 className='my-auto'>{t('config.backup.s3_path_style')}</h3>
                         {s3PathStyle !== null && (
                             <Switch
+                                size='lg'
                                 isSelected={s3PathStyle}
                                 onChange={(v) => {
                                     setS3PathStyle(v);
