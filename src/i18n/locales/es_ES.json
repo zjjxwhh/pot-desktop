@@ -82,6 +82,14 @@
                     "title": "Tamaño de la letra"
                 },
                 "label": "General",
+                "log_level": {
+                    "debug": "",
+                    "error": "",
+                    "info": "",
+                    "title": "",
+                    "trace": "",
+                    "warn": ""
+                },
                 "proxy": {
                     "host": "Host",
                     "no_proxy": "Sin Proxy",

@@ -82,6 +82,14 @@
                     "title": "글꼴 크기"
                 },
                 "label": "일반",
+                "log_level": {
+                    "debug": "",
+                    "error": "",
+                    "info": "",
+                    "title": "",
+                    "trace": "",
+                    "warn": ""
+                },
                 "proxy": {
                     "host": "호스트",
                     "no_proxy": "프록시 없음",

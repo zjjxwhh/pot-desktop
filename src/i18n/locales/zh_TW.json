@@ -82,6 +82,14 @@
                     "title": "字型大小"
                 },
                 "label": "一般設定",
+                "log_level": {
+                    "debug": "偵錯",
+                    "error": "錯誤",
+                    "info": "資訊",
+                    "title": "記錄等級",
+                    "trace": "追蹤",
+                    "warn": "警告"
+                },
                 "proxy": {
                     "host": "主機",
                     "no_proxy": "不使用代理伺服器",

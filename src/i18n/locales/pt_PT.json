@@ -82,6 +82,14 @@
                     "title": "Tamanho da Fonte"
                 },
                 "label": "Geral",
+                "log_level": {
+                    "debug": "",
+                    "error": "",
+                    "info": "",
+                    "title": "",
+                    "trace": "",
+                    "warn": ""
+                },
                 "proxy": {
                     "host": "Host",
                     "no_proxy": "Sem Proxy",

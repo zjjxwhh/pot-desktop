@@ -8,6 +8,7 @@ mod config;
 mod error;
 mod hotkey;
 mod lang_detect;
+mod logging;
 mod screenshot;
 mod selection;
 mod server;
@@ -22,14 +23,15 @@ use cmd::*;
 use config::*;
 use hotkey::*;
 use lang_detect::*;
-use log::info;
+use log::{info, LevelFilter};
+use logging::*;
 use once_cell::sync::OnceCell;
 use screenshot::screenshot;
 use server::*;
 use std::sync::Mutex;
 use system_ocr::*;
 use tauri::Manager;
-use tauri_plugin_log::{Target, TargetKind};
+use tauri_plugin_log::{RotationStrategy, Target, TargetKind};
 use tauri_plugin_notification::NotificationExt;
 use tray::*;
 use updater::check_update;
@@ -59,6 +61,9 @@ fn main() {
                     Target::new(TargetKind::LogDir { file_name: None }),
                     Target::new(TargetKind::Stdout),
                 ])
+                .max_file_size(5 * 1024 * 1024)
+                .rotation_strategy(RotationStrategy::KeepSome(5))
+                .level(LevelFilter::Trace)
                 .build(),
         )
         .plugin(tauri_plugin_autostart::init(
@@ -93,6 +98,11 @@ fn main() {
             // Init Config
             info!("Init Config Store");
             init_config(app);
+            // Apply log level from config
+            match get("log_level") {
+                Some(level) => apply_log_level(level.as_str().unwrap_or("info")),
+                None => apply_log_level("info"),
+            }
             // Check First Run
             if is_first_run() {
                 // Open Config Window
@@ -165,7 +175,8 @@ fn main() {
             local,
             s3,
             install_plugin,
-            font_list
+            font_list,
+            set_log_level
         ])
         .build(tauri::generate_context!())
         .expect("error while running tauri application")

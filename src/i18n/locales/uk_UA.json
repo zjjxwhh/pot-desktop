@@ -82,6 +82,14 @@
                     "title": "Розмір шрифту"
                 },
                 "label": "Загальні",
+                "log_level": {
+                    "debug": "",
+                    "error": "",
+                    "info": "",
+                    "title": "",
+                    "trace": "",
+                    "warn": ""
+                },
                 "proxy": {
                     "host": "Хост",
                     "no_proxy": "Без проксі",

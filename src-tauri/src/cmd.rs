@@ -222,3 +222,8 @@ pub fn open_devtools(window: tauri::WebviewWindow) {
         window.close_devtools();
     }
 }
+
+#[tauri::command]
+pub fn set_log_level(level: String) {
+    crate::logging::apply_log_level(&level);
+}

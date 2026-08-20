@@ -82,6 +82,14 @@
                     "title": "字体大小"
                 },
                 "label": "常规设置",
+                "log_level": {
+                    "debug": "调试",
+                    "error": "错误",
+                    "info": "信息",
+                    "title": "日志等级",
+                    "trace": "跟踪",
+                    "warn": "警告"
+                },
                 "proxy": {
                     "host": "代理地址",
                     "no_proxy": "不使用代理的地址或 IP",

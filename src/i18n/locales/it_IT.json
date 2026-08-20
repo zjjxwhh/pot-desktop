@@ -82,6 +82,14 @@
                     "title": "Dimensione del font"
                 },
                 "label": "Generale",
+                "log_level": {
+                    "debug": "",
+                    "error": "",
+                    "info": "",
+                    "title": "",
+                    "trace": "",
+                    "warn": ""
+                },
                 "proxy": {
                     "host": "Host",
                     "no_proxy": "Nessun Proxy",

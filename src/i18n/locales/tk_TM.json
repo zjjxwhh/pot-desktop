@@ -82,6 +82,14 @@
                     "title": "Şrift ölçegi"
                 },
                 "label": "Umumy",
+                "log_level": {
+                    "debug": "",
+                    "error": "",
+                    "info": "",
+                    "title": "",
+                    "trace": "",
+                    "warn": ""
+                },
                 "proxy": {
                     "host": "Host",
                     "no_proxy": "Proksi ýok",

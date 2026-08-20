@@ -82,6 +82,14 @@
                     "title": "גודל גופן"
                 },
                 "label": "כללי",
+                "log_level": {
+                    "debug": "",
+                    "error": "",
+                    "info": "",
+                    "title": "",
+                    "trace": "",
+                    "warn": ""
+                },
                 "proxy": {
                     "host": "מארח",
                     "no_proxy": "ללא פרוקסי",

@@ -82,6 +82,14 @@
                     "title": "எழுத்துரு அளவு"
                 },
                 "label": "பொது",
+                "log_level": {
+                    "debug": "",
+                    "error": "",
+                    "info": "",
+                    "title": "",
+                    "trace": "",
+                    "warn": ""
+                },
                 "proxy": {
                     "host": "விருந்தோம்பி",
                     "no_proxy": "பதிலாள் இல்லை",

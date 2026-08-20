@@ -82,6 +82,14 @@
                     "title": "حجم الخط"
                 },
                 "label": "عام",
+                "log_level": {
+                    "debug": "",
+                    "error": "",
+                    "info": "",
+                    "title": "",
+                    "trace": "",
+                    "warn": ""
+                },
                 "proxy": {
                     "host": "المضيف",
                     "no_proxy": "بدون وكيل",

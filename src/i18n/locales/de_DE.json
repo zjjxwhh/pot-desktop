@@ -82,6 +82,14 @@
                     "title": "Schriftgröße"
                 },
                 "label": "Allgemein",
+                "log_level": {
+                    "debug": "",
+                    "error": "",
+                    "info": "",
+                    "title": "",
+                    "trace": "",
+                    "warn": ""
+                },
                 "proxy": {
                     "host": "Proxy-Adresse",
                     "no_proxy": "IP-Adressen ohne Proxy",

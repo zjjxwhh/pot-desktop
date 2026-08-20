@@ -82,6 +82,14 @@
                     "title": "اندازه فونت"
                 },
                 "label": "عمومی",
+                "log_level": {
+                    "debug": "",
+                    "error": "",
+                    "info": "",
+                    "title": "",
+                    "trace": "",
+                    "warn": ""
+                },
                 "proxy": {
                     "host": "هاست",
                     "no_proxy": "بدون پروکسی",

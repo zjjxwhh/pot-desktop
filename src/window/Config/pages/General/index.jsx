@@ -35,6 +35,7 @@ export default function General() {
     const [appFontSize, setAppFontSize] = useConfig('app_font_size', 16);
     const [transparent, setTransparent] = useConfig('transparent', true);
     const [devMode, setDevMode] = useConfig('dev_mode', false);
+    const [logLevel, setLogLevel] = useConfig('log_level', 'info');
     const [trayClickEvent, setTrayClickEvent] = useConfig('tray_click_event', 'config');
     const [proxyEnable, setProxyEnable] = useConfig('proxy_enable', false);
     const [proxyHost, setProxyHost] = useConfig('proxy_host', '');
@@ -582,23 +583,6 @@ export default function General() {
                             </Switch>
                         )}
                     </div>
-                    <div className='config-item'>
-                        <h3>{t('config.general.dev_mode')}</h3>
-                        {devMode !== null && (
-                            <Switch
-                                isSelected={devMode}
-                                onChange={(v) => {
-                                    setDevMode(v);
-                                }}
-                            >
-                                <Switch.Content>
-                                    <Switch.Control>
-                                        <Switch.Thumb />
-                                    </Switch.Control>
-                                </Switch.Content>
-                            </Switch>
-                        )}
-                    </div>
                 </Card.Content>
             </Card>
             <Card>
@@ -735,6 +719,74 @@ export default function General() {
                                     fullWidth
                                 />
                             </TextField>
+                        )}
+                    </div>
+                </Card.Content>
+            </Card>
+            <Card className='mt-2.5'>
+                <Card.Content>
+                    <div className='config-item'>
+                        <h3 className='my-auto'>{t('config.general.log_level.title')}</h3>
+                        {logLevel !== null && (
+                            <Dropdown>
+                                <Button variant='tertiary'>{t(`config.general.log_level.${logLevel}`)}</Button>
+                                <Dropdown.Popover>
+                                    <Dropdown.Menu
+                                        onAction={(key) => {
+                                            setLogLevel(key);
+                                            invoke('set_log_level', { level: key });
+                                        }}
+                                    >
+                                        <Dropdown.Item
+                                            id='error'
+                                            textValue={t('config.general.log_level.error')}
+                                        >
+                                            <Label>{t('config.general.log_level.error')}</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='warn'
+                                            textValue={t('config.general.log_level.warn')}
+                                        >
+                                            <Label>{t('config.general.log_level.warn')}</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='info'
+                                            textValue={t('config.general.log_level.info')}
+                                        >
+                                            <Label>{t('config.general.log_level.info')}</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='debug'
+                                            textValue={t('config.general.log_level.debug')}
+                                        >
+                                            <Label>{t('config.general.log_level.debug')}</Label>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item
+                                            id='trace'
+                                            textValue={t('config.general.log_level.trace')}
+                                        >
+                                            <Label>{t('config.general.log_level.trace')}</Label>
+                                        </Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown.Popover>
+                            </Dropdown>
+                        )}
+                    </div>
+                    <div className='config-item'>
+                        <h3>{t('config.general.dev_mode')}</h3>
+                        {devMode !== null && (
+                            <Switch
+                                isSelected={devMode}
+                                onChange={(v) => {
+                                    setDevMode(v);
+                                }}
+                            >
+                                <Switch.Content>
+                                    <Switch.Control>
+                                        <Switch.Thumb />
+                                    </Switch.Control>
+                                </Switch.Content>
+                            </Switch>
                         )}
                     </div>
                 </Card.Content>

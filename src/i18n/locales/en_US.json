@@ -82,6 +82,14 @@
                     "title": "Font Size"
                 },
                 "label": "General",
+                "log_level": {
+                    "debug": "Debug",
+                    "error": "Error",
+                    "info": "Info",
+                    "title": "Log Level",
+                    "trace": "Trace",
+                    "warn": "Warning"
+                },
                 "proxy": {
                     "host": "Host",
                     "no_proxy": "No Proxy",

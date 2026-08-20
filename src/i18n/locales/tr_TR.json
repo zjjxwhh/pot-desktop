@@ -82,6 +82,14 @@
                     "title": ""
                 },
                 "label": "",
+                "log_level": {
+                    "debug": "",
+                    "error": "",
+                    "info": "",
+                    "title": "",
+                    "trace": "",
+                    "warn": ""
+                },
                 "proxy": {
                     "host": "",
                     "no_proxy": "",
