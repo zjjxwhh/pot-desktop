@@ -64,6 +64,7 @@ fn main() {
                 .max_file_size(5 * 1024 * 1024)
                 .rotation_strategy(RotationStrategy::KeepSome(5))
                 .level(LevelFilter::Trace)
+                .filter(|metadata| metadata.level() <= runtime_level())
                 .build(),
         )
         .plugin(tauri_plugin_autostart::init(
