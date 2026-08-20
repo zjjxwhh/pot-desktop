@@ -3,10 +3,13 @@ import { error as logError } from '@tauri-apps/plugin-log';
 import ReactDOM from 'react-dom/client';
 import React from 'react';
 
-import { initStore } from './utils/store';
+import { initStore, watchStore } from './utils/store';
 import { initEnv } from './utils/env';
 import { initEdgeTtsVersion } from './utils/edge_tts_version';
+import { mark } from './utils/perf';
 import App from './App';
+
+mark('bundle evaluated');
 
 window.addEventListener('error', (e) => {
     logError(`window error: ${e.error?.stack || e.message}`);
@@ -33,9 +36,15 @@ function renderApp() {
 
 initStore()
     .then(async () => {
+        mark('initStore resolved');
         await initEnv();
+        mark('initEnv resolved');
         renderApp();
+        mark('renderApp returned');
         void initEdgeTtsVersion();
+        watchStore().catch((e) => {
+            logError(`watch config failed: ${e?.stack || e}`);
+        });
     })
     .catch((e) => {
         logError(`init failed: ${e?.stack || e}`);

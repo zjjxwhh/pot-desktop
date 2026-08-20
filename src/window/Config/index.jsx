@@ -1,5 +1,5 @@
 import { useLocation, useRoutes } from 'react-router-dom';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { Card, Separator, Toast } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
@@ -7,23 +7,48 @@ import { useTranslation } from 'react-i18next';
 import WindowControl from '../../components/WindowControl';
 import SideBar from './components/SideBar';
 import { osType } from '../../utils/env';
+import { mark, flushMarks } from '../../utils/perf';
 import { useConfig } from '../../hooks';
 import routes from './routes';
 import './style.css';
 
 const appWindow = getCurrentWebviewWindow();
 
+let firstRenderMarked = false;
+
 export default function Config() {
+    if (!firstRenderMarked) {
+        firstRenderMarked = true;
+        mark('Config first render');
+    }
+
     const [transparent] = useConfig('transparent', true);
+    const [appTheme] = useConfig('app_theme', 'system');
     const { t } = useTranslation();
     const location = useLocation();
     const page = useRoutes(routes);
+    const revealed = useRef(false);
 
     useEffect(() => {
-        if (appWindow.label === 'config') {
-            appWindow.show();
-        }
+        mark('Config subtree mounted');
     }, []);
+
+    useEffect(() => {
+        if (appWindow.label !== 'config' || revealed.current) return;
+        if (transparent === null || appTheme === null) return;
+        mark('appearance config ready');
+        revealed.current = true;
+        requestAnimationFrame(() => {
+            requestAnimationFrame(async () => {
+                mark('two frames painted');
+                await appWindow.show();
+                mark('appWindow.show() resolved');
+                await appWindow.setFocus();
+                mark('appWindow.setFocus() resolved');
+                flushMarks('config window reveal');
+            });
+        });
+    }, [transparent, appTheme]);
 
     return (
         <>

@@ -7,7 +7,7 @@ use crate::StringWrapper;
 use crate::APP;
 #[cfg(target_os = "macos")]
 use dirs::cache_dir;
-use log::{info, warn};
+use log::{debug, info, warn};
 use tauri::Emitter;
 use tauri::Listener;
 use tauri::Manager;
@@ -59,13 +59,17 @@ fn get_current_monitor(x: i32, y: i32) -> Monitor {
     daemon_window.primary_monitor().unwrap().unwrap()
 }
 
-// Creating a window on the mouse monitor.
-// `show_on_load` reveals the window from the backend once its page finishes
-// loading. Windows whose content arrives later (translate/recognize/screenshot)
-// pass `false` and reveal themselves from the frontend when ready.
-fn build_window(label: &str, title: &str, show_on_load: bool) -> (WebviewWindow, bool) {
+const FALLBACK_SHOW_ENABLED: bool = true;
+const FALLBACK_SHOW_DELAY_MS: u64 = 3000;
+
+fn elapsed_ms(since: std::time::Instant) -> f64 {
+    since.elapsed().as_secs_f64() * 1000.0
+}
+
+fn build_window(label: &str, title: &str, fallback_show: bool) -> (WebviewWindow, bool) {
     use mouse_position::mouse_position::{Mouse, Position};
 
+    let started = std::time::Instant::now();
     let mouse_position = match Mouse::get_mouse_position() {
         Mouse::Position { x, y } => Position { x, y },
         Mouse::Error => {
@@ -75,6 +79,11 @@ fn build_window(label: &str, title: &str, show_on_load: bool) -> (WebviewWindow,
     };
     let current_monitor = get_current_monitor(mouse_position.x, mouse_position.y);
     let position = current_monitor.position();
+    debug!(
+        "[perf][{}] monitor resolved                +{:.1}ms",
+        label,
+        elapsed_ms(started)
+    );
 
     let app_handle = APP.get().unwrap();
     match app_handle.get_webview_window(label) {
@@ -86,6 +95,11 @@ fn build_window(label: &str, title: &str, show_on_load: bool) -> (WebviewWindow,
             let _ = v.unminimize();
             let _ = v.show();
             let _ = v.set_focus();
+            debug!(
+                "[perf][{}] existing window shown          +{:.1}ms  (no webview rebuild)",
+                label,
+                elapsed_ms(started)
+            );
             (v, true)
         }
         None => {
@@ -100,18 +114,33 @@ fn build_window(label: &str, title: &str, show_on_load: bool) -> (WebviewWindow,
             .title(title)
             .visible(false);
 
-            if show_on_load {
-                // Reveal from the backend once the page finishes loading, instead
-                // of relying on a frontend `useEffect` show() — on Tauri 2 that
-                // frontend timing is racy and the window can stay hidden until the
-                // next trigger.
-                builder = builder.on_page_load(|window, payload| {
-                    if payload.event() == PageLoadEvent::Finished {
-                        let _ = window.show();
-                        let _ = window.set_focus();
+            let perf_label = label.to_string();
+            builder = builder.on_page_load(move |window, payload| {
+                if payload.event() != PageLoadEvent::Finished {
+                    return;
+                }
+                debug!(
+                    "[perf][{}] webview page load finished   +{:.1}ms",
+                    perf_label,
+                    elapsed_ms(started)
+                );
+                if !(fallback_show && FALLBACK_SHOW_ENABLED) {
+                    return;
+                }
+                let perf_label = perf_label.clone();
+                std::thread::spawn(move || {
+                    std::thread::sleep(std::time::Duration::from_millis(FALLBACK_SHOW_DELAY_MS));
+                    if let Ok(true) = window.is_visible() {
+                        return;
                     }
+                    warn!(
+                        "Window '{}' was not revealed by the frontend within {}ms, forcing show",
+                        perf_label, FALLBACK_SHOW_DELAY_MS
+                    );
+                    let _ = window.show();
+                    let _ = window.set_focus();
                 });
-            }
+            });
 
             #[cfg(target_os = "macos")]
             {
@@ -124,6 +153,11 @@ fn build_window(label: &str, title: &str, show_on_load: bool) -> (WebviewWindow,
                 builder = builder.transparent(true).decorations(false);
             }
             let window = builder.build().unwrap();
+            debug!(
+                "[perf][{}] webview built                 +{:.1}ms",
+                label,
+                elapsed_ms(started)
+            );
 
             if label != "screenshot" {
                 #[cfg(not(target_os = "linux"))]
@@ -136,12 +170,23 @@ fn build_window(label: &str, title: &str, show_on_load: bool) -> (WebviewWindow,
 }
 
 pub fn config_window() {
+    let started = std::time::Instant::now();
+    debug!("[perf][config] ---- config_window() entered ----");
     let (window, _exists) = build_window("config", "Config", true);
+    debug!(
+        "[perf][config] build_window returned       +{:.1}ms  (exists={})",
+        elapsed_ms(started),
+        _exists
+    );
     window
         .set_min_size(Some(tauri::LogicalSize::new(800, 400)))
         .unwrap();
     window.set_size(tauri::LogicalSize::new(800, 600)).unwrap();
     window.center().unwrap();
+    debug!(
+        "[perf][config] geometry applied            +{:.1}ms  (backend done, waiting on frontend)",
+        elapsed_ms(started)
+    );
 }
 
 fn translate_window() -> WebviewWindow {
