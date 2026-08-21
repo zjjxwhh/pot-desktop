@@ -40,12 +40,12 @@ export default function LanguageArea() {
 
     return (
         <Card className='bg-surface-secondary gap-0 overflow-hidden p-0'>
-            <Card.Footer className='bg-surface-secondary grid h-full grid-cols-[1fr_auto_1fr] p-0 h-9'>
+            <Card.Footer className='bg-surface-secondary grid grid-cols-[1fr_auto_1fr] p-0 h-8'>
                 <div className='flex h-full self-stretch'>
                     <Dropdown>
                         <Button
-                            variant='tertiary'
-                            className='h-full'
+                            variant='ghost'
+                            className='h-full hover:bg-foreground/10 hover:text-foreground'
                         >
                             <span className={`fi fi-${LanguageFlag[sourceLanguage]}`} />
                             {t(`languages.${sourceLanguage}`)}
@@ -76,8 +76,8 @@ export default function LanguageArea() {
                 <div className='flex h-full self-stretch justify-center'>
                     <Button
                         isIconOnly
-                        variant='tertiary'
-                        className='h-full'
+                        variant='ghost'
+                        className='h-full hover:bg-foreground/10 hover:text-foreground'
                         onPress={async () => {
                             if (sourceLanguage !== 'auto') {
                                 const oldSourceLanguage = sourceLanguage;
@@ -106,8 +106,8 @@ export default function LanguageArea() {
                 <div className='flex h-full self-stretch justify-end'>
                     <Dropdown>
                         <Button
-                            variant='tertiary'
-                            className='h-full'
+                            variant='ghost'
+                            className='h-full hover:bg-foreground/10 hover:text-foreground'
                         >
                             <span className={`fi fi-${LanguageFlag[targetLanguage]}`} />
                             {t(`languages.${targetLanguage}`)}
