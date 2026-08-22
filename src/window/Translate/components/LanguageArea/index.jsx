@@ -4,7 +4,7 @@ import { IconTransfer } from '@tabler/icons-react';
 import React, { useEffect } from 'react';
 import { atom, useAtom, useAtomValue } from 'jotai';
 
-import { languageList, LanguageFlag } from '../../../../utils/language';
+import { languageList, LanguageFlag, resolveTargetLanguage } from '../../../../utils/language';
 import { detectLanguageAtom } from '../SourceArea';
 import { useConfig } from '../../../../hooks';
 
@@ -21,6 +21,13 @@ export default function LanguageArea() {
     const [targetLanguage, setTargetLanguage] = useAtom(targetLanguageAtom);
     const detectLanguage = useAtomValue(detectLanguageAtom);
     const { t } = useTranslation();
+
+    const displayTargetLanguage = resolveTargetLanguage(
+        sourceLanguage,
+        targetLanguage,
+        detectLanguage,
+        translateSecondLanguage
+    );
 
     useEffect(() => {
         if (translateSourceLanguage) {
@@ -94,7 +101,7 @@ export default function LanguageArea() {
                                     if (targetLanguage === translateSecondLanguage) {
                                         setTargetLanguage(translateTargetLanguage);
                                     } else {
-                                        setTargetLanguage(secondLanguage);
+                                        setTargetLanguage(translateSecondLanguage);
                                     }
                                 }
                             }
@@ -109,8 +116,8 @@ export default function LanguageArea() {
                             variant='ghost'
                             className='h-full hover:bg-foreground/10 hover:text-foreground'
                         >
-                            <span className={`fi fi-${LanguageFlag[targetLanguage]}`} />
-                            {t(`languages.${targetLanguage}`)}
+                            <span className={`fi fi-${LanguageFlag[displayTargetLanguage]}`} />
+                            {t(`languages.${displayTargetLanguage}`)}
                         </Button>
                         <Dropdown.Popover>
                             <Dropdown.Menu

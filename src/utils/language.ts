@@ -67,3 +67,15 @@ export enum LanguageFlag {
     uk = 'ua',
     he = 'il',
 }
+
+export function resolveTargetLanguage(
+    sourceLanguage: string,
+    targetLanguage: string,
+    detectLanguage: string,
+    secondLanguage: string
+): string {
+    if (!secondLanguage) {
+        return targetLanguage;
+    }
+    return sourceLanguage === 'auto' && targetLanguage === detectLanguage ? secondLanguage : targetLanguage;
+}

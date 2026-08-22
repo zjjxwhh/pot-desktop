@@ -21,6 +21,7 @@ import useMeasure from 'react-use-measure';
 
 import * as builtinCollectionServices from '../../../../services/collection';
 import { sourceLanguageAtom, targetLanguageAtom } from '../LanguageArea';
+import { resolveTargetLanguage } from '../../../../utils/language';
 import { useConfig, useVoice } from '../../../../hooks';
 import { warmUpAudioOutput } from '../../../../utils/audio_output';
 import { sourceTextAtom, detectLanguageAtom } from '../SourceArea';
@@ -59,6 +60,7 @@ export default function TargetArea(props) {
     const [hide, setHide] = useState(true);
 
     const [result, setResult] = useState('');
+    const [resultLanguage, setResultLanguage] = useState('');
     const [error, setError] = useState('');
 
     const sourceText = useAtomValue(sourceTextAtom);
@@ -158,10 +160,13 @@ export default function TargetArea(props) {
         if (whetherPluginService(currentTranslateServiceInstanceKey)) {
             const pluginInfo = pluginList['translate'][translateServiceName];
             if (sourceLanguage in pluginInfo.language && targetLanguage in pluginInfo.language) {
-                let newTargetLanguage = targetLanguage;
-                if (sourceLanguage === 'auto' && targetLanguage === detectLanguage) {
-                    newTargetLanguage = translateSecondLanguage;
-                }
+                const newTargetLanguage = resolveTargetLanguage(
+                    sourceLanguage,
+                    targetLanguage,
+                    detectLanguage,
+                    translateSecondLanguage
+                );
+                setResultLanguage(newTargetLanguage);
                 setIsLoading(true);
                 setHide(true);
                 const instanceConfig = serviceInstanceConfigMap[currentTranslateServiceInstanceKey];
@@ -232,10 +237,13 @@ export default function TargetArea(props) {
         } else {
             const LanguageEnum = builtinServices[translateServiceName].Language;
             if (sourceLanguage in LanguageEnum && targetLanguage in LanguageEnum) {
-                let newTargetLanguage = targetLanguage;
-                if (sourceLanguage === 'auto' && targetLanguage === detectLanguage) {
-                    newTargetLanguage = translateSecondLanguage;
-                }
+                const newTargetLanguage = resolveTargetLanguage(
+                    sourceLanguage,
+                    targetLanguage,
+                    detectLanguage,
+                    translateSecondLanguage
+                );
+                setResultLanguage(newTargetLanguage);
                 setIsLoading(true);
                 setHide(true);
                 const instanceConfig = serviceInstanceConfigMap[currentTranslateServiceInstanceKey];
@@ -335,25 +343,26 @@ export default function TargetArea(props) {
         const instanceKey = ttsServiceList[0];
         // 必须在发起 TTS 请求前预热，顺序不能调换
         warmUpAudioOutput();
+        const ttsLanguage = resultLanguage || targetLanguage;
         if (getServiceSouceType(instanceKey) === ServiceSourceType.PLUGIN) {
             const pluginConfig = serviceInstanceConfigMap[instanceKey];
-            if (!(targetLanguage in ttsPluginInfo.language)) {
+            if (!(ttsLanguage in ttsPluginInfo.language)) {
                 throw new Error(t('translate.language_not_supported'));
             }
             let [func, utils] = await invoke_plugin('tts', getServiceName(instanceKey));
-            let data = await func(result, ttsPluginInfo.language[targetLanguage], {
+            let data = await func(result, ttsPluginInfo.language[ttsLanguage], {
                 config: pluginConfig,
                 utils,
             });
             speak(data);
         } else {
-            if (!(targetLanguage in builtinTtsServices[getServiceName(instanceKey)].Language)) {
+            if (!(ttsLanguage in builtinTtsServices[getServiceName(instanceKey)].Language)) {
                 throw new Error(t('translate.language_not_supported'));
             }
             const instanceConfig = serviceInstanceConfigMap[instanceKey];
             let data = await builtinTtsServices[getServiceName(instanceKey)].tts(
                 result,
-                builtinTtsServices[getServiceName(instanceKey)].Language[targetLanguage],
+                builtinTtsServices[getServiceName(instanceKey)].Language[ttsLanguage],
                 {
                     config: instanceConfig,
                 }
