@@ -22,6 +22,7 @@ import useMeasure from 'react-use-measure';
 import * as builtinCollectionServices from '../../../../services/collection';
 import { sourceLanguageAtom, targetLanguageAtom } from '../LanguageArea';
 import { useConfig, useVoice } from '../../../../hooks';
+import { warmUpAudioOutput } from '../../../../utils/audio_output';
 import { sourceTextAtom, detectLanguageAtom } from '../SourceArea';
 import { invoke_plugin } from '../../../../utils/invoke_plugin';
 import { sendNotification } from '../../../../utils/notification';
@@ -332,6 +333,8 @@ export default function TargetArea(props) {
     // handle tts speak
     const handleSpeak = async () => {
         const instanceKey = ttsServiceList[0];
+        // 必须在发起 TTS 请求前预热，顺序不能调换
+        warmUpAudioOutput();
         if (getServiceSouceType(instanceKey) === ServiceSourceType.PLUGIN) {
             const pluginConfig = serviceInstanceConfigMap[instanceKey];
             if (!(targetLanguage in ttsPluginInfo.language)) {

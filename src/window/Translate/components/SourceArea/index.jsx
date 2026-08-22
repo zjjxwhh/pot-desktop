@@ -10,6 +10,7 @@ import { invoke } from '@tauri-apps/api/core';
 import { atom, useAtom } from 'jotai';
 import { getServiceName, getServiceSouceType, ServiceSourceType } from '../../../../utils/service_instance';
 import { useConfig, useSyncAtom, useVoice } from '../../../../hooks';
+import { warmUpAudioOutput } from '../../../../utils/audio_output';
 import { invoke_plugin } from '../../../../utils/invoke_plugin';
 import { LanguageFlag } from '../../../../utils/language.ts';
 import { normalizeText, appendText } from '../../../../utils/text_utils.js';
@@ -151,6 +152,8 @@ export default function SourceArea(props) {
 
     const handleSpeak = async () => {
         const instanceKey = ttsServiceList[0];
+        // 必须在发起 TTS 请求前预热，顺序不能调换
+        warmUpAudioOutput();
         let detected = detectLanguage;
         if (detected === '') {
             detected = await detect(sourceText);

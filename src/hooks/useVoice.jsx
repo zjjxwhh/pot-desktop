@@ -1,5 +1,7 @@
 import { useCallback } from 'react';
-let audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+import { getAudioContext, startBuffer } from '../utils/audio_output';
+
 let source = null;
 
 export const useVoice = () => {
@@ -11,10 +13,8 @@ export const useVoice = () => {
             source = null;
         } else {
             // 如果没在播放，开始播放
-            audioContext.decodeAudioData(new Uint8Array(data).buffer, (buffer) => {
-                const sourceNode = audioContext.createBufferSource();
-                sourceNode.buffer = buffer;
-                sourceNode.connect(audioContext.destination);
+            getAudioContext().decodeAudioData(new Uint8Array(data).buffer, (buffer) => {
+                const sourceNode = startBuffer(buffer);
                 // onended 引用局部 sourceNode：旧音频被 stop() 时其 onended 会延迟派发，
                 // 若闭包读共享变量 source，可能误断开之后才播放的新音频
                 sourceNode.onended = () => {
@@ -23,7 +23,6 @@ export const useVoice = () => {
                         source = null;
                     }
                 };
-                sourceNode.start();
                 source = sourceNode;
             });
         }

@@ -6,6 +6,7 @@ import React from 'react';
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
 import { languageList, LanguageFlag } from '../../../utils/language';
 import { getDefaultVoice, getVoiceLabel, voiceOptions } from './voices';
+import { startBuffer, getAudioContext, warmUpAudioOutput } from '../../../utils/audio_output';
 import { useConfig } from '../../../hooks/useConfig';
 import { Language } from './info';
 import { tts } from './index';
@@ -47,22 +48,19 @@ const PREVIEW_TEXT = {
 };
 
 // 试听播放：总是替换正在播放的音频，便于连续对比多个音色
-let previewContext = null;
+// 复用全局共享的 AudioContext，避免另开一个 context 重新经历一次打开音频设备的耗时
 let previewSource = null;
 
 function playPreview(data) {
-    const context = previewContext ?? (previewContext = new (window.AudioContext || window.webkitAudioContext)());
     if (previewSource) {
         previewSource.stop();
         previewSource.disconnect();
         previewSource = null;
     }
-    context.decodeAudioData(
+    getAudioContext().decodeAudioData(
         new Uint8Array(data).buffer,
         (buffer) => {
-            const sourceNode = context.createBufferSource();
-            sourceNode.buffer = buffer;
-            sourceNode.connect(context.destination);
+            const sourceNode = startBuffer(buffer);
             // onended 必须引用局部 sourceNode：旧音频被 stop() 时其 onended 会延迟派发，
             // 若闭包读共享变量 previewSource，可能误断开之后才播放的新音频
             sourceNode.onended = () => {
@@ -71,7 +69,6 @@ function playPreview(data) {
                     previewSource = null;
                 }
             };
-            sourceNode.start();
             previewSource = sourceNode;
         },
         () => {
@@ -108,6 +105,8 @@ export function Config(props) {
 
     // 试听指定音色：用临时 voiceConfig 让 tts 直接命中该音色，避免污染已配置的音色列表
     const previewVoice = (language, voice) => {
+        // 必须在发起请求前预热，顺序不能调换
+        warmUpAudioOutput();
         tts(PREVIEW_TEXT[language] ?? PREVIEW_TEXT.en, Language[language], {
             config: { ...edgeConfig, voiceConfig: [{ language, voice }] },
         }).then(playPreview, (e) => {
