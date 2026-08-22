@@ -169,7 +169,7 @@ export default function SourceArea(props) {
                 config: pluginConfig,
                 utils,
             });
-            speak(data);
+            speak(data, 'source-text');
         } else {
             if (!(detected in builtinTtsServices[getServiceName(instanceKey)].Language)) {
                 throw new Error(t('translate.language_not_supported'));
@@ -182,7 +182,7 @@ export default function SourceArea(props) {
                     config: instanceConfig,
                 }
             );
-            speak(data);
+            speak(data, 'source-text');
         }
     };
 

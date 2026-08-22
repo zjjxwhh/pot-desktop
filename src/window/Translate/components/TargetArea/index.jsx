@@ -354,7 +354,7 @@ export default function TargetArea(props) {
                 config: pluginConfig,
                 utils,
             });
-            speak(data);
+            speak(data, `target:${name}`);
         } else {
             if (!(ttsLanguage in builtinTtsServices[getServiceName(instanceKey)].Language)) {
                 throw new Error(t('translate.language_not_supported'));
@@ -367,7 +367,7 @@ export default function TargetArea(props) {
                     config: instanceConfig,
                 }
             );
-            speak(data);
+            speak(data, `target:${name}`);
         }
     };
     // handle translate back
@@ -749,7 +749,7 @@ export default function TargetArea(props) {
                         ) : (
                             <div>
                                 {result['pronunciations'] &&
-                                    result['pronunciations'].map((pronunciation) => {
+                                    result['pronunciations'].map((pronunciation, pronunciationIndex) => {
                                         return (
                                             <div key={nanoid()}>
                                                 {pronunciation['region'] && (
@@ -762,7 +762,10 @@ export default function TargetArea(props) {
                                                     <IconVolume
                                                         className={'inline-block my-auto cursor-pointer'}
                                                         onClick={() => {
-                                                            speak(pronunciation['voice']);
+                                                            speak(
+                                                                pronunciation['voice'],
+                                                                `pronunciation:${name}:${pronunciationIndex}`
+                                                            );
                                                         }}
                                                     />
                                                 )}

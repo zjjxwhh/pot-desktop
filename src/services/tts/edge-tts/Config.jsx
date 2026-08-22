@@ -6,8 +6,9 @@ import React from 'react';
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
 import { languageList, LanguageFlag } from '../../../utils/language';
 import { getDefaultVoice, getVoiceLabel, voiceOptions } from './voices';
-import { startBuffer, getAudioContext, warmUpAudioOutput } from '../../../utils/audio_output';
+import { warmUpAudioOutput } from '../../../utils/audio_output';
 import { useConfig } from '../../../hooks/useConfig';
+import { useVoice } from '../../../hooks/useVoice';
 import { Language } from './info';
 import { tts } from './index';
 
@@ -47,40 +48,10 @@ const PREVIEW_TEXT = {
     he: 'שלום, זו תצוגה מקדימה של הקול.',
 };
 
-// 试听播放：总是替换正在播放的音频，便于连续对比多个音色
-// 复用全局共享的 AudioContext，避免另开一个 context 重新经历一次打开音频设备的耗时
-let previewSource = null;
-
-function playPreview(data) {
-    if (previewSource) {
-        previewSource.stop();
-        previewSource.disconnect();
-        previewSource = null;
-    }
-    getAudioContext().decodeAudioData(
-        new Uint8Array(data).buffer,
-        (buffer) => {
-            const sourceNode = startBuffer(buffer);
-            // onended 必须引用局部 sourceNode：旧音频被 stop() 时其 onended 会延迟派发，
-            // 若闭包读共享变量 previewSource，可能误断开之后才播放的新音频
-            sourceNode.onended = () => {
-                sourceNode.disconnect();
-                if (previewSource === sourceNode) {
-                    previewSource = null;
-                }
-            };
-            previewSource = sourceNode;
-        },
-        () => {
-            // 解码失败（例如音频数据损坏），让问题可感知
-            console.error('Edge TTS preview audio decode failed');
-        }
-    );
-}
-
 export function Config(props) {
     const { instanceKey, updateServiceList, onClose, formId, setSavePending } = props;
     const { t } = useTranslation();
+    const speak = useVoice();
     const [edgeConfig, setEdgeConfig] = useConfig(
         instanceKey,
         {
@@ -109,11 +80,14 @@ export function Config(props) {
         warmUpAudioOutput();
         tts(PREVIEW_TEXT[language] ?? PREVIEW_TEXT.en, Language[language], {
             config: { ...edgeConfig, voiceConfig: [{ language, voice }] },
-        }).then(playPreview, (e) => {
-            toast.danger(t('config.service.test_failed'), {
-                description: e.toString(),
-            });
-        });
+        }).then(
+            (data) => speak(data, `preview:${voice}`),
+            (e) => {
+                toast.danger(t('config.service.test_failed'), {
+                    description: e.toString(),
+                });
+            }
+        );
     };
 
     return (
