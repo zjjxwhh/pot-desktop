@@ -125,7 +125,7 @@ export default function TextArea(props) {
     }, [base64, currentServiceInstanceKey, language, recognizeFlag, autoCopy, deleteNewline, hideWindow]);
 
     return (
-        <Card className='bg-surface h-full ml-1.5 mr-3'>
+        <Card className='bg-surface h-full ms-1.5 me-3'>
             <Card.Content className='bg-surface p-0 h-full'>
                 {loading ? (
                     <div className='space-y-3 m-1.5'>
@@ -144,7 +144,7 @@ export default function TextArea(props) {
                         {text && (
                             <textarea
                                 value={text}
-                                className='bg-surface h-full ml-1.5 mr-1.5 mb-0 resize-none focus:outline-none'
+                                className='bg-surface h-full mx-1.5 mb-0 resize-none focus:outline-none'
                                 onChange={(e) => {
                                     setText(e.target.value);
                                 }}
@@ -154,7 +154,7 @@ export default function TextArea(props) {
                             <textarea
                                 value={error}
                                 readOnly
-                                className='bg-surface h-full ml-1.5 mr-1.5 mb-0 resize-none focus:outline-none text-danger'
+                                className='bg-surface h-full mx-1.5 mb-0 resize-none focus:outline-none text-danger'
                                 onChange={(e) => {
                                     setText(e.target.value);
                                 }}

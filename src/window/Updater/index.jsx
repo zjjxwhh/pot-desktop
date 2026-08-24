@@ -52,7 +52,7 @@ export default function Updater() {
                 >
                     <img
                         src='icon.png'
-                        className='h-6.25 w-6.25 mr-2.5'
+                        className='h-6.25 w-6.25 me-2.5'
                         draggable={false}
                     />
                     <h2>{t('updater.title')}</h2>

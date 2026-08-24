@@ -201,7 +201,7 @@ export function Config(props) {
                     >
                         <InputGroup variant='secondary'>
                             <InputGroup.Input variant='secondary' />
-                            <InputGroup.Suffix className='pr-0'>
+                            <InputGroup.Suffix className='pe-0'>
                                 {installedModels &&
                                 !installedModels.models
                                     .map((model) => {
@@ -309,7 +309,7 @@ export function Config(props) {
                                     </TextField>
                                     <Button
                                         isIconOnly
-                                        className='my-auto ml-2 shrink-0'
+                                        className='my-auto ms-2 shrink-0'
                                         variant='danger-soft'
                                         onPress={() => {
                                             setServiceConfig({

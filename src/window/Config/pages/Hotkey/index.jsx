@@ -133,7 +133,7 @@ export default function Hotkey() {
                                         setSelectionTranslate('');
                                     }}
                                 />
-                                <InputGroup.Suffix className='pr-0'>
+                                <InputGroup.Suffix className='pe-0'>
                                     <Button
                                         size='sm'
                                         className={`${selectionTranslate === '' && 'hidden'} bg-muted`}
@@ -171,7 +171,7 @@ export default function Hotkey() {
                                         setInputTranslate('');
                                     }}
                                 />
-                                <InputGroup.Suffix className='pr-0'>
+                                <InputGroup.Suffix className='pe-0'>
                                     <Button
                                         size='sm'
                                         className={`${inputTranslate === '' && 'hidden'} bg-muted`}
@@ -209,7 +209,7 @@ export default function Hotkey() {
                                         setOcrRecognize('');
                                     }}
                                 />
-                                <InputGroup.Suffix className='pr-0'>
+                                <InputGroup.Suffix className='pe-0'>
                                     <Button
                                         size='sm'
                                         className={`${ocrRecognize === '' && 'hidden'} bg-muted`}
@@ -247,7 +247,7 @@ export default function Hotkey() {
                                         setOcrTranslate('');
                                     }}
                                 />
-                                <InputGroup.Suffix className='pr-0'>
+                                <InputGroup.Suffix className='pe-0'>
                                     <Button
                                         size='sm'
                                         className={`${ocrTranslate === '' && 'hidden'} bg-muted`}

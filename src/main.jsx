@@ -3,9 +3,10 @@ import { error as logError } from '@tauri-apps/plugin-log';
 import ReactDOM from 'react-dom/client';
 import React from 'react';
 
-import { initStore, watchStore } from './utils/store';
+import { initStore, watchStore, store } from './utils/store';
 import { initEnv } from './utils/env';
 import { initEdgeTtsVersion } from './utils/edge_tts_version';
+import { resolveLanguageDirection } from './utils/language';
 import { mark } from './utils/perf';
 import App from './App';
 
@@ -38,6 +39,8 @@ initStore()
     .then(async () => {
         mark('initStore resolved');
         await initEnv();
+        const appLanguage = await store.get('app_language');
+        document.documentElement.dir = resolveLanguageDirection(appLanguage ?? 'en');
         mark('initEnv resolved');
         renderApp();
         mark('renderApp returned');

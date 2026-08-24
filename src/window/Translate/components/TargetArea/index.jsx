@@ -496,7 +496,7 @@ export default function TargetArea(props) {
                             <Button
                                 size='sm'
                                 variant='ghost'
-                                className={'h-8 ml-2 min-w-0 hover:bg-foreground/10 hover:text-foreground'}
+                                className={'h-8 ms-2 min-w-0 hover:bg-foreground/10 hover:text-foreground'}
                             >
                                 {whetherPluginService(currentTranslateServiceInstanceKey) ? (
                                     <img
@@ -595,7 +595,7 @@ export default function TargetArea(props) {
                             cssOverride={{
                                 display: 'inline-block',
                                 margin: 'auto',
-                                marginLeft: '8px',
+                                marginInlineStart: '8px',
                                 flexShrink: 0,
                             }}
                         />
@@ -723,7 +723,7 @@ export default function TargetArea(props) {
                             size='sm'
                             isIconOnly
                             variant='ghost'
-                            className={'h-8 w-8 ml-2 mr-2 hover:bg-foreground/10 hover:text-foreground'}
+                            className={'h-8 w-8 mx-2 hover:bg-foreground/10 hover:text-foreground'}
                             onPress={() => setHide(!hide)}
                         >
                             {hide ? <IconChevronUp /> : <IconChevronDown />}
@@ -753,10 +753,10 @@ export default function TargetArea(props) {
                                         return (
                                             <div key={nanoid()}>
                                                 {pronunciation['region'] && (
-                                                    <span className={'mr-3 text-muted'}>{pronunciation['region']}</span>
+                                                    <span className={'me-3 text-muted'}>{pronunciation['region']}</span>
                                                 )}
                                                 {pronunciation['symbol'] && (
-                                                    <span className={'mr-3 text-muted'}>{pronunciation['symbol']}</span>
+                                                    <span className={'me-3 text-muted'}>{pronunciation['symbol']}</span>
                                                 )}
                                                 {pronunciation['voice'] && pronunciation['voice'] !== '' && (
                                                     <IconVolume
@@ -782,7 +782,7 @@ export default function TargetArea(props) {
                                                             <span key={nanoid()}>
                                                                 {index === 0 ? (
                                                                     <>
-                                                                        <span className={'text-muted mr-3'}>
+                                                                        <span className={'text-muted me-3'}>
                                                                             {explanations['trait']}
                                                                         </span>
                                                                         <span className={'font-bold select-text'}>
@@ -792,7 +792,7 @@ export default function TargetArea(props) {
                                                                     </>
                                                                 ) : (
                                                                     <span
-                                                                        className={'text-muted select-text mr-1'}
+                                                                        className={'text-muted select-text me-1'}
                                                                         key={nanoid()}
                                                                     >
                                                                         {explain}
@@ -817,7 +817,7 @@ export default function TargetArea(props) {
                                     result['sentence'].map((sentence, index) => {
                                         return (
                                             <div key={nanoid()}>
-                                                <span className={'mr-3'}>{index + 1}.</span>
+                                                <span className={'me-3'}>{index + 1}.</span>
                                                 <>
                                                     {sentence['source'] && (
                                                         <span

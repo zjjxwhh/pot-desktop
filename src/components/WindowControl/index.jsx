@@ -49,7 +49,7 @@ export default function WindowControl() {
             <Button
                 isIconOnly
                 variant='ghost'
-                className={`w-8.75 h-8.75 rounded-none window-close-button ${osType === 'linux' && 'rounded-tr-[10px]'}`}
+                className={`w-8.75 h-8.75 rounded-none window-close-button ${osType === 'linux' && 'rounded-se-[10px]'}`}
                 onPress={() => appWindow.close()}
             >
                 <IconX />

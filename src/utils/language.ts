@@ -68,6 +68,49 @@ export enum LanguageFlag {
     he = 'il',
 }
 
+export enum LanguageDirection {
+    auto = 'ltr',
+    zh_cn = 'ltr',
+    zh_tw = 'ltr',
+    mn_mo = 'ltr',
+    en = 'ltr',
+    ja = 'ltr',
+    ko = 'ltr',
+    fr = 'ltr',
+    es = 'ltr',
+    ru = 'ltr',
+    de = 'ltr',
+    it = 'ltr',
+    tr = 'ltr',
+    pt_pt = 'ltr',
+    pt_br = 'ltr',
+    vi = 'ltr',
+    id = 'ltr',
+    th = 'ltr',
+    ms = 'ltr',
+    ar = 'rtl',
+    hi = 'ltr',
+    km = 'ltr',
+    mn_cy = 'ltr',
+    nb_no = 'ltr',
+    nn_no = 'ltr',
+    fa = 'rtl',
+    sv = 'ltr',
+    pl = 'ltr',
+    nl = 'ltr',
+    uk = 'ltr',
+    he = 'rtl',
+}
+
+export function resolveLanguageDirection(language: string): LanguageDirection {
+    return LanguageDirection[language as keyof typeof LanguageDirection] ?? LanguageDirection.auto;
+}
+
+// i18n 语言标识用下划线分隔（zh_cn），React Aria 需要 BCP 47 风格（zh-CN）
+export function resolveAriaLocale(language: string): string {
+    return (language || 'en').replaceAll('_', '-');
+}
+
 export function resolveTargetLanguage(
     sourceLanguage: string,
     targetLanguage: string,

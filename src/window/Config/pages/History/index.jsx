@@ -181,17 +181,17 @@ export default function History() {
                                         [ServiceSourceType.PLUGIN]: pluginList[ServiceType.TRANSLATE],
                                     }) && (
                                         <Table.Row id={item.id}>
-                                            <Table.Cell className='px-0 pl-3'>
+                                            <Table.Cell className='px-0 ps-3'>
                                                 {getServiceSouceType(item.service) === ServiceSourceType.PLUGIN ? (
                                                     <img
                                                         src={pluginList['translate'][getServiceName(item.service)].icon}
-                                                        className='size-4.5 min-w-4.5 shrink-0 my-auto mr-2'
+                                                        className='size-4.5 min-w-4.5 shrink-0 my-auto me-2'
                                                         draggable={false}
                                                     />
                                                 ) : (
                                                     <img
                                                         src={`${builtinServices[getServiceName(item.service)].info.icon}`}
-                                                        className='size-4 min-w-4 shrink-0 my-auto mr-2'
+                                                        className='size-4 min-w-4 shrink-0 my-auto me-2'
                                                         draggable={false}
                                                     />
                                                 )}
@@ -213,7 +213,7 @@ export default function History() {
                                             <Table.Cell className='px-0'>
                                                 <span className={`fi fi-${LanguageFlag[item.target]}`} />
                                             </Table.Cell>
-                                            <Table.Cell className='px-0 pl-1'>
+                                            <Table.Cell className='px-0 ps-1'>
                                                 <p
                                                     className={`whitespace-nowrap ${
                                                         osType === 'linux'
@@ -305,7 +305,7 @@ export default function History() {
                                                     ) : (
                                                         <img
                                                             src={`${builtinServices[getServiceName(selectedItem.service)].info.icon}`}
-                                                            className='size-6 shrink-0 m-auto ml-2'
+                                                            className='size-6 shrink-0 m-auto ms-2'
                                                             draggable={false}
                                                         />
                                                     )}

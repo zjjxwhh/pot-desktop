@@ -359,7 +359,7 @@ export default function SourceArea(props) {
 
                 <Card.Footer className='bg-surface flex justify-between p-2'>
                     <div className='flex justify-start'>
-                        <ButtonGroup className='mr-1.25'>
+                        <ButtonGroup className='me-1.25'>
                             <Tooltip>
                                 <Button
                                     isIconOnly

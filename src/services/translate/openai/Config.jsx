@@ -260,7 +260,7 @@ export function Config(props) {
                                     </TextField>
                                     <Button
                                         isIconOnly
-                                        className='my-auto ml-2 shrink-0'
+                                        className='my-auto ms-2 shrink-0'
                                         variant='danger-soft'
                                         onPress={() => {
                                             setOpenaiConfig({

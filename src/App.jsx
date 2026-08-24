@@ -2,9 +2,11 @@ import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { BrowserRouter } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { warn } from '@tauri-apps/plugin-log';
+import { I18nProvider } from '@heroui/react';
 import React, { useEffect } from 'react';
 import { useTheme } from 'next-themes';
 
+import { resolveAriaLocale, resolveLanguageDirection } from './utils/language';
 import { invoke } from '@tauri-apps/api/core';
 import Screenshot from './window/Screenshot';
 import Translate from './window/Translate';
@@ -105,6 +107,15 @@ export default function App() {
     }, [appLanguage]);
 
     useEffect(() => {
+        const handler = (lang) => {
+            document.documentElement.dir = resolveLanguageDirection(lang);
+        };
+        // 初始方向由 main.jsx 首帧负责，这里只跟随语言切换，避免用 i18n 初始 fallback 语言覆盖已设好的 dir
+        i18n.on('languageChanged', handler);
+        return () => i18n.off('languageChanged', handler);
+    }, [i18n]);
+
+    useEffect(() => {
         if (appFont !== null && appFallbackFont !== null) {
             document.documentElement.style.fontFamily = `"${appFont === 'default' ? 'sans-serif' : appFont}","${
                 appFallbackFont === 'default' ? 'sans-serif' : appFallbackFont
@@ -115,5 +126,9 @@ export default function App() {
         }
     }, [appFont, appFallbackFont, appFontSize]);
 
-    return <BrowserRouter>{windowMap[appWindow.label]}</BrowserRouter>;
+    return (
+        <I18nProvider locale={resolveAriaLocale(appLanguage ?? 'en')}>
+            <BrowserRouter>{windowMap[appWindow.label]}</BrowserRouter>
+        </I18nProvider>
+    );
 }

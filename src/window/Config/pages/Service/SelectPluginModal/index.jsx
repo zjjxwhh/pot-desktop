@@ -50,7 +50,7 @@ export default function SelectPluginModal(props) {
                                             >
                                                 <Button
                                                     fullWidth
-                                                    className='mr-2 mb-0.5'
+                                                    className='me-2 mb-0.5'
                                                     onPress={() => {
                                                         setCurrentConfigKey(createServiceInstanceKey(x));
                                                         onConfigOpen();

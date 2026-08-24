@@ -114,7 +114,7 @@ export default function Recognize() {
             >
                 <div
                     data-tauri-drag-region='true'
-                    className='fixed top-1.25 left-1.25 right-1.25 h-7.5'
+                    className='fixed top-1.25 inset-x-1.25 h-7.5'
                 />
                 <div className={`h-8.75 flex ${osType === 'macos' ? 'justify-end' : 'justify-between'}`}>
                     <Button

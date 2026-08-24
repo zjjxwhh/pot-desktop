@@ -231,7 +231,7 @@ export default function Translate() {
             >
                 <Toast.Provider placement='top' />
                 <div
-                    className='fixed top-1.25 left-1.25 right-1.25 h-7.5'
+                    className='fixed top-1.25 inset-x-1.25 h-7.5'
                     data-tauri-drag-region='true'
                 />
                 <div className={`h-8.75 w-full flex ${osType === 'macos' ? 'justify-end' : 'justify-between'}`}>
