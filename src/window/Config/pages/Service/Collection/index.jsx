@@ -1,5 +1,5 @@
 import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
-import { Card, Button, useOverlayState } from '@heroui/react';
+import { Surface, Button, useOverlayState } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
 
@@ -47,7 +47,7 @@ export default function Collection(props) {
 
     return (
         <>
-            <Card className={'h-full overflow-y-auto p-5 flex justify-between'}>
+            <Surface className={'h-full overflow-y-auto p-4 flex flex-col gap-3 justify-between rounded-[min(32px,var(--radius-3xl))] shadow-surface'}>
                 <DragDropContext onDragEnd={onDragEnd}>
                     <Droppable
                         droppableId='droppable'
@@ -109,7 +109,7 @@ export default function Collection(props) {
                         {t('config.service.add_external_service')}
                     </Button>
                 </div>
-            </Card>
+            </Surface>
             <SelectPluginModal
                 isOpen={selectPluginState.isOpen}
                 onOpenChange={selectPluginState.setOpen}

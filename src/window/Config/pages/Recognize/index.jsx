@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Dropdown, Switch, Button, Card, Label } from '@heroui/react';
+import { Dropdown, Switch, Button, Surface, Label } from '@heroui/react';
 import React from 'react';
 
 import { languageList, LanguageFlag } from '../../../../utils/language';
@@ -13,8 +13,7 @@ export default function Recognize() {
     const [closeOnBlur, setCloseOnBlur] = useConfig('recognize_close_on_blur', false);
     const { t } = useTranslation();
     return (
-        <Card className='mb-2.5'>
-            <Card.Content>
+        <Surface className='mb-2.5 flex flex-1 flex-col p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
                 <div className='config-item'>
                     <h3 className='my-auto mx-0'>{t('config.recognize.language')}</h3>
                     {recognizeLanguage !== null && (
@@ -119,7 +118,6 @@ export default function Recognize() {
                         </Switch>
                     )}
                 </div>
-            </Card.Content>
-        </Card>
+            </Surface>
     );
 }

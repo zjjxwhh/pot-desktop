@@ -1,7 +1,7 @@
 import { useLocation, useRoutes } from 'react-router-dom';
 import React, { useEffect, useRef } from 'react';
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
-import { Card, Separator, Toast } from '@heroui/react';
+import { Surface, Separator, Toast } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 
 import WindowControl from '../../components/WindowControl';
@@ -54,8 +54,8 @@ export default function Config() {
         <>
             <Toast.Provider placement='top' />
             <div className='flex h-screen'>
-                <Card
-                    className={`${
+                <Surface
+                    className={`flex flex-col ${
                         transparent ? 'bg-background/90' : 'bg-surface'
                     } w-57.5 shrink-0 h-screen rounded-none p-0 gap-0 shadow-none ${
                         osType === 'linux' && 'rounded-s-[10px] border'
@@ -77,7 +77,7 @@ export default function Config() {
                         </div>
                     </div>
                     <SideBar />
-                </Card>
+                </Surface>
                 <div
                     className={`bg-background flex-1 min-w-0 h-screen select-none cursor-default flex flex-col ${
                         osType === 'linux' && 'rounded-e-[10px] border border-s-0 border-border'

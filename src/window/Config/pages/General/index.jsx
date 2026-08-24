@@ -9,7 +9,7 @@ import {
     Dropdown,
     Button,
     Switch,
-    Card,
+    Surface,
     TextField,
     Label,
     Input,
@@ -79,8 +79,7 @@ export default function General() {
 
     return (
         <>
-            <Card className='mb-2.5'>
-                <Card.Content>
+            <Surface className='mb-2.5 flex flex-1 flex-col p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
                     <div className='config-item'>
                         <h3>{t('config.general.auto_start')}</h3>
                         {autoStart !== null && (
@@ -159,10 +158,8 @@ export default function General() {
                             </TextField>
                         )}
                     </div>
-                </Card.Content>
-            </Card>
-            <Card className='mb-2.5'>
-                <Card.Content>
+                </Surface>
+            <Surface className='mb-2.5 flex flex-1 flex-col p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
                     <div className='config-item'>
                         <h3 className='my-auto'>{t('config.general.app_language')}</h3>
                         {appLanguage !== null && (
@@ -586,10 +583,8 @@ export default function General() {
                             </Switch>
                         )}
                     </div>
-                </Card.Content>
-            </Card>
-            <Card>
-                <Card.Content>
+                </Surface>
+            <Surface className='flex flex-1 flex-col p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
                     <div className='config-item'>
                         <h3>{t('config.general.proxy.title')}</h3>
                         {proxyEnable !== null && (
@@ -725,10 +720,8 @@ export default function General() {
                             </TextField>
                         )}
                     </div>
-                </Card.Content>
-            </Card>
-            <Card className='mt-2.5'>
-                <Card.Content>
+                </Surface>
+            <Surface className='mt-2.5 flex flex-1 flex-col p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
                     <div className='config-item'>
                         <h3 className='my-auto'>{t('config.general.log_level.title')}</h3>
                         {logLevel !== null && (
@@ -794,8 +787,7 @@ export default function General() {
                             </Switch>
                         )}
                     </div>
-                </Card.Content>
-            </Card>
+                </Surface>
         </>
     );
 }

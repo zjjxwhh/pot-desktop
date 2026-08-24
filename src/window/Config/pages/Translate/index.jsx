@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Dropdown, Switch, Button, Card, Label } from '@heroui/react';
+import { Dropdown, Switch, Button, Surface, Label } from '@heroui/react';
 import React from 'react';
 
 import { languageList, LanguageFlag } from '../../../../utils/language';
@@ -29,8 +29,7 @@ export default function Translate() {
 
     return (
         <>
-            <Card className='mb-2.5'>
-                <Card.Content>
+            <Surface className='mb-2.5 flex flex-1 flex-col p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
                     <div className='config-item'>
                         <h3 className='my-auto mx-0'>{t('config.translate.source_language')}</h3>
                         {sourceLanguage !== null && (
@@ -157,10 +156,8 @@ export default function Translate() {
                             </Dropdown>
                         )}
                     </div>
-                </Card.Content>
-            </Card>
-            <Card className='mb-2.5'>
-                <Card.Content>
+                </Surface>
+            <Surface className='mb-2.5 flex flex-1 flex-col p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
                     <div className='config-item'>
                         <h3 className='my-auto mx-0'>{t('config.translate.auto_copy')}</h3>
                         {autoCopy !== null && (
@@ -283,50 +280,8 @@ export default function Translate() {
                             </Switch>
                         )}
                     </div>
-                </Card.Content>
-            </Card>
-            <Card>
-                <Card.Content>
-                    {/* <div className='config-item'>
-                        <h3 className='my-auto mx-0'>{t('config.translate.font_size.title')}</h3>
-                        {translateFontSize !== null && (
-                            <Dropdown>
-                                <Button variant='secondary'>
-                                    {t(`config.translate.font_size.${translateFontSize}`)}
-                                </Button>
-                                <Dropdown.Popover>
-                                    <Dropdown.Menu
-                                        className='max-h-[50vh] overflow-y-auto'
-                                        onAction={(key) => {
-                                            setTranslateFontSize(key);
-                                        }}
-                                    >
-                                        <Dropdown.Item id={10} textValue={t('config.translate.font_size.10')}>
-                                            <Label>{t(`config.translate.font_size.10`)}</Label>
-                                        </Dropdown.Item>
-                                        <Dropdown.Item id={12} textValue={t('config.translate.font_size.12')}>
-                                            <Label>{t(`config.translate.font_size.12`)}</Label>
-                                        </Dropdown.Item>
-                                        <Dropdown.Item id={14} textValue={t('config.translate.font_size.14')}>
-                                            <Label>{t(`config.translate.font_size.14`)}</Label>
-                                        </Dropdown.Item>
-                                        <Dropdown.Item id={16} textValue={t('config.translate.font_size.16')}>
-                                            <Label>{t(`config.translate.font_size.16`)}</Label>
-                                        </Dropdown.Item>
-                                        <Dropdown.Item id={18} textValue={t('config.translate.font_size.18')}>
-                                            <Label>{t(`config.translate.font_size.18`)}</Label>
-                                        </Dropdown.Item>
-                                        <Dropdown.Item id={20} textValue={t('config.translate.font_size.20')}>
-                                            <Label>{t(`config.translate.font_size.20`)}</Label>
-                                        </Dropdown.Item>
-                                        <Dropdown.Item id={24} textValue={t('config.translate.font_size.24')}>
-                                            <Label>{t(`config.translate.font_size.24`)}</Label>
-                                        </Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown.Popover>
-                            </Dropdown>
-                        )}
-                    </div> */}
+                </Surface>
+            <Surface className='flex flex-1 flex-col p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
                     <div className='config-item'>
                         <h3 className='my-auto mx-0'>{t('config.translate.window_position')}</h3>
                         {windowPosition !== null && (
@@ -458,8 +413,7 @@ export default function Translate() {
                             </Switch>
                         )}
                     </div>
-                </Card.Content>
-            </Card>
+                </Surface>
         </>
     );
 }

@@ -5,7 +5,6 @@ import {
     TextArea,
     Button,
     Switch,
-    Card,
     Link,
     Tooltip,
     ProgressBar,
@@ -127,8 +126,7 @@ export function Config(props) {
                     </TextField>
                 </div>
                 {installedModels === null && (
-                    <Card className='border-none bg-danger/20 dark:bg-danger/10 backdrop-blur-md shadow-sm py-2'>
-                        <Card.Content>
+                    <Surface className='border-none bg-danger/20 dark:bg-danger/10 backdrop-blur-md shadow-sm py-2 px-4 flex flex-col rounded-[min(32px,var(--radius-3xl))]'>
                             <div>
                                 {t('services.translate.ollama.install_ollama')}
                                 <br />
@@ -140,8 +138,7 @@ export function Config(props) {
                                     {t('services.translate.ollama.install_ollama_link')}
                                 </Link>
                             </div>
-                        </Card.Content>
-                    </Card>
+                        </Surface>
                 )}
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('services.help')}</h3>
@@ -234,8 +231,7 @@ export function Config(props) {
                         </InputGroup>
                     </TextField>
                 </div>
-                <Card className='border-none bg-success/20 dark:bg-success/10 backdrop-blur-md shadow-sm py-2 mb-2'>
-                    <Card.Content>
+                <Surface className='border-none bg-success/20 dark:bg-success/10 backdrop-blur-md shadow-sm py-2 px-4 mb-2 flex flex-col rounded-[min(32px,var(--radius-3xl))]'>
                         {isPulling && (
                             <ProgressBar
                                 size='sm'
@@ -258,8 +254,7 @@ export function Config(props) {
                                 {t('services.translate.ollama.supported_models')}
                             </Link>
                         </div>
-                    </Card.Content>
-                </Card>
+                    </Surface>
                 <h3 className='my-auto'>{t('services.translate.ollama.prompt_list')}</h3>
                 <p className='text-xs text-foreground py-2'>{t('services.translate.ollama.prompt_description')}</p>
 

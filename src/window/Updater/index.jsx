@@ -1,4 +1,4 @@
-import { Card, Button, ProgressBar, Skeleton, Label, Toast, toast } from '@heroui/react';
+import { Button, ProgressBar, Skeleton, Label, Toast, Surface, toast } from '@heroui/react';
 import { getCurrentWebviewWindow } from '@tauri-apps/api/webviewWindow';
 import { check } from '@tauri-apps/plugin-updater';
 import { relaunch } from '@tauri-apps/plugin-process';
@@ -58,8 +58,7 @@ export default function Updater() {
                     <h2>{t('updater.title')}</h2>
                 </div>
             </div>
-            <Card className='mx-15 mt-2.5 overscroll-auto flex-1 min-h-0'>
-                <Card.Content className='h-full overflow-auto'>
+            <Surface className='mx-15 mt-2.5 overscroll-auto flex-1 min-h-0 overflow-auto flex flex-col p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
                     {body === '' ? (
                         <div className='space-y-3'>
                             <Skeleton className='w-3/5 rounded-lg'>
@@ -117,8 +116,7 @@ export default function Updater() {
                             {body}
                         </ReactMarkdown>
                     )}
-                </Card.Content>
-            </Card>
+                </Surface>
             {downloaded !== 0 && (
                 <ProgressBar
                     value={(downloaded / total) * 100}
