@@ -158,6 +158,10 @@
                 "test_failed": "Teste Falhou",
                 "title": "Configuração do Serviço",
                 "translate": "Traduzir",
+                "translate_category": {
+                    "ai": "",
+                    "traditional": ""
+                },
                 "tts": "TTS",
                 "uninstall_success": "Plug-in desinstalado com sucesso",
                 "view_plugin_list": "Exibir Lista de Plugins"

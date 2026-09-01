@@ -5,6 +5,23 @@ export enum ServiceType {
     COLLECTION = 'collection',
 }
 
+// Builtin translate services declare their category in their own info.ts.
+// Services that don't declare one are traditional, so existing services need no change.
+export enum TranslateServiceCategory {
+    TRADITIONAL = 'traditional',
+    AI = 'ai',
+}
+
+// Also defines the order the categories are rendered in.
+export const TRANSLATE_SERVICE_CATEGORIES = [
+    TranslateServiceCategory.TRADITIONAL,
+    TranslateServiceCategory.AI,
+] as const;
+
+export function getTranslateServiceCategory(serviceInfo: { category?: TranslateServiceCategory }) {
+    return serviceInfo.category ?? TranslateServiceCategory.TRADITIONAL;
+}
+
 export enum ServiceSourceType {
     BUILDIN = 'buildin',
     PLUGIN = 'plugin',

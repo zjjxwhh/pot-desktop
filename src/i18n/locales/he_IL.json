@@ -158,6 +158,10 @@
                 "test_failed": "הבדיקה נכשלה",
                 "title": "הגדרות שירות",
                 "translate": "תרגם",
+                "translate_category": {
+                    "ai": "",
+                    "traditional": ""
+                },
                 "tts": "TTS",
                 "uninstall_success": "התוסף הוסר בהצלחה",
                 "view_plugin_list": "הצג רשימת תוספים"

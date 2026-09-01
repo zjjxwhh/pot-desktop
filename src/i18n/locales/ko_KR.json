@@ -158,6 +158,10 @@
                 "test_failed": "테스트 실패",
                 "title": "서비스 설정",
                 "translate": "번역",
+                "translate_category": {
+                    "ai": "",
+                    "traditional": ""
+                },
                 "tts": "TTS",
                 "uninstall_success": "플러그인이 삭제되었습니다",
                 "view_plugin_list": "지원되는 플러그인 목록"

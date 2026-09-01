@@ -158,6 +158,10 @@
                 "test_failed": "测试失败",
                 "title": "服务设置",
                 "translate": "翻译",
+                "translate_category": {
+                    "ai": "AI 翻译服务",
+                    "traditional": "传统翻译服务"
+                },
                 "tts": "语音合成",
                 "uninstall_success": "插件卸载成功",
                 "view_plugin_list": "查看插件列表"

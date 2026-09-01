@@ -158,6 +158,10 @@
                 "test_failed": "Test non riuscito",
                 "title": "Impostazioni del servizio",
                 "translate": "Traduci",
+                "translate_category": {
+                    "ai": "",
+                    "traditional": ""
+                },
                 "tts": "TTS",
                 "uninstall_success": "Disinstallazione del plugin riuscita",
                 "view_plugin_list": "Visualizza l'elenco dei plugin"

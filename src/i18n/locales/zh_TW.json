@@ -158,6 +158,10 @@
                 "test_failed": "測試失敗",
                 "title": "服務設定",
                 "translate": "翻譯",
+                "translate_category": {
+                    "ai": "AI 翻譯服務",
+                    "traditional": "傳統翻譯服務"
+                },
                 "tts": "語音合成",
                 "uninstall_success": "外掛程式移除成功",
                 "view_plugin_list": "檢視外掛程式列表"

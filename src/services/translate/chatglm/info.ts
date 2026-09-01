@@ -1,6 +1,9 @@
+import { TranslateServiceCategory } from '../../../utils/service_instance';
+
 export const info = {
     name: 'chatglm',
     icon: 'logo/zhipu.svg',
+    category: TranslateServiceCategory.AI,
 };
 
 export enum Language {

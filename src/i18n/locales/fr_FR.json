@@ -158,6 +158,10 @@
                 "test_failed": "Le test a échoué",
                 "title": "Paramètres de service",
                 "translate": "Traduire",
+                "translate_category": {
+                    "ai": "",
+                    "traditional": ""
+                },
                 "tts": "TTS",
                 "uninstall_success": "L'extension a bien été désinstallée",
                 "view_plugin_list": "Voir la liste des extensions"

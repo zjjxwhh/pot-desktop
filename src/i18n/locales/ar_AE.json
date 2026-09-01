@@ -158,6 +158,10 @@
                 "test_failed": "فشل الاختبار",
                 "title": "إعدادات الخدمات",
                 "translate": "الترجمة",
+                "translate_category": {
+                    "ai": "",
+                    "traditional": ""
+                },
                 "tts": "النص إلى كلام",
                 "uninstall_success": "أزيل الملحق بنجاح",
                 "view_plugin_list": "اعرض قائمة الملحق"

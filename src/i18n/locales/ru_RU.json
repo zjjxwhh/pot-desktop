@@ -158,6 +158,10 @@
                 "test_failed": "Ошибка теста",
                 "title": "Настройки сервисов",
                 "translate": "Перевести",
+                "translate_category": {
+                    "ai": "",
+                    "traditional": ""
+                },
                 "tts": "TTS",
                 "uninstall_success": "Плагин успешно удалён",
                 "view_plugin_list": "Список плагинов"

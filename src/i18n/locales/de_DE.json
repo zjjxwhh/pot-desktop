@@ -158,6 +158,10 @@
                 "test_failed": "Test fehlgeschlagen",
                 "title": "Diensteinstellungen",
                 "translate": "Übersetzung",
+                "translate_category": {
+                    "ai": "",
+                    "traditional": ""
+                },
                 "tts": "TTS",
                 "uninstall_success": "Plugin erfolgreich deinstalliert",
                 "view_plugin_list": "Plugin-Liste anzeigen"

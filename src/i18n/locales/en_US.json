@@ -158,6 +158,10 @@
                 "test_failed": "Test Failed",
                 "title": "Service Settings",
                 "translate": "Translate",
+                "translate_category": {
+                    "ai": "AI Services",
+                    "traditional": "Traditional Services"
+                },
                 "tts": "TTS",
                 "uninstall_success": "Plugin Uninstall Successfully",
                 "view_plugin_list": "View Plugin List"

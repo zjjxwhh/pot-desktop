@@ -1,6 +1,9 @@
+import { TranslateServiceCategory } from '../../../utils/service_instance';
+
 export const info = {
     name: 'geminipro',
     icon: 'logo/gemini.svg',
+    category: TranslateServiceCategory.AI,
 };
 
 export enum Language {

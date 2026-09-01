@@ -158,6 +158,10 @@
                 "test_failed": "",
                 "title": "サービス設定",
                 "translate": "",
+                "translate_category": {
+                    "ai": "",
+                    "traditional": ""
+                },
                 "tts": "",
                 "uninstall_success": "",
                 "view_plugin_list": ""

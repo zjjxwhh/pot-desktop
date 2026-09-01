@@ -158,6 +158,10 @@
                 "test_failed": "Prueba fallida",
                 "title": "Ajustes de servicio",
                 "translate": "Traducir",
+                "translate_category": {
+                    "ai": "",
+                    "traditional": ""
+                },
                 "tts": "texto a voz",
                 "uninstall_success": "Complemento desinstalado con éxito",
                 "view_plugin_list": "Ver lista de complementos"

@@ -1,6 +1,9 @@
+import { TranslateServiceCategory } from '../../../utils/service_instance';
+
 export const info = {
     name: 'ollama',
     icon: 'logo/ollama.svg',
+    category: TranslateServiceCategory.AI,
 };
 
 export enum Language {

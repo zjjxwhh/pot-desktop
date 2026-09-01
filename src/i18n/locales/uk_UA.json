@@ -158,6 +158,10 @@
                 "test_failed": "Тест не пройдено",
                 "title": "Налаштування служб",
                 "translate": "Переклад",
+                "translate_category": {
+                    "ai": "",
+                    "traditional": ""
+                },
                 "tts": "TTS",
                 "uninstall_success": "Плагін успішно видалено",
                 "view_plugin_list": "Переглянути список плагінів"

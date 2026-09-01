@@ -158,6 +158,10 @@
                 "test_failed": "சோதனை தோல்வியடைந்தது",
                 "title": "பணி அமைப்புகள்",
                 "translate": "மொழிபெயர்த்திடு",
+                "translate_category": {
+                    "ai": "",
+                    "traditional": ""
+                },
                 "tts": "Tts",
                 "uninstall_success": "சொருகி வெற்றிகரமாக நிறுவல் நீக்குகிறது",
                 "view_plugin_list": "சொருகி பட்டியலைக் காண்க"
