@@ -396,20 +396,6 @@
                     "title": "قاموس كامبريدج",
                     "words_not_included": ""
                 },
-                "chatglm": {
-                    "add": "اضف موجه",
-                    "api_key": "مفتاح Api",
-                    "chatglm_lite": "ChatGLM خفيف",
-                    "chatglm_pro": "ChatGLM احترافي",
-                    "chatglm_std": "ChatGLM قياسي",
-                    "chatglm_turbo": "ChatGLM فائق",
-                    "input_some_prompt": "",
-                    "invalid_apikey": "",
-                    "model": "النموذج",
-                    "prompt_description": "من خلال تخصيص الموجه يمكنك تخصيص سلوك الذكاء الاصطناعي. $text $from $to $detect سيتم استبدالها بالنص المراد ترجمته واللغة المصدر واللغة الهدف واللغة المكتشفة.",
-                    "prompt_list": "",
-                    "title": "chatGLM"
-                },
                 "deepl": {
                     "api": "مفتاح المصادقة",
                     "auth_key": "مفتاح المصادقة",
@@ -526,6 +512,18 @@
                     "appkey": "معرّف التطبيق",
                     "key": "مفتاح",
                     "title": "يوداو"
+                },
+                "zhipu": {
+                    "api_key": "مفتاح Api",
+                    "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
+                    "model": "النموذج",
+                    "prompt_description": "من خلال تخصيص الموجه يمكنك تخصيص سلوك الذكاء الاصطناعي. $text $from $to $detect سيتم استبدالها بالنص المراد ترجمته واللغة المصدر واللغة الهدف واللغة المكتشفة.",
+                    "prompt_list": "",
+                    "system_prompt": "",
+                    "title": "Zhipu",
+                    "user_prompt": ""
                 }
             },
             "tts": {

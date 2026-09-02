@@ -396,20 +396,6 @@
                     "title": "கேம்பிரிட்ச் அகராதி",
                     "words_not_included": ""
                 },
-                "chatglm": {
-                    "add": "வரியில் சேர்க்கவும்",
-                    "api_key": "பநிஇ விசை",
-                    "chatglm_lite": "Satglm little",
-                    "chatglm_pro": "Chatglm pro",
-                    "chatglm_std": "Chatglm std",
-                    "chatglm_turbo": "சாட்எல்எம் டர்போ",
-                    "input_some_prompt": "",
-                    "invalid_apikey": "",
-                    "model": "மாதிரியுரு",
-                    "prompt_description": "வரியில் தனிப்பயனாக்குவதன் மூலம், AI இன் நடத்தையைத் தனிப்பயனாக்கலாம். $ உரை $ முதல் $ கண்டறிதல் வரை மொழிபெயர்க்கப்பட வேண்டிய உரை, மூல மொழி, இலக்கு மொழி மற்றும் கண்டறியப்பட்ட மொழி மூலம் மாற்றப்படும்.",
-                    "prompt_list": "",
-                    "title": "Catglm"
-                },
                 "deepl": {
                     "api": "அங்கீகார விசை",
                     "auth_key": "அங்கீகார விசை",
@@ -526,6 +512,18 @@
                     "appkey": "பயன்பாட்டு ஐடி",
                     "key": "விசை",
                     "title": "நீங்கள் வருகிறீர்கள்"
+                },
+                "zhipu": {
+                    "api_key": "பநிஇ விசை",
+                    "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
+                    "model": "மாதிரியுரு",
+                    "prompt_description": "வரியில் தனிப்பயனாக்குவதன் மூலம், AI இன் நடத்தையைத் தனிப்பயனாக்கலாம். $ உரை $ முதல் $ கண்டறிதல் வரை மொழிபெயர்க்கப்பட வேண்டிய உரை, மூல மொழி, இலக்கு மொழி மற்றும் கண்டறியப்பட்ட மொழி மூலம் மாற்றப்படும்.",
+                    "prompt_list": "",
+                    "system_prompt": "",
+                    "title": "Catglm",
+                    "user_prompt": ""
                 }
             },
             "tts": {

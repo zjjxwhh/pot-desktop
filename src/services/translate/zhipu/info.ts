@@ -1,7 +1,7 @@
 import { TranslateServiceCategory } from '../../../utils/service_instance';
 
 export const info = {
-    name: 'chatglm',
+    name: 'zhipu',
     icon: 'logo/zhipu.svg',
     category: TranslateServiceCategory.AI,
 };

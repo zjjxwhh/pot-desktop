@@ -396,20 +396,6 @@
                     "title": "Cambridge Dictionary",
                     "words_not_included": "Words not yet included: {{text}}"
                 },
-                "chatglm": {
-                    "add": "Add Prompt",
-                    "api_key": "Api Key",
-                    "chatglm_lite": "ChatGLM Lite",
-                    "chatglm_pro": "ChatGLM Pro",
-                    "chatglm_std": "ChatGLM Std",
-                    "chatglm_turbo": "ChatGLM Turbo",
-                    "input_some_prompt": "Input Some {{role}} Prompt",
-                    "invalid_apikey": "invalid apikey",
-                    "model": "Model",
-                    "prompt_description": "By customizing the Prompt, you can customize the behavior of ChatGLM. {{$text}}, {{$from}}, {{$to}}, {{$detect}} will be replaced with {{the text to be translated}}, {{source language}}, {{target language}}, {{detected language}}.",
-                    "prompt_list": "Prompt List",
-                    "title": "ChatGLM"
-                },
                 "deepl": {
                     "api": "Auth Key",
                     "auth_key": "Auth Key",
@@ -526,6 +512,18 @@
                     "appkey": "App ID",
                     "key": "Key",
                     "title": "Youdao"
+                },
+                "zhipu": {
+                    "api_key": "API Key",
+                    "input_some_prompt": "Input Some {{role}} Prompt",
+                    "invalid_prompt": "Invalid prompt",
+                    "invalid_prompt_empty": "The User prompt cannot be empty.",
+                    "model": "Model",
+                    "prompt_description": "By customizing the Prompt, you can customize the behavior of Zhipu. {{$text}}, {{$from}}, {{$to}}, {{$detect}} will be replaced with {{the text to be translated}}, {{source language}}, {{target language}}, {{detected language}}.",
+                    "prompt_list": "Prompt List",
+                    "system_prompt": "System prompt (persona / rules, optional)",
+                    "title": "Zhipu",
+                    "user_prompt": "User prompt (translation request template)"
                 }
             },
             "tts": {

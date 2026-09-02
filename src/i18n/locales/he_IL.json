@@ -396,20 +396,6 @@
                     "title": "מילון קיימברידג'",
                     "words_not_included": ""
                 },
-                "chatglm": {
-                    "add": "הוסף הנחיה",
-                    "api_key": "מפתח Api",
-                    "chatglm_lite": "ChatGLM Lite",
-                    "chatglm_pro": "ChatGLM Pro",
-                    "chatglm_std": "ChatGLM Std",
-                    "chatglm_turbo": "ChatGLM Turbo",
-                    "input_some_prompt": "",
-                    "invalid_apikey": "",
-                    "model": "מודל",
-                    "prompt_description": "על ידי התאמה אישית של ההנחיה, אתה יכול להתאים אישית את ההתנהגות של הבינה המלאכותית. $text $from $to $detect יוחלף בטקסט לתרגום, שפת המקור, שפת היעד ושפת הזיהוי.",
-                    "prompt_list": "",
-                    "title": "ChatGLM"
-                },
                 "deepl": {
                     "api": "מפתח אוטומטי",
                     "auth_key": "מפתח אוטומטי",
@@ -526,6 +512,18 @@
                     "appkey": "מזהה אפליקציה",
                     "key": "מפתח",
                     "title": ""
+                },
+                "zhipu": {
+                    "api_key": "מפתח Api",
+                    "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
+                    "model": "מודל",
+                    "prompt_description": "על ידי התאמה אישית של ההנחיה, אתה יכול להתאים אישית את ההתנהגות של הבינה המלאכותית. $text $from $to $detect יוחלף בטקסט לתרגום, שפת המקור, שפת היעד ושפת הזיהוי.",
+                    "prompt_list": "",
+                    "system_prompt": "",
+                    "title": "Zhipu",
+                    "user_prompt": ""
                 }
             },
             "tts": {

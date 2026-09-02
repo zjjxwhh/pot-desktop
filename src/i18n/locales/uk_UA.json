@@ -396,20 +396,6 @@
                     "title": "Словник Cambridge",
                     "words_not_included": ""
                 },
-                "chatglm": {
-                    "add": "Додати Prompt",
-                    "api_key": "API-ключ",
-                    "chatglm_lite": "ChatGLM Lite",
-                    "chatglm_pro": "ChatGLM Pro",
-                    "chatglm_std": "ChatGLM Std",
-                    "chatglm_turbo": "ChatGLM Turbo",
-                    "input_some_prompt": "",
-                    "invalid_apikey": "",
-                    "model": "Модель",
-                    "prompt_description": "За допомогою власного Prompt можна налаштувати поведінку ШІ. $text, $from, $to, $detect замінюються на текст, мову оригіналу, мову перекладу та виявлену мову відповідно.",
-                    "prompt_list": "",
-                    "title": "ChatGLM"
-                },
                 "deepl": {
                     "api": "Ключ автентифікації",
                     "auth_key": "Ключ автентифікації",
@@ -526,6 +512,18 @@
                     "appkey": "App ID",
                     "key": "Ключ",
                     "title": "Youdao"
+                },
+                "zhipu": {
+                    "api_key": "API-ключ",
+                    "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
+                    "model": "Модель",
+                    "prompt_description": "За допомогою власного Prompt можна налаштувати поведінку ШІ. $text, $from, $to, $detect замінюються на текст, мову оригіналу, мову перекладу та виявлену мову відповідно.",
+                    "prompt_list": "",
+                    "system_prompt": "",
+                    "title": "Zhipu",
+                    "user_prompt": ""
                 }
             },
             "tts": {

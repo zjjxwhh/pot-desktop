@@ -396,20 +396,6 @@
                     "title": "剑桥词典",
                     "words_not_included": "暂未收录该词条：{{text}}"
                 },
-                "chatglm": {
-                    "add": "添加提示词",
-                    "api_key": "API Key",
-                    "chatglm_lite": "ChatGLM Lite",
-                    "chatglm_pro": "ChatGLM Pro",
-                    "chatglm_std": "ChatGLM Std",
-                    "chatglm_turbo": "ChatGLM Turbo",
-                    "input_some_prompt": "输入 {{role}} 的提示词",
-                    "invalid_apikey": "API Key 无效",
-                    "model": "模型",
-                    "prompt_description": "通过自定义提示词自定义 智谱 AI 的行为，{{$text}}、{{$from}}、{{$to}}、{{$detect}} 将会被替换为 {{待翻译文本}}、{{源语言}}、{{目标语言}}、{{检测到的语言}}。",
-                    "prompt_list": "提示词列表",
-                    "title": "智谱 AI"
-                },
                 "deepl": {
                     "api": "Auth Key",
                     "auth_key": "API 密钥",
@@ -526,6 +512,18 @@
                     "appkey": "App ID",
                     "key": "Key",
                     "title": "有道翻译"
+                },
+                "zhipu": {
+                    "api_key": "API Key",
+                    "input_some_prompt": "输入 {{role}} 提示词",
+                    "invalid_prompt": "提示词不合法",
+                    "invalid_prompt_empty": "user 提示词不能为空。",
+                    "model": "模型",
+                    "prompt_description": "通过自定义提示词自定义 智谱 的行为，{{$text}}、{{$from}}、{{$to}}、{{$detect}} 将会被替换为 {{待翻译文本}}、{{源语言}}、{{目标语言}}、{{检测到的语言}}。",
+                    "prompt_list": "提示词列表",
+                    "system_prompt": "system 提示词（人设 / 规则，可留空）",
+                    "title": "智谱",
+                    "user_prompt": "user 提示词（翻译请求模板）"
                 }
             },
             "tts": {

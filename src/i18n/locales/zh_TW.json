@@ -396,20 +396,6 @@
                     "title": "劍橋詞典",
                     "words_not_included": "尚未收錄該詞條：{{text}}"
                 },
-                "chatglm": {
-                    "add": "新增提示詞",
-                    "api_key": "API Key",
-                    "chatglm_lite": "ChatGLM Lite",
-                    "chatglm_pro": "ChatGLM Pro",
-                    "chatglm_std": "ChatGLM Std",
-                    "chatglm_turbo": "ChatGLM Turbo",
-                    "input_some_prompt": "輸入 {{role}} 的提示詞",
-                    "invalid_apikey": "API Key 無效",
-                    "model": "模型",
-                    "prompt_description": "透過自訂提示詞，您可以自訂 智譜 AI 的行為。$text $from $to $detect 將被替換為待翻譯的文字、來源語言、目標語言和偵測到的語言。",
-                    "prompt_list": "提示詞列表",
-                    "title": "ChatGLM"
-                },
                 "deepl": {
                     "api": "授權金鑰",
                     "auth_key": "授權金鑰",
@@ -526,6 +512,18 @@
                     "appkey": "應用程式 ID",
                     "key": "Key",
                     "title": "有道翻譯"
+                },
+                "zhipu": {
+                    "api_key": "API Key",
+                    "input_some_prompt": "輸入 {{role}} 提示詞",
+                    "invalid_prompt": "提示詞不合法",
+                    "invalid_prompt_empty": "user 提示詞不能為空。",
+                    "model": "模型",
+                    "prompt_description": "透過自訂提示詞，您可以自訂 智譜 的行為。$text $from $to $detect 將被替換為待翻譯的文字、來源語言、目標語言和偵測到的語言。",
+                    "prompt_list": "提示詞列表",
+                    "system_prompt": "system 提示詞（人設 / 規則，可留空）",
+                    "title": "智譜",
+                    "user_prompt": "user 提示詞（翻譯請求模板）"
                 }
             },
             "tts": {

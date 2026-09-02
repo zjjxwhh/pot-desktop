@@ -1,6 +1,5 @@
 import i18n from '../../../i18n';
 import { Language } from './info';
-import * as jose from 'jose';
 import { fetch } from '@tauri-apps/plugin-http';
 
 export async function translate(text, from, to, options = {}) {
@@ -8,35 +7,22 @@ export async function translate(text, from, to, options = {}) {
 
     let { model, apiKey, promptList } = config;
 
-    let [id, secret] = apiKey.split('.');
-    if (id === undefined || secret === undefined) {
-        return Promise.reject(i18n.t('services.translate.chatglm.invalid_apikey'));
-    }
-    promptList = promptList.map((item) => {
-        return {
-            ...item,
-            content: item.content
-                .replaceAll('$text', text)
-                .replaceAll('$from', from)
-                .replaceAll('$to', to)
-                .replaceAll('$detect', Language[detect]),
-        };
-    });
-
-    //
-    let timestamp = new Date().getTime();
-    let payload = {
-        api_key: id,
-        exp: timestamp + 1000 * 60,
-        timestamp: timestamp,
-    };
-    secret = new TextEncoder().encode(secret);
-    let jwt = new jose.SignJWT(payload).setProtectedHeader({ alg: 'HS256', sign_type: 'SIGN' });
-    let token = await jwt.sign(secret);
+    promptList = promptList
+        .filter((item) => !(item.role === 'system' && !(item.content ?? '').trim()))
+        .map((item) => {
+            return {
+                ...item,
+                content: item.content
+                    .replaceAll('$text', text)
+                    .replaceAll('$from', from)
+                    .replaceAll('$to', to)
+                    .replaceAll('$detect', Language[detect]),
+            };
+        });
 
     const headers = {
         'Content-Type': 'application/json',
-        'Authorization': token,
+        Authorization: `Bearer ${apiKey}`,
     };
 
     const body = {

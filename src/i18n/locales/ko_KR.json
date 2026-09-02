@@ -396,20 +396,6 @@
                     "title": "",
                     "words_not_included": ""
                 },
-                "chatglm": {
-                    "add": "",
-                    "api_key": "",
-                    "chatglm_lite": "",
-                    "chatglm_pro": "",
-                    "chatglm_std": "",
-                    "chatglm_turbo": "",
-                    "input_some_prompt": "",
-                    "invalid_apikey": "",
-                    "model": "",
-                    "prompt_description": "",
-                    "prompt_list": "",
-                    "title": ""
-                },
                 "deepl": {
                     "api": "인증키",
                     "auth_key": "인증키",
@@ -526,6 +512,18 @@
                     "appkey": "",
                     "key": "",
                     "title": ""
+                },
+                "zhipu": {
+                    "api_key": "",
+                    "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
+                    "model": "",
+                    "prompt_description": "",
+                    "prompt_list": "",
+                    "system_prompt": "",
+                    "title": "",
+                    "user_prompt": ""
                 }
             },
             "tts": {

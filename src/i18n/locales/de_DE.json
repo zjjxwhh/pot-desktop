@@ -396,20 +396,6 @@
                     "title": "Cambridge Wörterbuch",
                     "words_not_included": ""
                 },
-                "chatglm": {
-                    "add": "Prompt hinzufügen",
-                    "api_key": "API-Schlüssel",
-                    "chatglm_lite": "ChatGLM Lite",
-                    "chatglm_pro": "ChatGLM Pro",
-                    "chatglm_std": "ChatGLM Std",
-                    "chatglm_turbo": "ChatGLM Turbo",
-                    "input_some_prompt": "",
-                    "invalid_apikey": "",
-                    "model": "Modell",
-                    "prompt_description": "Passen Sie das Verhalten von KI durch benutzerdefinierte Prompts an. $text $from $to $detect werden durch den zu übersetzenden Text, die Ausgangs- und Zielsprache sowie die erkannte Sprache ersetzt.",
-                    "prompt_list": "",
-                    "title": "ChatGLM"
-                },
                 "deepl": {
                     "api": "Auth Key",
                     "auth_key": "API-Schlüssel",
@@ -526,6 +512,18 @@
                     "appkey": "App ID",
                     "key": "Key",
                     "title": "Youdao Übersetzung"
+                },
+                "zhipu": {
+                    "api_key": "API-Schlüssel",
+                    "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
+                    "model": "Modell",
+                    "prompt_description": "Passen Sie das Verhalten von KI durch benutzerdefinierte Prompts an. $text $from $to $detect werden durch den zu übersetzenden Text, die Ausgangs- und Zielsprache sowie die erkannte Sprache ersetzt.",
+                    "prompt_list": "",
+                    "system_prompt": "",
+                    "title": "Zhipu",
+                    "user_prompt": ""
                 }
             },
             "tts": {

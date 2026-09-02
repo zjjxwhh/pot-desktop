@@ -396,20 +396,6 @@
                     "title": "Cambridge Dicionário",
                     "words_not_included": ""
                 },
-                "chatglm": {
-                    "add": "Adicionar Prompt",
-                    "api_key": "Chave Api",
-                    "chatglm_lite": "ChatGLM Lite",
-                    "chatglm_pro": "ChatGLM Pro",
-                    "chatglm_std": "ChatGLM Std",
-                    "chatglm_turbo": "ChatGLM Turbo",
-                    "input_some_prompt": "",
-                    "invalid_apikey": "",
-                    "model": "Modelo",
-                    "prompt_description": "Ao personalizar o Prompt, pode personalizar o comportamento da IA. $text $from $to $detet será substituído pelo texto a ser traduzido, o idioma de origem, o idioma de destino e o idioma detetado.",
-                    "prompt_list": "",
-                    "title": "ChatGLM"
-                },
                 "deepl": {
                     "api": "Chave de Autorização",
                     "auth_key": "Chave de Autorização",
@@ -526,6 +512,18 @@
                     "appkey": "ID do App",
                     "key": "Chave",
                     "title": "Youdao"
+                },
+                "zhipu": {
+                    "api_key": "Chave Api",
+                    "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
+                    "model": "Modelo",
+                    "prompt_description": "Ao personalizar o Prompt, pode personalizar o comportamento da IA. $text $from $to $detet será substituído pelo texto a ser traduzido, o idioma de origem, o idioma de destino e o idioma detetado.",
+                    "prompt_list": "",
+                    "system_prompt": "",
+                    "title": "Zhipu",
+                    "user_prompt": ""
                 }
             },
             "tts": {
