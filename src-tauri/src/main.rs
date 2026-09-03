@@ -138,11 +138,6 @@ fn main() {
             }
             // Check Update
             check_update(app.handle().clone());
-            if let Some(engine) = get("translate_detect_engine") {
-                if engine.as_str().unwrap() == "local" {
-                    init_lang_detect();
-                }
-            }
             let clipboard_monitor = match get("clipboard_monitor") {
                 Some(v) => v.as_bool().unwrap(),
                 None => {
