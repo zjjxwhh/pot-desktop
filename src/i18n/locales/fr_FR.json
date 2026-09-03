@@ -409,15 +409,20 @@
                 "ecdict": {
                     "title": "ECDict (en ligne)"
                 },
-                "geminipro": {
-                    "add": "Ajouter un prompt",
+                "gemini": {
                     "api_key": "Clé API",
                     "input_some_prompt": "",
-                    "prompt_description": "En personnalisant le prompt, vous pouvez personnaliser le comportement de Gemini Pro. $text $from $to $detect sera remplacé par le texte à traduire, la langue source, la langue cible et la langue détectée.",
+                    "invalid_model": "",
+                    "invalid_model_empty": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
+                    "model": "",
+                    "prompt_description": "En personnalisant le prompt, vous pouvez personnaliser le comportement de Gemini. $text $from $to $detect sera remplacé par le texte à traduire, la langue source, la langue cible et la langue détectée.",
                     "prompt_list": "",
-                    "request_path": "Chemin de la demande",
                     "stream": "Mode streaming",
-                    "title": "Gemini Pro"
+                    "system_prompt": "",
+                    "title": "Gemini",
+                    "user_prompt": ""
                 },
                 "google": {
                     "custom_url": "URL personnalisée",
@@ -434,11 +439,12 @@
                     "title": "NiuTrans"
                 },
                 "ollama": {
-                    "add": "Ajouter un prompt",
                     "input_some_prompt": "",
                     "install_model": "Installer",
                     "install_ollama": "Impossible de se connecter à ollama en local, veuillez d'abord télécharger, installer et démarrer ollama. Si vous utilisez une instance ollama qui n'est pas sur cette machine, veuillez changer l'adresse de demande.",
                     "install_ollama_link": "Télécharger Ollama",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "Modèle",
                     "not_installed": "Ce modèle n'a pas encore été installé, cliquez pour le télécharger et l'installer maintenant",
                     "prompt_description": "En personnalisant le prompt, vous pouvez personnaliser le comportement de l'IA. $text $from $to $detect sera remplacé par le texte à traduire, la langue source, la langue cible et la langue détectée.",
@@ -447,26 +453,26 @@
                     "request_path": "Chemin de la demande",
                     "stream": "Mode flux",
                     "supported_models": "Cliquez pour voir la liste des modèles Ollama disponibles",
-                    "title": "Ollama"
+                    "system_prompt": "",
+                    "title": "Ollama",
+                    "user_prompt": ""
                 },
                 "openai": {
-                    "add": "Ajouter une invite",
                     "api_key": "Clé d'API",
-                    "azure": "Azure",
                     "input_request_arguments": "",
                     "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "Modèle",
-                    "openai": "OpenAI",
                     "prompt_description": "En personnalisant l'invite, vous pouvez personnaliser le comportement d'OpenAI. Le texte $from $to $detect sera remplacé par le texte à traduire, la langue d'origine, la langue de destination et la langue détectée.",
                     "prompt_list": "",
                     "request_arguments": "",
-                    "request_path": "Chemin de la requête",
-                    "service": "Fournisseur de service",
                     "stream": "Mode flux",
-                    "title": "OpenAI"
+                    "system_prompt": "",
+                    "title": "OpenAI",
+                    "user_prompt": ""
                 },
                 "openai_compatible": {
-                    "add": "",
                     "api_key": "",
                     "change_icon": "",
                     "icon": "",
@@ -479,6 +485,8 @@
                     "icon_not_found": "",
                     "input_request_arguments": "",
                     "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "",
                     "prompt_description": "",
                     "prompt_list": "",
@@ -488,7 +496,9 @@
                     "search_icon": "",
                     "select_icon": "",
                     "stream": "",
-                    "title": ""
+                    "system_prompt": "",
+                    "title": "",
+                    "user_prompt": ""
                 },
                 "tencent": {
                     "secret_id": "ID de clé secrète",

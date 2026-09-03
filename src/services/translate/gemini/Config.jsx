@@ -1,11 +1,12 @@
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
-import { Button, Input, Surface, TextArea, TextField, toast } from '@heroui/react';
+import { TextField, Input, TextArea, Button, Switch, Surface, toast } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-shell';
 import React from 'react';
 
 import { useConfig } from '../../../hooks/useConfig';
-import { Language, translate } from './index';
+import { translate } from './index';
+import { Language } from './index';
 
 const defaultPromptList = [
     {
@@ -25,9 +26,10 @@ export function Config(props) {
     const [serviceConfig, setServiceConfig] = useConfig(
         instanceKey,
         {
-            [INSTANCE_NAME_CONFIG_KEY]: t('services.translate.zhipu.title'),
-            model: '',
+            [INSTANCE_NAME_CONFIG_KEY]: t('services.translate.gemini.title'),
+            stream: true,
             apiKey: '',
+            model: '',
             promptList: defaultPromptList,
         },
         { sync: false }
@@ -49,9 +51,15 @@ export function Config(props) {
                 id={formId}
                 onSubmit={(e) => {
                     e.preventDefault();
+                    if (!(serviceConfig.model ?? '').trim()) {
+                        toast.danger(t('services.translate.gemini.invalid_model'), {
+                            description: t('services.translate.gemini.invalid_model_empty'),
+                        });
+                        return;
+                    }
                     if (!userContent.trim()) {
-                        toast.danger(t('services.translate.zhipu.invalid_prompt'), {
-                            description: t('services.translate.zhipu.invalid_prompt_empty'),
+                        toast.danger(t('services.translate.gemini.invalid_prompt'), {
+                            description: t('services.translate.gemini.invalid_prompt_empty'),
                         });
                         return;
                     }
@@ -91,14 +99,34 @@ export function Config(props) {
                     <Button
                         size='sm'
                         onPress={() => {
-                            open('https://docs.bigmodel.cn/cn/guide/start/quick-start');
+                            open('https://ai.google.dev/gemini-api/docs/get-started');
                         }}
                     >
                         {t('services.help')}
                     </Button>
                 </div>
                 <div className='config-item'>
-                    <h3 className='my-auto'>{t('services.translate.zhipu.api_key')}</h3>
+                    <h3 className='my-auto'>{t('services.translate.gemini.stream')}</h3>
+                    <Switch
+                        className='my-auto'
+                        size='lg'
+                        isSelected={serviceConfig['stream']}
+                        onChange={(value) => {
+                            setServiceConfig({
+                                ...serviceConfig,
+                                stream: value,
+                            });
+                        }}
+                    >
+                        <Switch.Content>
+                            <Switch.Control>
+                                <Switch.Thumb />
+                            </Switch.Control>
+                        </Switch.Content>
+                    </Switch>
+                </div>
+                <div className='config-item'>
+                    <h3 className='my-auto'>{t('services.translate.gemini.api_key')}</h3>
                     <TextField
                         value={serviceConfig['apiKey']}
                         onChange={(value) => {
@@ -115,9 +143,9 @@ export function Config(props) {
                     </TextField>
                 </div>
                 <div className='config-item'>
-                    <h3 className='my-auto'>{t('services.translate.zhipu.model')}</h3>
+                    <h3 className='my-auto'>{t('services.translate.gemini.model')}</h3>
                     <TextField
-                        value={serviceConfig.model}
+                        value={serviceConfig['model']}
                         onChange={(value) => {
                             setServiceConfig({
                                 ...serviceConfig,
@@ -128,16 +156,15 @@ export function Config(props) {
                         <Input variant='secondary' />
                     </TextField>
                 </div>
-
-                <h3 className='my-auto'>{t('services.translate.zhipu.prompt_list')}</h3>
-                <p className='text-xs text-foreground py-2'>{t('services.translate.zhipu.prompt_description')}</p>
+                <h3 className='my-auto'>{t('services.translate.gemini.prompt_list')}</h3>
+                <p className='text-xs text-foreground py-2'>{t('services.translate.gemini.prompt_description')}</p>
 
                 <Surface
                     className='flex flex-col gap-3 rounded-3xl p-3'
                     variant='secondary'
                 >
                     <div>
-                        <div className='mb-1 ms-2 font-medium'>{t('services.translate.zhipu.system_prompt')}</div>
+                        <div className='mb-1 ms-2 font-medium'>{t('services.translate.gemini.system_prompt')}</div>
                         <TextField
                             fullWidth
                             value={systemContent}
@@ -149,12 +176,12 @@ export function Config(props) {
                                 variant='secondary'
                                 rows={6}
                                 className={'border-2 border-muted'}
-                                placeholder={t('services.translate.zhipu.input_some_prompt', { role: 'system' })}
+                                placeholder={t('services.translate.gemini.input_some_prompt', { role: 'system' })}
                             />
                         </TextField>
                     </div>
                     <div>
-                        <div className='mb-1 ms-2 font-medium'>{t('services.translate.zhipu.user_prompt')}</div>
+                        <div className='mb-1 ms-2 font-medium'>{t('services.translate.gemini.user_prompt')}</div>
                         <TextField
                             fullWidth
                             value={userContent}
@@ -166,7 +193,7 @@ export function Config(props) {
                                 variant='secondary'
                                 rows={6}
                                 className={'border-2 border-muted'}
-                                placeholder={t('services.translate.zhipu.input_some_prompt', { role: 'user' })}
+                                placeholder={t('services.translate.gemini.input_some_prompt', { role: 'user' })}
                             />
                         </TextField>
                     </div>

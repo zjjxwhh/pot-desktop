@@ -409,15 +409,20 @@
                 "ecdict": {
                     "title": "ECDict (Online)"
                 },
-                "geminipro": {
-                    "add": "Add Prompt",
+                "gemini": {
                     "api_key": "Api Key",
                     "input_some_prompt": "Input Some {{role}} Prompt",
-                    "prompt_description": "By customizing the Prompt, you can customize the behavior of Gemini Pro. {{$text}}, {{$from}}, {{$to}}, {{$detect}} will be replaced with {{the text to be translated}}, {{source language}}, {{target language}}, {{detected language}}.",
+                    "invalid_model": "Invalid model",
+                    "invalid_model_empty": "The Model cannot be empty.",
+                    "invalid_prompt": "Invalid prompt",
+                    "invalid_prompt_empty": "The User prompt cannot be empty.",
+                    "model": "Model",
+                    "prompt_description": "By customizing the Prompt, you can customize the behavior of Gemini. {{$text}}, {{$from}}, {{$to}}, {{$detect}} will be replaced with {{the text to be translated}}, {{source language}}, {{target language}}, {{detected language}}.",
                     "prompt_list": "Prompt List",
-                    "request_path": "Request Path",
                     "stream": "Stream Mode",
-                    "title": "Gemini Pro"
+                    "system_prompt": "System prompt (persona / rules, optional)",
+                    "title": "Gemini",
+                    "user_prompt": "User prompt (translation request template)"
                 },
                 "google": {
                     "custom_url": "Custom URL",
@@ -434,11 +439,12 @@
                     "title": "NiuTrans"
                 },
                 "ollama": {
-                    "add": "Add Prompt",
                     "input_some_prompt": "Input Some {{role}} Prompt",
                     "install_model": "Install",
                     "install_ollama": "Unable to connect to local Ollama, please download, install and start ollama first. If you use ollama that is not on this machine, please change the request address.",
                     "install_ollama_link": "Download Ollama",
+                    "invalid_prompt": "Invalid prompt",
+                    "invalid_prompt_empty": "The User prompt cannot be empty.",
                     "model": "Model",
                     "not_installed": "This model has not been installed yet, click to download and install now",
                     "prompt_description": "By customizing the Prompt, you can customize the behavior of Ollama. {{$text}}, {{$from}}, {{$to}}, {{$detect}} will be replaced with {{the text to be translated}}, {{source language}}, {{target language}}, {{detected language}}.",
@@ -447,26 +453,26 @@
                     "request_path": "Request Path",
                     "stream": "Stream Mode",
                     "supported_models": "Click to see a list of Ollama available models",
-                    "title": "Ollama"
+                    "system_prompt": "System prompt (persona / rules, optional)",
+                    "title": "Ollama",
+                    "user_prompt": "User prompt (translation request template)"
                 },
                 "openai": {
-                    "add": "Add Prompt",
                     "api_key": "Api Key",
-                    "azure": "Azure",
                     "input_request_arguments": "Input API Request Arguments",
                     "input_some_prompt": "Input Some {{role}} Prompt",
+                    "invalid_prompt": "Invalid prompt",
+                    "invalid_prompt_empty": "The User prompt cannot be empty.",
                     "model": "Model",
-                    "openai": "OpenAI",
                     "prompt_description": "By customizing the Prompt, you can customize the behavior of OpenAI. {{$text}}, {{$from}}, {{$to}}, {{$detect}} will be replaced with {{the text to be translated}}, {{source language}}, {{target language}}, {{detected language}}.",
                     "prompt_list": "Prompt List",
                     "request_arguments": "Request Arguments",
-                    "request_path": "Request Path",
-                    "service": "Service Provider",
                     "stream": "Stream Mode",
-                    "title": "OpenAI"
+                    "system_prompt": "System prompt (persona / rules, optional)",
+                    "title": "OpenAI",
+                    "user_prompt": "User prompt (translation request template)"
                 },
                 "openai_compatible": {
-                    "add": "Add Prompt",
                     "api_key": "Api Key",
                     "change_icon": "Change Icon",
                     "icon": "Icon",
@@ -479,6 +485,8 @@
                     "icon_not_found": "Icon not found",
                     "input_request_arguments": "Input API Request Arguments",
                     "input_some_prompt": "Input Some {{role}} Prompt",
+                    "invalid_prompt": "Invalid prompt",
+                    "invalid_prompt_empty": "The User prompt cannot be empty.",
                     "model": "Model",
                     "prompt_description": "By customizing the Prompt, you can customize the behavior of the OpenAI Compatible service. {{$text}}, {{$from}}, {{$to}}, {{$detect}} will be replaced with {{the text to be translated}}, {{source language}}, {{target language}}, {{detected language}}.",
                     "prompt_list": "Prompt List",
@@ -488,7 +496,9 @@
                     "search_icon": "Search Icon",
                     "select_icon": "Select Icon",
                     "stream": "Stream Mode",
-                    "title": "OpenAI Compatible"
+                    "system_prompt": "System prompt (persona / rules, optional)",
+                    "title": "OpenAI Compatible",
+                    "user_prompt": "User prompt (translation request template)"
                 },
                 "tencent": {
                     "secret_id": "Secret ID",

@@ -1,7 +1,7 @@
 import { TranslateServiceCategory } from '../../../utils/service_instance';
 
 export const info = {
-    name: 'geminipro',
+    name: 'gemini',
     icon: 'logo/gemini.svg',
     category: TranslateServiceCategory.AI,
 };

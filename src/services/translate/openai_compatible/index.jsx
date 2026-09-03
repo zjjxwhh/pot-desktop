@@ -1,7 +1,6 @@
 import i18n from '../../../i18n';
 import { fetch } from '@tauri-apps/plugin-http';
 import { Language } from './info';
-import { defaultRequestArguments } from './Config';
 
 export async function translate(text, from, to, options) {
     const { config, setResult, detect } = options;
@@ -20,18 +19,6 @@ export async function translate(text, from, to, options) {
         apiUrl.pathname += 'v1/chat/completions';
     }
 
-    // 兼容旧版
-    if (promptList === undefined) {
-        promptList = [
-            {
-                role: 'system',
-                content:
-                    'You are a professional translation engine, please translate the text into a colloquial, professional, elegant and fluent content, without the style of machine translation. You must only translate the text content, never interpret it.',
-            },
-            { role: 'user', content: `Translate into $to:\n"""\n$text\n"""` },
-        ];
-    }
-
     promptList = promptList.map((item) => {
         return {
             ...item,
@@ -48,7 +35,7 @@ export async function translate(text, from, to, options) {
         Authorization: `Bearer ${apiKey}`,
     };
     const body = {
-        ...JSON.parse(requestArguments ?? defaultRequestArguments),
+        ...JSON.parse(requestArguments),
         stream: stream,
         messages: promptList,
         model: model,

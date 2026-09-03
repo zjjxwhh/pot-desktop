@@ -71,7 +71,7 @@ pub fn check_service_available() -> Result<(), Error> {
         "zhipu",
         "deepl",
         "lingva",
-        "geminipro",
+        "gemini",
         "niutrans",
         "ollama",
         "openai",

@@ -1,5 +1,4 @@
-import { TextField, Label, Input, TextArea, Button, Switch, Dropdown, Surface, toast } from '@heroui/react';
-import { IconTrash } from '@tabler/icons-react';
+import { TextField, Input, TextArea, Button, Switch, Surface, toast } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-shell';
 import React from 'react';
@@ -9,7 +8,19 @@ import { translate } from './index';
 import { Language } from './index';
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
 
-export const defaultRequestArguments = JSON.stringify({
+const defaultPromptList = [
+    {
+        role: 'system',
+        content:
+            'You are a professional translation engine, please translate the text into a colloquial, professional, elegant and fluent content, without the style of machine translation. You must only translate the text content, never interpret it.',
+    },
+    {
+        role: 'user',
+        content: `Translate into $to:\n"""\n$text\n"""`,
+    },
+];
+
+const defaultRequestArguments = JSON.stringify({
     temperature: 0.1,
     top_p: 0.99,
     frequency_penalty: 0,
@@ -23,45 +34,23 @@ export function Config(props) {
         instanceKey,
         {
             [INSTANCE_NAME_CONFIG_KEY]: t('services.translate.openai.title'),
-            service: 'openai',
-            requestPath: 'https://api.openai.com/v1/chat/completions',
             model: '',
             apiKey: '',
-            stream: false,
-            promptList: [
-                {
-                    role: 'system',
-                    content:
-                        'You are a professional translation engine, please translate the text into a colloquial, professional, elegant and fluent content, without the style of machine translation. You must only translate the text content, never interpret it.',
-                },
-                { role: 'user', content: `Translate into $to:\n"""\n$text\n"""` },
-            ],
+            stream: true,
+            promptList: defaultPromptList,
             requestArguments: defaultRequestArguments,
         },
         { sync: false }
     );
-    // 兼容旧版本
-    if (openaiConfig) {
-        if (openaiConfig.promptList === undefined) {
-            setOpenaiConfig({
-                ...openaiConfig,
-                promptList: [
-                    {
-                        role: 'system',
-                        content:
-                            'You are a professional translation engine, please translate the text into a colloquial, professional, elegant and fluent content, without the style of machine translation. You must only translate the text content, never interpret it.',
-                    },
-                    { role: 'user', content: `Translate into $to:\n"""\n$text\n"""` },
-                ],
-            });
-        }
-        if (openaiConfig.requestArguments === undefined) {
-            setOpenaiConfig({
-                ...openaiConfig,
-                requestArguments: defaultRequestArguments,
-            });
-        }
-    }
+    const systemContent = openaiConfig?.promptList?.[0]?.content ?? '';
+    const userContent = openaiConfig?.promptList?.[1]?.content ?? '';
+
+    const setPrompt = (index, role, value) => {
+        setOpenaiConfig({
+            ...openaiConfig,
+            promptList: openaiConfig.promptList.map((prompt, i) => (i === index ? { role, content: value } : prompt)),
+        });
+    };
 
     return (
         openaiConfig !== null && (
@@ -69,6 +58,12 @@ export function Config(props) {
                 id={formId}
                 onSubmit={(e) => {
                     e.preventDefault();
+                    if (!userContent.trim()) {
+                        toast.danger(t('services.translate.openai.invalid_prompt'), {
+                            description: t('services.translate.openai.invalid_prompt_empty'),
+                        });
+                        return;
+                    }
                     setSavePending(true);
                     translate('hello', Language.auto, Language.zh_cn, { config: openaiConfig }).then(
                         () => {
@@ -105,46 +100,11 @@ export function Config(props) {
                     <Button
                         size='sm'
                         onPress={() => {
-                            open('https://pot-app.com/docs/api/translate/openai.html');
+                            open('https://developers.openai.com/api/docs/quickstart');
                         }}
                     >
                         {t('services.help')}
                     </Button>
-                </div>
-                <div className='config-item'>
-                    <h3 className='my-auto'>{t('services.translate.openai.service')}</h3>
-                    <Dropdown>
-                        <Button
-                            size='sm'
-                            variant='tertiary'
-                        >
-                            {t(`services.translate.openai.${openaiConfig.service}`)}
-                        </Button>
-                        <Dropdown.Popover>
-                            <Dropdown.Menu
-                                autoFocus='first'
-                                onAction={(key) => {
-                                    setOpenaiConfig({
-                                        ...openaiConfig,
-                                        service: key,
-                                    });
-                                }}
-                            >
-                                <Dropdown.Item
-                                    id='openai'
-                                    textValue={t(`services.translate.openai.openai`)}
-                                >
-                                    <Label>{t(`services.translate.openai.openai`)}</Label>
-                                </Dropdown.Item>
-                                <Dropdown.Item
-                                    id='azure'
-                                    textValue={t(`services.translate.openai.azure`)}
-                                >
-                                    <Label>{t(`services.translate.openai.azure`)}</Label>
-                                </Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown.Popover>
-                    </Dropdown>
                 </div>
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('services.translate.openai.stream')}</h3>
@@ -167,20 +127,6 @@ export function Config(props) {
                     </Switch>
                 </div>
                 <div className='config-item'>
-                    <h3 className='my-auto'>{t('services.translate.openai.request_path')}</h3>
-                    <TextField
-                        value={openaiConfig['requestPath']}
-                        onChange={(value) => {
-                            setOpenaiConfig({
-                                ...openaiConfig,
-                                requestPath: value,
-                            });
-                        }}
-                    >
-                        <Input variant='secondary' />
-                    </TextField>
-                </div>
-                <div className='config-item'>
                     <h3 className='my-auto'>{t('services.translate.openai.api_key')}</h3>
                     <TextField
                         value={openaiConfig['apiKey']}
@@ -197,7 +143,7 @@ export function Config(props) {
                         />
                     </TextField>
                 </div>
-                <div className={`config-item ${openaiConfig.service === 'azure' && 'hidden'}`}>
+                <div className='config-item'>
                     <h3 className='my-auto'>{t('services.translate.openai.model')}</h3>
                     <TextField
                         value={openaiConfig['model']}
@@ -215,88 +161,43 @@ export function Config(props) {
                 <p className='text-xs text-foreground py-2'>{t('services.translate.openai.prompt_description')}</p>
 
                 <Surface
-                    className='flex flex-col rounded-3xl p-3 pt-0.5'
+                    className='flex flex-col gap-3 rounded-3xl p-3'
                     variant='secondary'
                 >
-                    {openaiConfig.promptList &&
-                        openaiConfig.promptList.map((prompt, index) => {
-                            return (
-                                <div className='config-item'>
-                                    <TextField
-                                        fullWidth
-                                        value={prompt.content}
-                                        onChange={(value) => {
-                                            setOpenaiConfig({
-                                                ...openaiConfig,
-                                                promptList: openaiConfig.promptList.map((p, i) => {
-                                                    if (i === index) {
-                                                        if (i === 0) {
-                                                            return {
-                                                                role: 'system',
-                                                                content: value,
-                                                            };
-                                                        } else {
-                                                            return {
-                                                                role: index % 2 !== 0 ? 'user' : 'assistant',
-                                                                content: value,
-                                                            };
-                                                        }
-                                                    } else {
-                                                        return p;
-                                                    }
-                                                }),
-                                            });
-                                        }}
-                                    >
-                                        <Label>{prompt.role}</Label>
-                                        <TextArea
-                                            variant='secondary'
-                                            rows={6}
-                                            className={'border-2 border-muted'}
-                                            placeholder={t('services.translate.openai.input_some_prompt', {
-                                                role: prompt.role,
-                                            })}
-                                        />
-                                    </TextField>
-                                    <Button
-                                        isIconOnly
-                                        className='my-auto ms-2 shrink-0'
-                                        variant='danger-soft'
-                                        onPress={() => {
-                                            setOpenaiConfig({
-                                                ...openaiConfig,
-                                                promptList: openaiConfig.promptList.filter((_, i) => i !== index),
-                                            });
-                                        }}
-                                    >
-                                        <IconTrash />
-                                    </Button>
-                                </div>
-                            );
-                        })}
-                    <Button
-                        fullWidth
-                        className='mt-1'
-                        onPress={() => {
-                            setOpenaiConfig({
-                                ...openaiConfig,
-                                promptList: [
-                                    ...openaiConfig.promptList,
-                                    {
-                                        role:
-                                            openaiConfig.promptList.length === 0
-                                                ? 'system'
-                                                : openaiConfig.promptList.length % 2 === 0
-                                                  ? 'assistant'
-                                                  : 'user',
-                                        content: '',
-                                    },
-                                ],
-                            });
-                        }}
-                    >
-                        {t('services.translate.openai.add')}
-                    </Button>
+                    <div>
+                        <div className='mb-1 ms-2 font-medium'>{t('services.translate.openai.system_prompt')}</div>
+                        <TextField
+                            fullWidth
+                            value={systemContent}
+                            onChange={(value) => {
+                                setPrompt(0, 'system', value);
+                            }}
+                        >
+                            <TextArea
+                                variant='secondary'
+                                rows={6}
+                                className={'border-2 border-muted'}
+                                placeholder={t('services.translate.openai.input_some_prompt', { role: 'system' })}
+                            />
+                        </TextField>
+                    </div>
+                    <div>
+                        <div className='mb-1 ms-2 font-medium'>{t('services.translate.openai.user_prompt')}</div>
+                        <TextField
+                            fullWidth
+                            value={userContent}
+                            onChange={(value) => {
+                                setPrompt(1, 'user', value);
+                            }}
+                        >
+                            <TextArea
+                                variant='secondary'
+                                rows={6}
+                                className={'border-2 border-muted'}
+                                placeholder={t('services.translate.openai.input_some_prompt', { role: 'user' })}
+                            />
+                        </TextField>
+                    </div>
                 </Surface>
                 <br />
 

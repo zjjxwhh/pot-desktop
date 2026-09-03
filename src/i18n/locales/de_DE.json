@@ -409,15 +409,20 @@
                 "ecdict": {
                     "title": ""
                 },
-                "geminipro": {
-                    "add": "Prompt hinzufügen",
+                "gemini": {
                     "api_key": "API-Schlüssel",
                     "input_some_prompt": "",
-                    "prompt_description": "Passen Sie das Verhalten von Gemini Pro durch benutzerdefinierte Prompts an. $text $from $to $detect werden durch den zu übersetzenden Text, die Ausgangs- und Zielsprache sowie die erkannte Sprache ersetzt.",
+                    "invalid_model": "",
+                    "invalid_model_empty": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
+                    "model": "",
+                    "prompt_description": "Passen Sie das Verhalten von Gemini durch benutzerdefinierte Prompts an. $text $from $to $detect werden durch den zu übersetzenden Text, die Ausgangs- und Zielsprache sowie die erkannte Sprache ersetzt.",
                     "prompt_list": "",
-                    "request_path": "",
                     "stream": "Stream-Modus",
-                    "title": "Gemini Pro"
+                    "system_prompt": "",
+                    "title": "Gemini",
+                    "user_prompt": ""
                 },
                 "google": {
                     "custom_url": "Benutzerdefinierte URL",
@@ -434,11 +439,12 @@
                     "title": "NiuTrans"
                 },
                 "ollama": {
-                    "add": "",
                     "input_some_prompt": "",
                     "install_model": "",
                     "install_ollama": "",
                     "install_ollama_link": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "",
                     "not_installed": "",
                     "prompt_description": "",
@@ -447,26 +453,26 @@
                     "request_path": "",
                     "stream": "",
                     "supported_models": "",
-                    "title": ""
+                    "system_prompt": "",
+                    "title": "",
+                    "user_prompt": ""
                 },
                 "openai": {
-                    "add": "Prompt hinzufügen",
                     "api_key": "API-Schlüssel",
-                    "azure": "Azure",
                     "input_request_arguments": "",
                     "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "Modell",
-                    "openai": "OpenAI",
                     "prompt_description": "Passen Sie das Verhalten von OpenAI durch benutzerdefinierte Prompts an. $text $from $to $detect werden durch den zu übersetzenden Text, die Ausgangs- und Zielsprache sowie die erkannte Sprache ersetzt.",
                     "prompt_list": "",
                     "request_arguments": "",
-                    "request_path": "Request-Pfad",
-                    "service": "Dienstanbieter",
                     "stream": "Stream-Modus",
-                    "title": "OpenAI"
+                    "system_prompt": "",
+                    "title": "OpenAI",
+                    "user_prompt": ""
                 },
                 "openai_compatible": {
-                    "add": "",
                     "api_key": "",
                     "change_icon": "",
                     "icon": "",
@@ -479,6 +485,8 @@
                     "icon_not_found": "",
                     "input_request_arguments": "",
                     "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "",
                     "prompt_description": "",
                     "prompt_list": "",
@@ -488,7 +496,9 @@
                     "search_icon": "",
                     "select_icon": "",
                     "stream": "",
-                    "title": ""
+                    "system_prompt": "",
+                    "title": "",
+                    "user_prompt": ""
                 },
                 "tencent": {
                     "secret_id": "Secret ID",

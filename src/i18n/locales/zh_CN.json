@@ -409,15 +409,20 @@
                 "ecdict": {
                     "title": "ECDict (在线)"
                 },
-                "geminipro": {
-                    "add": "添加提示词",
+                "gemini": {
                     "api_key": "API Key",
                     "input_some_prompt": "输入 {{role}} 的提示词",
-                    "prompt_description": "通过自定义提示词自定义 Gemini Pro 的行为，{{$text}}、{{$from}}、{{$to}}、{{$detect}} 将会被替换为 {{待翻译文本}}、{{源语言}}、{{目标语言}}、{{检测到的语言}}。",
+                    "invalid_model": "模型不合法",
+                    "invalid_model_empty": "模型不能为空。",
+                    "invalid_prompt": "提示词不合法",
+                    "invalid_prompt_empty": "user 提示词不能为空。",
+                    "model": "模型",
+                    "prompt_description": "通过自定义提示词自定义 Gemini 的行为，{{$text}}、{{$from}}、{{$to}}、{{$detect}} 将会被替换为 {{待翻译文本}}、{{源语言}}、{{目标语言}}、{{检测到的语言}}。",
                     "prompt_list": "提示词列表",
-                    "request_path": "请求地址",
                     "stream": "流式输出",
-                    "title": "Gemini Pro"
+                    "system_prompt": "system 提示词（人设 / 规则，可留空）",
+                    "title": "Gemini",
+                    "user_prompt": "user 提示词（翻译请求模板）"
                 },
                 "google": {
                     "custom_url": "自定义 URL",
@@ -434,11 +439,12 @@
                     "title": "小牛翻译"
                 },
                 "ollama": {
-                    "add": "添加提示词",
                     "input_some_prompt": "输入 {{role}} 的提示词",
                     "install_model": "安装",
                     "install_ollama": "无法连接到本地 Ollama，请先下载安装并启动 Ollama，如果您使用不在本机上的 Ollama，请更改请求地址",
                     "install_ollama_link": "Ollama 下载地址",
+                    "invalid_prompt": "提示词不合法",
+                    "invalid_prompt_empty": "user 提示词不能为空。",
                     "model": "模型",
                     "not_installed": "该模型还未安装，点击立即下载安装",
                     "prompt_description": "通过自定义提示词自定义 Ollama 的行为，{{$text}}、{{$from}}、{{$to}}、{{$detect}} 将会被替换为 {{待翻译文本}}、{{源语言}}、{{目标语言}}、{{检测到的语言}}。",
@@ -447,26 +453,26 @@
                     "request_path": "请求地址",
                     "stream": "流式输出",
                     "supported_models": "点击查看 Ollama 可用模型列表",
-                    "title": "Ollama"
+                    "system_prompt": "system 提示词（人设 / 规则，可留空）",
+                    "title": "Ollama",
+                    "user_prompt": "user 提示词（翻译请求模板）"
                 },
                 "openai": {
-                    "add": "添加提示词",
                     "api_key": "API Key",
-                    "azure": "Azure",
                     "input_request_arguments": "输入 API 请求参数",
                     "input_some_prompt": "输入 {{role}} 的提示词",
+                    "invalid_prompt": "提示词不合法",
+                    "invalid_prompt_empty": "user 提示词不能为空。",
                     "model": "模型",
-                    "openai": "OpenAI",
                     "prompt_description": "通过自定义提示词自定义 OpenAI 的行为，{{$text}}、{{$from}}、{{$to}}、{{$detect}} 将会被替换为 {{待翻译文本}}、{{源语言}}、{{目标语言}}、{{检测到的语言}}。",
                     "prompt_list": "提示词列表",
                     "request_arguments": "请求参数",
-                    "request_path": "请求地址",
-                    "service": "服务提供商",
                     "stream": "流式输出",
-                    "title": "OpenAI"
+                    "system_prompt": "system 提示词（人设 / 规则，可留空）",
+                    "title": "OpenAI",
+                    "user_prompt": "user 提示词（翻译请求模板）"
                 },
                 "openai_compatible": {
-                    "add": "添加提示词",
                     "api_key": "API Key",
                     "change_icon": "变更图标",
                     "icon": "图标",
@@ -479,6 +485,8 @@
                     "icon_not_found": "未找到图标",
                     "input_request_arguments": "输入 API 请求参数",
                     "input_some_prompt": "输入 {{role}} 的提示词",
+                    "invalid_prompt": "提示词不合法",
+                    "invalid_prompt_empty": "user 提示词不能为空。",
                     "model": "模型",
                     "prompt_description": "通过自定义提示词自定义 OpenAI 兼容服务的行为，{{$text}}、{{$from}}、{{$to}}、{{$detect}} 将会被替换为 {{待翻译文本}}、{{源语言}}、{{目标语言}}、{{检测到的语言}}。",
                     "prompt_list": "提示词列表",
@@ -488,7 +496,9 @@
                     "search_icon": "搜索图标",
                     "select_icon": "选择图标",
                     "stream": "流式输出",
-                    "title": "OpenAI 兼容"
+                    "system_prompt": "system 提示词（人设 / 规则，可留空）",
+                    "title": "OpenAI 兼容",
+                    "user_prompt": "user 提示词（翻译请求模板）"
                 },
                 "tencent": {
                     "secret_id": "Secret ID",

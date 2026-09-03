@@ -409,15 +409,20 @@
                 "ecdict": {
                     "title": ""
                 },
-                "geminipro": {
-                    "add": "הוסף הנחיה",
+                "gemini": {
                     "api_key": "מפתח Api",
                     "input_some_prompt": "",
-                    "prompt_description": "על ידי התאמה אישית של ההנחיה, תוכל להתאים אישית את ההתנהגות של Gemini Pro כרצונך. $text $from $to $detect יוחלף בטקסט לתרגום, שפת המקור, שפת היעד ושפת הזיהוי.",
+                    "invalid_model": "",
+                    "invalid_model_empty": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
+                    "model": "",
+                    "prompt_description": "על ידי התאמה אישית של ההנחיה, תוכל להתאים אישית את ההתנהגות של Gemini כרצונך. $text $from $to $detect יוחלף בטקסט לתרגום, שפת המקור, שפת היעד ושפת הזיהוי.",
                     "prompt_list": "",
-                    "request_path": "בקש נתיב",
                     "stream": "מצב הזרמה",
-                    "title": "Gemini Pro"
+                    "system_prompt": "",
+                    "title": "Gemini",
+                    "user_prompt": ""
                 },
                 "google": {
                     "custom_url": "קישור מותאם אישית",
@@ -434,11 +439,12 @@
                     "title": ""
                 },
                 "ollama": {
-                    "add": "הוסף הנחיה",
                     "input_some_prompt": "",
                     "install_model": "התקן",
                     "install_ollama": "אין אפשרות להתחבר לתוכנת ollama המקומית, אנא הורד, התקן והתחל תחילה את ollama. אם אתה משתמש ב-ollama במכונה אחרת, אנא שנה את כתובת הבקשה.",
                     "install_ollama_link": "הורד את Ollama",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "מודל",
                     "not_installed": "מודל זה לא הותקן עדיין, לחץ כדי להוריד ולהתקין עכשיו",
                     "prompt_description": "על ידי התאמה אישית של ההנחיה, אתה יכול להתאים אישית את ההתנהגות של הבינה המלאכותית. $text $from $to $detect יוחלף בטקסט לתרגום, שפת המקור, שפת היעד ושפת הזיהוי.",
@@ -447,26 +453,26 @@
                     "request_path": "בקש נתיב",
                     "stream": "מצב הזרמה",
                     "supported_models": "לחץ כדי לראות רשימה של דגמים זמינים ב- Ollama",
-                    "title": "Ollama"
+                    "system_prompt": "",
+                    "title": "Ollama",
+                    "user_prompt": ""
                 },
                 "openai": {
-                    "add": "הוסף הנחיה",
                     "api_key": "מפתח Api",
-                    "azure": "Azure",
                     "input_request_arguments": "",
                     "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "מודל",
-                    "openai": "OpenAI",
                     "prompt_description": "על ידי התאמה אישית של ההנחיה, אתה יכול להתאים אישית את ההתנהגות של OpenAI כרצונך. $text $from $to $detect יוחלף בטקסט לתרגום, שפת המקור, שפת היעד ושפת הזיהוי.",
                     "prompt_list": "",
                     "request_arguments": "",
-                    "request_path": "בקש נתיב",
-                    "service": "ספק שירות",
                     "stream": "מצב הזרמה",
-                    "title": "OpenAI"
+                    "system_prompt": "",
+                    "title": "OpenAI",
+                    "user_prompt": ""
                 },
                 "openai_compatible": {
-                    "add": "",
                     "api_key": "",
                     "change_icon": "",
                     "icon": "",
@@ -479,6 +485,8 @@
                     "icon_not_found": "",
                     "input_request_arguments": "",
                     "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "",
                     "prompt_description": "",
                     "prompt_list": "",
@@ -488,7 +496,9 @@
                     "search_icon": "",
                     "select_icon": "",
                     "stream": "",
-                    "title": ""
+                    "system_prompt": "",
+                    "title": "",
+                    "user_prompt": ""
                 },
                 "tencent": {
                     "secret_id": "",

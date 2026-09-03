@@ -409,15 +409,20 @@
                 "ecdict": {
                     "title": ""
                 },
-                "geminipro": {
-                    "add": "",
+                "gemini": {
                     "api_key": "",
                     "input_some_prompt": "",
+                    "invalid_model": "",
+                    "invalid_model_empty": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
+                    "model": "",
                     "prompt_description": "",
                     "prompt_list": "",
-                    "request_path": "",
                     "stream": "",
-                    "title": ""
+                    "system_prompt": "",
+                    "title": "",
+                    "user_prompt": ""
                 },
                 "google": {
                     "custom_url": "사용자 지정 URL",
@@ -434,11 +439,12 @@
                     "title": ""
                 },
                 "ollama": {
-                    "add": "프롬프트 추가",
                     "input_some_prompt": "",
                     "install_model": "설치",
                     "install_ollama": "로컬 Ollama에 연결할 수 없습니다. 먼저 Ollama를 다운로드, 설치, 실행해 주세요.",
                     "install_ollama_link": "Ollama 다운로드",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "모델",
                     "not_installed": "해당 모델이 설치되어 있지 않습니다. 다운로드 및 설치하려면 지금 클릭하세요",
                     "prompt_description": "프롬프트를 사용자 지정하면 AI의 동작을 원하는 대로 설정할 수 있습니다. $text, $from, $to, $detect는 각각 번역할 텍스트, 원본 언어, 대상 언어, 감지된 언어로 대체됩니다.",
@@ -447,26 +453,26 @@
                     "request_path": "경로 요청",
                     "stream": "실시간 모드",
                     "supported_models": "Ollama 지원 모델 목록 보기",
-                    "title": "Ollama"
+                    "system_prompt": "",
+                    "title": "Ollama",
+                    "user_prompt": ""
                 },
                 "openai": {
-                    "add": "",
                     "api_key": "API 키",
-                    "azure": "",
                     "input_request_arguments": "",
                     "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "모델",
-                    "openai": "",
                     "prompt_description": "",
                     "prompt_list": "",
                     "request_arguments": "",
-                    "request_path": "경로 요청",
-                    "service": "서비스 제공자",
                     "stream": "",
-                    "title": "OpenAI"
+                    "system_prompt": "",
+                    "title": "OpenAI",
+                    "user_prompt": ""
                 },
                 "openai_compatible": {
-                    "add": "",
                     "api_key": "",
                     "change_icon": "",
                     "icon": "",
@@ -479,6 +485,8 @@
                     "icon_not_found": "",
                     "input_request_arguments": "",
                     "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "",
                     "prompt_description": "",
                     "prompt_list": "",
@@ -488,7 +496,9 @@
                     "search_icon": "",
                     "select_icon": "",
                     "stream": "",
-                    "title": ""
+                    "system_prompt": "",
+                    "title": "",
+                    "user_prompt": ""
                 },
                 "tencent": {
                     "secret_id": "",

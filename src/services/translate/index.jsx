@@ -16,7 +16,7 @@ import * as _cambridge_dict from './cambridge_dict';
 import * as _caiyun from './caiyun';
 import * as _zhipu from './zhipu';
 import * as _openai_compatible from './openai_compatible';
-import * as _geminipro from './geminipro';
+import * as _gemini from './gemini';
 import * as _ollama from './ollama';
 import * as _lingva from './lingva';
 
@@ -38,6 +38,6 @@ export const cambridge_dict = _cambridge_dict;
 export const caiyun = _caiyun;
 export const zhipu = _zhipu;
 export const openai_compatible = _openai_compatible;
-export const geminipro = _geminipro;
+export const gemini = _gemini;
 export const ollama = _ollama;
 export const lingva = _lingva;

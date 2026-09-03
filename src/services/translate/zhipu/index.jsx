@@ -8,7 +8,7 @@ export async function translate(text, from, to, options = {}) {
     let { model, apiKey, promptList } = config;
 
     promptList = promptList
-        .filter((item) => !(item.role === 'system' && !(item.content ?? '').trim()))
+        .filter((item) => !(item.role === 'system' && !item.content.trim()))
         .map((item) => {
             return {
                 ...item,

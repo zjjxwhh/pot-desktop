@@ -13,7 +13,6 @@ import {
     toast,
 } from '@heroui/react';
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
-import { IconTrash } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-shell';
 import React, { useEffect, useState } from 'react';
@@ -22,6 +21,18 @@ import { Ollama } from 'ollama/browser';
 import { useConfig } from '../../../hooks/useConfig';
 import { translate } from './index';
 import { Language } from './index';
+
+const defaultPromptList = [
+    {
+        role: 'system',
+        content:
+            'You are a professional translation engine, please translate the text into a colloquial, professional, elegant and fluent content, without the style of machine translation. You must only translate the text content, never interpret it.',
+    },
+    {
+        role: 'user',
+        content: `Translate into $to:\n"""\n$text\n"""`,
+    },
+];
 
 export function Config(props) {
     const { instanceKey, updateServiceList, onClose, formId, setSavePending } = props;
@@ -33,14 +44,7 @@ export function Config(props) {
             stream: true,
             model: '',
             requestPath: 'http://localhost:11434',
-            promptList: [
-                {
-                    role: 'system',
-                    content:
-                        'You are a professional translation engine, please translate the text into a colloquial, professional, elegant and fluent content, without the style of machine translation. You must only translate the text content, never interpret it.',
-                },
-                { role: 'user', content: `Translate into $to:\n"""\n$text\n"""` },
-            ],
+            promptList: defaultPromptList,
         },
         { sync: false }
     );
@@ -48,6 +52,16 @@ export function Config(props) {
     const [progress, setProgress] = useState(0);
     const [pullingStatus, setPullingStatus] = useState('');
     const [installedModels, setInstalledModels] = useState(null);
+
+    const systemContent = serviceConfig?.promptList?.[0]?.content ?? '';
+    const userContent = serviceConfig?.promptList?.[1]?.content ?? '';
+
+    const setPrompt = (index, role, value) => {
+        setServiceConfig({
+            ...serviceConfig,
+            promptList: serviceConfig.promptList.map((prompt, i) => (i === index ? { role, content: value } : prompt)),
+        });
+    };
 
     async function getModles() {
         try {
@@ -94,6 +108,12 @@ export function Config(props) {
                 id={formId}
                 onSubmit={(e) => {
                     e.preventDefault();
+                    if (!userContent.trim()) {
+                        toast.danger(t('services.translate.ollama.invalid_prompt'), {
+                            description: t('services.translate.ollama.invalid_prompt_empty'),
+                        });
+                        return;
+                    }
                     setSavePending(true);
                     translate('hello', Language.auto, Language.zh_cn, { config: serviceConfig }).then(
                         () => {
@@ -259,88 +279,43 @@ export function Config(props) {
                 <p className='text-xs text-foreground py-2'>{t('services.translate.ollama.prompt_description')}</p>
 
                 <Surface
-                    className='flex flex-col rounded-3xl p-3 pt-0.5'
+                    className='flex flex-col gap-3 rounded-3xl p-3'
                     variant='secondary'
                 >
-                    {serviceConfig.promptList &&
-                        serviceConfig.promptList.map((prompt, index) => {
-                            return (
-                                <div className='config-item'>
-                                    <TextField
-                                        fullWidth
-                                        value={prompt.content}
-                                        onChange={(value) => {
-                                            setServiceConfig({
-                                                ...serviceConfig,
-                                                promptList: serviceConfig.promptList.map((p, i) => {
-                                                    if (i === index) {
-                                                        if (i === 0) {
-                                                            return {
-                                                                role: 'system',
-                                                                content: value,
-                                                            };
-                                                        } else {
-                                                            return {
-                                                                role: index % 2 !== 0 ? 'user' : 'assistant',
-                                                                content: value,
-                                                            };
-                                                        }
-                                                    } else {
-                                                        return p;
-                                                    }
-                                                }),
-                                            });
-                                        }}
-                                    >
-                                        <Label>{prompt.role}</Label>
-                                        <TextArea
-                                            variant='secondary'
-                                            rows={6}
-                                            className={'border-2 border-muted'}
-                                            placeholder={t('services.translate.ollama.input_some_prompt', {
-                                                role: prompt.role,
-                                            })}
-                                        />
-                                    </TextField>
-                                    <Button
-                                        isIconOnly
-                                        className='my-auto ms-2 shrink-0'
-                                        variant='danger-soft'
-                                        onPress={() => {
-                                            setServiceConfig({
-                                                ...serviceConfig,
-                                                promptList: serviceConfig.promptList.filter((_, i) => i !== index),
-                                            });
-                                        }}
-                                    >
-                                        <IconTrash />
-                                    </Button>
-                                </div>
-                            );
-                        })}
-                    <Button
-                        fullWidth
-                        className='mt-1'
-                        onPress={() => {
-                            setServiceConfig({
-                                ...serviceConfig,
-                                promptList: [
-                                    ...serviceConfig.promptList,
-                                    {
-                                        role:
-                                            serviceConfig.promptList.length === 0
-                                                ? 'system'
-                                                : serviceConfig.promptList.length % 2 === 0
-                                                  ? 'assistant'
-                                                  : 'user',
-                                        content: '',
-                                    },
-                                ],
-                            });
-                        }}
-                    >
-                        {t('services.translate.ollama.add')}
-                    </Button>
+                    <div>
+                        <div className='mb-1 ms-2 font-medium'>{t('services.translate.ollama.system_prompt')}</div>
+                        <TextField
+                            fullWidth
+                            value={systemContent}
+                            onChange={(value) => {
+                                setPrompt(0, 'system', value);
+                            }}
+                        >
+                            <TextArea
+                                variant='secondary'
+                                rows={6}
+                                className={'border-2 border-muted'}
+                                placeholder={t('services.translate.ollama.input_some_prompt', { role: 'system' })}
+                            />
+                        </TextField>
+                    </div>
+                    <div>
+                        <div className='mb-1 ms-2 font-medium'>{t('services.translate.ollama.user_prompt')}</div>
+                        <TextField
+                            fullWidth
+                            value={userContent}
+                            onChange={(value) => {
+                                setPrompt(1, 'user', value);
+                            }}
+                        >
+                            <TextArea
+                                variant='secondary'
+                                rows={6}
+                                className={'border-2 border-muted'}
+                                placeholder={t('services.translate.ollama.input_some_prompt', { role: 'user' })}
+                            />
+                        </TextField>
+                    </div>
                 </Surface>
             </form>
         )

@@ -409,15 +409,20 @@
                 "ecdict": {
                     "title": "ECDict (Онлайн)"
                 },
-                "geminipro": {
-                    "add": "Додати Prompt",
+                "gemini": {
                     "api_key": "API-ключ",
                     "input_some_prompt": "",
-                    "prompt_description": "За допомогою власного Prompt можна налаштувати поведінку Gemini Pro. $text, $from, $to, $detect замінюються на текст, мову оригіналу, мову перекладу та виявлену мову відповідно.",
+                    "invalid_model": "",
+                    "invalid_model_empty": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
+                    "model": "",
+                    "prompt_description": "За допомогою власного Prompt можна налаштувати поведінку Gemini. $text, $from, $to, $detect замінюються на текст, мову оригіналу, мову перекладу та виявлену мову відповідно.",
                     "prompt_list": "",
-                    "request_path": "Шлях запиту",
                     "stream": "Потоковий режим",
-                    "title": "Gemini Pro"
+                    "system_prompt": "",
+                    "title": "Gemini",
+                    "user_prompt": ""
                 },
                 "google": {
                     "custom_url": "Власний URL",
@@ -434,11 +439,12 @@
                     "title": "NiuTrans"
                 },
                 "ollama": {
-                    "add": "Додати Prompt",
                     "input_some_prompt": "",
                     "install_model": "Встановити",
                     "install_ollama": "Не вдалося підключитися до локального Ollama. Завантажте, встановіть і запустіть Ollama. Якщо Ollama запущено на іншому пристрої — змініть адресу запиту.",
                     "install_ollama_link": "Завантажити Ollama",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "Модель",
                     "not_installed": "Цю модель ще не встановлено. Натисніть, щоб завантажити та встановити її",
                     "prompt_description": "За допомогою власного Prompt можна налаштувати поведінку ШІ. $text, $from, $to, $detect замінюються на текст, мову оригіналу, мову перекладу та виявлену мову відповідно.",
@@ -447,26 +453,26 @@
                     "request_path": "Шлях запиту",
                     "stream": "Потоковий режим",
                     "supported_models": "Натисніть, щоб переглянути список доступних моделей Ollama",
-                    "title": "Ollama"
+                    "system_prompt": "",
+                    "title": "Ollama",
+                    "user_prompt": ""
                 },
                 "openai": {
-                    "add": "Додати Prompt",
                     "api_key": "API-ключ",
-                    "azure": "Azure",
                     "input_request_arguments": "",
                     "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "Модель",
-                    "openai": "OpenAI",
                     "prompt_description": "За допомогою власного Prompt можна налаштувати поведінку OpenAI. $text, $from, $to, $detect замінюються на текст, мову оригіналу, мову перекладу та виявлену мову відповідно.",
                     "prompt_list": "",
                     "request_arguments": "",
-                    "request_path": "Шлях запиту",
-                    "service": "Постачальник послуг",
                     "stream": "Потоковий режим",
-                    "title": "OpenAI"
+                    "system_prompt": "",
+                    "title": "OpenAI",
+                    "user_prompt": ""
                 },
                 "openai_compatible": {
-                    "add": "",
                     "api_key": "",
                     "change_icon": "",
                     "icon": "",
@@ -479,6 +485,8 @@
                     "icon_not_found": "",
                     "input_request_arguments": "",
                     "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "",
                     "prompt_description": "",
                     "prompt_list": "",
@@ -488,7 +496,9 @@
                     "search_icon": "",
                     "select_icon": "",
                     "stream": "",
-                    "title": ""
+                    "system_prompt": "",
+                    "title": "",
+                    "user_prompt": ""
                 },
                 "tencent": {
                     "secret_id": "Secret ID",

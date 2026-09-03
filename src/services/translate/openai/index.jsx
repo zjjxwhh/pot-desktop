@@ -1,36 +1,12 @@
 import i18n from '../../../i18n';
 import { fetch } from '@tauri-apps/plugin-http';
 import { Language } from './info';
-import { defaultRequestArguments } from './Config';
+const OPENAI_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
 
 export async function translate(text, from, to, options) {
     const { config, setResult, detect } = options;
 
-    let { service, requestPath, model, apiKey, stream, promptList, requestArguments } = config;
-
-    if (!/https?:\/\/.+/.test(requestPath)) {
-        requestPath = `https://${requestPath}`;
-    }
-    const apiUrl = new URL(requestPath);
-
-    // in openai like api, /v1 is not required
-    if (service === 'openai' && !apiUrl.pathname.endsWith('/chat/completions')) {
-        // not openai like, populate completion endpoint
-        apiUrl.pathname += apiUrl.pathname.endsWith('/') ? '' : '/';
-        apiUrl.pathname += 'v1/chat/completions';
-    }
-
-    // 兼容旧版
-    if (promptList === undefined) {
-        promptList = [
-            {
-                role: 'system',
-                content:
-                    'You are a professional translation engine, please translate the text into a colloquial, professional, elegant and fluent content, without the style of machine translation. You must only translate the text content, never interpret it.',
-            },
-            { role: 'user', content: `Translate into $to:\n"""\n$text\n"""` },
-        ];
-    }
+    let { model, apiKey, stream, promptList, requestArguments } = config;
 
     promptList = promptList.map((item) => {
         return {
@@ -43,26 +19,18 @@ export async function translate(text, from, to, options) {
         };
     });
 
-    const headers =
-        service === 'openai'
-            ? {
-                  'Content-Type': 'application/json',
-                  Authorization: `Bearer ${apiKey}`,
-              }
-            : {
-                  'Content-Type': 'application/json',
-                  'api-key': apiKey,
-              };
+    const headers = {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+    };
     const body = {
-        ...JSON.parse(requestArguments ?? defaultRequestArguments),
+        ...JSON.parse(requestArguments),
         stream: stream,
         messages: promptList,
+        model: model,
     };
-    if (service === 'openai') {
-        body['model'] = model;
-    }
     if (stream) {
-        const res = await fetch(apiUrl.href, {
+        const res = await fetch(OPENAI_ENDPOINT, {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(body),
@@ -119,7 +87,7 @@ export async function translate(text, from, to, options) {
             throw i18n.t('config.service.http_request_error', { status: res.status, detail: JSON.stringify(await res.json()) });
         }
     } else {
-        let res = await fetch(apiUrl.href, {
+        let res = await fetch(OPENAI_ENDPOINT, {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(body),

@@ -409,15 +409,20 @@
                 "ecdict": {
                     "title": ""
                 },
-                "geminipro": {
-                    "add": "",
+                "gemini": {
                     "api_key": "",
                     "input_some_prompt": "",
+                    "invalid_model": "",
+                    "invalid_model_empty": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
+                    "model": "",
                     "prompt_description": "",
                     "prompt_list": "",
-                    "request_path": "",
                     "stream": "",
-                    "title": ""
+                    "system_prompt": "",
+                    "title": "",
+                    "user_prompt": ""
                 },
                 "google": {
                     "custom_url": "URL personalizzato",
@@ -434,11 +439,12 @@
                     "title": "NiuTrans"
                 },
                 "ollama": {
-                    "add": "",
                     "input_some_prompt": "",
                     "install_model": "",
                     "install_ollama": "",
                     "install_ollama_link": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "",
                     "not_installed": "",
                     "prompt_description": "",
@@ -447,26 +453,26 @@
                     "request_path": "",
                     "stream": "",
                     "supported_models": "",
-                    "title": ""
+                    "system_prompt": "",
+                    "title": "",
+                    "user_prompt": ""
                 },
                 "openai": {
-                    "add": "Aggiungi Prompt",
                     "api_key": "Chiave API",
-                    "azure": "Azure",
                     "input_request_arguments": "",
                     "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "Modello",
-                    "openai": "OpenAI",
                     "prompt_description": "Personalizzando il prompt, puoi personalizzare il comportamento di OpenAI. $text $from $to $detect verrà sostituito con il testo da tradurre, la lingua di origine, la lingua di destinazione e la lingua rilevata.",
                     "prompt_list": "",
                     "request_arguments": "",
-                    "request_path": "Percorso richiesto",
-                    "service": "Service Provider",
                     "stream": "Modalità di streaming",
-                    "title": "OpenAI"
+                    "system_prompt": "",
+                    "title": "OpenAI",
+                    "user_prompt": ""
                 },
                 "openai_compatible": {
-                    "add": "",
                     "api_key": "",
                     "change_icon": "",
                     "icon": "",
@@ -479,6 +485,8 @@
                     "icon_not_found": "",
                     "input_request_arguments": "",
                     "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "",
                     "prompt_description": "",
                     "prompt_list": "",
@@ -488,7 +496,9 @@
                     "search_icon": "",
                     "select_icon": "",
                     "stream": "",
-                    "title": ""
+                    "system_prompt": "",
+                    "title": "",
+                    "user_prompt": ""
                 },
                 "tencent": {
                     "secret_id": "ID segreto",

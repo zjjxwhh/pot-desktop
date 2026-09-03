@@ -409,15 +409,20 @@
                 "ecdict": {
                     "title": "Ecdict (ஆன்லைன்)"
                 },
-                "geminipro": {
-                    "add": "வரியில் சேர்க்கவும்",
+                "gemini": {
                     "api_key": "பநிஇ விசை",
                     "input_some_prompt": "",
+                    "invalid_model": "",
+                    "invalid_model_empty": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
+                    "model": "",
                     "prompt_description": "வரியில் தனிப்பயனாக்குவதன் மூலம், செமினி புரோவின் நடத்தையைத் தனிப்பயனாக்கலாம். $ உரை $ முதல் $ கண்டறிதல் வரை மொழிபெயர்க்கப்பட வேண்டிய உரை, மூல மொழி, இலக்கு மொழி மற்றும் கண்டறியப்பட்ட மொழி மூலம் மாற்றப்படும்.",
                     "prompt_list": "",
-                    "request_path": "கோரிக்கை பாதை",
                     "stream": "ச்ட்ரீம் பயன்முறை",
-                    "title": "செமினி புரோ"
+                    "system_prompt": "",
+                    "title": "செமினி புரோ",
+                    "user_prompt": ""
                 },
                 "google": {
                     "custom_url": "தனிப்பயன் முகவரி",
@@ -434,11 +439,12 @@
                     "title": "நைட்ரான்ச்"
                 },
                 "ollama": {
-                    "add": "வரியில் சேர்க்கவும்",
                     "input_some_prompt": "",
                     "install_model": "நிறுவவும்",
                     "install_ollama": "உள்ளக ஓலாமாவுடன் இணைக்க முடியவில்லை, தயவுசெய்து ஓலாமாவைப் பதிவிறக்கி, நிறுவி தொடங்கவும். இந்த கணினியில் இல்லாத ஓலாமாவைப் பயன்படுத்தினால், தயவுசெய்து கோரிக்கை முகவரியை மாற்றவும்.",
                     "install_ollama_link": "ஒல்லாமா பதிவிறக்கவும்",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "மாதிரியுரு",
                     "not_installed": "இந்த மாதிரி இன்னும் நிறுவப்படவில்லை, இப்போது பதிவிறக்கம் செய்து நிறுவ சொடுக்கு செய்க",
                     "prompt_description": "வரியில் தனிப்பயனாக்குவதன் மூலம், AI இன் நடத்தையைத் தனிப்பயனாக்கலாம். $ உரை $ முதல் $ கண்டறிதல் வரை மொழிபெயர்க்கப்பட வேண்டிய உரை, மூல மொழி, இலக்கு மொழி மற்றும் கண்டறியப்பட்ட மொழி மூலம் மாற்றப்படும்.",
@@ -447,26 +453,26 @@
                     "request_path": "கோரிக்கை பாதை",
                     "stream": "ச்ட்ரீம் பயன்முறை",
                     "supported_models": "ஒல்லாமா கிடைக்கக்கூடிய மாதிரிகளின் பட்டியலைக் காண சொடுக்கு செய்க",
-                    "title": "ஓலாமா"
+                    "system_prompt": "",
+                    "title": "ஓலாமா",
+                    "user_prompt": ""
                 },
                 "openai": {
-                    "add": "வரியில் சேர்க்கவும்",
                     "api_key": "பநிஇ விசை",
-                    "azure": "அசூர்",
                     "input_request_arguments": "",
                     "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "மாதிரியுரு",
-                    "openai": "ஓபனாய்",
                     "prompt_description": "வரியில் தனிப்பயனாக்குவதன் மூலம், நீங்கள் OpenAI இன் நடத்தையைத் தனிப்பயனாக்கலாம். $ உரை $ முதல் $ கண்டறிதல் வரை மொழிபெயர்க்கப்பட வேண்டிய உரை, மூல மொழி, இலக்கு மொழி மற்றும் கண்டறியப்பட்ட மொழி மூலம் மாற்றப்படும்.",
                     "prompt_list": "",
                     "request_arguments": "",
-                    "request_path": "கோரிக்கை பாதை",
-                    "service": "பணி வழங்குநர்",
                     "stream": "ச்ட்ரீம் பயன்முறை",
-                    "title": "ஓபனாய்"
+                    "system_prompt": "",
+                    "title": "ஓபனாய்",
+                    "user_prompt": ""
                 },
                 "openai_compatible": {
-                    "add": "",
                     "api_key": "",
                     "change_icon": "",
                     "icon": "",
@@ -479,6 +485,8 @@
                     "icon_not_found": "",
                     "input_request_arguments": "",
                     "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
                     "model": "",
                     "prompt_description": "",
                     "prompt_list": "",
@@ -488,7 +496,9 @@
                     "search_icon": "",
                     "select_icon": "",
                     "stream": "",
-                    "title": ""
+                    "system_prompt": "",
+                    "title": "",
+                    "user_prompt": ""
                 },
                 "tencent": {
                     "secret_id": "ரகசிய ஐடி",

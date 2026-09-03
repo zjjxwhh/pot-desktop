@@ -409,15 +409,20 @@
                 "ecdict": {
                     "title": "ECDict (線上)"
                 },
-                "geminipro": {
-                    "add": "新增提示詞",
+                "gemini": {
                     "api_key": "API Key",
                     "input_some_prompt": "輸入 {{role}} 的提示詞",
-                    "prompt_description": "透過自訂提示詞，您可以自訂 Gemini Pro 的行為。$text $from $to $detect 將被替換為待翻譯的文字、來源語言、目標語言和偵測到的語言。",
+                    "invalid_model": "模型不合法",
+                    "invalid_model_empty": "模型不能為空。",
+                    "invalid_prompt": "提示詞不合法",
+                    "invalid_prompt_empty": "user 提示詞不能為空。",
+                    "model": "模型",
+                    "prompt_description": "透過自訂提示詞，您可以自訂 Gemini 的行為。$text $from $to $detect 將被替換為待翻譯的文字、來源語言、目標語言和偵測到的語言。",
                     "prompt_list": "提示詞列表",
-                    "request_path": "請求路徑",
                     "stream": "串流輸出",
-                    "title": "Gemini Pro"
+                    "system_prompt": "system 提示詞（人設 / 規則，可留空）",
+                    "title": "Gemini",
+                    "user_prompt": "user 提示詞（翻譯請求模板）"
                 },
                 "google": {
                     "custom_url": "自訂網址",
@@ -434,11 +439,12 @@
                     "title": "小牛翻譯"
                 },
                 "ollama": {
-                    "add": "新增提示詞",
                     "input_some_prompt": "輸入 {{role}} 的提示詞",
                     "install_model": "安裝",
                     "install_ollama": "無法連線到本機的 Ollama，請先下載、安裝並啟動 Ollama。如果您使用的 Ollama 不在這台主機上，請更改對應的網址。",
                     "install_ollama_link": "下載 Ollama",
+                    "invalid_prompt": "提示詞不合法",
+                    "invalid_prompt_empty": "user 提示詞不能為空。",
                     "model": "模型",
                     "not_installed": "此模型尚未安裝，點選立即下載並安裝",
                     "prompt_description": "透過自訂提示詞，您可以自訂 Ollama 的行為。$text $from $to $detect 將被替換為待翻譯的文字、來源語言、目標語言和偵測到的語言。",
@@ -447,26 +453,26 @@
                     "request_path": "請求路徑",
                     "stream": "串流輸出",
                     "supported_models": "點選檢視 Ollama 可用模型列表",
-                    "title": "Ollama"
+                    "system_prompt": "system 提示詞（人設 / 規則，可留空）",
+                    "title": "Ollama",
+                    "user_prompt": "user 提示詞（翻譯請求模板）"
                 },
                 "openai": {
-                    "add": "新增提示詞",
                     "api_key": "API Key",
-                    "azure": "Azure",
                     "input_request_arguments": "輸入 API 請求參數",
                     "input_some_prompt": "輸入 {{role}} 的提示詞",
+                    "invalid_prompt": "提示詞不合法",
+                    "invalid_prompt_empty": "user 提示詞不能為空。",
                     "model": "模型",
-                    "openai": "OpenAI",
                     "prompt_description": "透過自訂提示詞，您可以自訂 OpenAI 的行為。$text $from $to $detect 將被替換為待翻譯的文字、來源語言、目標語言和偵測到的語言。",
                     "prompt_list": "提示詞列表",
                     "request_arguments": "請求參數",
-                    "request_path": "請求路徑",
-                    "service": "服務供應商",
                     "stream": "串流輸出",
-                    "title": "OpenAI"
+                    "system_prompt": "system 提示詞（人設 / 規則，可留空）",
+                    "title": "OpenAI",
+                    "user_prompt": "user 提示詞（翻譯請求模板）"
                 },
                 "openai_compatible": {
-                    "add": "新增提示詞",
                     "api_key": "API Key",
                     "change_icon": "變更圖示",
                     "icon": "圖示",
@@ -479,6 +485,8 @@
                     "icon_not_found": "找不到圖示",
                     "input_request_arguments": "輸入 API 請求參數",
                     "input_some_prompt": "輸入 {{role}} 的提示詞",
+                    "invalid_prompt": "提示詞不合法",
+                    "invalid_prompt_empty": "user 提示詞不能為空。",
                     "model": "模型",
                     "prompt_description": "透過自訂提示詞自訂 OpenAI 相容服務的行為，{{$text}}、{{$from}}、{{$to}}、{{$detect}} 將會被替換為 {{待翻譯文本}}、{{源語言}}、{{目標語言}}、{{檢測到的語言}}。",
                     "prompt_list": "提示詞列表",
@@ -488,7 +496,9 @@
                     "search_icon": "搜尋圖示",
                     "select_icon": "選擇圖示",
                     "stream": "串流輸出",
-                    "title": "OpenAI 相容"
+                    "system_prompt": "system 提示詞（人設 / 規則，可留空）",
+                    "title": "OpenAI 相容",
+                    "user_prompt": "user 提示詞（翻譯請求模板）"
                 },
                 "tencent": {
                     "secret_id": "Secret ID",
