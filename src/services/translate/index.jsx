@@ -19,6 +19,10 @@ import * as _openai_compatible from './openai_compatible';
 import * as _gemini from './gemini';
 import * as _ollama from './ollama';
 import * as _lingva from './lingva';
+import * as _deepseek from './deepseek';
+import * as _bailian from './bailian';
+import * as _moonshot from './moonshot';
+import * as _mimo from './mimo';
 
 export const deepl = _deepl;
 export const bing = _bing;
@@ -41,3 +45,7 @@ export const openai_compatible = _openai_compatible;
 export const gemini = _gemini;
 export const ollama = _ollama;
 export const lingva = _lingva;
+export const deepseek = _deepseek;
+export const bailian = _bailian;
+export const moonshot = _moonshot;
+export const mimo = _mimo;

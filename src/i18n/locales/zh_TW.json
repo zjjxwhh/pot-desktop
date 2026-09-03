@@ -379,6 +379,23 @@
                     "title": "百度領域翻譯",
                     "wiki": "人文社科"
                 },
+                "bailian": {
+                    "api_key": "API Key",
+                    "input_request_arguments": "輸入 API 請求參數",
+                    "input_some_prompt": "輸入 {{role}} 的提示詞",
+                    "invalid_prompt": "提示詞不合法",
+                    "invalid_prompt_empty": "user 提示詞不能為空。",
+                    "model": "模型",
+                    "prompt_description": "透過自訂提示詞，您可以自訂 阿里雲百煉 的行為。$text $from $to $detect 將被替換為待翻譯的文字、來源語言、目標語言和偵測到的語言。",
+                    "prompt_list": "提示詞列表",
+                    "request_arguments": "請求參數",
+                    "request_path": "請求路徑",
+                    "request_path_invalid": "請求路徑應以 /v1 結尾（介面位址），或填入完整的 /chat/completions 請求路徑。",
+                    "stream": "串流輸出",
+                    "system_prompt": "system 提示詞（人設 / 規則，可留空）",
+                    "title": "阿里雲百煉",
+                    "user_prompt": "user 提示詞（翻譯請求模板）"
+                },
                 "bing": {
                     "get_token_failed": "取得 Token 失敗",
                     "title": "Bing 翻譯"
@@ -406,6 +423,21 @@
                     "title": "DeepL",
                     "type": "服務類型"
                 },
+                "deepseek": {
+                    "api_key": "API Key",
+                    "input_request_arguments": "輸入 API 請求參數",
+                    "input_some_prompt": "輸入 {{role}} 的提示詞",
+                    "invalid_prompt": "提示詞不合法",
+                    "invalid_prompt_empty": "user 提示詞不能為空。",
+                    "model": "模型",
+                    "prompt_description": "透過自訂提示詞，您可以自訂 DeepSeek 的行為。$text $from $to $detect 將被替換為待翻譯的文字、來源語言、目標語言和偵測到的語言。",
+                    "prompt_list": "提示詞列表",
+                    "request_arguments": "請求參數",
+                    "stream": "串流輸出",
+                    "system_prompt": "system 提示詞（人設 / 規則，可留空）",
+                    "title": "DeepSeek",
+                    "user_prompt": "user 提示詞（翻譯請求模板）"
+                },
                 "ecdict": {
                     "title": "ECDict (線上)"
                 },
@@ -432,6 +464,36 @@
                     "request_path": "請求路徑",
                     "request_path_required": "請先設定請求路徑",
                     "title": "Lingva"
+                },
+                "mimo": {
+                    "api_key": "API Key",
+                    "input_request_arguments": "輸入 API 請求參數",
+                    "input_some_prompt": "輸入 {{role}} 的提示詞",
+                    "invalid_prompt": "提示詞不合法",
+                    "invalid_prompt_empty": "user 提示詞不能為空。",
+                    "model": "模型",
+                    "prompt_description": "透過自訂提示詞，您可以自訂 MiMo 的行為。$text $from $to $detect 將被替換為待翻譯的文字、來源語言、目標語言和偵測到的語言。",
+                    "prompt_list": "提示詞列表",
+                    "request_arguments": "請求參數",
+                    "stream": "串流輸出",
+                    "system_prompt": "system 提示詞（人設 / 規則，可留空）",
+                    "title": "Xiaomi MiMo",
+                    "user_prompt": "user 提示詞（翻譯請求模板）"
+                },
+                "moonshot": {
+                    "api_key": "API Key",
+                    "input_request_arguments": "輸入 API 請求參數",
+                    "input_some_prompt": "輸入 {{role}} 的提示詞",
+                    "invalid_prompt": "提示詞不合法",
+                    "invalid_prompt_empty": "user 提示詞不能為空。",
+                    "model": "模型",
+                    "prompt_description": "透過自訂提示詞，您可以自訂 Moonshot 的行為。$text $from $to $detect 將被替換為待翻譯的文字、來源語言、目標語言和偵測到的語言。",
+                    "prompt_list": "提示詞列表",
+                    "request_arguments": "請求參數",
+                    "stream": "串流輸出",
+                    "system_prompt": "system 提示詞（人設 / 規則，可留空）",
+                    "title": "Moonshot AI",
+                    "user_prompt": "user 提示詞（翻譯請求模板）"
                 },
                 "niutrans": {
                     "apikey": "API Key",
@@ -492,6 +554,7 @@
                     "prompt_list": "提示詞列表",
                     "request_arguments": "請求參數",
                     "request_path": "請求路徑",
+                    "request_path_invalid": "請求路徑應以 /v1 結尾（介面位址），或填入完整的 /chat/completions 請求路徑。",
                     "restore_default": "恢復預設",
                     "search_icon": "搜尋圖示",
                     "select_icon": "選擇圖示",

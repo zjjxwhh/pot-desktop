@@ -1,24 +1,26 @@
 import i18n from '../../../i18n';
 import { fetch } from '@tauri-apps/plugin-http';
 import { Language } from './info';
+const BAILIAN_DEFAULT_BASE = 'https://dashscope.aliyuncs.com/compatible-mode/v1';
 
 export async function translate(text, from, to, options) {
     const { config, setResult, detect } = options;
 
-    let { requestPath, model, apiKey, stream, promptList, requestArguments } = config;
+    let { model, apiKey, stream, promptList, requestArguments } = config;
 
-    if (!/^https?:\/\//i.test(requestPath)) {
-        requestPath = `https://${requestPath}`;
+    let endpoint = (config.requestPath ?? '').trim() || BAILIAN_DEFAULT_BASE;
+    if (!/^https?:\/\//i.test(endpoint)) {
+        endpoint = `https://${endpoint}`;
     }
-    const apiUrl = new URL(requestPath);
-
+    const apiUrl = new URL(endpoint);
     const pathname = apiUrl.pathname.replace(/\/+$/, '');
     if (!pathname.endsWith('/chat/completions')) {
         if (!pathname.endsWith('/v1')) {
-            throw i18n.t('services.translate.openai_compatible.request_path_invalid');
+            throw i18n.t('services.translate.bailian.request_path_invalid');
         }
         apiUrl.pathname = `${pathname}/chat/completions`;
     }
+    const resolvedEndpoint = apiUrl.href;
 
     promptList = promptList.map((item) => {
         return {
@@ -40,9 +42,10 @@ export async function translate(text, from, to, options) {
         stream: stream,
         messages: promptList,
         model: model,
+        enable_thinking: false,
     };
     if (stream) {
-        const res = await fetch(apiUrl.href, {
+        const res = await fetch(resolvedEndpoint, {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(body),
@@ -99,7 +102,7 @@ export async function translate(text, from, to, options) {
             throw i18n.t('config.service.http_request_error', { status: res.status, detail: JSON.stringify(await res.json()) });
         }
     } else {
-        let res = await fetch(apiUrl.href, {
+        let res = await fetch(resolvedEndpoint, {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(body),

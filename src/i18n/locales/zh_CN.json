@@ -379,6 +379,23 @@
                     "title": "百度领域翻译",
                     "wiki": "人文社科"
                 },
+                "bailian": {
+                    "api_key": "API Key",
+                    "input_request_arguments": "输入 API 请求参数",
+                    "input_some_prompt": "输入 {{role}} 的提示词",
+                    "invalid_prompt": "提示词不合法",
+                    "invalid_prompt_empty": "user 提示词不能为空。",
+                    "model": "模型",
+                    "prompt_description": "通过自定义提示词自定义 阿里云百炼 的行为，{{$text}}、{{$from}}、{{$to}}、{{$detect}} 将会被替换为 {{待翻译文本}}、{{源语言}}、{{目标语言}}、{{检测到的语言}}。",
+                    "prompt_list": "提示词列表",
+                    "request_arguments": "请求参数",
+                    "request_path": "请求地址",
+                    "request_path_invalid": "请求地址应以 /v1 结尾（接口地址），或填写完整的 /chat/completions 请求地址。",
+                    "stream": "流式输出",
+                    "system_prompt": "system 提示词（人设 / 规则，可留空）",
+                    "title": "阿里云百炼",
+                    "user_prompt": "user 提示词（翻译请求模板）"
+                },
                 "bing": {
                     "get_token_failed": "获取 Token 失败",
                     "title": "必应翻译"
@@ -406,6 +423,21 @@
                     "title": "DeepL",
                     "type": "服务类型"
                 },
+                "deepseek": {
+                    "api_key": "API Key",
+                    "input_request_arguments": "输入 API 请求参数",
+                    "input_some_prompt": "输入 {{role}} 的提示词",
+                    "invalid_prompt": "提示词不合法",
+                    "invalid_prompt_empty": "user 提示词不能为空。",
+                    "model": "模型",
+                    "prompt_description": "通过自定义提示词自定义 DeepSeek 的行为，{{$text}}、{{$from}}、{{$to}}、{{$detect}} 将会被替换为 {{待翻译文本}}、{{源语言}}、{{目标语言}}、{{检测到的语言}}。",
+                    "prompt_list": "提示词列表",
+                    "request_arguments": "请求参数",
+                    "stream": "流式输出",
+                    "system_prompt": "system 提示词（人设 / 规则，可留空）",
+                    "title": "DeepSeek",
+                    "user_prompt": "user 提示词（翻译请求模板）"
+                },
                 "ecdict": {
                     "title": "ECDict (在线)"
                 },
@@ -432,6 +464,36 @@
                     "request_path": "请求地址",
                     "request_path_required": "请先配置请求地址",
                     "title": "Lingva"
+                },
+                "mimo": {
+                    "api_key": "API Key",
+                    "input_request_arguments": "输入 API 请求参数",
+                    "input_some_prompt": "输入 {{role}} 的提示词",
+                    "invalid_prompt": "提示词不合法",
+                    "invalid_prompt_empty": "user 提示词不能为空。",
+                    "model": "模型",
+                    "prompt_description": "通过自定义提示词自定义 MiMo 的行为，{{$text}}、{{$from}}、{{$to}}、{{$detect}} 将会被替换为 {{待翻译文本}}、{{源语言}}、{{目标语言}}、{{检测到的语言}}。",
+                    "prompt_list": "提示词列表",
+                    "request_arguments": "请求参数",
+                    "stream": "流式输出",
+                    "system_prompt": "system 提示词（人设 / 规则，可留空）",
+                    "title": "Xiaomi MiMo",
+                    "user_prompt": "user 提示词（翻译请求模板）"
+                },
+                "moonshot": {
+                    "api_key": "API Key",
+                    "input_request_arguments": "输入 API 请求参数",
+                    "input_some_prompt": "输入 {{role}} 的提示词",
+                    "invalid_prompt": "提示词不合法",
+                    "invalid_prompt_empty": "user 提示词不能为空。",
+                    "model": "模型",
+                    "prompt_description": "通过自定义提示词自定义 Moonshot 的行为，{{$text}}、{{$from}}、{{$to}}、{{$detect}} 将会被替换为 {{待翻译文本}}、{{源语言}}、{{目标语言}}、{{检测到的语言}}。",
+                    "prompt_list": "提示词列表",
+                    "request_arguments": "请求参数",
+                    "stream": "流式输出",
+                    "system_prompt": "system 提示词（人设 / 规则，可留空）",
+                    "title": "Moonshot AI",
+                    "user_prompt": "user 提示词（翻译请求模板）"
                 },
                 "niutrans": {
                     "apikey": "API Key",
@@ -492,6 +554,7 @@
                     "prompt_list": "提示词列表",
                     "request_arguments": "请求参数",
                     "request_path": "请求地址",
+                    "request_path_invalid": "请求地址应以 /v1 结尾（接口地址），或填写完整的 /chat/completions 请求地址。",
                     "restore_default": "恢复默认",
                     "search_icon": "搜索图标",
                     "select_icon": "选择图标",

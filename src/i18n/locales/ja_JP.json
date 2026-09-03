@@ -379,6 +379,23 @@
                     "title": "",
                     "wiki": ""
                 },
+                "bailian": {
+                    "api_key": "",
+                    "input_request_arguments": "",
+                    "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
+                    "model": "",
+                    "prompt_description": "",
+                    "prompt_list": "",
+                    "request_arguments": "",
+                    "request_path": "",
+                    "request_path_invalid": "",
+                    "stream": "",
+                    "system_prompt": "",
+                    "title": "",
+                    "user_prompt": ""
+                },
                 "bing": {
                     "get_token_failed": "",
                     "title": ""
@@ -406,6 +423,21 @@
                     "title": "",
                     "type": "サービスの種類"
                 },
+                "deepseek": {
+                    "api_key": "",
+                    "input_request_arguments": "",
+                    "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
+                    "model": "",
+                    "prompt_description": "",
+                    "prompt_list": "",
+                    "request_arguments": "",
+                    "stream": "",
+                    "system_prompt": "",
+                    "title": "",
+                    "user_prompt": ""
+                },
                 "ecdict": {
                     "title": ""
                 },
@@ -432,6 +464,36 @@
                     "request_path": "",
                     "request_path_required": "",
                     "title": ""
+                },
+                "mimo": {
+                    "api_key": "",
+                    "input_request_arguments": "",
+                    "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
+                    "model": "",
+                    "prompt_description": "",
+                    "prompt_list": "",
+                    "request_arguments": "",
+                    "stream": "",
+                    "system_prompt": "",
+                    "title": "",
+                    "user_prompt": ""
+                },
+                "moonshot": {
+                    "api_key": "",
+                    "input_request_arguments": "",
+                    "input_some_prompt": "",
+                    "invalid_prompt": "",
+                    "invalid_prompt_empty": "",
+                    "model": "",
+                    "prompt_description": "",
+                    "prompt_list": "",
+                    "request_arguments": "",
+                    "stream": "",
+                    "system_prompt": "",
+                    "title": "",
+                    "user_prompt": ""
                 },
                 "niutrans": {
                     "apikey": "",
@@ -492,6 +554,7 @@
                     "prompt_list": "",
                     "request_arguments": "",
                     "request_path": "",
+                    "request_path_invalid": "",
                     "restore_default": "",
                     "search_icon": "",
                     "select_icon": "",

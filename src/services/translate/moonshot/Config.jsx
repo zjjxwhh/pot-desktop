@@ -1,4 +1,4 @@
-import { TextField, Input, TextArea, Switch, Surface, toast } from '@heroui/react';
+import { TextField, Input, TextArea, Button, Switch, Surface, toast } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-shell';
 import React from 'react';
@@ -7,7 +7,6 @@ import { useConfig } from '../../../hooks/useConfig';
 import { translate } from './index';
 import { Language } from './index';
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
-import IconPicker from './IconPicker';
 
 const defaultPromptList = [
     {
@@ -29,52 +28,47 @@ const defaultRequestArguments = JSON.stringify({
 });
 
 export function Config(props) {
-    const { instanceKey, updateServiceList, onClose, formId, setSavePending, setDraftIcon } = props;
+    const { instanceKey, updateServiceList, onClose, formId, setSavePending } = props;
     const { t } = useTranslation();
-    const [openaiConfig, setOpenaiConfig] = useConfig(
+    const [moonshotConfig, setMoonshotConfig] = useConfig(
         instanceKey,
         {
-            [INSTANCE_NAME_CONFIG_KEY]: t('services.translate.openai_compatible.title'),
-            service: 'openai_compatible',
-            requestPath: 'https://api.openai.com/v1',
+            [INSTANCE_NAME_CONFIG_KEY]: t('services.translate.moonshot.title'),
             model: '',
             apiKey: '',
             stream: true,
             promptList: defaultPromptList,
             requestArguments: defaultRequestArguments,
-            icon: '',
-            iconId: '',
         },
         { sync: false }
     );
-
-    const systemContent = openaiConfig?.promptList?.[0]?.content ?? '';
-    const userContent = openaiConfig?.promptList?.[1]?.content ?? '';
+    const systemContent = moonshotConfig?.promptList?.[0]?.content ?? '';
+    const userContent = moonshotConfig?.promptList?.[1]?.content ?? '';
 
     const setPrompt = (index, role, value) => {
-        setOpenaiConfig({
-            ...openaiConfig,
-            promptList: openaiConfig.promptList.map((prompt, i) => (i === index ? { role, content: value } : prompt)),
+        setMoonshotConfig({
+            ...moonshotConfig,
+            promptList: moonshotConfig.promptList.map((prompt, i) => (i === index ? { role, content: value } : prompt)),
         });
     };
 
     return (
-        openaiConfig !== null && (
+        moonshotConfig !== null && (
             <form
                 id={formId}
                 onSubmit={(e) => {
                     e.preventDefault();
                     if (!userContent.trim()) {
-                        toast.danger(t('services.translate.openai_compatible.invalid_prompt'), {
-                            description: t('services.translate.openai_compatible.invalid_prompt_empty'),
+                        toast.danger(t('services.translate.moonshot.invalid_prompt'), {
+                            description: t('services.translate.moonshot.invalid_prompt_empty'),
                         });
                         return;
                     }
                     setSavePending(true);
-                    translate('hello', Language.auto, Language.zh_cn, { config: openaiConfig }).then(
+                    translate('hello', Language.auto, Language.zh_cn, { config: moonshotConfig }).then(
                         () => {
                             setSavePending(false);
-                            setOpenaiConfig(openaiConfig, true);
+                            setMoonshotConfig(moonshotConfig, true);
                             updateServiceList(instanceKey);
                             onClose();
                         },
@@ -90,10 +84,10 @@ export function Config(props) {
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('services.instance_name')}</h3>
                     <TextField
-                        value={openaiConfig[INSTANCE_NAME_CONFIG_KEY]}
+                        value={moonshotConfig[INSTANCE_NAME_CONFIG_KEY]}
                         onChange={(value) => {
-                            setOpenaiConfig({
-                                ...openaiConfig,
+                            setMoonshotConfig({
+                                ...moonshotConfig,
                                 [INSTANCE_NAME_CONFIG_KEY]: value,
                             });
                         }}
@@ -102,28 +96,24 @@ export function Config(props) {
                     </TextField>
                 </div>
                 <div className='config-item'>
-                    <h3 className='my-auto'>{t('services.translate.openai_compatible.icon')}</h3>
-                    <IconPicker
-                        value={openaiConfig['icon'] ?? ''}
-                        iconId={openaiConfig['iconId'] ?? ''}
-                        onChange={(icon, iconId) => {
-                            setOpenaiConfig({
-                                ...openaiConfig,
-                                icon,
-                                iconId,
-                            });
-                            setDraftIcon?.(icon);
+                    <h3 className='my-auto'>{t('services.help')}</h3>
+                    <Button
+                        size='sm'
+                        onPress={() => {
+                            open('https://platform.moonshot.cn/docs/intro');
                         }}
-                    />
+                    >
+                        {t('services.help')}
+                    </Button>
                 </div>
                 <div className='config-item'>
-                    <h3 className='my-auto'>{t('services.translate.openai_compatible.stream')}</h3>
+                    <h3 className='my-auto'>{t('services.translate.moonshot.stream')}</h3>
                     <Switch
                         size='lg'
-                        isSelected={openaiConfig['stream']}
+                        isSelected={moonshotConfig['stream']}
                         onChange={(value) => {
-                            setOpenaiConfig({
-                                ...openaiConfig,
+                            setMoonshotConfig({
+                                ...moonshotConfig,
                                 stream: value,
                             });
                         }}
@@ -137,26 +127,12 @@ export function Config(props) {
                     </Switch>
                 </div>
                 <div className='config-item'>
-                    <h3 className='my-auto'>{t('services.translate.openai_compatible.request_path')}</h3>
+                    <h3 className='my-auto'>{t('services.translate.moonshot.api_key')}</h3>
                     <TextField
-                        value={openaiConfig['requestPath']}
+                        value={moonshotConfig['apiKey']}
                         onChange={(value) => {
-                            setOpenaiConfig({
-                                ...openaiConfig,
-                                requestPath: value,
-                            });
-                        }}
-                    >
-                        <Input variant='secondary' />
-                    </TextField>
-                </div>
-                <div className='config-item'>
-                    <h3 className='my-auto'>{t('services.translate.openai_compatible.api_key')}</h3>
-                    <TextField
-                        value={openaiConfig['apiKey']}
-                        onChange={(value) => {
-                            setOpenaiConfig({
-                                ...openaiConfig,
+                            setMoonshotConfig({
+                                ...moonshotConfig,
                                 apiKey: value,
                             });
                         }}
@@ -168,12 +144,12 @@ export function Config(props) {
                     </TextField>
                 </div>
                 <div className='config-item'>
-                    <h3 className='my-auto'>{t('services.translate.openai_compatible.model')}</h3>
+                    <h3 className='my-auto'>{t('services.translate.moonshot.model')}</h3>
                     <TextField
-                        value={openaiConfig['model']}
+                        value={moonshotConfig['model']}
                         onChange={(value) => {
-                            setOpenaiConfig({
-                                ...openaiConfig,
+                            setMoonshotConfig({
+                                ...moonshotConfig,
                                 model: value,
                             });
                         }}
@@ -181,19 +157,15 @@ export function Config(props) {
                         <Input variant='secondary' />
                     </TextField>
                 </div>
-                <h3 className='my-auto'>{t('services.translate.openai_compatible.prompt_list')}</h3>
-                <p className='text-xs text-foreground py-2'>
-                    {t('services.translate.openai_compatible.prompt_description')}
-                </p>
+                <h3 className='my-auto'>{t('services.translate.moonshot.prompt_list')}</h3>
+                <p className='text-xs text-foreground py-2'>{t('services.translate.moonshot.prompt_description')}</p>
 
                 <Surface
                     className='flex flex-col gap-3 rounded-3xl p-3'
                     variant='secondary'
                 >
                     <div>
-                        <div className='mb-1 ms-2 font-medium'>
-                            {t('services.translate.openai_compatible.system_prompt')}
-                        </div>
+                        <div className='mb-1 ms-2 font-medium'>{t('services.translate.moonshot.system_prompt')}</div>
                         <TextField
                             fullWidth
                             value={systemContent}
@@ -205,16 +177,12 @@ export function Config(props) {
                                 variant='secondary'
                                 rows={6}
                                 className={'border-2 border-muted'}
-                                placeholder={t('services.translate.openai_compatible.input_some_prompt', {
-                                    role: 'system',
-                                })}
+                                placeholder={t('services.translate.moonshot.input_some_prompt', { role: 'system' })}
                             />
                         </TextField>
                     </div>
                     <div>
-                        <div className='mb-1 ms-2 font-medium'>
-                            {t('services.translate.openai_compatible.user_prompt')}
-                        </div>
+                        <div className='mb-1 ms-2 font-medium'>{t('services.translate.moonshot.user_prompt')}</div>
                         <TextField
                             fullWidth
                             value={userContent}
@@ -226,21 +194,21 @@ export function Config(props) {
                                 variant='secondary'
                                 rows={6}
                                 className={'border-2 border-muted'}
-                                placeholder={t('services.translate.openai_compatible.input_some_prompt', { role: 'user' })}
+                                placeholder={t('services.translate.moonshot.input_some_prompt', { role: 'user' })}
                             />
                         </TextField>
                     </div>
                 </Surface>
                 <br />
 
-                <h3 className='my-auto'>{t('services.translate.openai_compatible.request_arguments')}</h3>
+                <h3 className='my-auto'>{t('services.translate.moonshot.request_arguments')}</h3>
                 <div className='config-item'>
                     <TextField
                         fullWidth
-                        value={openaiConfig['requestArguments']}
+                        value={moonshotConfig['requestArguments']}
                         onChange={(value) => {
-                            setOpenaiConfig({
-                                ...openaiConfig,
+                            setMoonshotConfig({
+                                ...moonshotConfig,
                                 requestArguments: value,
                             });
                         }}
@@ -248,7 +216,7 @@ export function Config(props) {
                         <TextArea
                             variant='secondary'
                             rows={3}
-                            placeholder={t('services.translate.openai_compatible.input_request_arguments')}
+                            placeholder={t('services.translate.moonshot.input_request_arguments')}
                         />
                     </TextField>
                 </div>

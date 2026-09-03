@@ -1,24 +1,12 @@
 import i18n from '../../../i18n';
 import { fetch } from '@tauri-apps/plugin-http';
 import { Language } from './info';
+const MOONSHOT_ENDPOINT = 'https://api.moonshot.cn/v1/chat/completions';
 
 export async function translate(text, from, to, options) {
     const { config, setResult, detect } = options;
 
-    let { requestPath, model, apiKey, stream, promptList, requestArguments } = config;
-
-    if (!/^https?:\/\//i.test(requestPath)) {
-        requestPath = `https://${requestPath}`;
-    }
-    const apiUrl = new URL(requestPath);
-
-    const pathname = apiUrl.pathname.replace(/\/+$/, '');
-    if (!pathname.endsWith('/chat/completions')) {
-        if (!pathname.endsWith('/v1')) {
-            throw i18n.t('services.translate.openai_compatible.request_path_invalid');
-        }
-        apiUrl.pathname = `${pathname}/chat/completions`;
-    }
+    let { model, apiKey, stream, promptList, requestArguments } = config;
 
     promptList = promptList.map((item) => {
         return {
@@ -40,9 +28,12 @@ export async function translate(text, from, to, options) {
         stream: stream,
         messages: promptList,
         model: model,
+        thinking: {
+            type: 'disabled',
+        },
     };
     if (stream) {
-        const res = await fetch(apiUrl.href, {
+        const res = await fetch(MOONSHOT_ENDPOINT, {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(body),
@@ -99,7 +90,7 @@ export async function translate(text, from, to, options) {
             throw i18n.t('config.service.http_request_error', { status: res.status, detail: JSON.stringify(await res.json()) });
         }
     } else {
-        let res = await fetch(apiUrl.href, {
+        let res = await fetch(MOONSHOT_ENDPOINT, {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(body),

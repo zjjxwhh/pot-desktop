@@ -1,4 +1,4 @@
-import { TextField, Input, TextArea, Switch, Surface, toast } from '@heroui/react';
+import { TextField, Input, TextArea, Button, Switch, Surface, toast } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import { open } from '@tauri-apps/plugin-shell';
 import React from 'react';
@@ -7,7 +7,6 @@ import { useConfig } from '../../../hooks/useConfig';
 import { translate } from './index';
 import { Language } from './index';
 import { INSTANCE_NAME_CONFIG_KEY } from '../../../utils/service_instance';
-import IconPicker from './IconPicker';
 
 const defaultPromptList = [
     {
@@ -29,52 +28,48 @@ const defaultRequestArguments = JSON.stringify({
 });
 
 export function Config(props) {
-    const { instanceKey, updateServiceList, onClose, formId, setSavePending, setDraftIcon } = props;
+    const { instanceKey, updateServiceList, onClose, formId, setSavePending } = props;
     const { t } = useTranslation();
-    const [openaiConfig, setOpenaiConfig] = useConfig(
+    const [bailianConfig, setBailianConfig] = useConfig(
         instanceKey,
         {
-            [INSTANCE_NAME_CONFIG_KEY]: t('services.translate.openai_compatible.title'),
-            service: 'openai_compatible',
-            requestPath: 'https://api.openai.com/v1',
+            [INSTANCE_NAME_CONFIG_KEY]: t('services.translate.bailian.title'),
             model: '',
+            requestPath: 'https://dashscope.aliyuncs.com/compatible-mode/v1',
             apiKey: '',
             stream: true,
             promptList: defaultPromptList,
             requestArguments: defaultRequestArguments,
-            icon: '',
-            iconId: '',
         },
         { sync: false }
     );
-
-    const systemContent = openaiConfig?.promptList?.[0]?.content ?? '';
-    const userContent = openaiConfig?.promptList?.[1]?.content ?? '';
+    const systemContent = bailianConfig?.promptList?.[0]?.content ?? '';
+    const userContent = bailianConfig?.promptList?.[1]?.content ?? '';
 
     const setPrompt = (index, role, value) => {
-        setOpenaiConfig({
-            ...openaiConfig,
-            promptList: openaiConfig.promptList.map((prompt, i) => (i === index ? { role, content: value } : prompt)),
+        setBailianConfig({
+            ...bailianConfig,
+            promptList: bailianConfig.promptList.map((prompt, i) => (i === index ? { role, content: value } : prompt)),
         });
     };
 
     return (
-        openaiConfig !== null && (
+        bailianConfig !== null && (
             <form
                 id={formId}
                 onSubmit={(e) => {
                     e.preventDefault();
                     if (!userContent.trim()) {
-                        toast.danger(t('services.translate.openai_compatible.invalid_prompt'), {
-                            description: t('services.translate.openai_compatible.invalid_prompt_empty'),
+                        toast.danger(t('services.translate.bailian.invalid_prompt'), {
+                            description: t('services.translate.bailian.invalid_prompt_empty'),
                         });
                         return;
                     }
                     setSavePending(true);
-                    translate('hello', Language.auto, Language.zh_cn, { config: openaiConfig }).then(
+                    translate('hello', Language.auto, Language.zh_cn, { config: bailianConfig }).then(
                         () => {
                             setSavePending(false);
-                            setOpenaiConfig(openaiConfig, true);
+                            setBailianConfig(bailianConfig, true);
                             updateServiceList(instanceKey);
                             onClose();
                         },
@@ -90,10 +85,10 @@ export function Config(props) {
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('services.instance_name')}</h3>
                     <TextField
-                        value={openaiConfig[INSTANCE_NAME_CONFIG_KEY]}
+                        value={bailianConfig[INSTANCE_NAME_CONFIG_KEY]}
                         onChange={(value) => {
-                            setOpenaiConfig({
-                                ...openaiConfig,
+                            setBailianConfig({
+                                ...bailianConfig,
                                 [INSTANCE_NAME_CONFIG_KEY]: value,
                             });
                         }}
@@ -102,28 +97,24 @@ export function Config(props) {
                     </TextField>
                 </div>
                 <div className='config-item'>
-                    <h3 className='my-auto'>{t('services.translate.openai_compatible.icon')}</h3>
-                    <IconPicker
-                        value={openaiConfig['icon'] ?? ''}
-                        iconId={openaiConfig['iconId'] ?? ''}
-                        onChange={(icon, iconId) => {
-                            setOpenaiConfig({
-                                ...openaiConfig,
-                                icon,
-                                iconId,
-                            });
-                            setDraftIcon?.(icon);
+                    <h3 className='my-auto'>{t('services.help')}</h3>
+                    <Button
+                        size='sm'
+                        onPress={() => {
+                            open('https://help.aliyun.com/zh/model-studio/compatibility-of-openai-with-dashscope');
                         }}
-                    />
+                    >
+                        {t('services.help')}
+                    </Button>
                 </div>
                 <div className='config-item'>
-                    <h3 className='my-auto'>{t('services.translate.openai_compatible.stream')}</h3>
+                    <h3 className='my-auto'>{t('services.translate.bailian.stream')}</h3>
                     <Switch
                         size='lg'
-                        isSelected={openaiConfig['stream']}
+                        isSelected={bailianConfig['stream']}
                         onChange={(value) => {
-                            setOpenaiConfig({
-                                ...openaiConfig,
+                            setBailianConfig({
+                                ...bailianConfig,
                                 stream: value,
                             });
                         }}
@@ -137,12 +128,12 @@ export function Config(props) {
                     </Switch>
                 </div>
                 <div className='config-item'>
-                    <h3 className='my-auto'>{t('services.translate.openai_compatible.request_path')}</h3>
+                    <h3 className='my-auto'>{t('services.translate.bailian.request_path')}</h3>
                     <TextField
-                        value={openaiConfig['requestPath']}
+                        value={bailianConfig['requestPath']}
                         onChange={(value) => {
-                            setOpenaiConfig({
-                                ...openaiConfig,
+                            setBailianConfig({
+                                ...bailianConfig,
                                 requestPath: value,
                             });
                         }}
@@ -151,12 +142,12 @@ export function Config(props) {
                     </TextField>
                 </div>
                 <div className='config-item'>
-                    <h3 className='my-auto'>{t('services.translate.openai_compatible.api_key')}</h3>
+                    <h3 className='my-auto'>{t('services.translate.bailian.api_key')}</h3>
                     <TextField
-                        value={openaiConfig['apiKey']}
+                        value={bailianConfig['apiKey']}
                         onChange={(value) => {
-                            setOpenaiConfig({
-                                ...openaiConfig,
+                            setBailianConfig({
+                                ...bailianConfig,
                                 apiKey: value,
                             });
                         }}
@@ -168,12 +159,12 @@ export function Config(props) {
                     </TextField>
                 </div>
                 <div className='config-item'>
-                    <h3 className='my-auto'>{t('services.translate.openai_compatible.model')}</h3>
+                    <h3 className='my-auto'>{t('services.translate.bailian.model')}</h3>
                     <TextField
-                        value={openaiConfig['model']}
+                        value={bailianConfig['model']}
                         onChange={(value) => {
-                            setOpenaiConfig({
-                                ...openaiConfig,
+                            setBailianConfig({
+                                ...bailianConfig,
                                 model: value,
                             });
                         }}
@@ -181,19 +172,15 @@ export function Config(props) {
                         <Input variant='secondary' />
                     </TextField>
                 </div>
-                <h3 className='my-auto'>{t('services.translate.openai_compatible.prompt_list')}</h3>
-                <p className='text-xs text-foreground py-2'>
-                    {t('services.translate.openai_compatible.prompt_description')}
-                </p>
+                <h3 className='my-auto'>{t('services.translate.bailian.prompt_list')}</h3>
+                <p className='text-xs text-foreground py-2'>{t('services.translate.bailian.prompt_description')}</p>
 
                 <Surface
                     className='flex flex-col gap-3 rounded-3xl p-3'
                     variant='secondary'
                 >
                     <div>
-                        <div className='mb-1 ms-2 font-medium'>
-                            {t('services.translate.openai_compatible.system_prompt')}
-                        </div>
+                        <div className='mb-1 ms-2 font-medium'>{t('services.translate.bailian.system_prompt')}</div>
                         <TextField
                             fullWidth
                             value={systemContent}
@@ -205,16 +192,12 @@ export function Config(props) {
                                 variant='secondary'
                                 rows={6}
                                 className={'border-2 border-muted'}
-                                placeholder={t('services.translate.openai_compatible.input_some_prompt', {
-                                    role: 'system',
-                                })}
+                                placeholder={t('services.translate.bailian.input_some_prompt', { role: 'system' })}
                             />
                         </TextField>
                     </div>
                     <div>
-                        <div className='mb-1 ms-2 font-medium'>
-                            {t('services.translate.openai_compatible.user_prompt')}
-                        </div>
+                        <div className='mb-1 ms-2 font-medium'>{t('services.translate.bailian.user_prompt')}</div>
                         <TextField
                             fullWidth
                             value={userContent}
@@ -226,21 +209,21 @@ export function Config(props) {
                                 variant='secondary'
                                 rows={6}
                                 className={'border-2 border-muted'}
-                                placeholder={t('services.translate.openai_compatible.input_some_prompt', { role: 'user' })}
+                                placeholder={t('services.translate.bailian.input_some_prompt', { role: 'user' })}
                             />
                         </TextField>
                     </div>
                 </Surface>
                 <br />
 
-                <h3 className='my-auto'>{t('services.translate.openai_compatible.request_arguments')}</h3>
+                <h3 className='my-auto'>{t('services.translate.bailian.request_arguments')}</h3>
                 <div className='config-item'>
                     <TextField
                         fullWidth
-                        value={openaiConfig['requestArguments']}
+                        value={bailianConfig['requestArguments']}
                         onChange={(value) => {
-                            setOpenaiConfig({
-                                ...openaiConfig,
+                            setBailianConfig({
+                                ...bailianConfig,
                                 requestArguments: value,
                             });
                         }}
@@ -248,7 +231,7 @@ export function Config(props) {
                         <TextArea
                             variant='secondary'
                             rows={3}
-                            placeholder={t('services.translate.openai_compatible.input_request_arguments')}
+                            placeholder={t('services.translate.bailian.input_request_arguments')}
                         />
                     </TextField>
                 </div>

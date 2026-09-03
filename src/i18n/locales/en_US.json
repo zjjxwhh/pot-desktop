@@ -379,6 +379,23 @@
                     "title": "Baidu Field",
                     "wiki": "Humanities and Social Sciences"
                 },
+                "bailian": {
+                    "api_key": "API Key",
+                    "input_request_arguments": "Input API Request Arguments",
+                    "input_some_prompt": "Input Some {{role}} Prompt",
+                    "invalid_prompt": "Invalid prompt",
+                    "invalid_prompt_empty": "The User prompt cannot be empty.",
+                    "model": "Model",
+                    "prompt_description": "By customizing the Prompt, you can customize the behavior of BaiLian. {{$text}}, {{$from}}, {{$to}}, {{$detect}} will be replaced with {{the text to be translated}}, {{source language}}, {{target language}}, {{detected language}}.",
+                    "prompt_list": "Prompt List",
+                    "request_arguments": "Request Arguments",
+                    "request_path": "Request Path",
+                    "request_path_invalid": "The request path must end with /v1 (base URL) or be a full /chat/completions request path.",
+                    "stream": "Stream Mode",
+                    "system_prompt": "System prompt (persona / rules, optional)",
+                    "title": "BaiLian",
+                    "user_prompt": "User prompt (translation request template)"
+                },
                 "bing": {
                     "get_token_failed": "Get Token Failed",
                     "title": "Bing"
@@ -406,6 +423,21 @@
                     "title": "DeepL",
                     "type": "Service Type"
                 },
+                "deepseek": {
+                    "api_key": "API Key",
+                    "input_request_arguments": "Input API Request Arguments",
+                    "input_some_prompt": "Input Some {{role}} Prompt",
+                    "invalid_prompt": "Invalid prompt",
+                    "invalid_prompt_empty": "The User prompt cannot be empty.",
+                    "model": "Model",
+                    "prompt_description": "By customizing the Prompt, you can customize the behavior of DeepSeek. {{$text}}, {{$from}}, {{$to}}, {{$detect}} will be replaced with {{the text to be translated}}, {{source language}}, {{target language}}, {{detected language}}.",
+                    "prompt_list": "Prompt List",
+                    "request_arguments": "Request Arguments",
+                    "stream": "Stream Mode",
+                    "system_prompt": "System prompt (persona / rules, optional)",
+                    "title": "DeepSeek",
+                    "user_prompt": "User prompt (translation request template)"
+                },
                 "ecdict": {
                     "title": "ECDict (Online)"
                 },
@@ -432,6 +464,36 @@
                     "request_path": "Request Path",
                     "request_path_required": "Please configure request path",
                     "title": "Lingva"
+                },
+                "mimo": {
+                    "api_key": "API Key",
+                    "input_request_arguments": "Input API Request Arguments",
+                    "input_some_prompt": "Input Some {{role}} Prompt",
+                    "invalid_prompt": "Invalid prompt",
+                    "invalid_prompt_empty": "The User prompt cannot be empty.",
+                    "model": "Model",
+                    "prompt_description": "By customizing the Prompt, you can customize the behavior of MiMo. {{$text}}, {{$from}}, {{$to}}, {{$detect}} will be replaced with {{the text to be translated}}, {{source language}}, {{target language}}, {{detected language}}.",
+                    "prompt_list": "Prompt List",
+                    "request_arguments": "Request Arguments",
+                    "stream": "Stream Mode",
+                    "system_prompt": "System prompt (persona / rules, optional)",
+                    "title": "Xiaomi MiMo",
+                    "user_prompt": "User prompt (translation request template)"
+                },
+                "moonshot": {
+                    "api_key": "API Key",
+                    "input_request_arguments": "Input API Request Arguments",
+                    "input_some_prompt": "Input Some {{role}} Prompt",
+                    "invalid_prompt": "Invalid prompt",
+                    "invalid_prompt_empty": "The User prompt cannot be empty.",
+                    "model": "Model",
+                    "prompt_description": "By customizing the Prompt, you can customize the behavior of Moonshot. {{$text}}, {{$from}}, {{$to}}, {{$detect}} will be replaced with {{the text to be translated}}, {{source language}}, {{target language}}, {{detected language}}.",
+                    "prompt_list": "Prompt List",
+                    "request_arguments": "Request Arguments",
+                    "stream": "Stream Mode",
+                    "system_prompt": "System prompt (persona / rules, optional)",
+                    "title": "Moonshot AI",
+                    "user_prompt": "User prompt (translation request template)"
                 },
                 "niutrans": {
                     "apikey": "API Key",
@@ -492,6 +554,7 @@
                     "prompt_list": "Prompt List",
                     "request_arguments": "Request Arguments",
                     "request_path": "Request Path",
+                    "request_path_invalid": "The request path must end with /v1 (base URL) or be a full /chat/completions request path.",
                     "restore_default": "Restore Default",
                     "search_icon": "Search Icon",
                     "select_icon": "Select Icon",

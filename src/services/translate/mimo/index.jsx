@@ -1,24 +1,12 @@
 import i18n from '../../../i18n';
 import { fetch } from '@tauri-apps/plugin-http';
 import { Language } from './info';
+const MIMO_ENDPOINT = 'https://api.xiaomimimo.com/v1/chat/completions';
 
 export async function translate(text, from, to, options) {
     const { config, setResult, detect } = options;
 
-    let { requestPath, model, apiKey, stream, promptList, requestArguments } = config;
-
-    if (!/^https?:\/\//i.test(requestPath)) {
-        requestPath = `https://${requestPath}`;
-    }
-    const apiUrl = new URL(requestPath);
-
-    const pathname = apiUrl.pathname.replace(/\/+$/, '');
-    if (!pathname.endsWith('/chat/completions')) {
-        if (!pathname.endsWith('/v1')) {
-            throw i18n.t('services.translate.openai_compatible.request_path_invalid');
-        }
-        apiUrl.pathname = `${pathname}/chat/completions`;
-    }
+    let { model, apiKey, stream, promptList, requestArguments } = config;
 
     promptList = promptList.map((item) => {
         return {
@@ -31,18 +19,23 @@ export async function translate(text, from, to, options) {
         };
     });
 
+    // MiMo 通过自定义 api-key 头鉴权（非 Authorization: Bearer）
     const headers = {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
+        'api-key': apiKey,
     };
     const body = {
         ...JSON.parse(requestArguments),
         stream: stream,
         messages: promptList,
         model: model,
+        // MiMo 模型默认开启思考，翻译场景强制关闭，避免消耗推理 token 且拿不到最终文本
+        thinking: {
+            type: 'disabled',
+        },
     };
     if (stream) {
-        const res = await fetch(apiUrl.href, {
+        const res = await fetch(MIMO_ENDPOINT, {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(body),
@@ -99,7 +92,7 @@ export async function translate(text, from, to, options) {
             throw i18n.t('config.service.http_request_error', { status: res.status, detail: JSON.stringify(await res.json()) });
         }
     } else {
-        let res = await fetch(apiUrl.href, {
+        let res = await fetch(MIMO_ENDPOINT, {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(body),
