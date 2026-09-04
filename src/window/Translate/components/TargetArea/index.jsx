@@ -91,6 +91,7 @@ export default function TargetArea(props) {
             sourceText.trim() !== '' &&
             sourceLanguage &&
             targetLanguage &&
+            detectLanguage !== '' &&
             autoCopy !== null &&
             hideWindow !== null &&
             clipboardMonitor !== null
@@ -108,6 +109,7 @@ export default function TargetArea(props) {
         sourceText,
         sourceLanguage,
         targetLanguage,
+        detectLanguage,
         autoCopy,
         hideWindow,
         currentTranslateServiceInstanceKey,

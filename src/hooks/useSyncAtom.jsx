@@ -8,5 +8,12 @@ export const useSyncAtom = (atom) => {
 
     const syncAtom = () => setAtomValue(getLocalValue());
 
-    return [localValue, setLocalValue, syncAtom];
+    const setBothValue = (value, sync) => {
+        setLocalValue(value);
+        if (sync) {
+            setAtomValue(typeof value === 'function' ? value(getLocalValue()) : value);
+        }
+    };
+
+    return [localValue, setBothValue, syncAtom];
 };

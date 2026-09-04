@@ -231,7 +231,12 @@ export default function SourceArea(props) {
     }, [sourceText]);
 
     const detect_language = async (text) => {
-        setDetectLanguage(await detect(text));
+        try {
+            setDetectLanguage(await detect(text));
+        } catch (e) {
+            toast.danger(e.toString());
+            setDetectLanguage('en');
+        }
     };
 
     let sourceTextChangeTimer = null;
@@ -422,7 +427,8 @@ export default function SourceArea(props) {
                                     className='h-8 w-8'
                                     isDisabled={sourceText === ''}
                                     onPress={() => {
-                                        setSourceText('');
+                                        setSourceText('', true);
+                                        setDetectLanguage('');
                                     }}
                                 >
                                     <IconBackspace />
