@@ -29,7 +29,7 @@ export default function Translate() {
 
     return (
         <>
-            <Surface className='mb-2.5 flex flex-1 flex-col p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
+            <Surface className='mb-2.5 flex flex-1 flex-col gap-3 p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
                     <div className='config-item'>
                         <h3 className='my-auto mx-0'>{t('config.translate.source_language')}</h3>
                         {sourceLanguage !== null && (
@@ -157,7 +157,7 @@ export default function Translate() {
                         )}
                     </div>
                 </Surface>
-            <Surface className='mb-2.5 flex flex-1 flex-col p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
+            <Surface className='mb-2.5 flex flex-1 flex-col gap-3 p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
                     <div className='config-item'>
                         <h3 className='my-auto mx-0'>{t('config.translate.auto_copy')}</h3>
                         {autoCopy !== null && (
@@ -281,7 +281,7 @@ export default function Translate() {
                         )}
                     </div>
                 </Surface>
-            <Surface className='flex flex-1 flex-col p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
+            <Surface className='flex flex-1 flex-col gap-3 p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
                     <div className='config-item'>
                         <h3 className='my-auto mx-0'>{t('config.translate.window_position')}</h3>
                         {windowPosition !== null && (

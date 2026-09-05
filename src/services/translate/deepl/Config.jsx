@@ -25,6 +25,7 @@ export function Config(props) {
     return (
         deeplConfig !== null && (
             <form
+                className='flex flex-col gap-2'
                 id={formId}
                 onSubmit={(e) => {
                     e.preventDefault();

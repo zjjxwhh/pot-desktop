@@ -52,6 +52,7 @@ export function Config(props) {
     return (
         mimoConfig !== null && (
             <form
+                className='flex flex-col gap-2'
                 id={formId}
                 onSubmit={(e) => {
                     e.preventDefault();
@@ -196,7 +197,6 @@ export function Config(props) {
                         </TextField>
                     </div>
                 </Surface>
-                <br />
 
                 <h3 className='my-auto'>{t('services.translate.mimo.request_arguments')}</h3>
                 <div className='config-item'>

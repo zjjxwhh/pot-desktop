@@ -24,6 +24,7 @@ export function Config(props) {
         config !== null && (
             <form
                 id={formId}
+                className='flex flex-col gap-2'
                 onSubmit={(e) => {
                     e.preventDefault();
                     setSavePending(true);

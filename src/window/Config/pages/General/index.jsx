@@ -70,7 +70,7 @@ export default function General() {
 
     return (
         <>
-            <Surface className='mb-2.5 flex flex-1 flex-col p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
+            <Surface className='mb-2.5 flex flex-1 flex-col gap-3 p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
                     <div className='config-item'>
                         <h3>{t('config.general.auto_start')}</h3>
                         {autoStart !== null && (
@@ -150,7 +150,7 @@ export default function General() {
                         )}
                     </div>
                 </Surface>
-            <Surface className='mb-2.5 flex flex-1 flex-col p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
+            <Surface className='mb-2.5 flex flex-1 flex-col gap-3 p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
                     <div className='config-item'>
                         <h3 className='my-auto'>{t('config.general.app_language')}</h3>
                         {appLanguage !== null && (

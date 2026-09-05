@@ -110,7 +110,7 @@ export default function Backup() {
     };
 
     return (
-        <Surface className='mb-2.5 flex flex-1 flex-col p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
+        <Surface className='mb-2.5 flex flex-1 flex-col gap-3 p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('config.backup.type')}</h3>
                     {backupType !== null && (
@@ -145,7 +145,7 @@ export default function Backup() {
                         </Dropdown>
                     )}
                 </div>
-                <div className={`flex flex-col ${backupType !== 'webdav' ? 'hidden' : ''}`}>
+                <div className={`flex flex-col gap-3 ${backupType !== 'webdav' ? 'hidden' : ''}`}>
                     <div className='config-item'>
                         <h3 className='my-auto'>{t('config.backup.webdav_url')}</h3>
                         {davUrl !== null && (
@@ -199,7 +199,7 @@ export default function Backup() {
                         )}
                     </div>
                 </div>
-                <div className={`flex flex-col ${backupType !== 's3' ? 'hidden' : ''}`}>
+                <div className={`flex flex-col gap-3 ${backupType !== 's3' ? 'hidden' : ''}`}>
                     <div className='config-item'>
                         <h3 className='my-auto'>{t('config.backup.s3_endpoint')}</h3>
                         {s3Endpoint !== null && (
@@ -305,7 +305,7 @@ export default function Backup() {
                         )}
                     </div>
                 </div>
-                <div className='flex justify-around mt-2.5'>
+                <div className='flex justify-around'>
                     <Button
                         variant='primary'
                         isPending={uploading}

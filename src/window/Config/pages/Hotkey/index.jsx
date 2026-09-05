@@ -108,7 +108,7 @@ export default function Hotkey() {
     }
 
     return (
-        <Surface className='flex flex-1 flex-col p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
+        <Surface className='flex flex-1 flex-col gap-3 p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('config.hotkey.selection_translate')}</h3>
                     {selectionTranslate !== null && (

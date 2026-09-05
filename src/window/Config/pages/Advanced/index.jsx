@@ -18,7 +18,7 @@ export default function Advanced() {
 
     return (
         <>
-            <Surface className='flex flex-1 flex-col p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
+            <Surface className='flex flex-1 flex-col gap-3 p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
                 <div className='config-item'>
                     <h3>{t('config.advanced.proxy.title')}</h3>
                     {proxyEnable !== null && (
@@ -155,7 +155,7 @@ export default function Advanced() {
                     )}
                 </div>
             </Surface>
-            <Surface className='mt-2.5 flex flex-1 flex-col p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
+            <Surface className='mt-2.5 flex flex-1 flex-col gap-3 p-4 shadow-surface rounded-[min(32px,var(--radius-3xl))]'>
                 <div className='config-item'>
                     <h3 className='my-auto'>{t('config.advanced.log_level.title')}</h3>
                     {logLevel !== null && (

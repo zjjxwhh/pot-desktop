@@ -93,6 +93,7 @@ export function Config(props) {
     return (
         edgeConfig !== null && (
             <form
+                className='flex flex-col gap-2'
                 id={formId}
                 onSubmit={(e) => {
                     e.preventDefault();
@@ -132,7 +133,7 @@ export function Config(props) {
                 <p className='text-xs text-foreground py-2'>{t('services.tts.edge_tts.voice_config_description')}</p>
 
                 <Surface
-                    className='flex flex-col rounded-3xl p-3'
+                    className='flex flex-col gap-2 rounded-3xl p-3'
                     variant='secondary'
                 >
                     {edgeConfig.voiceConfig &&

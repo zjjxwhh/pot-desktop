@@ -104,7 +104,7 @@ export default function Recognize(props) {
                     </Droppable>
                 </DragDropContext>
                 <div className='h-2' />
-                <div className='flex'>
+                <div className='flex gap-1'>
                     <Button
                         fullWidth
                         onPress={selectState.open}

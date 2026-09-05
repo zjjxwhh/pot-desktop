@@ -42,7 +42,7 @@ export default function ConfigModal(props) {
                             <>
                                 <Modal.Header>
                                     {serviceSourceType === ServiceSourceType.BUILDIN && (
-                                        <>
+                                        <div className='flex items-center gap-3'>
                                             <img
                                                 src={
                                                     serviceName === 'system'
@@ -52,22 +52,20 @@ export default function ConfigModal(props) {
                                                 className='size-6 shrink-0 my-auto'
                                                 draggable={false}
                                             />
-                                            <div className='w-2' />
                                             <Modal.Heading>
                                                 {t(`services.recognize.${serviceName}.title`)}
                                             </Modal.Heading>
-                                        </>
+                                        </div>
                                     )}
                                     {pluginServiceFlag && (
-                                        <>
+                                        <div className='flex items-center gap-3'>
                                             <img
                                                 src={pluginList[serviceName].icon}
                                                 className='size-6 shrink-0 my-auto'
                                                 draggable={false}
                                             />
-                                            <div className='w-2' />
                                             <Modal.Heading>{`${pluginList[serviceName].display} [${t('common.plugin')}]`}</Modal.Heading>
-                                        </>
+                                        </div>
                                     )}
                                 </Modal.Header>
                                 <Modal.Body>
