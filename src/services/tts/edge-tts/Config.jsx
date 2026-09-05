@@ -147,8 +147,9 @@ export function Config(props) {
                                     <Dropdown>
                                         <Button
                                             size='sm'
-                                            variant='tertiary'
+                                            variant='outline'
                                             className='my-auto w-35 shrink-0'
+                                            style={{ borderColor: 'var(--border-tertiary)' }}
                                         >
                                             <span className={`fi fi-${LanguageFlag[item.language]} shrink-0`} />
                                             <span className='min-w-0 truncate'>{t(`languages.${item.language}`)}</span>
@@ -186,8 +187,9 @@ export function Config(props) {
                                     <Dropdown>
                                         <Button
                                             size='sm'
-                                            variant='tertiary'
+                                            variant='outline'
                                             className='my-auto grow min-w-0'
+                                            style={{ borderColor: 'var(--border-tertiary)' }}
                                         >
                                             <span className='min-w-0 truncate'>{getVoiceLabel(item.voice ?? '')}</span>
                                         </Button>
@@ -210,7 +212,7 @@ export function Config(props) {
                                                         textValue={getVoiceLabel(voice)}
                                                         className={({ isSelected }) =>
                                                             isSelected
-                                                                ? 'bg-accent/15 text-accent font-medium'
+                                                                ? 'bg-background-tertiary text-accent font-medium'
                                                                 : undefined
                                                         }
                                                     >
