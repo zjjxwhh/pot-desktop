@@ -27,6 +27,29 @@
                 "view_log": "اعرض السجل",
                 "website": "موقع الوب"
             },
+            "advanced": {
+                "dev_mode": "وضع المطور",
+                "label": "",
+                "log_level": {
+                    "debug": "",
+                    "error": "",
+                    "info": "",
+                    "title": "",
+                    "trace": "",
+                    "warn": ""
+                },
+                "proxy": {
+                    "host": "المضيف",
+                    "no_proxy": "بدون وكيل",
+                    "password": "كلمة المرور",
+                    "port": "المنفذ",
+                    "title": "وكيل",
+                    "username": "اسم المستخدم"
+                },
+                "proxy_change": "لقد تغير الوكيل، أعد تشغيل التطبيق كي تنفذ التغييرات",
+                "proxy_error": "فضلا املأ بيانات المضيف والمنفذ",
+                "title": ""
+            },
             "backup": {
                 "aliyun": "Aliyun drive",
                 "aliyun_login_first": "يرجى مسح الرمز ضوئياً لتسجيل الدخول أولاً.",
@@ -63,7 +86,6 @@
                 "auto_start": "بَدْء التشغيل التلقائي",
                 "check_update": "تحقق من التحديث",
                 "default_font": "الافتراضي",
-                "dev_mode": "وضع المطور",
                 "event": {
                     "config": "تفضيل",
                     "disable": "عطّل",
@@ -82,24 +104,6 @@
                     "title": "حجم الخط"
                 },
                 "label": "عام",
-                "log_level": {
-                    "debug": "",
-                    "error": "",
-                    "info": "",
-                    "title": "",
-                    "trace": "",
-                    "warn": ""
-                },
-                "proxy": {
-                    "host": "المضيف",
-                    "no_proxy": "بدون وكيل",
-                    "password": "كلمة المرور",
-                    "port": "المنفذ",
-                    "title": "وكيل",
-                    "username": "اسم المستخدم"
-                },
-                "proxy_change": "لقد تغير الوكيل، أعد تشغيل التطبيق كي تنفذ التغييرات",
-                "proxy_error": "فضلا املأ بيانات المضيف والمنفذ",
                 "server_port": "منفذ الاستماع",
                 "server_port_change": "تغير منفذ الاستماع، يُرجى إعادة تشغيل التطبيق كي تنفذ التغييرات",
                 "theme": {

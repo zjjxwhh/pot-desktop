@@ -27,6 +27,29 @@
                 "view_log": "",
                 "website": ""
             },
+            "advanced": {
+                "dev_mode": "",
+                "label": "",
+                "log_level": {
+                    "debug": "",
+                    "error": "",
+                    "info": "",
+                    "title": "",
+                    "trace": "",
+                    "warn": ""
+                },
+                "proxy": {
+                    "host": "",
+                    "no_proxy": "",
+                    "password": "",
+                    "port": "",
+                    "title": "",
+                    "username": ""
+                },
+                "proxy_change": "",
+                "proxy_error": "",
+                "title": ""
+            },
             "backup": {
                 "aliyun": "",
                 "aliyun_login_first": "",
@@ -63,7 +86,6 @@
                 "auto_start": "",
                 "check_update": "",
                 "default_font": "",
-                "dev_mode": "",
                 "event": {
                     "config": "",
                     "disable": "",
@@ -82,24 +104,6 @@
                     "title": ""
                 },
                 "label": "",
-                "log_level": {
-                    "debug": "",
-                    "error": "",
-                    "info": "",
-                    "title": "",
-                    "trace": "",
-                    "warn": ""
-                },
-                "proxy": {
-                    "host": "",
-                    "no_proxy": "",
-                    "password": "",
-                    "port": "",
-                    "title": "",
-                    "username": ""
-                },
-                "proxy_change": "",
-                "proxy_error": "",
                 "server_port": "",
                 "server_port_change": "",
                 "theme": {

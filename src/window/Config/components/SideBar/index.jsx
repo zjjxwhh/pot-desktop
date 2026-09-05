@@ -1,5 +1,6 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
+    IconAdjustmentsHorizontal,
     IconCloudUpload,
     IconHistory,
     IconInfoSquareRounded,
@@ -107,6 +108,18 @@ export default function SideBar() {
             >
                 <IconCloudUpload className={'size-5'} />
                 <div className='w-full'>{t('config.backup.label')}</div>
+            </Button>
+            <Button
+                fullWidth
+                size='lg'
+                variant={setStyle('/advanced')}
+                className='mb-1.25'
+                onPress={() => {
+                    navigate('/advanced');
+                }}
+            >
+                <IconAdjustmentsHorizontal className={'size-5'} />
+                <div className='w-full'>{t('config.advanced.label')}</div>
             </Button>
             <Button
                 fullWidth

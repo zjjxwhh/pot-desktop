@@ -27,6 +27,29 @@
                 "view_log": "檢視記錄檔",
                 "website": "官方網站"
             },
+            "advanced": {
+                "dev_mode": "開發者模式",
+                "label": "進階設定",
+                "log_level": {
+                    "debug": "偵錯",
+                    "error": "錯誤",
+                    "info": "資訊",
+                    "title": "記錄等級",
+                    "trace": "追蹤",
+                    "warn": "警告"
+                },
+                "proxy": {
+                    "host": "主機",
+                    "no_proxy": "不使用代理伺服器",
+                    "password": "密碼",
+                    "port": "連接埠",
+                    "title": "代理伺服器",
+                    "username": "使用者名稱"
+                },
+                "proxy_change": "代理伺服器已變更，請重新啟動應用程式以使變更生效",
+                "proxy_error": "請填寫主機和連接埠",
+                "title": "進階設定"
+            },
             "backup": {
                 "aliyun": "阿里雲網盤",
                 "aliyun_login_first": "請先掃描 QR Code 登入。",
@@ -63,7 +86,6 @@
                 "auto_start": "開機自動啟動",
                 "check_update": "啟動時檢查更新",
                 "default_font": "預設",
-                "dev_mode": "開發者模式",
                 "event": {
                     "config": "偏好設定",
                     "disable": "停用",
@@ -82,24 +104,6 @@
                     "title": "字型大小"
                 },
                 "label": "一般設定",
-                "log_level": {
-                    "debug": "偵錯",
-                    "error": "錯誤",
-                    "info": "資訊",
-                    "title": "記錄等級",
-                    "trace": "追蹤",
-                    "warn": "警告"
-                },
-                "proxy": {
-                    "host": "主機",
-                    "no_proxy": "不使用代理伺服器",
-                    "password": "密碼",
-                    "port": "連接埠",
-                    "title": "代理伺服器",
-                    "username": "使用者名稱"
-                },
-                "proxy_change": "代理伺服器已變更，請重新啟動應用程式以使變更生效",
-                "proxy_error": "請填寫主機和連接埠",
                 "server_port": "監聽連接埠",
                 "server_port_change": "監聽連接埠已變更，請重新啟動應用程式以使變更生效",
                 "theme": {

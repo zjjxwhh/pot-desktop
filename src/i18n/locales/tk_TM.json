@@ -27,6 +27,29 @@
                 "view_log": "",
                 "website": ""
             },
+            "advanced": {
+                "dev_mode": "Developer mody",
+                "label": "",
+                "log_level": {
+                    "debug": "",
+                    "error": "",
+                    "info": "",
+                    "title": "",
+                    "trace": "",
+                    "warn": ""
+                },
+                "proxy": {
+                    "host": "Host",
+                    "no_proxy": "Proksi ýok",
+                    "password": "Parol",
+                    "port": "Port",
+                    "title": "Proksy",
+                    "username": "Ulanyjy ady"
+                },
+                "proxy_change": "",
+                "proxy_error": "",
+                "title": ""
+            },
             "backup": {
                 "aliyun": "",
                 "aliyun_login_first": "",
@@ -63,7 +86,6 @@
                 "auto_start": "Awto Başlangyç",
                 "check_update": "Täzelenmäni Barlaň",
                 "default_font": "Bellenen",
-                "dev_mode": "Developer mody",
                 "event": {
                     "config": "",
                     "disable": "",
@@ -82,24 +104,6 @@
                     "title": "Şrift ölçegi"
                 },
                 "label": "Umumy",
-                "log_level": {
-                    "debug": "",
-                    "error": "",
-                    "info": "",
-                    "title": "",
-                    "trace": "",
-                    "warn": ""
-                },
-                "proxy": {
-                    "host": "Host",
-                    "no_proxy": "Proksi ýok",
-                    "password": "Parol",
-                    "port": "Port",
-                    "title": "Proksy",
-                    "username": "Ulanyjy ady"
-                },
-                "proxy_change": "",
-                "proxy_error": "",
                 "server_port": "Serwer porty",
                 "server_port_change": "Serwer porty üýtgedildi, üýtgeşmeleriň güýje girmegi üçin programmany täzeden açyň",
                 "theme": {

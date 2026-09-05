@@ -27,6 +27,29 @@
                 "view_log": "",
                 "website": ""
             },
+            "advanced": {
+                "dev_mode": "",
+                "label": "",
+                "log_level": {
+                    "debug": "",
+                    "error": "",
+                    "info": "",
+                    "title": "",
+                    "trace": "",
+                    "warn": ""
+                },
+                "proxy": {
+                    "host": "هاست",
+                    "no_proxy": "بدون پروکسی",
+                    "password": "گذرواژه",
+                    "port": "پورت",
+                    "title": "پروکسی",
+                    "username": "نام کابری"
+                },
+                "proxy_change": "پروکسی تغییر کرده است، برنامه را مجددا راه اندازی کنید تا تغییرات اعمال شوند",
+                "proxy_error": "لطفا هاست و پورت را پر کنید",
+                "title": ""
+            },
             "backup": {
                 "aliyun": "",
                 "aliyun_login_first": "",
@@ -63,7 +86,6 @@
                 "auto_start": "راه اندازی خودکار",
                 "check_update": "بررسی بروزرسانی",
                 "default_font": "پیشفرض",
-                "dev_mode": "",
                 "event": {
                     "config": "پیکربندی",
                     "disable": "غیرفعال",
@@ -82,24 +104,6 @@
                     "title": "اندازه فونت"
                 },
                 "label": "عمومی",
-                "log_level": {
-                    "debug": "",
-                    "error": "",
-                    "info": "",
-                    "title": "",
-                    "trace": "",
-                    "warn": ""
-                },
-                "proxy": {
-                    "host": "هاست",
-                    "no_proxy": "بدون پروکسی",
-                    "password": "گذرواژه",
-                    "port": "پورت",
-                    "title": "پروکسی",
-                    "username": "نام کابری"
-                },
-                "proxy_change": "پروکسی تغییر کرده است، برنامه را مجددا راه اندازی کنید تا تغییرات اعمال شوند",
-                "proxy_error": "لطفا هاست و پورت را پر کنید",
                 "server_port": "پورت شنونده",
                 "server_port_change": "پورت شنونده تغییر کرده است، لطفاً برنامه را مجدداً راه اندازی کنید تا تغییرات اعمال شوند",
                 "theme": {

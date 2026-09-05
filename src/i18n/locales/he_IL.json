@@ -27,6 +27,29 @@
                 "view_log": "הצג יומן רישום",
                 "website": "אתר האינטרנט"
             },
+            "advanced": {
+                "dev_mode": "מצב מפתח",
+                "label": "",
+                "log_level": {
+                    "debug": "",
+                    "error": "",
+                    "info": "",
+                    "title": "",
+                    "trace": "",
+                    "warn": ""
+                },
+                "proxy": {
+                    "host": "מארח",
+                    "no_proxy": "ללא פרוקסי",
+                    "password": "סיסמא",
+                    "port": "יציאה",
+                    "title": "פרוקסי",
+                    "username": "שם-משתמש"
+                },
+                "proxy_change": "ה-proxy שונה, הפעל מחדש את האפליקציה כדי שהשינויים ייכנסו לתוקף",
+                "proxy_error": "אנא מלא את כתובת המארח והיציאה",
+                "title": ""
+            },
             "backup": {
                 "aliyun": "",
                 "aliyun_login_first": "אנא סרוק את הקוד כדי להיכנס.",
@@ -63,7 +86,6 @@
                 "auto_start": "הפעלה אוטומטית",
                 "check_update": "עדכון אוטומטי",
                 "default_font": "ברירת מחדל",
-                "dev_mode": "מצב מפתח",
                 "event": {
                     "config": "העדפה",
                     "disable": "מבוטל",
@@ -82,24 +104,6 @@
                     "title": "גודל גופן"
                 },
                 "label": "כללי",
-                "log_level": {
-                    "debug": "",
-                    "error": "",
-                    "info": "",
-                    "title": "",
-                    "trace": "",
-                    "warn": ""
-                },
-                "proxy": {
-                    "host": "מארח",
-                    "no_proxy": "ללא פרוקסי",
-                    "password": "סיסמא",
-                    "port": "יציאה",
-                    "title": "פרוקסי",
-                    "username": "שם-משתמש"
-                },
-                "proxy_change": "ה-proxy שונה, הפעל מחדש את האפליקציה כדי שהשינויים ייכנסו לתוקף",
-                "proxy_error": "אנא מלא את כתובת המארח והיציאה",
                 "server_port": "יציאת האזנה",
                 "server_port_change": "יציאת ההאזנה שונתה, אנא הפעל מחדש את האפליקציה כדי שהשינויים ייכנסו לתוקף",
                 "theme": {

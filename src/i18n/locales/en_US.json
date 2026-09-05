@@ -27,6 +27,29 @@
                 "view_log": "View Log",
                 "website": "Website"
             },
+            "advanced": {
+                "dev_mode": "Developer Mode",
+                "label": "Advanced",
+                "log_level": {
+                    "debug": "Debug",
+                    "error": "Error",
+                    "info": "Info",
+                    "title": "Log Level",
+                    "trace": "Trace",
+                    "warn": "Warning"
+                },
+                "proxy": {
+                    "host": "Host",
+                    "no_proxy": "No Proxy",
+                    "password": "Password",
+                    "port": "Port",
+                    "title": "Proxy",
+                    "username": "Username"
+                },
+                "proxy_change": "The proxy has been changed, Restart the application for the changes to take effect",
+                "proxy_error": "Please fill in the host and port",
+                "title": "Advanced Settings"
+            },
             "backup": {
                 "aliyun": "Aliyun Drive",
                 "aliyun_login_first": "Please scan the code to log in first.",
@@ -63,7 +86,6 @@
                 "auto_start": "Auto Startup",
                 "check_update": "Check Update",
                 "default_font": "Default",
-                "dev_mode": "Developer Mode",
                 "event": {
                     "config": "Preference",
                     "disable": "Disable",
@@ -82,24 +104,6 @@
                     "title": "Font Size"
                 },
                 "label": "General",
-                "log_level": {
-                    "debug": "Debug",
-                    "error": "Error",
-                    "info": "Info",
-                    "title": "Log Level",
-                    "trace": "Trace",
-                    "warn": "Warning"
-                },
-                "proxy": {
-                    "host": "Host",
-                    "no_proxy": "No Proxy",
-                    "password": "Password",
-                    "port": "Port",
-                    "title": "Proxy",
-                    "username": "Username"
-                },
-                "proxy_change": "The proxy has been changed, Restart the application for the changes to take effect",
-                "proxy_error": "Please fill in the host and port",
                 "server_port": "Listening Port",
                 "server_port_change": "The listening port has been changed, Please restart the application for the changes to take effect",
                 "theme": {

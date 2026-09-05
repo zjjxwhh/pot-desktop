@@ -27,6 +27,29 @@
                 "view_log": "Exibir Registro",
                 "website": "Website"
             },
+            "advanced": {
+                "dev_mode": "Modo de Desenvolvedor",
+                "label": "",
+                "log_level": {
+                    "debug": "",
+                    "error": "",
+                    "info": "",
+                    "title": "",
+                    "trace": "",
+                    "warn": ""
+                },
+                "proxy": {
+                    "host": "Host",
+                    "no_proxy": "Sem Proxy",
+                    "password": "Senha",
+                    "port": "Porta",
+                    "title": "Proxy",
+                    "username": "Nome de usuário"
+                },
+                "proxy_change": "O proxy foi alterado. Reinicie o aplicativo para que as alterações tenham efeito",
+                "proxy_error": "Por favor preencha o host e a porta",
+                "title": ""
+            },
             "backup": {
                 "aliyun": "Aliyun Drive",
                 "aliyun_login_first": "Por favor, leia o código para fazer login primeiro.",
@@ -63,7 +86,6 @@
                 "auto_start": "Iniciar Automaticamente",
                 "check_update": "Checar por Atualização",
                 "default_font": "Padrão",
-                "dev_mode": "Modo de Desenvolvedor",
                 "event": {
                     "config": "Preferência",
                     "disable": "Desabilitar",
@@ -82,24 +104,6 @@
                     "title": "Tamanho da Fonte"
                 },
                 "label": "Geral",
-                "log_level": {
-                    "debug": "",
-                    "error": "",
-                    "info": "",
-                    "title": "",
-                    "trace": "",
-                    "warn": ""
-                },
-                "proxy": {
-                    "host": "Host",
-                    "no_proxy": "Sem Proxy",
-                    "password": "Senha",
-                    "port": "Porta",
-                    "title": "Proxy",
-                    "username": "Nome de usuário"
-                },
-                "proxy_change": "O proxy foi alterado. Reinicie o aplicativo para que as alterações tenham efeito",
-                "proxy_error": "Por favor preencha o host e a porta",
                 "server_port": "Porta de Escuta",
                 "server_port_change": "A porta de escuta foi alterada. Reinicie o aplicativo para que as alterações tenham efeito",
                 "theme": {

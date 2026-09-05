@@ -27,6 +27,29 @@
                 "view_log": "Logdatei anzeigen",
                 "website": "Offizielle Website"
             },
+            "advanced": {
+                "dev_mode": "",
+                "label": "",
+                "log_level": {
+                    "debug": "",
+                    "error": "",
+                    "info": "",
+                    "title": "",
+                    "trace": "",
+                    "warn": ""
+                },
+                "proxy": {
+                    "host": "Proxy-Adresse",
+                    "no_proxy": "IP-Adressen ohne Proxy",
+                    "password": "Passwort",
+                    "port": "Proxy-Port",
+                    "title": "Netzwerkproxy",
+                    "username": "Benutzername"
+                },
+                "proxy_change": "Proxy wurde geändert, für Änderungen neu starten",
+                "proxy_error": "Bitte Proxy-Adresse und -Port angeben",
+                "title": ""
+            },
             "backup": {
                 "aliyun": "Aliyun Drive",
                 "aliyun_login_first": "Bitte zuerst per QR-Code anmelden",
@@ -63,7 +86,6 @@
                 "auto_start": "Beim Start des Computers starten",
                 "check_update": "Beim Start Updates überprüfen",
                 "default_font": "Standard",
-                "dev_mode": "",
                 "event": {
                     "config": "Einstellungen öffnen",
                     "disable": "Deaktivieren",
@@ -82,24 +104,6 @@
                     "title": "Schriftgröße"
                 },
                 "label": "Allgemein",
-                "log_level": {
-                    "debug": "",
-                    "error": "",
-                    "info": "",
-                    "title": "",
-                    "trace": "",
-                    "warn": ""
-                },
-                "proxy": {
-                    "host": "Proxy-Adresse",
-                    "no_proxy": "IP-Adressen ohne Proxy",
-                    "password": "Passwort",
-                    "port": "Proxy-Port",
-                    "title": "Netzwerkproxy",
-                    "username": "Benutzername"
-                },
-                "proxy_change": "Proxy wurde geändert, für Änderungen neu starten",
-                "proxy_error": "Bitte Proxy-Adresse und -Port angeben",
                 "server_port": "Überwachungsport",
                 "server_port_change": "Überwachungsport wurde geändert, für Änderungen neu starten",
                 "theme": {

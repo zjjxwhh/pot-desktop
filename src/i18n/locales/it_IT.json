@@ -27,6 +27,29 @@
                 "view_log": "Vedi log",
                 "website": "Sito web"
             },
+            "advanced": {
+                "dev_mode": "",
+                "label": "",
+                "log_level": {
+                    "debug": "",
+                    "error": "",
+                    "info": "",
+                    "title": "",
+                    "trace": "",
+                    "warn": ""
+                },
+                "proxy": {
+                    "host": "Host",
+                    "no_proxy": "Nessun Proxy",
+                    "password": "Password",
+                    "port": "Porta",
+                    "title": "Proxy",
+                    "username": "Nome Utente"
+                },
+                "proxy_change": "Il proxy è stato modificato, riavviare l'applicazione affinché le modifiche abbiano effetto",
+                "proxy_error": "Inserisci l'host e la porta",
+                "title": ""
+            },
             "backup": {
                 "aliyun": "",
                 "aliyun_login_first": "",
@@ -63,7 +86,6 @@
                 "auto_start": "Avvio automatico",
                 "check_update": "Controlla aggiornamento",
                 "default_font": "Predefinito",
-                "dev_mode": "",
                 "event": {
                     "config": "Configurazione",
                     "disable": "Disabilita",
@@ -82,24 +104,6 @@
                     "title": "Dimensione del font"
                 },
                 "label": "Generale",
-                "log_level": {
-                    "debug": "",
-                    "error": "",
-                    "info": "",
-                    "title": "",
-                    "trace": "",
-                    "warn": ""
-                },
-                "proxy": {
-                    "host": "Host",
-                    "no_proxy": "Nessun Proxy",
-                    "password": "Password",
-                    "port": "Porta",
-                    "title": "Proxy",
-                    "username": "Nome Utente"
-                },
-                "proxy_change": "Il proxy è stato modificato, riavviare l'applicazione affinché le modifiche abbiano effetto",
-                "proxy_error": "Inserisci l'host e la porta",
                 "server_port": "Porta in ascolto",
                 "server_port_change": "La porta di ascolto è stata modificata. Riavviare l'applicazione affinché le modifiche abbiano effetto",
                 "theme": {

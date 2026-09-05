@@ -27,6 +27,29 @@
                 "view_log": "查看日志",
                 "website": "官网"
             },
+            "advanced": {
+                "dev_mode": "开发模式",
+                "label": "高级设置",
+                "log_level": {
+                    "debug": "调试",
+                    "error": "错误",
+                    "info": "信息",
+                    "title": "日志等级",
+                    "trace": "跟踪",
+                    "warn": "警告"
+                },
+                "proxy": {
+                    "host": "代理地址",
+                    "no_proxy": "不使用代理的地址或 IP",
+                    "password": "密码",
+                    "port": "代理端口",
+                    "title": "网络代理",
+                    "username": "用户名"
+                },
+                "proxy_change": "代理已经改变，重启应用生效",
+                "proxy_error": "请填写代理地址和端口",
+                "title": "高级设置"
+            },
             "backup": {
                 "aliyun": "阿里云盘",
                 "aliyun_login_first": "请先扫码登录",
@@ -63,7 +86,6 @@
                 "auto_start": "开机时启动应用",
                 "check_update": "启动时检查更新",
                 "default_font": "默认",
-                "dev_mode": "开发模式",
                 "event": {
                     "config": "偏好设置",
                     "disable": "禁用",
@@ -82,24 +104,6 @@
                     "title": "字体大小"
                 },
                 "label": "常规设置",
-                "log_level": {
-                    "debug": "调试",
-                    "error": "错误",
-                    "info": "信息",
-                    "title": "日志等级",
-                    "trace": "跟踪",
-                    "warn": "警告"
-                },
-                "proxy": {
-                    "host": "代理地址",
-                    "no_proxy": "不使用代理的地址或 IP",
-                    "password": "密码",
-                    "port": "代理端口",
-                    "title": "网络代理",
-                    "username": "用户名"
-                },
-                "proxy_change": "代理已经改变，重启应用生效",
-                "proxy_error": "请填写代理地址和端口",
                 "server_port": "监听端口",
                 "server_port_change": "监听端口已更改，重启应用生效",
                 "theme": {
