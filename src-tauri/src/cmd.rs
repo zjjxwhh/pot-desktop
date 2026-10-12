@@ -20,32 +20,33 @@ pub fn reload_store() {
 }
 
 #[tauri::command]
-pub fn cut_image(left: u32, top: u32, width: u32, height: u32, app_handle: tauri::AppHandle) {
+pub fn cut_image(
+    left: u32,
+    top: u32,
+    width: u32,
+    height: u32,
+    app_handle: tauri::AppHandle,
+) -> Result<(), String> {
     use dirs::cache_dir;
     use image::GenericImage;
     info!("Cut image: {}x{}+{}+{}", width, height, left, top);
     let mut app_cache_dir_path = cache_dir().expect("Get Cache Dir Failed");
     app_cache_dir_path.push(&app_handle.config().identifier);
     app_cache_dir_path.push("pot_screenshot.png");
-    if !app_cache_dir_path.exists() {
-        return;
+    let mut img = image::open(&app_cache_dir_path).map_err(|e| e.to_string())?;
+    if width == 0
+        || height == 0
+        || left.checked_add(width).is_none_or(|right| right > img.width())
+        || top.checked_add(height).is_none_or(|bottom| bottom > img.height())
+    {
+        return Err("Screenshot area is outside the captured desktop".into());
     }
-    let mut img = match image::open(&app_cache_dir_path) {
-        Ok(v) => v,
-        Err(e) => {
-            error!("{:?}", e.to_string());
-            return;
-        }
-    };
     let img2 = img.sub_image(left, top, width, height);
     app_cache_dir_path.pop();
     app_cache_dir_path.push("pot_screenshot_cut.png");
-    match img2.to_image().save(&app_cache_dir_path) {
-        Ok(_) => {}
-        Err(e) => {
-            error!("{:?}", e.to_string());
-        }
-    }
+    img2.to_image()
+        .save(&app_cache_dir_path)
+        .map_err(|e| e.to_string())
 }
 
 #[tauri::command]

@@ -92,9 +92,11 @@ fn build_window(label: &str, title: &str, fallback_show: bool) -> (WebviewWindow
             // The window is created hidden and revealed by the frontend on first mount.
             // When it already exists (was closed to tray / minimized / behind), focus
             // alone won't reveal it on Tauri 2 — explicitly unminimize + show + focus.
-            let _ = v.unminimize();
-            let _ = v.show();
-            let _ = v.set_focus();
+            if label != "screenshot" {
+                let _ = v.unminimize();
+                let _ = v.show();
+                let _ = v.set_focus();
+            }
             debug!(
                 "[perf][{}] existing window shown          +{:.1}ms  (no webview rebuild)",
                 label,
@@ -113,6 +115,10 @@ fn build_window(label: &str, title: &str, fallback_show: bool) -> (WebviewWindow
             .focused(true)
             .title(title)
             .visible(false);
+
+            if label == "screenshot" {
+                builder = builder.resizable(false).shadow(false);
+            }
 
             let perf_label = label.to_string();
             builder = builder.on_page_load(move |window, payload| {
@@ -421,17 +427,33 @@ pub fn recognize_window() {
 fn screenshot_window() -> WebviewWindow {
     let (window, _exists) = build_window("screenshot", "Screenshot", false);
 
-    window.set_skip_taskbar(true).unwrap();
-    #[cfg(target_os = "macos")]
+    #[cfg(target_os = "windows")]
     {
-        let monitor = window.current_monitor().unwrap().unwrap();
-        let size = monitor.size();
-        window.set_decorations(false).unwrap();
-        window.set_size(*size).unwrap();
+        use windows::core::BOOL;
+        use windows::Win32::Foundation::HWND;
+        use windows::Win32::Graphics::Dwm::{
+            DwmSetWindowAttribute, DWMWA_TRANSITIONS_FORCEDISABLED,
+        };
+        // Disable the desktop compositor's show/hide animation for this overlay.
+        // Ordinary application windows retain the user's system preferences.
+        if let Ok(hwnd) = window.hwnd() {
+            let disabled = BOOL(1);
+            if let Err(error) = unsafe {
+                DwmSetWindowAttribute(
+                    HWND(hwnd.0),
+                    DWMWA_TRANSITIONS_FORCEDISABLED,
+                    (&disabled as *const BOOL).cast(),
+                    std::mem::size_of::<BOOL>() as u32,
+                )
+            } {
+                warn!("Failed to disable screenshot window transitions: {error}");
+            }
+        }
     }
 
-    #[cfg(not(target_os = "macos"))]
-    window.set_fullscreen(true).unwrap();
+    window.set_skip_taskbar(true).unwrap();
+    // Fullscreen is restricted to one monitor. The capture command sizes this
+    // borderless window to the physical bounds of the entire desktop.
 
     window.set_always_on_top(true).unwrap();
     window
